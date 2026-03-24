@@ -1,0 +1,32 @@
+{
+  "project": "[PROJECT_NAME]",
+  "version": "0.1.0",
+  "owner": "Eukrit / GO Corporation Co., Ltd.",
+  "github_repo": "https://github.com/eukrit/[PROJECT_NAME]",
+  "local_path": "/path/to/local/repo",
+  "gcp": {
+    "project_id": "ai-agents-go",
+    "region": "asia-southeast1",
+    "service_name": "[SERVICE_NAME]",
+    "service_account": "claude@ai-agents-go.iam.gserviceaccount.com"
+  },
+  "apis": {
+    "peak": {
+      "base_url": "https://api.peakaccount.com/api/v1/",
+      "token": "ENV:PEAK_API_TOKEN",
+      "reference_contact": "C00001"
+    },
+    "n8n": {
+      "base_url": "https://gocorp.app.n8n.cloud",
+      "webhook_key": "ENV:N8N_WEBHOOK_KEY"
+    }
+  },
+  "notion": {
+    "dashboard_url": "https://www.notion.so/gocorp/Coding-Project-Dashboard-Claude-32c82cea8bb080f1bbd7f26770ae9e80"
+  },
+  "build": {
+    "last_version": "0.1.0",
+    "last_built_at": null,
+    "last_build_status": null
+  }
+}

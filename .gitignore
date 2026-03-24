@@ -1,0 +1,24 @@
+# Credentials — never commit
+manifest.json
+*.key
+*.pem
+.env
+.env.*
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+verify-report.json
+verify-report.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
