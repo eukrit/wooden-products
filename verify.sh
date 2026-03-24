@@ -26,11 +26,69 @@ echo "=== GO Corporation Build Verification ==="
 echo "Started: $TIMESTAMP"
 echo ""
 
+# =============================================
+# 0. CREDENTIAL & ENV LOADING
+# =============================================
+echo "--- 0. Credential Loading ---"
+
+# Load .env if present (local development)
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
+  echo "[PASS] .env file loaded"
+  PASS=$((PASS+1))
+else
+  echo "[WARN] .env file not found — using existing environment variables"
+  WARN=$((WARN+1))
+fi
+
 # Load manifest
 MANIFEST="manifest.json"
-if [ ! -f "$MANIFEST" ]; then
-  echo "[WARN] manifest.json not found — using environment variables"
+if [ -f "$MANIFEST" ]; then
+  echo "[PASS] manifest.json found"
+  PASS=$((PASS+1))
+else
+  echo "[WARN] manifest.json not found — using environment variables only"
   WARN=$((WARN+1))
+fi
+
+# Check credentials folder link
+if [ -d "credentials" ]; then
+  echo "[PASS] credentials/ folder linked"
+  PASS=$((PASS+1))
+else
+  echo "[WARN] credentials/ folder not found — service account auth may fail locally"
+  WARN=$((WARN+1))
+fi
+
+# Verify .gitignore blocks credentials
+if [ -f ".gitignore" ]; then
+  CRED_PATTERNS=0
+  grep -q "manifest.json" .gitignore && CRED_PATTERNS=$((CRED_PATTERNS+1))
+  grep -q "\.env" .gitignore && CRED_PATTERNS=$((CRED_PATTERNS+1))
+  grep -q "credentials/" .gitignore && CRED_PATTERNS=$((CRED_PATTERNS+1))
+  grep -q "\*\.key" .gitignore && CRED_PATTERNS=$((CRED_PATTERNS+1))
+  grep -q "\*_tokens.json" .gitignore && CRED_PATTERNS=$((CRED_PATTERNS+1))
+  if [ "$CRED_PATTERNS" -ge 4 ]; then
+    echo "[PASS] .gitignore blocks credential files ($CRED_PATTERNS/5 patterns)"
+    PASS=$((PASS+1))
+  else
+    echo "[FAIL] .gitignore missing credential patterns ($CRED_PATTERNS/5 found)"
+    FAIL=$((FAIL+1))
+  fi
+fi
+
+# Check no credentials are staged in git
+if git rev-parse --git-dir > /dev/null 2>&1; then
+  LEAKED=$(git ls-files --cached | grep -iE '\.env$|manifest\.json|_tokens\.json|token_.*\.json|credentials/|\.key$|\.pem$|client_secret_' || true)
+  if [ -z "$LEAKED" ]; then
+    echo "[PASS] No credential files tracked by git"
+    PASS=$((PASS+1))
+  else
+    echo "[FAIL] Credential files tracked by git: $LEAKED"
+    FAIL=$((FAIL+1))
+  fi
 fi
 
 # Helper functions
@@ -41,6 +99,7 @@ warn() { echo "[WARN] $1"; WARN=$((WARN+1)); }
 # =============================================
 # 1. ENVIRONMENT CHECKS
 # =============================================
+echo ""
 echo "--- 1. Environment Checks ---"
 
 [ -f "manifest.example.json" ] && pass "manifest.example.json exists" || fail "manifest.example.json missing"
@@ -54,16 +113,16 @@ echo "--- 1. Environment Checks ---"
 echo ""
 echo "--- 2. Peak API Connectivity ---"
 
-PEAK_BASE="https://api.peakaccount.com/api/v1"
-PEAK_TOKEN="${PEAK_API_TOKEN:-}"
+PEAK_BASE="${PEAK_API_URL:-http://peakengineapidev.azurewebsites.net}"
+PEAK_TOKEN="${PEAK_USER_TOKEN:-}"
 
 if [ -n "$PEAK_TOKEN" ]; then
   PEAK_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
     -H "Authorization: Bearer $PEAK_TOKEN" \
-    "$PEAK_BASE/contacts?code=C00001")
+    "$PEAK_BASE/api/v1/contacts?code=C00001" 2>/dev/null || echo "000")
   [ "$PEAK_STATUS" = "200" ] && pass "Peak API — contacts endpoint (C00001)" || fail "Peak API — HTTP $PEAK_STATUS"
 else
-  warn "PEAK_API_TOKEN not set — skipping Peak API tests"
+  warn "PEAK_USER_TOKEN not set — skipping Peak API tests"
 fi
 
 # =============================================
@@ -120,6 +179,42 @@ fi
 if [ -f "CHANGELOG.md" ]; then
   LINES=$(wc -l < CHANGELOG.md)
   [ "$LINES" -gt 0 ] && pass "CHANGELOG.md has content ($LINES lines)" || warn "CHANGELOG.md is empty"
+fi
+
+# =============================================
+# 7. XERO API CONNECTIVITY (if configured)
+# =============================================
+echo ""
+echo "--- 7. Xero API Connectivity ---"
+
+XERO_ID="${XERO_CLIENT_ID:-}"
+if [ -n "$XERO_ID" ]; then
+  if [ -f "credentials/xero_tokens.json" ] || [ -f "${CREDENTIALS_FOLDER:-}/xero_tokens.json" ]; then
+    pass "Xero token file found"
+  else
+    warn "Xero token file not found — OAuth refresh will fail"
+  fi
+else
+  warn "XERO_CLIENT_ID not set — skipping Xero checks"
+fi
+
+# =============================================
+# 8. SECRET MANAGER CHECK (CI mode only)
+# =============================================
+echo ""
+echo "--- 8. GCP Secret Manager ---"
+
+if [ "$CI_MODE" = "true" ]; then
+  GCP_PROJECT="${GCP_PROJECT_ID:-ai-agents-go}"
+  for SECRET_NAME in peak-api-token n8n-webhook-key xero-client-secret notion-api-key slack-bot-token figma-token; do
+    if gcloud secrets versions access latest --secret="$SECRET_NAME" --project="$GCP_PROJECT" > /dev/null 2>&1; then
+      pass "Secret Manager: $SECRET_NAME accessible"
+    else
+      warn "Secret Manager: $SECRET_NAME not accessible (may not be provisioned yet)"
+    fi
+  done
+else
+  warn "Not in CI mode — skipping Secret Manager checks (use --ci-mode)"
 fi
 
 # =============================================
