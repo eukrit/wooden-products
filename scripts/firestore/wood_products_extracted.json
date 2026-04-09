@@ -1,0 +1,610 @@
+{
+  "extraction_date": "2026-04-10",
+  "vendors": [
+    {
+      "vendor_id": "KS_WOOD",
+      "vendor_name": "K.S. Wood Co., Ltd.",
+      "address": "398 Rama 2 Rd. Samaedum Bangkhuntien Bangkok 10150",
+      "phone": "0-2408-3816, Mobile: 09-5878-6710",
+      "email": "sales@kswood.com",
+      "website": "www.kswood.com",
+      "price_date": "2025-10",
+      "currency": "THB",
+      "payment_terms": "50% deposit, 50% before delivery",
+      "free_delivery": "Orders over 50,000 THB (lath) / 100,000 THB (decking) in Bangkok",
+      "lead_time": "60-90 days if not in stock",
+      "products": [
+        {
+          "category": "Composite Lath - Hollow (UHL Series)",
+          "brand": "NewTechWood",
+          "items": [
+            {"product_name": "UHL Composite Lath 1x2 Hollow", "item_codes": ["UHL38-102","UHL39-102","UHL49-102","UHL82-102"], "specifications": "30.5x56mm, L=3000mm", "colors": ["38 Walnut","39 Teak","49 Antique","82 Red Cedar"], "weight_kg_per_m": 1.0, "unit_price": 675, "currency": "THB", "unit": "piece (3m)", "notes": "1\" x 2\""},
+            {"product_name": "UHL Composite Lath 1x4 Hollow", "item_codes": ["UHL38-104","UHL39-104","UHL49-104","UHL82-104"], "specifications": "30.5x107.5mm, L=3000mm", "colors": ["38 Walnut","39 Teak","49 Antique","82 Red Cedar"], "weight_kg_per_m": 2.0, "unit_price": 1035, "currency": "THB", "unit": "piece (3m)", "notes": "1\" x 4\""},
+            {"product_name": "UHL Composite Lath 2x2 Hollow", "item_codes": ["UHL38-202","UHL39-202","UHL49-202","UHL82-202"], "specifications": "42x60mm, L=3000mm", "colors": ["38 Walnut","39 Teak","49 Antique","82 Red Cedar"], "weight_kg_per_m": 1.4, "unit_price": 915, "currency": "THB", "unit": "piece (3m)", "notes": "2\" x 2\""},
+            {"product_name": "UHL Composite Lath 2x4 Hollow", "item_codes": ["UHL38-204","UHL39-204","UHL49-204","UHL82-204"], "specifications": "52x100mm, L=3000mm", "colors": ["38 Walnut","39 Teak","49 Antique","82 Red Cedar"], "weight_kg_per_m": 2.65, "unit_price": 1350, "currency": "THB", "unit": "piece (3m)", "notes": "2\" x 4\""}
+          ]
+        },
+        {
+          "category": "End Caps (UEC Series)",
+          "brand": "NewTechWood",
+          "items": [
+            {"product_name": "End Cap for 1x2 Lath", "item_codes": ["UEC38-102","UEC39-102","UEC49-102","UEC82-102"], "unit_price": 40, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap for 1x4 Lath", "item_codes": ["UEC38-104","UEC39-104","UEC49-104","UEC82-104"], "unit_price": 45, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap for 2x2 Lath", "item_codes": ["UEC38-202","UEC39-202","UEC49-202","UEC82-202"], "unit_price": 45, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap for 2x4 Lath", "item_codes": ["UEC38-204","UEC39-204","UEC49-204","UEC82-204"], "unit_price": 50, "currency": "THB", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "Lath Installation Equipment",
+          "brand": "NewTechWood",
+          "items": [
+            {"product_name": "Steel Angle A35 (for 1x2, 1x4)", "item_code": "A35", "specifications": "2x25x25mm", "unit_price": 17, "currency": "THB", "unit": "piece"},
+            {"product_name": "Steel Angle A46 (for 2x2, 2x4)", "item_code": "A46", "specifications": "2x50x50mm", "unit_price": 35, "currency": "THB", "unit": "piece"},
+            {"product_name": "Floating Lock Clip Vertical", "item_code": "AUH-L", "specifications": "12x36.3x40mm", "unit_price": 65, "currency": "THB", "unit": "piece", "notes": "Screws not included"},
+            {"product_name": "Floating Move Clip Vertical", "item_code": "AUH-MR", "specifications": "12.2x30x35mm", "unit_price": 75, "currency": "THB", "unit": "piece", "notes": "Screws not included"},
+            {"product_name": "Floating Lock Clip Horizontal", "item_code": "AUH-LT", "specifications": "12x52x35mm", "unit_price": 125, "currency": "THB", "unit": "piece", "notes": "Screws not included"},
+            {"product_name": "Floating Move Clip Horizontal", "item_code": "AUH-MT", "specifications": "12x52x35mm", "unit_price": 115, "currency": "THB", "unit": "piece", "notes": "Screws not included"},
+            {"product_name": "U-Bracket EDP for 2x2", "item_code": "AU-202", "unit_price": 50, "currency": "THB", "unit": "piece"},
+            {"product_name": "U-Bracket EDP for 2x4", "item_code": "AU-204", "unit_price": 55, "currency": "THB", "unit": "piece"},
+            {"product_name": "Stainless Stud Bolt", "item_code": "A70", "unit_price": 22, "currency": "THB", "unit": "piece"},
+            {"product_name": "Black Cap Nut Stainless", "item_code": "A71", "unit_price": 12, "currency": "THB", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "Composite Decking - Ultrashield",
+          "brand": "NewTechWood",
+          "items": [
+            {"product_name": "Cozy Decking (Hollow Square)", "item_codes": ["WZ39"], "specifications": "22.5x140mm, L=2200mm, 0.308 m2/pc", "colors": ["Stock colors"], "unit_price": 1990, "currency": "THB", "unit": "sqm", "notes": "~613 THB/plank incl clips. Includes Starter/Locking/T-Clip/Screw"},
+            {"product_name": "Masterpiece Decking (Hollow Round) - Stock Colors", "item_codes": ["W21","W38","W39","W44","W50","W49","W82"], "specifications": "22.5x138mm, L=2200mm, 0.304 m2/pc", "unit_price": 2890, "currency": "THB", "unit": "sqm", "notes": "~876 THB/plank incl clips"},
+            {"product_name": "Masterpiece Decking (Hollow Round) - Exclusive Colors", "item_codes": ["W02","W51","W57","W78","W80","W81","W87"], "specifications": "22.5x138mm, L=2200mm, 0.304 m2/pc", "unit_price": 3350, "currency": "THB", "unit": "sqm", "notes": "~1,015 THB/plank incl clips"},
+            {"product_name": "Super Max Decking (Solid Bridge)", "item_codes": ["WSB21","WSB38","WSB39","WSB44","WSB49","WSB82"], "specifications": "22.5x138mm, L=2800mm, 0.386 m2/pc", "unit_price": 3190, "currency": "THB", "unit": "sqm", "notes": "~1,232 THB/plank incl clips"},
+            {"product_name": "Super Max Decking (Solid)", "item_codes": ["WS39","WS44","WS50"], "specifications": "22.5x145mm, L=2200mm, 0.319 m2/pc", "unit_price": 3790, "currency": "THB", "unit": "sqm", "notes": "~1,211 THB/plank incl clips"}
+          ]
+        },
+        {
+          "category": "Decking Accessories",
+          "brand": "NewTechWood",
+          "items": [
+            {"product_name": "Locking Clip for WPC Joist", "item_code": "A17", "unit_price": 25, "currency": "THB", "unit": "piece", "notes": "5 pcs/sqm"},
+            {"product_name": "Plastic T-Clip for WPC Joist", "item_code": "A18", "unit_price": 10, "currency": "THB", "unit": "piece", "notes": "23 pcs/sqm"},
+            {"product_name": "Starter Clip for WPC Joist", "item_code": "A19", "unit_price": 25, "currency": "THB", "unit": "piece", "notes": "1 pc/sqm"},
+            {"product_name": "Locking Clip for Metal Joist", "item_code": "A24", "unit_price": 25, "currency": "THB", "unit": "piece"},
+            {"product_name": "Plastic T-Clip for Metal Joist", "item_code": "A25", "unit_price": 10, "currency": "THB", "unit": "piece"},
+            {"product_name": "Starter Clip for Metal Joist", "item_code": "A26", "unit_price": 25, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap Masterpiece Stock Colors", "item_codes": ["AEC21","AEC38","AEC39","AEC44","AEC49","AEC50","AEC82"], "unit_price": 40, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap Masterpiece Exclusive Colors", "item_codes": ["AEC02","AEC51","AEC57","AEC78","AEC80","AEC81","AEC87"], "unit_price": 46, "currency": "THB", "unit": "piece"},
+            {"product_name": "End Cap Cozy All Colors", "item_code": "ZEC", "unit_price": 40, "currency": "THB", "unit": "piece"},
+            {"product_name": "WPC Fascia (Edge Cover) Stock Colors", "item_codes": ["WF21","WF38","WF39","WF44","WF49","WF50","WF82"], "specifications": "10x62mm, L=2200mm", "unit_price": 418, "currency": "THB", "unit": "piece", "notes": "190 THB/m"},
+            {"product_name": "WPC Fascia (Edge Cover) Exclusive Colors", "item_codes": ["WF02","WF51","WF57","WF78","WF80","WF81","WF87"], "specifications": "10x62mm, L=2200mm", "unit_price": 484, "currency": "THB", "unit": "piece", "notes": "220 THB/m"}
+          ]
+        }
+      ]
+    },
+    {
+      "vendor_id": "PINECROSS",
+      "vendor_name": "Pinecross Co., Ltd.",
+      "address": "191/1 Pracharasd Sai 1 Rd. Soi 10, Bangsue, Bangkok 10800",
+      "phone": "0 2912 5200, Mobile: 086 369 6756",
+      "price_date": "2024-10",
+      "currency": "THB",
+      "notes": "Pine wood from New Zealand, KD (kiln dried), CCA H3 treated",
+      "products": [
+        {
+          "category": "Structural Timber (KD, CCA H3 treated from NZ)",
+          "items": [
+            {"product_name": "Structural Timber 1x3", "specifications": "70x19mm, KD CCA H3", "unit_price": 140.00, "price_incl_vat": 149.80, "currency": "THB", "unit": "meter", "notes": "Includes planing/cutting"},
+            {"product_name": "Structural Timber 1x4", "specifications": "90x19mm, KD CCA H3", "unit_price": 190.00, "price_incl_vat": 203.30, "currency": "THB", "unit": "meter", "notes": "Includes planing/cutting"},
+            {"product_name": "Structural Timber 1x6", "specifications": "140x19mm, KD CCA H3", "unit_price": 295.00, "price_incl_vat": 315.65, "currency": "THB", "unit": "meter", "notes": "Includes planing/cutting"},
+            {"product_name": "Structural Timber 1x8", "specifications": "190x19mm, KD CCA H3", "unit_price": 375.00, "price_incl_vat": 401.25, "currency": "THB", "unit": "meter", "notes": "Includes planing/cutting"},
+            {"product_name": "Structural Timber 2x3", "specifications": "70x45mm, KD CCA H3", "unit_price": 165.00, "price_incl_vat": 176.55, "currency": "THB", "unit": "meter"},
+            {"product_name": "Structural Timber 2x4", "specifications": "90x45mm, KD CCA H3", "unit_price": 220.00, "price_incl_vat": 235.40, "currency": "THB", "unit": "meter"},
+            {"product_name": "Structural Timber 2x6", "specifications": "140x45mm, KD CCA H3", "unit_price": 330.00, "price_incl_vat": 353.10, "currency": "THB", "unit": "meter"},
+            {"product_name": "Structural Timber 2x8", "specifications": "190x45mm, KD CCA H3", "unit_price": 430.00, "price_incl_vat": 460.10, "currency": "THB", "unit": "meter"},
+            {"product_name": "Structural Timber 2x10", "specifications": "240x45mm, KD CCA H3", "unit_price": null, "currency": "THB", "unit": "meter", "notes": "Check price - laminated"},
+            {"product_name": "Structural Timber 2x12", "specifications": "290x45mm, KD CCA H3", "unit_price": null, "currency": "THB", "unit": "meter", "notes": "Check price - laminated"}
+          ]
+        }
+      ]
+    },
+    {
+      "vendor_id": "FEIYOU",
+      "vendor_name": "Zhejiang Feiyou Kangti Facilities Co., Ltd.",
+      "contact": "Spencer Wen",
+      "email": "sales99@zjfeiyou.com",
+      "website": "http://www.zjfeiyou.com",
+      "phone": "+86 187 5878 5990",
+      "price_date": "2024",
+      "currency": "CNY",
+      "price_terms": "EXW Wenzhou",
+      "moq": "1x20GP mixed products",
+      "loading_port": "Ningbo, China",
+      "delivery_time": "15 days after deposit",
+      "payment_terms": "T/T 30% in advance, balance before shipping",
+      "products": [
+        {
+          "category": "The Childhood Fort Series (18m-3 years)",
+          "items": [
+            {"product_name": "Round Table", "item_code": "F101541", "specifications": "D800x400mm", "unit_price": 455, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Round Table", "item_code": "F102375", "specifications": "D800x450mm", "unit_price": 455, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Rectangular Table", "item_code": "F101539", "specifications": "800x600x400mm", "unit_price": 344.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Rectangular Table", "item_code": "F102373", "specifications": "800x600x450mm", "unit_price": 344.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Large Table", "item_code": "F101540", "specifications": "1200x600x400mm", "unit_price": 407.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Large Table", "item_code": "F102374", "specifications": "1200x600x450mm", "unit_price": 407.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair (seat h200)", "item_code": "F101542", "specifications": "276x260x410mm", "unit_price": 105, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair (seat h220)", "item_code": "F101534", "specifications": "276x260x430mm", "unit_price": 105, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf Unit", "item_code": "F102331", "specifications": "690x300x1040mm", "unit_price": 1008, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf Unit", "item_code": "F102330", "specifications": "690x300x1082mm", "unit_price": 1193.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Cabinet", "item_code": "F101516", "specifications": "728x387x1077mm", "unit_price": 1050, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F101510", "specifications": "690x385x1015mm", "unit_price": 997.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf", "item_code": "F102332", "specifications": "690x300x920mm", "unit_price": 1218, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Box", "item_code": "F101502", "specifications": "800x400x500mm", "unit_price": 637, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Coat Rack", "item_code": "F101528", "specifications": "802x98x1244mm", "unit_price": 444.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Coat Rack", "item_code": "F102328", "specifications": "733x100x1300mm", "unit_price": 353.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf Unit", "item_code": "F102333", "specifications": "794x300x600mm", "unit_price": 682.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F101521", "specifications": "800x400x687mm", "unit_price": 805, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F101525", "specifications": "590x400x500mm", "unit_price": 595, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Cabinet", "item_code": "F101506", "specifications": "690x400x940mm", "unit_price": 889, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Step Storage", "item_code": "F102359", "specifications": "544x400x289mm", "unit_price": 336, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Bench", "item_code": "F101518", "specifications": "800x400x289mm", "unit_price": 385, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Box", "item_code": "F101520", "specifications": "800x400x500mm", "unit_price": 490, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Box", "item_code": "F101526", "specifications": "800x400x500mm", "unit_price": 539, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Box", "item_code": "F101519", "specifications": "800x400x500mm", "unit_price": 514.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Box", "item_code": "F101501", "specifications": "800x400x500mm", "unit_price": 542.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Cabinet", "item_code": "F101517", "specifications": "800x400x711mm", "unit_price": 665, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Cabinet", "item_code": "F101508", "specifications": "800x400x711mm", "unit_price": 784, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cube Storage", "item_code": "F101504", "specifications": "400x400x500mm", "unit_price": 315, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Unit", "item_code": "F101523", "specifications": "617x423x500mm", "unit_price": 462, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Wide Storage", "item_code": "F101509", "specifications": "933x474x500mm", "unit_price": 595, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Low Storage", "item_code": "F102360", "specifications": "933x474x289mm", "unit_price": 490, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Cabinet", "item_code": "F101535", "specifications": "815x400x500mm", "unit_price": 843.5, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "The Tiny Dandelion Series",
+          "items": [
+            {"product_name": "Chair", "item_code": "F202323", "specifications": "370x300x466mm", "unit_price": 127.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair", "item_code": "F202322", "specifications": "370x315x496mm", "unit_price": 127.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair", "item_code": "F201156", "specifications": "360x320x359mm", "unit_price": 122.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table", "item_code": "F201161", "specifications": "1200x600x400mm", "unit_price": 477.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table", "item_code": "F201155", "specifications": "1200x600x400mm", "unit_price": 407.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Round Table", "item_code": "F201153", "specifications": "D800x400mm", "unit_price": 455, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Storage Cabinet", "item_code": "F201109", "specifications": "800x400x550mm", "unit_price": 700, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Bookshelf", "item_code": "F201139", "specifications": "928x120x1223mm", "unit_price": 567, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Bookshelf", "item_code": "F201137", "specifications": "928x308x1069mm", "unit_price": 934.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Bookshelf", "item_code": "F201135", "specifications": "928x308x1072mm", "unit_price": 801.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf", "item_code": "F201141", "specifications": "928x120x754mm", "unit_price": 616, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F201149", "specifications": "928x285x700mm", "unit_price": 602, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F201101", "specifications": "800x400x760mm", "unit_price": 654.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet with Drawers", "item_code": "F201130", "specifications": "800x400x640mm", "unit_price": 1032.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F201113", "specifications": "600x400x640mm", "unit_price": 560, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "General Daycare Furniture",
+          "items": [
+            {"product_name": "Large Table", "item_code": "F202372", "specifications": "1200x800x400mm", "unit_price": 465.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table", "item_code": "F302371", "specifications": "1312x600x400mm", "unit_price": 395.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Locker Unit", "item_code": "F202531", "specifications": "1728x400x800mm", "unit_price": 2429, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F202530", "specifications": "432x400x800mm", "unit_price": 672, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F202528", "specifications": "432x400x500mm", "unit_price": 567, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Bench", "item_code": "F101536", "specifications": "500x380x350mm", "unit_price": 444.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet with Doors", "item_code": "F102342", "specifications": "843x410x850mm", "unit_price": 861, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Play Structure", "item_code": "F102835", "specifications": "2140x1908x1680mm", "unit_price": 5015.5, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "The Fancy Garden Series",
+          "items": [
+            {"product_name": "Table 1200x600", "item_code": "F202133", "specifications": "1200x600x490/520/550mm", "unit_price": 407.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair", "item_code": "F202129", "specifications": "300x320x480/518/557mm", "unit_price": 115.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Round Table D800", "item_code": "F202141", "specifications": "D800x490/520/550mm", "unit_price": 455, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table 1200x800", "item_code": "F202280", "specifications": "1200x800x490/520/550mm", "unit_price": 465.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Shelf Unit", "item_code": "F202766", "specifications": "800x300x1010mm", "unit_price": 1039.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Storage", "item_code": "F202263", "specifications": "1200x400x1248mm", "unit_price": 1568, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "The Grimm's Fairy-tales Series",
+          "items": [
+            {"product_name": "Table 600x600", "item_code": "F101943", "specifications": "600x600x490/520/550mm", "unit_price": 285.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Round Table D800", "item_code": "F101935", "specifications": "D800x490/520/550mm", "unit_price": 337.75, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table 1200x600", "item_code": "F101939", "specifications": "1200x600x490/520/550mm", "unit_price": 360.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Chair", "item_code": "F101925", "specifications": "300x328x494/524/554mm", "unit_price": 91, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cabinet", "item_code": "F101901", "specifications": "800x347x610mm", "unit_price": 787.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Tall Shelf", "item_code": "F102908", "specifications": "900x350x1140mm", "unit_price": 861, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "The Happy Forest Series",
+          "items": [
+            {"product_name": "Chair (3 sizes)", "item_code": "F000401/402/403", "specifications": "270-290mm W x 280-300mm D x 445-530mm H", "unit_price": 107.8, "currency": "CNY", "unit": "piece", "notes": "5 color variants available"},
+            {"product_name": "Table 1200x600", "item_code": "F000410", "specifications": "1200x600x490/520/550mm", "unit_price": 397.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Round Table D800", "item_code": "F000413", "specifications": "D800x490/520/550mm", "unit_price": 397.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table 600x600", "item_code": "F000404", "specifications": "600x600x490/520/550mm", "unit_price": 327.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Large Play Table", "item_code": "F002712", "specifications": "1200x1800x490/520/550mm", "unit_price": 1195.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Play Castle", "item_code": "F000720", "specifications": "1456x1456x490/520/550mm", "unit_price": 2273.25, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Table 1200x1200", "item_code": "F000721", "specifications": "1200x1200x490/520/550mm", "unit_price": 840, "currency": "CNY", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "General Kindergarten Furniture",
+          "items": [
+            {"product_name": "Kitchen Play Set", "item_code": "F202900", "specifications": "836x1000x1550mm", "unit_price": 1550.5, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Easel", "item_code": "F300694", "specifications": "1200x30x600mm", "unit_price": 490, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Block Play Table", "item_code": "F300695", "specifications": "1200x1200x600mm", "unit_price": 1470, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Building Block Cart", "item_code": "F102759", "specifications": "800x400x540mm", "unit_price": 651, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Stacking Box", "item_code": "F000075", "specifications": "230x230x220mm", "unit_price": 70, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Large Stacking Box", "item_code": "F000078", "specifications": "550x400x300mm", "unit_price": 210, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Coat Tower", "item_code": "F000074", "specifications": "400x250x760mm", "unit_price": 420, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Locker", "item_code": "F000657", "specifications": "400x300x1080mm", "unit_price": 560, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Cube House", "item_code": "F202257", "specifications": "1200x1200x1600mm", "unit_price": 1253, "currency": "CNY", "unit": "piece"},
+            {"product_name": "Play House", "item_code": "F102751", "specifications": "2000x1700x1350mm", "unit_price": 2324, "currency": "CNY", "unit": "piece"}
+          ]
+        }
+      ]
+    },
+    {
+      "vendor_id": "CIAOWEATHER",
+      "vendor_name": "Ciaoweather (Craftsman Workshop)",
+      "price_date": "2025-12",
+      "currency": "CNY",
+      "notes": "Stock list only - prices not listed. Teak wood outdoor furniture, unfinished/white body (baipe). Items show stock quantities available.",
+      "products": [
+        {
+          "category": "Teakwood Dining Tables & Chairs",
+          "items": [
+            {"product_name": "Armchair (Style 1)", "specifications": "64x61x76cm", "stock": null},
+            {"product_name": "Armless Chair (Style 1)", "specifications": "55x61x75cm", "stock": 14},
+            {"product_name": "Dining Table", "specifications": "200x90x75cm", "stock": 2},
+            {"product_name": "Dining Table", "specifications": "300x90x75cm", "stock": 1},
+            {"product_name": "Dining Chair (Style 3)", "specifications": "58x65x75cm", "stock": 10},
+            {"product_name": "Single Chair (Style 6)", "specifications": "standard", "stock": 54},
+            {"product_name": "Armchair (Style 17)", "specifications": "57x57x85cm", "stock": 14},
+            {"product_name": "Single Chair (Style 18)", "specifications": "61x65x84cm", "stock": 5},
+            {"product_name": "Armchair (Style 19, with arms)", "specifications": "53x58x76cm", "stock": 10},
+            {"product_name": "Woven Rope Chair (Style 21)", "specifications": "59x57x84cm", "stock": 4},
+            {"product_name": "Single Chair (Style 22)", "specifications": "60x58x80cm", "stock": 6},
+            {"product_name": "Single Chair (Style 26)", "specifications": "62x60x85cm", "stock": 9},
+            {"product_name": "Armchair (Style 72, with arms)", "specifications": "53x57x75cm", "stock": 6},
+            {"product_name": "Armless Chair (Style 73)", "specifications": "47x57x75cm", "stock": 6},
+            {"product_name": "Armchair", "specifications": "54x59x70cm", "stock": 20},
+            {"product_name": "Single Chair (Style 31)", "specifications": "58x58x69cm", "stock": 10},
+            {"product_name": "Single Chair (Style 38)", "specifications": "standard", "stock": 16},
+            {"product_name": "Armrest Chair (Style 44)", "specifications": "55.9x58.5x68.5cm", "stock": 5},
+            {"product_name": "Kangaroo Chair (Style 48)", "specifications": "77x82x73cm", "stock": 5},
+            {"product_name": "Dining Chair (Style 51)", "specifications": "59.7x58.4x66cm", "stock": 12},
+            {"product_name": "Dining Chair (Style 52)", "specifications": "59x67x86cm", "stock": 7},
+            {"product_name": "Outdoor Armchair (Style 77, custom)", "specifications": "58.8x58x79cm", "stock": 5}
+          ]
+        },
+        {
+          "category": "Teakwood Sun Loungers",
+          "items": [
+            {"product_name": "Copa Lounger", "specifications": "200x88x30cm", "stock": 6},
+            {"product_name": "Arc Lounger", "specifications": "200x85x31cm", "stock": 10},
+            {"product_name": "Weipa Lounger", "specifications": "200x76x35cm", "stock": 1},
+            {"product_name": "Mesa Lounger", "specifications": "210x78x43cm", "stock": 3},
+            {"product_name": "Capri Lounger", "specifications": "205x74x33cm", "stock": 6},
+            {"product_name": "Lounger (misc sizes)", "specifications": "various 190-215cm L", "stock": "multiple models, 1-5 each"}
+          ]
+        },
+        {
+          "category": "Teakwood Coffee/Side Tables",
+          "items": [
+            {"product_name": "Small Coffee Table", "specifications": "60x40x40cm", "stock": 1},
+            {"product_name": "Coffee Table Frame", "specifications": "40x40x35cm", "stock": 3},
+            {"product_name": "Hexagonal Side Table D50", "specifications": "D50x60cm", "stock": null},
+            {"product_name": "Hexagonal Side Table D80", "specifications": "D80x40cm", "stock": 4},
+            {"product_name": "Mushroom Coffee Table Small", "specifications": "45x45cm", "stock": 3},
+            {"product_name": "Tea Table", "specifications": "168x71x31cm", "stock": 2},
+            {"product_name": "Round Coffee Table D90", "specifications": "D90x36cm", "stock": 1},
+            {"product_name": "Coffee Table Panel 140x70", "specifications": "140x70x3cm", "stock": 3},
+            {"product_name": "Round Table Top D60", "specifications": "D60cm", "stock": 10},
+            {"product_name": "Round Table Top D70", "specifications": "D70cm", "stock": 9},
+            {"product_name": "Round Table Top D80", "specifications": "D80cm", "stock": 4},
+            {"product_name": "Teak Ring", "specifications": "D65x45cm", "stock": 4}
+          ]
+        },
+        {
+          "category": "Teakwood Bar Stools & Lounge Chairs",
+          "items": [
+            {"product_name": "Mark Bar Stool", "specifications": "standard", "stock": 6},
+            {"product_name": "Sun Chair", "specifications": "91x81x80cm", "stock": 5},
+            {"product_name": "Bar Stool", "specifications": "56x58x104cm", "stock": null},
+            {"product_name": "Bar Stool", "specifications": "560x585x1040mm", "stock": 8},
+            {"product_name": "Bar Stool", "specifications": "45x52x100cm", "stock": 2},
+            {"product_name": "Lounge Chair (Style 12)", "specifications": "standard", "stock": 12},
+            {"product_name": "Single Sofa", "specifications": "75x88x75cm", "stock": 2},
+            {"product_name": "Rocking Chair", "specifications": "standard", "stock": 5},
+            {"product_name": "Rocking Chair (Style 23)", "specifications": "standard", "stock": 8},
+            {"product_name": "Double Sofa Frame", "specifications": "125cm L", "stock": 2}
+          ]
+        }
+      ]
+    },
+    {
+      "vendor_id": "XINGDA",
+      "vendor_name": "Xingda (via Robert / WM Workstation)",
+      "price_date": "2023-05",
+      "currency": "USD",
+      "notes": "FOB pricing. Wooden cabinets with particle board core, 1mm PVC edge, full wood veneer",
+      "products": [
+        {
+          "category": "Bare Case Cabinet",
+          "items": [
+            {"product_name": "Bare Case Cabinet W600xH750", "item_code": "Cb-Bc0607-S-RW", "specifications": "W600xD400xH750mm, 1 adj shelf", "unit_price": 35.95, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W750xH750", "item_code": "Cb-Bc0707-S-RW", "specifications": "W750xD400xH750mm, 1 adj shelf", "unit_price": 44.77, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W800xH750", "item_code": "Cb-Bc0807-S-RW", "specifications": "W800xD400xH750mm, 1 adj shelf", "unit_price": 45.20, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W900xH750", "item_code": "Cb-Bc0907-S-RW", "specifications": "W900xD400xH750mm, 1 adj shelf", "unit_price": 52.31, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W600xH1200", "item_code": "Cb-Bc0612-S-RW", "specifications": "W600xD400xH1200mm, 2 adj shelves", "unit_price": 49.94, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W750xH1200", "item_code": "Cb-Bc0712-S-RW", "specifications": "W750xD400xH1200mm, 2 adj shelves", "unit_price": 61.13, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W800xH1200", "item_code": "Cb-Bc0812-S-RW", "specifications": "W800xD400xH1200mm, 2 adj shelves", "unit_price": 61.56, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W900xH1200", "item_code": "Cb-Bc0912-S-RW", "specifications": "W900xD400xH1200mm, 2 adj shelves", "unit_price": 71.25, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W600xH1600", "item_code": "Cb-Bc0616-S-RW", "specifications": "W600xD400xH1600mm, 2 adj + 1 fixed shelf", "unit_price": 66.51, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W750xH1600", "item_code": "Cb-Bc0716-S-RW", "specifications": "W750xD400xH1600mm, 2 adj + 1 fixed shelf", "unit_price": 84.38, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W800xH1600", "item_code": "Cb-Bc0816-S-RW", "specifications": "W800xD400xH1600mm, 2 adj + 1 fixed shelf", "unit_price": 113.00, "currency": "USD", "unit": "piece"},
+            {"product_name": "Bare Case Cabinet W900xH1600", "item_code": "Cb-Bc0916-S-RW", "specifications": "W900xD400xH1600mm, 2 adj + 1 fixed shelf", "unit_price": 113.00, "currency": "USD", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "1/4R Bare Case Cabinet (Quarter-Round Edge)",
+          "items": [
+            {"product_name": "1/4R Bare Case W400xH750", "item_code": "Cb-QBc0407-S-RW", "specifications": "W400xD400xH750mm, 1 adj shelf", "unit_price": 36.59, "currency": "USD", "unit": "piece"},
+            {"product_name": "1/4R Bare Case W400xH1180", "item_code": "Cb-QBc0412-S-RW", "specifications": "W400xD400xH1180mm, 2 adj shelves", "unit_price": 52.74, "currency": "USD", "unit": "piece"},
+            {"product_name": "1/4R Bare Case W400xH1600", "item_code": "Cb-QBc0416-S-RW", "specifications": "W400xD400xH1600mm, 3 adj shelves", "unit_price": 67.80, "currency": "USD", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "Swing Door Cabinet (Bevel Edge, 45-degree)",
+          "items": [
+            {"product_name": "Swing Door Cabinet W600xH750", "item_code": "Cb-Fd0607-B-RW", "specifications": "W600xD400xH750mm, 1 shelf, lock, rebound, floating base 45mm", "unit_price": 54.89, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W750xH750", "item_code": "Cb-Fd0707-B-RW", "specifications": "W750xD400xH750mm", "unit_price": 62.42, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W800xH750", "item_code": "Cb-Fd0807-B-RW", "specifications": "W800xD400xH750mm", "unit_price": 64.79, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W900xH750", "item_code": "Cb-Fd0907-B-RW", "specifications": "W900xD400xH750mm", "unit_price": 80.72, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W1000xH750", "item_code": "Cb-Fd1007-B-RW", "specifications": "W1000xD400xH750mm", "unit_price": 81.79, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W600xH1180", "item_code": "Cb-Fd0612-B-RW", "specifications": "W600xD400xH1180mm, 2 shelves", "unit_price": 74.04, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W750xH1180", "item_code": "Cb-Fd0712-B-RW", "specifications": "W750xD400xH1180mm", "unit_price": 84.59, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W800xH1180", "item_code": "Cb-Fd0812-B-RW", "specifications": "W800xD400xH1180mm", "unit_price": 85.02, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W900xH1180", "item_code": "Cb-Fd0912-B-RW", "specifications": "W900xD400xH1180mm", "unit_price": 105.04, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W1000xH1180", "item_code": "Cb-Fd1012-B-RW", "specifications": "W1000xD400xH1180mm", "unit_price": 110.42, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W600xH1600", "item_code": "Cb-Fd0616-B-RW", "specifications": "W600xD400xH1600mm, 3 shelves", "unit_price": 109.13, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W750xH1600", "item_code": "Cb-Fd0716-B-RW", "specifications": "W750xD400xH1600mm", "unit_price": 125.05, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W800xH1600", "item_code": "Cb-Fd0816-B-RW", "specifications": "W800xD400xH1600mm", "unit_price": 126.13, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W900xH1600", "item_code": "Cb-Fd0916-B-RW", "specifications": "W900xD400xH1600mm", "unit_price": 148.51, "currency": "USD", "unit": "piece"},
+            {"product_name": "Swing Door Cabinet W1000xH1600", "item_code": "Cb-Fd1016-B-RW", "specifications": "W1000xD400xH1600mm", "unit_price": 162.94, "currency": "USD", "unit": "piece"}
+          ]
+        }
+      ]
+    },
+    {
+      "vendor_id": "SCI_WOOD",
+      "vendor_name": "SCI Wood",
+      "website": "www.sci-wood.com",
+      "price_date": "2022-Q1",
+      "currency": "THB",
+      "notes": "Wood-plastic composite (WPC) products. All lengths 2.8m unless noted. Prices exclude VAT.",
+      "products": [
+        {
+          "category": "Outdoor Decking - Luxury Solid",
+          "items": [
+            {"product_name": "Luxury Solid Decking T3 Texture", "item_code": "DK25-L6 T3", "specifications": "25x140mm, L=2.8m", "colors": ["Gray-Black stripe (T/G)","Teak-Black stripe","Pink Beech (PB)"], "unit_price_per_m": 600, "unit_price_per_pc": 1680, "unit_price_per_sqm": 4284, "currency": "THB", "weight_kg": 13.46, "notes": "2.55 pcs/sqm"},
+            {"product_name": "Luxury Solid Decking T4 Texture", "item_code": "DK25-L6 T4", "specifications": "25x140mm, L=2.8m", "colors": ["Cherry (CH)","Black Cherry (BC)"], "unit_price_per_m": 600, "unit_price_per_pc": 1680, "unit_price_per_sqm": 4284, "currency": "THB", "weight_kg": 13.46},
+            {"product_name": "Luxury Canada Decking", "item_code": "DK25-L6 CN", "specifications": "25x140mm, L=2.8m", "colors": ["Teak","Oak","Gray"], "unit_price_per_m": 535, "unit_price_per_pc": 1498, "unit_price_per_sqm": 3820, "currency": "THB", "weight_kg": 12},
+            {"product_name": "Luxury Special Coating 21mm", "item_code": "DK21-L6 EU", "specifications": "21x140mm, L=2.8m", "colors": ["Teak/Oak"], "unit_price_per_m": 535, "unit_price_per_pc": 1498, "unit_price_per_sqm": 3820, "currency": "THB", "weight_kg": 9.9},
+            {"product_name": "Luxury Special Coating 23mm", "item_code": "DK23-MM6 EU", "specifications": "23x140mm, L=2.8m", "colors": ["Teak","Dark Gray","Gray"], "unit_price_per_m": 515, "unit_price_per_pc": 1441, "unit_price_per_sqm": 3678, "currency": "THB", "weight_kg": 8.8}
+          ]
+        },
+        {
+          "category": "Outdoor Decking - Modern Luxury",
+          "items": [
+            {"product_name": "Modern Luxury Decking 1x6", "item_code": "DKP-ML6 T2", "specifications": "25x150mm, L=2.8m", "colors": ["Teak","Oak","Dark Gray"], "unit_price_per_m": 510, "unit_price_per_pc": 1428, "unit_price_per_sqm": 3399, "currency": "THB", "weight_kg": 14.7}
+          ]
+        },
+        {
+          "category": "Outdoor Decking - Modern Solid",
+          "items": [
+            {"product_name": "Modern Solid Decking 1x4", "item_code": "DKP-M4 S", "specifications": "25x100mm, L=2.8m", "colors": ["Teak","Brown","Oak","Gray"], "unit_price_per_m": 285, "unit_price_per_pc": 798, "unit_price_per_sqm": 2849, "currency": "THB", "weight_kg": 8.70},
+            {"product_name": "Modern Solid Decking 1x6", "item_code": "DKP-M6 S", "specifications": "25x150mm, L=2.8m", "colors": ["Teak","Brown","Oak","Gray"], "unit_price_per_m": 430, "unit_price_per_pc": 1204, "unit_price_per_sqm": 2866, "currency": "THB", "weight_kg": 14.50}
+          ]
+        },
+        {
+          "category": "Outdoor Decking - Modern Eco",
+          "items": [
+            {"product_name": "Modern Eco Decking 19mm", "item_code": "DK19-M5 S", "specifications": "19x130mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 305, "unit_price_per_pc": 854, "unit_price_per_sqm": 2349, "currency": "THB", "weight_kg": 9.50},
+            {"product_name": "Modern Eco Decking 1x4", "item_code": "DKP-ME4 S", "specifications": "20x100mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 240, "unit_price_per_pc": 672, "unit_price_per_sqm": 2400, "currency": "THB", "weight_kg": 7},
+            {"product_name": "Modern Eco Decking 1x6", "item_code": "DKP-ME6 S", "specifications": "20x150mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 360, "unit_price_per_pc": 1008, "unit_price_per_sqm": 2400, "currency": "THB", "weight_kg": 10.5}
+          ]
+        },
+        {
+          "category": "Outdoor Stair Tread",
+          "items": [
+            {"product_name": "Stair Tread Large", "item_code": "STP-14 S", "specifications": "23x348mm, L=3m", "colors": ["Teak","Oak"], "unit_price_per_m": 1080, "unit_price_per_pc": 3240, "currency": "THB", "weight_kg": 31.5},
+            {"product_name": "Wide Board 200mm", "item_code": "DKP-B8 T5", "specifications": "25x200mm, L=3m", "colors": ["Cherry"], "unit_price_per_m": 720, "unit_price_per_pc": 2160, "currency": "THB", "weight_kg": 20}
+          ]
+        },
+        {
+          "category": "Solid Full-Length Timber (Outdoor, replaces natural wood)",
+          "items": [
+            {"product_name": "Solid Bar 1x1.5\"", "item_code": "SLP-40", "specifications": "25x40mm, L=3m", "unit_price_per_m": 105, "unit_price_per_pc": 315, "currency": "THB", "weight_kg": 3},
+            {"product_name": "Solid Bar 1x2\"", "item_code": "SLP-50", "specifications": "25x50mm, L=3m", "unit_price_per_m": 165, "unit_price_per_pc": 495, "currency": "THB", "weight_kg": 4.4},
+            {"product_name": "Solid Timber 1x1", "item_code": "SLP-01", "specifications": "1\"x1\", L=3m", "unit_price_per_m": 140, "unit_price_per_pc": 420, "currency": "THB"},
+            {"product_name": "Solid Timber 1x2", "item_code": "SLP-02", "specifications": "1\"x2\", L=3m", "unit_price_per_m": 140, "unit_price_per_pc": 495, "currency": "THB"},
+            {"product_name": "Solid Timber 1x3", "item_code": "SLP-03", "specifications": "1\"x3\", L=3m", "unit_price_per_m": 225, "unit_price_per_pc": 675, "currency": "THB"},
+            {"product_name": "Solid Timber 1x5", "item_code": "SLP-05", "specifications": "1\"x5\", L=3m", "unit_price_per_m": 375, "unit_price_per_pc": 1125, "currency": "THB"},
+            {"product_name": "Solid Timber 1x8", "item_code": "SLP-08", "specifications": "1\"x8\", L=3m", "unit_price_per_m": 635, "unit_price_per_pc": 1905, "currency": "THB"},
+            {"product_name": "Solid Timber 1x10", "item_code": "SLP-10", "specifications": "1\"x10\", L=3m", "unit_price_per_m": 795, "unit_price_per_pc": 2385, "currency": "THB"},
+            {"product_name": "Solid Timber 1x12", "item_code": "SLP-12", "specifications": "1\"x12\", L=3m", "unit_price_per_m": 915, "unit_price_per_pc": 2745, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x2", "item_code": "SLD-02", "specifications": "1.5\"x2\", L=3m", "unit_price_per_m": 230, "unit_price_per_pc": 690, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x3", "item_code": "SLD-03", "specifications": "1.5\"x3\", L=3m", "unit_price_per_m": 345, "unit_price_per_pc": 1035, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x4", "item_code": "SLD-04", "specifications": "1.5\"x4\", L=3m", "unit_price_per_m": 460, "unit_price_per_pc": 1380, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x6", "item_code": "SLD-06", "specifications": "1.5\"x6\", L=3m", "unit_price_per_m": 710, "unit_price_per_pc": 2130, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x8", "item_code": "SLD-08", "specifications": "1.5\"x8\", L=3m", "unit_price_per_m": 965, "unit_price_per_pc": 2895, "currency": "THB"},
+            {"product_name": "Solid Timber 1.5x12", "item_code": "SLD-12", "specifications": "1.5\"x12\", L=3m", "unit_price_per_m": 1440, "unit_price_per_pc": 4320, "currency": "THB"},
+            {"product_name": "Solid Timber 2x2", "item_code": "SLD2-02", "specifications": "2\"x2\", L=3m", "unit_price_per_m": 304, "unit_price_per_pc": 910, "currency": "THB"},
+            {"product_name": "Solid Timber 2x3", "item_code": "SLD2-03", "specifications": "2\"x3\", L=3m", "unit_price_per_m": 465, "unit_price_per_pc": 1395, "currency": "THB"},
+            {"product_name": "Solid Timber 2x4", "item_code": "SLD2-04", "specifications": "2\"x4\", L=3m", "unit_price_per_m": 630, "unit_price_per_pc": 1890, "currency": "THB"},
+            {"product_name": "Solid Timber 2x5", "item_code": "SLD2-05", "specifications": "2\"x5\", L=3m", "unit_price_per_m": 966, "unit_price_per_pc": 2898, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Outdoor Solid Lath (Sanding Surface)",
+          "items": [
+            {"product_name": "Solid Lath 16x50mm", "item_code": "LFH-A2", "specifications": "16x50mm, L=3m", "colors": ["Brown","Teak","Gray"], "unit_price_per_m": 110, "unit_price_per_pc": 330, "currency": "THB"},
+            {"product_name": "Solid Lath 16x90mm", "item_code": "LFH-A4", "specifications": "16x90mm, L=3m", "colors": ["Brown","Teak","Gray"], "unit_price_per_m": 210, "unit_price_per_pc": 630, "currency": "THB"},
+            {"product_name": "Solid Lath 16x140mm", "item_code": "LFH-A6", "specifications": "16x140mm, L=3m", "colors": ["Brown","Teak","Gray"], "unit_price_per_m": 320, "unit_price_per_pc": 960, "currency": "THB"},
+            {"product_name": "Solid Lath 20x50mm", "item_code": "SL20-02", "specifications": "20x50mm, L=3m", "unit_price_per_m": 165, "unit_price_per_pc": 495, "currency": "THB"},
+            {"product_name": "Solid Lath 25x25mm", "item_code": "SLP-S1", "specifications": "25x25mm, L=3m", "unit_price_per_m": 120, "unit_price_per_pc": 360, "currency": "THB"},
+            {"product_name": "Solid Lath 25x50mm", "item_code": "SLP-S2", "specifications": "25x50mm, L=3m", "unit_price_per_m": 180, "unit_price_per_pc": 540, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Outdoor Hollow Lath (Sanding Surface)",
+          "items": [
+            {"product_name": "Hollow Lath 25x25mm", "item_code": "LFP-S1", "specifications": "25x25mm, L=3m", "unit_price_per_m": 105, "unit_price_per_pc": 315, "currency": "THB"},
+            {"product_name": "Hollow Lath 24x72mm", "item_code": "LFP-S3", "specifications": "24x72mm, L=3m", "unit_price_per_m": 195, "unit_price_per_pc": 585, "currency": "THB"},
+            {"product_name": "Hollow Lath 20x100mm", "item_code": "LF20-S4", "specifications": "20x100mm, L=3m", "unit_price_per_m": 210, "unit_price_per_pc": 630, "currency": "THB"},
+            {"product_name": "Hollow Lath 22x145mm", "item_code": "LF22-S6", "specifications": "22x145mm, L=3m", "unit_price_per_m": 220, "unit_price_per_pc": 660, "currency": "THB"},
+            {"product_name": "Hollow Lath 30x51mm", "item_code": "LFD-S2", "specifications": "30x51mm, L=3m", "unit_price_per_m": 180, "unit_price_per_pc": 540, "currency": "THB"},
+            {"product_name": "Hollow Lath 30x100mm", "item_code": "LFD-S4", "specifications": "30x100mm, L=3m", "unit_price_per_m": 240, "unit_price_per_pc": 720, "currency": "THB"},
+            {"product_name": "Hollow Lath 35x125mm", "item_code": "LFD-S5", "specifications": "35x125mm, L=3m", "unit_price_per_m": 300, "unit_price_per_pc": 900, "currency": "THB"},
+            {"product_name": "Hollow Lath 55x55mm", "item_code": "LFD2-S2", "specifications": "55x55mm, L=3m", "unit_price_per_m": 215, "unit_price_per_pc": 645, "currency": "THB"},
+            {"product_name": "Hollow Lath 46x76mm", "item_code": "LFD2-S3", "specifications": "46x76mm, L=3m", "unit_price_per_m": 240, "unit_price_per_pc": 720, "currency": "THB"},
+            {"product_name": "Hollow Lath 50x100mm", "item_code": "LFD2-S4", "specifications": "50x100mm, L=3m", "unit_price_per_m": 270, "unit_price_per_pc": 810, "currency": "THB"},
+            {"product_name": "Hollow Lath 50x150mm", "item_code": "LFD2-S6", "specifications": "50x150mm, L=3m", "unit_price_per_m": 395, "unit_price_per_pc": 1185, "currency": "THB"},
+            {"product_name": "Hollow Lath 60x200mm", "item_code": "LFD2-S8", "specifications": "60x200mm, L=3m", "unit_price_per_m": 480, "unit_price_per_pc": 1440, "currency": "THB"},
+            {"product_name": "Post/Pillar 120x120mm", "item_code": "LFD5-S5", "specifications": "120x120mm, up to 2.8m", "unit_price_per_m": 828, "currency": "THB"},
+            {"product_name": "Post/Pillar 145x145mm", "item_code": "LFD6-S6", "specifications": "145x145mm, up to 2.8m", "unit_price_per_m": 1020, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Outdoor Luxury Lath (Special Coating)",
+          "items": [
+            {"product_name": "Luxury Lath 50x100mm (thick)", "item_code": "LCD2-S4", "specifications": "50x100mm, L=2.8m, 5mm thick coating", "unit_price_per_pc": 1274, "currency": "THB", "weight_kg": 7.0},
+            {"product_name": "Luxury Lath 50x50mm (thick)", "item_code": "LCD2-S2", "specifications": "50x50mm, L=2.8m, 5mm thick coating", "unit_price_per_pc": 756, "currency": "THB", "weight_kg": 3.6},
+            {"product_name": "Luxury Lath 25x100mm (thin)", "item_code": "LCP-S4 EU", "specifications": "25x100mm, L=2.8m, 2.5mm coating", "unit_price_per_pc": 868, "currency": "THB", "weight_kg": 4.6},
+            {"product_name": "Luxury Lath 25x50mm (thin)", "item_code": "LCP-S2 EU", "specifications": "25x50mm, L=2.8m, 2.5mm coating", "unit_price_per_pc": 602, "currency": "THB", "weight_kg": 2.3}
+          ]
+        },
+        {
+          "category": "Aluminum Core Lath (Outdoor)",
+          "items": [
+            {"product_name": "Aluminum Lath 31.5x51.5mm", "item_code": "SML-S2", "specifications": "31.5x51.5mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 780, "unit_price_per_pc": 2184, "currency": "THB"},
+            {"product_name": "Aluminum Lath 32x102mm", "item_code": "SML-S4", "specifications": "32x102mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 840, "unit_price_per_pc": 2352, "currency": "THB"},
+            {"product_name": "Aluminum Lath 51x151mm", "item_code": "SML2-S6", "specifications": "51x151mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 1500, "unit_price_per_pc": 4200, "currency": "THB"},
+            {"product_name": "Aluminum Lath 70x70mm", "item_code": "SML5-S5", "specifications": "69.9x69.9mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 2400, "unit_price_per_pc": 6720, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Outdoor Wall Cladding",
+          "items": [
+            {"product_name": "Wall Cladding Luxury Coating", "item_code": "OW22-L6 EU", "specifications": "22x172mm, L=2.8m", "colors": ["Teak","Golden Teak"], "unit_price_per_m": 335, "unit_price_per_sqm": 2242, "currency": "THB"},
+            {"product_name": "Wall Cladding Canada Pattern", "item_code": "OWP-156 CN", "specifications": "21x156mm, L=2.8m", "colors": ["Teak","Oak","Gray"], "unit_price_per_m": 270, "unit_price_per_sqm": 2004, "currency": "THB"},
+            {"product_name": "Wall Cladding T3 Texture", "item_code": "OWH-L5 T3", "specifications": "21x124mm, L=2.8m", "colors": ["Teak"], "unit_price_per_m": 250, "unit_price_per_sqm": 2016, "currency": "THB"},
+            {"product_name": "Wall Cladding Luxury Coating Wide", "item_code": "OW20-L6 EU1", "specifications": "20x170mm, L=2.8m", "colors": ["Teak","White"], "unit_price_per_m": 335, "unit_price_per_sqm": 2252, "currency": "THB"},
+            {"product_name": "Wall Cladding Sanding 140mm", "item_code": "OW20-140 T1/S", "specifications": "20x140mm, L=2.8m", "colors": ["Teak","Oak"], "unit_price_per_m": 205, "unit_price_per_sqm": 1722, "currency": "THB"},
+            {"product_name": "Wall Cladding Sanding 148mm", "item_code": "OWH-124 S", "specifications": "21x148mm, L=2.8m", "colors": ["Brown","Teak"], "unit_price_per_m": 210, "unit_price_per_sqm": 1694, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Outdoor Wall Panel (Lath-concept)",
+          "items": [
+            {"product_name": "Wall Panel 29x220mm Sanding", "item_code": "LW4-220 S", "specifications": "29x220mm, L=2.8m", "colors": ["Teak","Brown","Oak"], "unit_price_per_m": 380, "unit_price_per_sqm": 1905, "currency": "THB"},
+            {"product_name": "Wall Panel 28x217mm Coating", "item_code": "LW4-217 EU", "specifications": "28x217mm, L=2.8m", "colors": ["Teak","Golden Teak"], "unit_price_per_m": 525, "unit_price_per_sqm": 2617, "currency": "THB"},
+            {"product_name": "Wall Panel 40x168mm Luxury", "item_code": "LW2-S2 EU", "specifications": "40x168mm, L=2.8m", "colors": ["Teak"], "unit_price_per_m": 390, "unit_price_per_sqm": 2654, "currency": "THB"},
+            {"product_name": "Wall Panel 28x168mm Luxury", "item_code": "LW3-168 EU", "specifications": "28x168mm, L=2.8m", "colors": ["Teak"], "unit_price_per_m": 390, "unit_price_per_sqm": 2654, "currency": "THB"},
+            {"product_name": "Wall Panel 28x168mm Stripe", "item_code": "LW3-168 M", "specifications": "28x168mm, L=2.8m", "colors": ["Teak with black stripe"], "unit_price_per_m": 300, "unit_price_per_sqm": 2042, "currency": "THB"},
+            {"product_name": "Wall Panel 25x127mm Luxury", "item_code": "LW3-S1 EU", "specifications": "25x127mm, L=2.8m", "colors": ["Teak","Gray","Dark Gray"], "unit_price_per_m": 300, "unit_price_per_sqm": 2688, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Indoor Wall/Ceiling Panel (Tongue & Lock system)",
+          "items": [
+            {"product_name": "Indoor Panel 12x125mm Stripe", "item_code": "iC1-LS4 M", "specifications": "12x125mm, L=2.8m", "colors": ["Teak","Maple","Oak"], "unit_price_per_m": 180, "unit_price_per_sqm": 1714, "currency": "THB"},
+            {"product_name": "Indoor Panel 12x125mm Texture", "item_code": "iC1-LS4 T", "specifications": "12x125mm, L=2.8m", "colors": ["Teak","Maple","Oak"], "unit_price_per_m": 195, "unit_price_per_sqm": 1857, "currency": "THB"},
+            {"product_name": "Indoor Panel 12x171mm Stripe", "item_code": "iC2-LS6 M", "specifications": "12x171mm, L=2.8m", "colors": ["Teak","Maple"], "unit_price_per_m": 240, "unit_price_per_sqm": 1600, "currency": "THB"},
+            {"product_name": "Indoor Panel 16x113mm Stripe", "item_code": "iC1-LM4 M", "specifications": "16x113mm, L=2.8m", "colors": ["Teak","Maple","Oak"], "unit_price_per_m": 180, "unit_price_per_sqm": 1800, "currency": "THB"},
+            {"product_name": "Indoor Panel 16x149mm Stripe", "item_code": "iC7-LM6 M", "specifications": "16x149mm, L=2.8m", "colors": ["Teak","Maple","Oak"], "unit_price_per_m": 240, "unit_price_per_sqm": 1714, "currency": "THB"},
+            {"product_name": "Indoor Panel 16x149mm Texture", "item_code": "iC7-LM6 T", "specifications": "16x149mm, L=2.8m", "colors": ["Teak","Maple","Oak"], "unit_price_per_m": 300, "unit_price_per_sqm": 2142, "currency": "THB"},
+            {"product_name": "Indoor Panel 8x122mm", "item_code": "iC3-LM4 M", "specifications": "8x122mm, L=2.8m", "colors": ["Teak"], "unit_price_per_m": 180, "unit_price_per_sqm": 1608, "currency": "THB"},
+            {"product_name": "Indoor Wall Panel T1 95mm", "item_code": "IW1-95 T", "specifications": "15x95mm, L=3m", "colors": ["Red Oak","Teak","Maple"], "unit_price_per_m": 166, "unit_price_per_sqm": 1743, "currency": "THB"},
+            {"product_name": "Indoor Wall Panel T2 137mm", "item_code": "IW2-137 T", "specifications": "20x137mm, L=3m", "colors": ["Red Oak","Teak","Maple"], "unit_price_per_m": 235, "unit_price_per_sqm": 1714, "currency": "THB"},
+            {"product_name": "Indoor Wall Panel T4 150mm", "item_code": "IW4-150 T", "specifications": "10x150mm, L=3m", "colors": ["Red Oak","Teak","Maple"], "unit_price_per_m": 257, "unit_price_per_sqm": 1712, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Ceiling Fix (Indoor, Track-Lock system)",
+          "items": [
+            {"product_name": "Ceiling Panel 1/2\"x2\"", "item_code": "CXH-02", "specifications": "1/2\"x2\" (5cm), L=3m", "colors": ["Oak","Red Oak","Ash","White"], "unit_price_per_m": 80, "unit_price_per_sqm": 1600, "currency": "THB"},
+            {"product_name": "Ceiling Sub Frame 2\"", "item_code": "CXH-S2", "specifications": "2\", Aluzinc, L=3m", "unit_price_per_m": 55, "currency": "THB"},
+            {"product_name": "Ceiling Panel 1/2\"x3\"", "item_code": "CXH-03", "specifications": "1/2\"x3\" (7.5cm), L=3m", "colors": ["Oak","Red Oak","Ash","White"], "unit_price_per_m": 90, "unit_price_per_sqm": 1202, "currency": "THB"},
+            {"product_name": "Ceiling Sub Frame 3\"", "item_code": "CXH-S3", "specifications": "3\", Aluzinc, L=3m", "unit_price_per_m": 55, "currency": "THB"},
+            {"product_name": "Ceiling Panel 1/2\"x3\" Mixed", "item_code": "CXH-A3", "specifications": "1/2\"x3\" (8cm), L=3m", "colors": ["Oak","Red Oak","Teak"], "unit_price_per_m": 90, "unit_price_per_sqm": 1126, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Indoor Decorative Louver (Track-Lock system)",
+          "items": [
+            {"product_name": "Louver Set DC25 (40+100mm)", "item_code": "DC25-40+DC25-100", "specifications": "100x100cm set", "colors": ["Maple","Teak","Oak","Red Oak"], "unit_price_per_sqm": 1967, "currency": "THB", "notes": "Set with sub-frame"},
+            {"product_name": "Louver Set DC55 (55x40mm)", "item_code": "DC55-40", "specifications": "55x40mm set", "colors": ["Maple","Teak","Oak","Red Oak"], "unit_price_per_sqm": 2239, "currency": "THB", "notes": "Set with sub-frame"}
+          ]
+        },
+        {
+          "category": "Railing System",
+          "items": [
+            {"product_name": "Railing Set 1.5m (complete with 1 post)", "item_code": "RI-150D", "unit_price": 4200, "currency": "THB", "unit": "set"},
+            {"product_name": "Post Set 1.08m", "item_code": "P-RI-108", "unit_price": 2160, "currency": "THB", "unit": "set"},
+            {"product_name": "Handrail 45x90mm", "item_code": "RLD2-04", "specifications": "45x90mm, L=2.8m", "unit_price_per_m": 270, "currency": "THB"},
+            {"product_name": "Handrail Maldives 45x95mm", "item_code": "LF45-95", "specifications": "45x95mm, L=2.8m", "unit_price_per_m": 390, "currency": "THB"},
+            {"product_name": "Baluster Vertical 50x50mm", "item_code": "LF50-50", "specifications": "50x50mm", "unit_price_per_m": 180, "currency": "THB"},
+            {"product_name": "Post 120x120mm", "item_code": "LFD5-S5", "specifications": "120x120mm", "unit_price_per_m": 828, "currency": "THB"},
+            {"product_name": "Post Cap Top 138mm", "item_code": "RL-Cap1", "specifications": "138x138mm", "unit_price": 336, "currency": "THB", "unit": "piece"},
+            {"product_name": "Post Cap Bottom 205mm", "item_code": "RL-Cap2", "specifications": "205x205mm", "unit_price": 468, "currency": "THB", "unit": "piece"},
+            {"product_name": "Post Foot (steel)", "item_code": "A-RL-Foot", "unit_price": 660, "currency": "THB", "unit": "piece"}
+          ]
+        },
+        {
+          "category": "Door Frame Kit (complete with hardware)",
+          "items": [
+            {"product_name": "Door Frame 2x4\" 70cm", "item_code": "FAD2-04/70", "specifications": "70x205cm", "unit_price": 1308, "currency": "THB", "unit": "set", "colors": ["Oak"]},
+            {"product_name": "Door Frame 2x4\" 80cm", "item_code": "FAD2-04/80", "specifications": "80x205cm", "unit_price": 1308, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x4\" 90cm", "item_code": "FAD2-04/90", "specifications": "90x205cm", "unit_price": 1428, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x5\" 70cm", "item_code": "FAD2-05/70", "specifications": "70x205cm", "unit_price": 1788, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x5\" 80cm", "item_code": "FAD2-05/80", "specifications": "80x205cm", "unit_price": 1788, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x5\" 90cm", "item_code": "FAD2-05/90", "specifications": "90x205cm", "unit_price": 1908, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 3x5\" 70cm", "item_code": "FAD3-05/70", "specifications": "70x205cm", "unit_price": 1980, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 3x5\" 80cm", "item_code": "FAD3-05/80", "specifications": "80x205cm", "unit_price": 1980, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 3x5\" 90cm", "item_code": "FAD3-05/90", "specifications": "90x205cm", "unit_price": 2100, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x6\" 70cm", "item_code": "FAD2-06/70", "specifications": "70x205cm", "unit_price": 2388, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x6\" 80cm", "item_code": "FAD2-06/80", "specifications": "80x205cm", "unit_price": 2508, "currency": "THB", "unit": "set"},
+            {"product_name": "Door Frame 2x6\" 90cm", "item_code": "FAD2-06/90", "specifications": "90x205cm", "unit_price": 2628, "currency": "THB", "unit": "set"}
+          ]
+        },
+        {
+          "category": "Edge Trim / Corner Pieces",
+          "items": [
+            {"product_name": "Outdoor Corner 40x40mm", "item_code": "A-OWL-40", "specifications": "40x40mm, L=2.2m", "unit_price_per_m": 110, "unit_price_per_pc": 242, "currency": "THB"},
+            {"product_name": "Outdoor Corner 45x65mm", "item_code": "A-OWL-65", "specifications": "45x65mm, L=3m", "unit_price_per_m": 140, "unit_price_per_pc": 420, "currency": "THB"},
+            {"product_name": "Outdoor Corner 50x50mm", "item_code": "A-OWL-50", "specifications": "45x65mm, L=2.8m", "unit_price_per_m": 180, "unit_price_per_pc": 504, "currency": "THB"},
+            {"product_name": "Indoor Corner 35x45mm", "item_code": "DX-F45", "specifications": "35x45mm, L=3m", "unit_price_per_pc": 204, "currency": "THB"},
+            {"product_name": "Indoor Corner 25x25mm", "item_code": "DX-F25", "specifications": "25x25mm, L=3m", "unit_price_per_pc": 150, "currency": "THB"},
+            {"product_name": "iC Outside Corner", "item_code": "ICO-F25", "specifications": "25x25cm, L=2.8m", "unit_price_per_pc": 196, "currency": "THB"},
+            {"product_name": "iC Inside Corner", "item_code": "ICI-F32", "specifications": "28x32cm, L=2.8m", "unit_price_per_pc": 196, "currency": "THB"},
+            {"product_name": "LW3-S1 EU Corner", "item_code": "A-LW3-S1 EU", "specifications": "45x65mm, L=2.8m", "unit_price_per_m": 260, "unit_price_per_pc": 728, "currency": "THB"}
+          ]
+        },
+        {
+          "category": "Installation Accessories",
+          "items": [
+            {"product_name": "Stainless Clip A-CS-25", "item_code": "A-CS-25", "unit_price": 10, "currency": "THB", "unit": "piece", "notes": "4\" uses 40pcs, 6\" uses 29pcs"},
+            {"product_name": "Stainless Clip A-CS-22", "item_code": "A-CS-22", "unit_price": 10, "currency": "THB", "unit": "piece"},
+            {"product_name": "Plastic Clip 19mm", "item_code": "A-CP-19", "unit_price": 4, "currency": "THB", "unit": "piece"},
+            {"product_name": "Plastic Clip 20mm", "item_code": "A-CP-20", "unit_price": 4, "currency": "THB", "unit": "piece"},
+            {"product_name": "T-Clip Plastic 25mm", "item_code": "A-CP-25", "unit_price": 4, "currency": "THB", "unit": "piece"},
+            {"product_name": "Pin 11mm", "item_code": "A-PB", "unit_price": 1, "currency": "THB", "unit": "piece"},
+            {"product_name": "Pin Rod 11mm", "item_code": "A-PA", "unit_price": 55, "currency": "THB", "unit": "piece"}
+          ]
+        }
+      ]
+    }
+  ]
+}
