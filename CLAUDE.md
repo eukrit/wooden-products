@@ -1,13 +1,14 @@
-# [PROJECT_NAME]
+# wooden-products
 
 ## Project Identity
-- Project: [PROJECT_NAME]
+- Project: wooden-products
 - Owner: Eukrit / GO Corporation Co., Ltd.
 - Notion Dashboard: https://www.notion.so/gocorp/Coding-Project-Dashboard-Claude-32c82cea8bb080f1bbd7f26770ae9e80
-- GitHub Repo: https://github.com/eukrit/[PROJECT_NAME]
+- GitHub Repo: https://github.com/eukrit/wooden-products
 - GCP Project ID: ai-agents-go
 - GCP Project Number: 538978391890
-- Cloud Run Service: [PROJECT_NAME]
+- Firestore Database: products-wood (asia-southeast1)
+- Cloud Storage Bucket: gs://products-wood-assets
 - Region: asia-southeast1
 - Service Account: claude@ai-agents-go.iam.gserviceaccount.com
 - Artifact Registry: asia-southeast1-docker.pkg.dev/ai-agents-go/[PROJECT_NAME]
@@ -89,4 +90,25 @@ Minimum pass rate: 100% on critical path, 80% overall.
 - Docs: Notion
 
 ## Project-Specific Notes
-[Add any project-specific instructions here]
+
+### Firestore Database: products-wood
+Collections:
+- `vendors` — 45 supplier/manufacturer profiles
+- `products` — 38 wood product records with specs
+- `quotations` — 13 price quotations linked to vendors
+- `product_images` — 26 document/image metadata records (files in Cloud Storage)
+- `categories` — 11 product category taxonomy entries
+
+### Cloud Storage: gs://products-wood-assets
+Organized by vendor folder: ks-wood/, pinecross/, sci-wood/, feiyou/, china-flooring/
+
+### Data Sources
+- Slack: #supplier-artificial-wood, #supplier-ks-wood, #vendor-wood-flooring
+- Gmail: KS Wood, Pinecross, MOSO, Mapei, TopFlor, Perflex correspondence
+- OneDrive: Documents GO, Suppliers GO (KS Wood, Pinecross, Feiyou, etc.)
+
+### Key Scripts
+- `scripts/firestore/schema.py` — Data architecture definition
+- `scripts/firestore/setup_db.py` — Database setup and category seeding
+- `scripts/firestore/upload_data.py` — Bulk JSON data upload
+- `scripts/firestore/upload_images.py` — Cloud Storage file upload with Firestore metadata

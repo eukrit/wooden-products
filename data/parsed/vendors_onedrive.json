@@ -1,0 +1,182 @@
+[
+  {
+    "vendor_id": "sci-wood",
+    "name": "SCI Wood",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring", "engineered_flooring", "plywood"],
+    "notes": "Full pricelist 2022Q1 available (21.9 MB PDF). Broad product range.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "feiyou",
+    "name": "Zhejiang Feiyou (Kids Wooden Furniture)",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["structural_timber"],
+    "notes": "Kids wooden furniture manufacturer. EXW Wenzhou, RMB pricing. 621 products in catalog. Daycare furniture catalog available.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "ciaoweather",
+    "name": "Ciaoweather",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["structural_timber"],
+    "notes": "Teakwood outdoor furniture (tables, chairs, loungers). Stock list with 212+ items.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "xingda",
+    "name": "Xingda (Robert)",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["plywood"],
+    "notes": "Wooden cabinet manufacturer. Bare case cabinets, particle board core with PVC edge. USD $35-$71 range. 128 products.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "duraflor",
+    "name": "Duraflor P Floortile",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Flooring supplier with ~70 files including Holiday Inn Pattaya flooring project.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "woodden",
+    "name": "Woodden",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Invoice J2312179, quotation SPR2403037.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "arto-wood",
+    "name": "Arto Wood",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Single product image on file.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "design-teak",
+    "name": "Design Teak",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Single product image on file.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "sw-woods",
+    "name": "SW Woods",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Quotation J0243-1 for Laya 1 project (2022).",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "siam-woodland",
+    "name": "Siam Woodland",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Quotation from 2021-12-16.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "do-by-head",
+    "name": "Do by Head (DBH)",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring", "decking"],
+    "notes": "Anti-slip wood flooring and decorative wood quotations.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "hogwood",
+    "name": "Hogwood",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["structural_timber"],
+    "notes": "Indoor and outdoor wood catalogs 2025 (140 MB + 128 MB). Outdoor rope courses / adventure structures.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "pebl",
+    "name": "PEBL",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["structural_timber", "decking"],
+    "notes": "Teak outdoor furniture: DECK SLIM TEAK and HAVEN TEAK product lines.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "lappset",
+    "name": "Lappset",
+    "type": "manufacturer",
+    "country": "FI",
+    "contact": {},
+    "products_supplied": ["structural_timber"],
+    "notes": "Uses Robinia wood for playground equipment. Warranty terms 2026 document available.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "kihome",
+    "name": "Kihome Floors",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Catalog PDF (11.3 MB) from WeChat.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "royal-intertrade",
+    "name": "Royal Intertrade",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["plywood", "cladding"],
+    "notes": "HPL/laminate/HMR panel supplier. Wood-related subset: timber boards, engineered/composite wood quotations.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "skyline",
+    "name": "Skyline",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["timber_flooring"],
+    "notes": "Resells Pinecross products. Quotation from 2024-03-28.",
+    "source": "onedrive"
+  },
+  {
+    "vendor_id": "carpet-master",
+    "name": "Carpet Master",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Flooring proposals and quotations for GO Corporation.",
+    "source": "onedrive"
+  }
+]

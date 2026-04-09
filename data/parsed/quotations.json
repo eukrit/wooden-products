@@ -1,0 +1,237 @@
+[
+  {
+    "quotation_id": "QC6800211",
+    "vendor_id": "sksdecor",
+    "quote_number": "QC6800211",
+    "quote_date": "2025-03-15",
+    "currency": "THB",
+    "items": [],
+    "delivery_terms": "installed",
+    "status": "received",
+    "source_document": "QC6800211 GO Corporation.pdf",
+    "notes": "Revised version also exists: QC6800211_GO Corporation.pdf (2025-04-17).",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "quotation_id": "QC6800560",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800560",
+    "quote_date": "2025-07-10",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6800560_GO Corporation.pdf",
+    "notes": "Product costs quotation. Revised version: QC6800560 Rev1.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6800561",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800561",
+    "quote_date": "2025-07-10",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6800561_GO Corporation.pdf",
+    "notes": "Installation costs quotation. Revised version: QC6800561 Rev1.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6800786",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800786",
+    "quote_date": "2025-09-29",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6800786_GO Corporation.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6800814",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800814",
+    "quote_date": "2025-10-10",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6800814_GO Corporation.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6800869",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800869",
+    "quote_date": "2025-11-07",
+    "currency": "THB",
+    "items": [
+      {
+        "product_name": "Red Cedar Cladding",
+        "product_id": "ntw-red-cedar-cladding",
+        "description": "Red Cedar 138x22.5x2200mm",
+        "unit": "piece",
+        "quantity": 27,
+        "notes": "Locking clip=20 PCS, T-Clip=60"
+      }
+    ],
+    "status": "received",
+    "source_document": "QC6800869_GO Corporation.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6800936",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6800936",
+    "quote_date": "2025-11-24",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6800936_GO Corporation.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6900267",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6900267",
+    "quote_date": "2026-04-01",
+    "currency": "THB",
+    "items": [],
+    "status": "received",
+    "source_document": "QC6900267_GO Corporation.pdf",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "QC6900296",
+    "vendor_id": "ks-wood",
+    "quote_number": "QC6900296",
+    "quote_date": "2026-04-09",
+    "currency": "THB",
+    "items": [
+      {
+        "product_name": "WSB81",
+        "product_id": "wsb81",
+        "unit": "piece"
+      }
+    ],
+    "status": "received",
+    "source_document": "QC6900296 WSB81.pdf",
+    "notes": "Most recent quotation.",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "quotation_id": "leo-nature-proposal-202601",
+    "vendor_id": "leo-nature",
+    "quote_date": "2026-01-08",
+    "currency": "USD",
+    "items": [
+      {
+        "product_name": "South America Teak Engineered Flooring",
+        "product_id": "leo-nature-teak",
+        "unit": "sqm",
+        "unit_price": 27.00,
+        "notes": "FOB. Landed: $30.52/sqm incl. freight+7% VAT"
+      },
+      {
+        "product_name": "Oak Natural Engineered Flooring",
+        "product_id": "leo-nature-oak-natural",
+        "unit": "sqm",
+        "unit_price": 33.00,
+        "notes": "FOB. Landed: $36.94/sqm"
+      },
+      {
+        "product_name": "Oak Glacial Engineered Flooring",
+        "product_id": "leo-nature-oak-glacial",
+        "unit": "sqm",
+        "unit_price": 36.00,
+        "notes": "FOB. Landed: $40.15/sqm"
+      }
+    ],
+    "delivery_terms": "FOB",
+    "status": "under_review",
+    "source_document": "Engineered flooring proposals 20260108.pdf",
+    "notes": "FTA tariff 0%, VAT 7%, logistics $2,000/20ft container, container covers 1,310.4 sqm.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "quotation_id": "qihome-cherry-202602",
+    "vendor_id": "qihome",
+    "quote_date": "2026-02-28",
+    "currency": "CNY",
+    "items": [
+      {
+        "product_name": "Cherry Engineered Wood Flooring",
+        "product_id": "qihome-cherry",
+        "unit": "sqm",
+        "unit_price": 295.00,
+        "notes": "EXW price"
+      }
+    ],
+    "delivery_terms": "EXW",
+    "status": "received",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "quotation_id": "cn-teak-pricing-202603",
+    "vendor_id": "chinese-teak-vendor",
+    "quote_date": "2026-03-29",
+    "currency": "CNY",
+    "items": [
+      {
+        "product_name": "Burmese Teak A-grade flat-hinged",
+        "product_id": "cn-burmese-teak-a",
+        "description": "740x110x16mm, wood wax oil, light color",
+        "unit": "sqm",
+        "unit_price": 328.00
+      },
+      {
+        "product_name": "Pure 3-layer teak locking A board",
+        "product_id": "cn-3layer-teak-locking",
+        "description": "1200x150x15mm, 3.0mm veneer",
+        "unit": "sqm",
+        "unit_price": 328.00
+      },
+      {
+        "product_name": "Multi-layer teak (birch core) flat clasp",
+        "product_id": "cn-multilayer-teak-birch",
+        "description": "1200x165x14mm, 1.2mm veneer",
+        "unit": "sqm",
+        "unit_price": 268.00
+      },
+      {
+        "product_name": "Multi-layer teak snap-lock A board",
+        "product_id": "cn-multilayer-teak-snaplock",
+        "description": "1210x150x15mm, 2.0mm veneer",
+        "unit": "sqm",
+        "unit_price": 280.00
+      },
+      {
+        "product_name": "New 3-layer teak 5-layer construction",
+        "product_id": "cn-new-3layer-teak",
+        "description": "1210x150x15mm, 2.0mm veneer, locking clasp",
+        "unit": "sqm",
+        "unit_price": 272.00
+      }
+    ],
+    "status": "under_review",
+    "source_document": "2026 Main product price list 2026.3.15.pdf",
+    "notes": "2.0mm veneer flagged as too thin. Volume estimate: 250 sqm = ~4.2 m3 = ~2.76 tons.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "quotation_id": "sentai-wpc-2025",
+    "vendor_id": "sentai",
+    "quote_date": "2025-10-23",
+    "currency": "USD",
+    "items": [
+      {
+        "product_name": "Sentai WPC STGJ68",
+        "product_id": "sentai-stgj68",
+        "unit": "lineal_meter",
+        "unit_price": 1.74
+      }
+    ],
+    "status": "received",
+    "source_document": "SENTAI WPC PRICE 2025.pdf",
+    "source": "slack:#supplier-artificial-wood"
+  }
+]

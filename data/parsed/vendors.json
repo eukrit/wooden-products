@@ -1,0 +1,326 @@
+[
+  {
+    "vendor_id": "sksdecor",
+    "name": "SKSDECOR / Sakrasethiyan Wood and Decor",
+    "name_th": "สกรเศรษฐิยันวูดแอนด์เดคอร์",
+    "brand": "SKSDECOR",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {
+      "phone": "09-2224-6659",
+      "line_id": "@sksdecor",
+      "website": "www.sksdecor.com",
+      "email": "sksdecor@gmail.com",
+      "address": "115 Jetsadawithi Rd., Mahachai, Samut Sakhon 74000"
+    },
+    "brands_distributed": ["DecorPlus", "Wood Legacy 1973", "Rainbodeck Thailand"],
+    "products_supplied": ["artificial_wood", "decking", "cladding", "engineered_flooring"],
+    "notes": "Full installation service (7S by SKSDECOR). E-Catalogues available.",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "vendor_id": "sentai",
+    "name": "Sentai",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["artificial_wood", "decking"],
+    "notes": "WPC manufacturer. Contact via Sarah.",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "vendor_id": "anhui-aolo",
+    "name": "Anhui Aolo New Materials Technology Co., Ltd",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {
+      "email": "",
+      "phone": ""
+    },
+    "products_supplied": ["artificial_wood"],
+    "notes": "Contact: Mr. Jackson Liu. Chinese WPC/composite manufacturer.",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "vendor_id": "sono",
+    "name": "Sono",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["artificial_wood", "cladding"],
+    "notes": "Large catalogues shared (18-59MB).",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "vendor_id": "virobuild",
+    "name": "VIRO Build",
+    "type": "manufacturer",
+    "country": "VN",
+    "contact": {
+      "email": "",
+      "phone": ""
+    },
+    "products_supplied": ["artificial_wood", "decking", "cladding"],
+    "notes": "Contact: Randy. WPC/composite building materials.",
+    "source": "slack:#supplier-artificial-wood"
+  },
+  {
+    "vendor_id": "ks-wood",
+    "name": "KS Wood / NTW",
+    "name_th": "เคเอส วูด",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "brands_distributed": ["NTW", "ALusions"],
+    "products_supplied": ["artificial_wood", "decking", "cladding"],
+    "notes": "Primary local distributor. Multiple quotations for GO Corporation. Contact: Tak (price lists).",
+    "source": "slack:#supplier-ks-wood"
+  },
+  {
+    "vendor_id": "ks-groups",
+    "name": "KS Groups / Legacy Ventures Co., Ltd.",
+    "name_th": "เลกาซี เวนเจอร์ส",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {
+      "email": "napaphat@ks-groups.com",
+      "website": "ks-groups.com",
+      "address": "329 Sukhumvit 63 (Ekamai 19)"
+    },
+    "products_supplied": ["engineered_flooring", "timber_flooring"],
+    "notes": "Client/partner for JW Marriott and hotel projects. Contacts: Napaphat (Pond), Kanokwan (Oui), Pitchaporn.",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "leo-nature",
+    "name": "Leo Nature",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Chinese engineered wood flooring manufacturer. Teak and Oak products. FOB pricing available.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "qihome",
+    "name": "Qihome",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Cherry engineered wood flooring. EXW pricing.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "chinese-teak-vendor",
+    "name": "Chinese Teak Flooring Vendor",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {},
+    "products_supplied": ["engineered_flooring", "timber_flooring"],
+    "notes": "Via WeChat. Burmese teak, multi-layer products. Detailed pricing in CNY.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "kejie-lidu",
+    "name": "Zhejiang Kejie / Zhejiang Lidu New Materials",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {
+      "phone": "86-13511369806",
+      "email": "",
+      "address": "No. 117 Xianxia Road, Jianshan New District, Haining, Zhejiang, China"
+    },
+    "products_supplied": ["artificial_wood", "decking", "cladding"],
+    "notes": "Contact: Jimmy Sun. WhatsApp/WeChat: +8613511369806. Products: PVC foam board, grille wall panel, SPC floor/wall panel, UV wall panel, outdoor WPC decking.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "holmes",
+    "name": "Holmes",
+    "type": "distributor",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["engineered_flooring", "timber_flooring"],
+    "notes": "Laminate, engineered, and vinyl flooring catalogues shared.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "pinecross",
+    "name": "Pinecross",
+    "name_th": "ไพน์ครอส",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "email": "wt.pinecross@gmail.com",
+      "address": "Navamin 139"
+    },
+    "products_supplied": ["timber_flooring", "structural_timber"],
+    "notes": "Historical supplier (2021-2023). Spreadsheet 'Pinecross 2021' in Google Drive. Contact: Khun On (recipient). Wansit Chuenpirom.",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "moso-bamboo",
+    "name": "MOSO Bamboo",
+    "type": "manufacturer",
+    "country": "NL",
+    "contact": {
+      "email": "mpirotta@moso.eu"
+    },
+    "products_supplied": ["engineered_flooring", "timber_flooring"],
+    "notes": "TopBamboo, BambooSupreme, Elite product lines. Contact: Marco Pirotta. Historical supplier (2021). Required phytosanitary certificates for Thai import.",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "mapei",
+    "name": "Mapei",
+    "type": "distributor",
+    "country": "SG",
+    "contact": {
+      "email": "s.jingjid@mapei.com.sg"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Wood flooring installation products: adhesives (Ultrabond P990), primers (Primer G), self-levelling (Novoplan 21), lacquers (Ultracoat).",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "topflor",
+    "name": "TopFlor",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {
+      "email": "sales13@topflor.cn"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Safety vinyl flooring, acoustic gym flooring, modular safety flooring. Contact: Sophia. Prospecting stage (2026).",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "perflex",
+    "name": "Perflex",
+    "type": "manufacturer",
+    "country": "CN",
+    "contact": {
+      "email": "chloe@perflex.com.cn"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Epoxy/polyaspartic flooring, waterproof coating, tile grout. Contact: Chloe. Inquiry stage (2025).",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "alusions",
+    "name": "ALusions",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["cladding"],
+    "notes": "Aluminium profiles with wood finish. Distributed via KS Wood. Catalog: ALusions_Catalog_v20240106.pdf",
+    "source": "gmail"
+  },
+  {
+    "vendor_id": "parqwood",
+    "name": "Parqwood",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "parqwood.com"
+    },
+    "products_supplied": ["timber_flooring"],
+    "notes": "Champaca wood flooring.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "greentouch",
+    "name": "GREENTOUCH Innovation (Thailand)",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "greentouchinnovation.com"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Hybrid engineered floor.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "ts-teak",
+    "name": "TS-TEAK",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "ts-teak.com"
+    },
+    "products_supplied": ["timber_flooring"],
+    "notes": "Real teak flooring, stairs, walls.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "areechai",
+    "name": "Areechai Woodtech",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "areechaiwoodtech.com"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Engineered wood flooring.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "arrow-wood",
+    "name": "Arrow Wood",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "arrow-wood.com"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Engineered wood floor factory.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "double-floor",
+    "name": "Double Floor",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "doublefloor.co.th"
+    },
+    "products_supplied": ["engineered_flooring"],
+    "notes": "Engineered wood + SPC floors.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "panake",
+    "name": "Panake (S.H.L. Prawood)",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "panake.com"
+    },
+    "products_supplied": ["timber_flooring"],
+    "notes": "Real wood flooring, 60+ years experience.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "amber-wood",
+    "name": "Amber Wood Innovation",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {
+      "website": "amberwood-innovation.com"
+    },
+    "products_supplied": [],
+    "notes": "Wood products.",
+    "source": "slack:#vendor-wood-flooring"
+  },
+  {
+    "vendor_id": "rainbodeck",
+    "name": "Rainbodeck Thailand",
+    "type": "manufacturer",
+    "country": "TH",
+    "contact": {},
+    "products_supplied": ["artificial_wood", "decking", "cladding"],
+    "notes": "WPC products: decking, fencing, louvers, wall panels. Distributed by SKSDECOR. E-Catalogue: fliphtml5.com",
+    "source": "slack:#supplier-artificial-wood"
+  }
+]
