@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Design your perfect WPC fence system with our configurator. Choose height, length, color and get an instant price estimate from GO Corporation.">
+  <meta name="keywords" content="WPC fence configurator, fence calculator, fence estimate, wood plastic composite fence, Thailand fence">
+  <meta name="author" content="GO Corporation Co., Ltd.">
+  <title>Fence Configurator | GO Corporation WPC Fence Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">GO <span>Fence</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="configurations.html" class="active">Configurator</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="comparison.html">Why WPC?</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Get a Quote</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Fence Configurator</h1>
+      <p>Design your perfect fence system and get an instant estimate</p>
+    </div>
+  </section>
+
+  <!-- Configurator Section -->
+  <section class="section">
+    <div class="container">
+      <div class="config-panel">
+
+        <!-- Row 1 -->
+        <div class="config-row">
+          <div class="config-group">
+            <label for="fence-series">Product Series</label>
+            <select id="fence-series">
+              <option value="coex">Co-Extrusion (Premium)</option>
+              <option value="standard">Standard WPC (Value)</option>
+            </select>
+          </div>
+          <div class="config-group">
+            <label for="fence-height">Fence Height</label>
+            <select id="fence-height">
+              <option value="2.0">2.0m &mdash; Standard Privacy</option>
+              <option value="3.0">3.0m &mdash; Tall Privacy</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="config-row">
+          <div class="config-group">
+            <label for="fence-length">Total Fence Length (meters)</label>
+            <input type="number" id="fence-length" placeholder="e.g. 20" min="1">
+          </div>
+          <div class="config-group">
+            <label for="bay-width">Bay Width</label>
+            <select id="bay-width">
+              <option value="1.5">1.5m</option>
+              <option value="1.8">1.8m</option>
+              <option value="2.0" selected>2.0m (Recommended)</option>
+              <option value="2.9">2.9m</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="config-row">
+          <div class="config-group">
+            <label for="gate-count">Number of Gates</label>
+            <select id="gate-count">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="config-group">
+            <label>Color</label>
+            <div class="color-options">
+              <div class="color-option selected" style="background:#3a3a3a;" title="Charcoal" data-color="charcoal"></div>
+              <div class="color-option" style="background:#b8860b;" title="Teak" data-color="teak"></div>
+              <div class="color-option" style="background:#5c4033;" title="Walnut" data-color="walnut"></div>
+              <div class="color-option" style="background:#6b3a3a;" title="Rosewood" data-color="rosewood"></div>
+              <div class="color-option" style="background:#f5e6c8;" title="Sand White" data-color="sand-white"></div>
+              <div class="color-option" style="background:#9e9e9e;" title="Grey" data-color="grey"></div>
+              <div class="color-option" style="background:#1a1a1a;" title="Black" data-color="black"></div>
+              <div class="color-option" style="background:#8b7d6b;" title="Antique" data-color="antique"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <div style="text-align:center; margin-top:8px;">
+          <button class="btn btn-primary btn-lg" onclick="calculateFence()">Calculate Estimate</button>
+        </div>
+
+        <!-- Results (hidden initially) -->
+        <div class="config-result" style="display:none;">
+          <h3>Your Fence Estimate</h3>
+
+          <div class="config-result-row">
+            <span class="label">Total Length</span>
+            <span class="value" id="result-length"></span>
+          </div>
+          <div class="config-result-row">
+            <span class="label">Fence Height</span>
+            <span class="value" id="result-height"></span>
+          </div>
+          <div class="config-result-row">
+            <span class="label">Number of Bays</span>
+            <span class="value" id="result-bays"></span>
+          </div>
+          <div class="config-result-row">
+            <span class="label">Aluminium Posts</span>
+            <span class="value" id="result-posts"></span>
+          </div>
+          <div class="config-result-row">
+            <span class="label">Total Boards</span>
+            <span class="value" id="result-boards"></span>
+          </div>
+          <div class="config-result-row">
+            <span class="label">Gates</span>
+            <span class="value" id="result-gates"></span>
+          </div>
+
+          <div style="margin-top:24px; text-align:center;">
+            <div class="config-price" id="result-total"></div>
+            <p style="color:#888; font-size:.95rem; margin-top:4px;">Estimated Total</p>
+            <p style="font-weight:600; font-size:1.1rem; margin-top:8px;">Price per Meter: <span id="result-per-meter"></span></p>
+          </div>
+
+          <p style="color:#888; font-size:.85rem; margin-top:20px; text-align:center;">
+            Prices are estimates. Final quotation may vary based on site conditions and customization.
+          </p>
+
+          <div style="text-align:center; margin-top:24px;">
+            <a href="contact.html" class="btn btn-green btn-lg">Request Detailed Quotation</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Standard Configurations -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Standard Configurations</h2>
+      </div>
+      <div class="grid grid-3">
+
+        <!-- Card 1 -->
+        <div class="card fade-in">
+          <img src="images/140.jpg" alt="Standard Privacy Fence — 2.0m height" class="card-img" loading="lazy">
+          <div class="card-body">
+            <h3>Type 1: Standard Privacy Fence</h3>
+            <p style="font-weight:600; color:#8B6914; margin-bottom:8px;">2.0m height &middot; 13 boards per bay</p>
+            <p>Ideal for residential gardens, pool surrounds, and backyard privacy screens. The most popular configuration for homeowners.</p>
+            <p style="font-weight:700; margin-top:12px; font-size:1.05rem;">&#3647;5,500 &ndash; &#3647;6,500 per set</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card fade-in">
+          <img src="images/145.jpg" alt="Tall Privacy Fence — 3.0m height" class="card-img" loading="lazy">
+          <div class="card-body">
+            <h3>Type 2: Tall Privacy Fence</h3>
+            <p style="font-weight:600; color:#8B6914; margin-bottom:8px;">3.0m height &middot; 20 boards per bay</p>
+            <p>Ideal for commercial perimeters, resort boundaries, and security fencing. Maximum privacy and wind protection.</p>
+            <p style="font-weight:700; margin-top:12px; font-size:1.05rem;">&#3647;11,000 &ndash; &#3647;13,000 per set</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card fade-in">
+          <img src="images/146.jpg" alt="Custom Panel Fence" class="card-img" loading="lazy">
+          <div class="card-body">
+            <h3>Type 3: Custom Panels</h3>
+            <p style="font-weight:600; color:#8B6914; margin-bottom:8px;">Any width 1.2m &ndash; 2.9m</p>
+            <p>Ideal for unique site requirements, irregular layouts, and bespoke architectural designs. Fully tailored to your project.</p>
+            <p style="font-weight:700; margin-top:12px; font-size:1.05rem;">Custom quotation</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Diagram -->
+  <section class="section">
+    <div class="container" style="text-align:center;">
+      <div class="fade-in">
+        <img src="images/380.png" alt="WPC fence installation diagram showing clip system and post assembly" style="max-width:800px; margin:0 auto 32px; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);" loading="lazy">
+        <h2>Professional Installation Available</h2>
+        <p style="max-width:640px; margin:12px auto 0; color:#888; font-size:1.05rem;">
+          Our patented clip system allows fast, tool-friendly installation with hidden fixings. Each board slots securely into aluminium posts, creating a clean finish with no visible screws. Professional installation teams are available nationwide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>GO Corporation Co., Ltd.</h4>
+          <p>Premium WPC fence and decking solutions for residential, commercial, and hospitality projects across Thailand. Engineered for beauty, built to last.</p>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html">Co-Extrusion Fencing</a></li>
+            <li><a href="products.html">Standard WPC Fencing</a></li>
+            <li><a href="configurations.html">Fence Configurator</a></li>
+            <li><a href="gallery.html">Project Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="comparison.html">Why WPC?</a></li>
+            <li><a href="configurations.html">Get an Estimate</a></li>
+            <li><a href="contact.html">Request a Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@goco.bz">info@goco.bz</a></li>
+            <li><a href="tel:+6621234567">+66 2 123 4567</a></li>
+            <li><a href="contact.html">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 GO Corporation Co., Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Contact -->
+  <div class="quick-contact">
+    <a href="https://wa.me/" class="quick-btn whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="https://line.me/" class="quick-btn line" aria-label="LINE" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386a.63.63 0 01-.63-.629V8.108a.63.63 0 01.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 01-.63.629.626.626 0 01-.51-.262l-2.443-3.317v2.95a.63.63 0 01-1.26 0V8.108a.63.63 0 01.63-.63c.2 0 .385.095.505.257l2.449 3.32V8.108a.63.63 0 011.26 0v4.771zm-5.741 0a.63.63 0 01-1.26 0V8.108a.63.63 0 011.26 0v4.771zm-2.466.629H4.917a.63.63 0 01-.63-.629V8.108a.63.63 0 011.26 0v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    </a>
+  </div>
+
+  <!-- Color option click handler -->
+  <script>
+    document.querySelectorAll('.color-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
