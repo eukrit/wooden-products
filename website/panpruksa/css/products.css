@@ -1,0 +1,316 @@
+/* ============================================
+   PANPRUKSA — Products Page Styles
+   ============================================ */
+
+/* --- Product Category Cards --- */
+.product-category-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 2px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.product-category-card:nth-child(even) {
+  direction: rtl;
+}
+
+.product-category-card:nth-child(even) > * {
+  direction: ltr;
+}
+
+.product-category-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.product-category-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.product-category-card:hover .product-category-img img {
+  transform: scale(1.03);
+}
+
+.product-category-info {
+  padding: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-gray);
+}
+
+.product-category-card:nth-child(odd) .product-category-info {
+  background: var(--white);
+}
+
+.product-category-info h3 {
+  margin: 0.5rem 0 1rem;
+}
+
+.product-category-info p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.product-category-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-category-specs span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--warm-gray);
+  color: var(--text-muted);
+}
+
+/* --- Product Detail Page --- */
+.product-hero-strip {
+  background: var(--dark-bg);
+  color: var(--white);
+  padding: 8rem 0 3rem;
+}
+
+.product-hero-strip .label {
+  color: var(--copper);
+}
+
+/* --- Tab System --- */
+.product-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--warm-gray);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-tabs button {
+  flex-shrink: 0;
+  padding: 1rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.product-tabs button.active {
+  color: var(--black);
+}
+
+.product-tabs button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.product-tabs button.active::after {
+  transform: scaleX(1);
+}
+
+.tab-panel {
+  display: none;
+  padding-top: 3rem;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* --- Product Detail Layout --- */
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.product-gallery {
+  position: sticky;
+  top: 6rem;
+}
+
+.product-gallery-main {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  background: var(--light-gray);
+}
+
+.product-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.product-gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.product-gallery-thumbs img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.product-gallery-thumbs img.active,
+.product-gallery-thumbs img:hover {
+  opacity: 1;
+  border-color: var(--copper);
+}
+
+/* --- Spec Table --- */
+.spec-table {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--light-gray);
+  font-size: 0.95rem;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.spec-value {
+  font-weight: 400;
+  text-align: right;
+}
+
+/* --- Color Swatches --- */
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.color-swatch {
+  text-align: center;
+}
+
+.color-swatch-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 auto 0.4rem;
+  border: 2px solid rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.color-swatch-circle:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* --- Kit Components --- */
+.kit-list {
+  list-style: none;
+  padding: 0;
+}
+
+.kit-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--light-gray);
+  font-size: 0.9rem;
+}
+
+.kit-list li:last-child { border-bottom: none; }
+
+.kit-label { color: var(--text-muted); }
+.kit-value { font-weight: 400; }
+
+/* --- Flooring Spec Cards --- */
+.flooring-card {
+  background: var(--white);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  transition: box-shadow 0.3s ease;
+}
+
+.flooring-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.flooring-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+.flooring-card .subtitle {
+  font-size: 0.8rem;
+  color: var(--copper);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.flooring-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .product-category-card {
+    grid-template-columns: 1fr;
+  }
+  .product-category-card:nth-child(even) {
+    direction: ltr;
+  }
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-gallery {
+    position: static;
+  }
+}

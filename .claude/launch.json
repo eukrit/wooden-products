@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "wpc-fence-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "./website", "-c-1"],
+      "port": 8080,
+      "autoPort": true
+    },
+    {
+      "name": "panpruksa",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "./website/panpruksa", "-p", "8090", "-c-1"],
+      "port": 8090
+    }
+  ]
+}

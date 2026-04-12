@@ -1,0 +1,188 @@
+{
+  "source": "listonegiordano.com",
+  "scraped_date": "2026-04-11",
+  "collections": {
+    "natural_genius": {
+      "name": "Natural Genius",
+      "tagline": "Genius and innovation",
+      "description": "Consecrates parquet to the world of contemporary design, redefining the aesthetic rules of classic wooden boards and common laying patterns. Created thanks to the flair of top international and Italian designers such as Michele De Lucchi, Patricia Urquiola, Daniele Lago, Marc Sadler and Paola Lenti.",
+      "logo_url": "https://www.listonegiordano.com/wp-content/uploads/2020/04/L1.png",
+      "icon_url": "https://www.listonegiordano.com/wp-content/uploads/2020/05/MLG-20-Icone-collezioni_NG-01.svg",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2025/09/LG-NaturalGenius-TRAFIC3-Aube-Pine-120-Unica-01.jpg",
+      "url": "/en/wood-flooring/natural-genius/",
+      "designers": ["Michele De Lucchi", "Patricia Urquiola", "Daniele Lago", "Marc Sadler", "Paola Lenti", "Piero Lissoni"],
+      "featured_products": [
+        {"name": "Trafic", "designer": "Marc Sadler"},
+        {"name": "Nui", "designer": "Piero Lissoni"},
+        {"name": "Perigal", "designer": "Paola Lenti"},
+        {"name": "Fabrique", "designer": "Marc Sadler"},
+        {"name": "Slide", "designer": "Daniele Lago"}
+      ]
+    },
+    "atelier": {
+      "name": "Atelier",
+      "tagline": "Craftsmanship and memory",
+      "description": "A collection with an eye to the future that draws from the values of Italy's craftsmanship and the culture of wood. The particular grain of Oakwood is combined with specific hand-crafted treatments that turn the surface of each wooden board into a unique piece. Tells an old and personal story made of passion, art and respect for nature through certified raw materials.",
+      "logo_url": "https://www.listonegiordano.com/wp-content/uploads/2020/04/l2.png",
+      "icon_url": "https://www.listonegiordano.com/wp-content/uploads/2020/05/MLG-20-Icone-collezioni_ATE-02-1.svg",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2025/04/DESIR.jpg",
+      "url": "/en/wood-flooring/atelier/"
+    },
+    "classica": {
+      "name": "Classica",
+      "tagline": "Elegance and modernity",
+      "description": "The signature Listone Giordano collection that keeps radiating its light on oak, the king of hardwood flooring. A modern, elegant, yet essential hardwood flooring collection that exudes proverbial quality and beauty. Stands out for its wide range of wood, sizes, selections, colours, finishes and laying patterns.",
+      "logo_url": "https://www.listonegiordano.com/wp-content/uploads/2020/04/l3.png",
+      "icon_url": "https://www.listonegiordano.com/wp-content/uploads/2020/05/MLG-20-Icone-collezioni_CLA-03.svg",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2025/09/Grisaglie_Grigio-Marino_1.jpg",
+      "url": "/en/wood-flooring/classica/"
+    },
+    "magnetico": {
+      "name": "Magnetico",
+      "tagline": "Technology and precision",
+      "description": "A cutting-edge flooring collection designed for commercial spaces such as offices, shops, showrooms, and hospitality venues. Combines the elegance and superior performance of Listone Giordano with advanced magnetic installation technology, ensuring easy assembly and impeccable aesthetic result.",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2024/11/Magnetico_Pienza_dettaglio.jpg",
+      "url": "/en/wood-flooring/magnetico/"
+    },
+    "special_edition": {
+      "name": "Special Edition",
+      "tagline": "Research and Sustainability",
+      "description": "Places knowledge and technology of wood, aesthetic research, and respect for nature at the centre of identity. Emphasises a constant search for a synthesis between Aesthetics and Ethics, External Beauty and Substance, Appearance and Essence, Surface and Pulp — harmonisation of Technology and Nature, Industry and Environment, Performance and Health.",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2023/06/parquet-graphit-G2-special-edition-circular-A.jpg",
+      "url": "/en/wood-flooring/special-edition/"
+    },
+    "outdoor": {
+      "name": "Outdoor",
+      "tagline": "Technology and design",
+      "description": "Products that stand out for innovation and excellence, fully expressed in outdoor versions. All wood species are perfectly suitable for outdoor use thanks to high resistance to mechanical stress and high content of natural extractors providing extra stability and durability.",
+      "hero_image": "https://www.listonegiordano.com/wp-content/uploads/2020/05/marine_tek_outdoor_listone_giordano_A_1920x1080.jpg",
+      "url": "/en/wood-flooring/outdoor/"
+    }
+  },
+  "colors": {
+    "classica_oak": [
+      {"name": "Oak", "slug": "white-oak-wood", "category": "bright", "wood": "Oak", "image": "https://www.listonegiordano.com/wp-content/uploads/2020/05/Michelangelo_rovere_puro_classica_1920x1200.jpg"},
+      {"name": "Cannella", "slug": "cannella", "category": "brown", "wood": "Oak", "image": "https://www.listonegiordano.com/wp-content/uploads/2021/05/Classica-Michelangelo-Rovere-Cannella-1920x1200-1.jpg"},
+      {"name": "Alpaca", "slug": "alpaca", "category": "bright", "wood": "Oak", "image": "https://www.listonegiordano.com/wp-content/uploads/2025/06/LG-MICHELANGELO-Alpaca-140-Oak-Naturplus2Matt-Elegant-DET-1-1.jpg"},
+      {"name": "Vicuña", "slug": "vicuna", "category": "brown", "wood": "Oak"},
+      {"name": "Tamarindo", "slug": "tamarindo", "category": "brown", "wood": "Oak"},
+      {"name": "Testa di Moro", "slug": "testa-di-moro", "category": "dark", "wood": "Oak"},
+      {"name": "Cashmere", "slug": "cashmere", "category": "white", "wood": "Oak"},
+      {"name": "Tortora", "slug": "tortora", "category": "gray", "wood": "Oak", "collections": ["classica", "natural_genius"]},
+      {"name": "Biancospino", "slug": "biancospino", "category": "white", "wood": "Oak", "collections": ["classica", "natural_genius"]},
+      {"name": "Montblanc", "slug": "montblanc", "category": "white", "wood": "Oak", "collections": ["classica", "natural_genius"]}
+    ],
+    "classica_gray": [
+      {"name": "Grigio Marino", "slug": "grigio-marino", "category": "gray", "wood": "Oak"},
+      {"name": "Grigio di Luna", "slug": "grigio-di-luna", "category": "gray", "wood": "Oak"},
+      {"name": "Grigio Argilla", "slug": "grigio-argilla", "category": "gray", "wood": "Oak"},
+      {"name": "Grigio Bretone", "slug": "grigio-bretone", "category": "gray", "wood": "Oak"},
+      {"name": "Grigio Dolomite", "slug": "grigio-dolomite", "category": "gray", "wood": "Oak"},
+      {"name": "Grigio Porfido", "slug": "grigio-porfido", "category": "gray", "wood": "Oak", "collections": ["classica", "natural_genius"]}
+    ],
+    "atelier": [
+      {"name": "Città della Pieve", "slug": "citta-della-pieve", "category": "brown", "wood": "Oak"},
+      {"name": "Ostuni", "slug": "ostuni", "category": "white", "wood": "Oak"},
+      {"name": "Pienza", "slug": "pienza", "category": "brown", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Fiesole", "slug": "fiesole", "category": "brown", "wood": "Oak"},
+      {"name": "Civita", "slug": "civita", "category": "brown", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Tuscania", "slug": "tuscania", "category": "brown", "wood": "Oak"},
+      {"name": "Bolsena", "slug": "bolsena", "category": "dark", "wood": "Oak"},
+      {"name": "Firenze", "slug": "firenze", "category": "brown", "wood": "Oak"},
+      {"name": "Siena", "slug": "siena", "category": "brown", "wood": "Oak"},
+      {"name": "Monteriggioni", "slug": "monteriggioni", "category": "gray", "wood": "Oak"},
+      {"name": "San Gimignano", "slug": "san-gimignano", "category": "gray", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Montalcino", "slug": "montalcino", "category": "dark", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Bagno Vignoni", "slug": "bagno-vignoni", "category": "dark", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Erice", "slug": "erice", "category": "white", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Mirantico", "slug": "mirantico", "category": "brown", "wood": "Oak", "collections": ["natural_genius", "atelier"]},
+      {"name": "Cefalù", "slug": "cefalu", "category": "brown", "wood": "Oak"},
+      {"name": "Graphit G1", "slug": "graphit-g1", "category": "dark", "wood": "Oak"},
+      {"name": "Graphit G2", "slug": "graphit-g2", "category": "dark", "wood": "Oak", "collections": ["atelier", "natural_genius"]},
+      {"name": "Graphit G3", "slug": "graphit-g3", "category": "dark", "wood": "Oak"}
+    ],
+    "natural_genius_exclusive": [
+      {"name": "Fumée Noire", "slug": "fumee-noir", "category": "dark", "wood": "Oak"},
+      {"name": "Graphite", "slug": "graphite", "category": "dark", "wood": "Oak"},
+      {"name": "Ciment", "slug": "ciment", "category": "gray", "wood": "Oak"},
+      {"name": "Argile", "slug": "argille", "category": "gray", "wood": "Oak"},
+      {"name": "Tabac", "slug": "tabac", "category": "brown", "wood": "Oak"},
+      {"name": "Corde", "slug": "corde", "category": "bright", "wood": "Oak"},
+      {"name": "Cenere", "slug": "graphite-2", "category": "gray", "wood": "Oak"},
+      {"name": "Ottanio", "slug": "ottanio", "category": "dark", "wood": "Oak"},
+      {"name": "Acqua", "slug": "acqua", "category": "gray", "wood": "Oak"},
+      {"name": "Olio", "slug": "olio", "category": "brown", "wood": "Oak"}
+    ],
+    "exotic_woods": [
+      {"name": "American Walnut", "slug": "noce-canaletto", "category": "dark", "wood": "American Walnut", "collections": ["classica", "atelier", "natural_genius"]},
+      {"name": "Cabreuva KM 31", "slug": "cabreuva-km-31", "category": "brown", "wood": "Cabreuva"},
+      {"name": "Iroko", "slug": "iroko", "category": "brown", "wood": "Iroko"},
+      {"name": "Teak", "slug": "tek", "category": "brown", "wood": "Teak"},
+      {"name": "Doussié", "slug": "doussie", "category": "brown", "wood": "Doussié"},
+      {"name": "Jatoba", "slug": "jatoba", "category": "brown", "wood": "Jatoba"},
+      {"name": "Wenge", "slug": "wenge", "category": "dark", "wood": "Wenge"}
+    ]
+  },
+  "product_specifications": {
+    "finishes": {
+      "NATURPLUS2": {
+        "description": "Solvent-free varnish coating which emphasizes the wood's grain and authenticity",
+        "technology": "Anti-bacterial Crystalcare technology"
+      },
+      "MATTPLUS": {
+        "description": "Solvent-free varnish coating similar to an untreated surface in appearance and colour",
+        "technology": "Anti-bacterial Crystalcare technology"
+      },
+      "OLEONATURE": {
+        "description": "Natural oil-based, air-dried finish with special protective treatment as last coat",
+        "features": "High protection and convenient maintenance",
+        "technology": "Anti-bacterial Crystalcare technology"
+      }
+    },
+    "grades": {
+      "ELEGANT": "Mixed grain. Boards may feature colour variations and small knots. Extra wide boards (140mm+) may have filled or partially filled knots.",
+      "CHARME": "Mixed grain and colour variations. Widespread presence of knots, including filled or partially filled ones.",
+      "ESPRIT": "Mixed grain, naturally uneven hue variations, widespread presence of filled or open knots, encased, tight or only partially filled."
+    },
+    "patterns": [
+      "Regular installation",
+      "Chevron Pattern 60\u00b0",
+      "Italian Herringbone 90\u00b0"
+    ],
+    "dimensions_example_oak": {
+      "sizes": [
+        {"width_mm": 90, "thickness_mm": 12.5, "lengths_mm": "600"},
+        {"width_mm": 90, "thickness_mm": 12.5, "lengths_mm": "590 & 800"},
+        {"width_mm": 140, "thickness_mm": 12.5, "lengths_mm": "890"}
+      ]
+    },
+    "technology": {
+      "name": "Multilayer Technology",
+      "core": "Special multilayer birch support with transversal layering",
+      "benefits": ["Stability", "Precision", "Durability", "Long life"]
+    }
+  },
+  "featured_projects": [
+    {"name": "Khufu's Restaurant", "location": "Cairo, Egypt", "type": "Public Space", "image": "https://www.listonegiordano.com/wp-content/uploads/2025/01/Khufus_Bistro_08.jpg"},
+    {"name": "AF Duomo - Palazzo Carminati", "location": "Milan, Italy", "type": "Hospitality", "image": "https://www.listonegiordano.com/wp-content/uploads/2024/11/Hotel-AFDUOMO_Slide-NOCE_3.jpg"},
+    {"name": "Urban Luxury", "location": "Tel Aviv, Israel", "type": "Residential", "image": "https://www.listonegiordano.com/wp-content/uploads/2022/07/Progetto-Urban-Luxury-Tel-Aviv_6.jpg"},
+    {"name": "Loft CT", "location": "Merano, Italy", "type": "Residential", "image": "https://www.listonegiordano.com/wp-content/uploads/2024/11/Progetto_LOFT-CT_Merano_2.jpg"},
+    {"name": "High Residential", "location": "Aspen, Colorado, USA", "type": "Residential", "image": "https://www.listonegiordano.com/wp-content/uploads/2024/10/Aspen-Colorado.jpg"},
+    {"name": "San Lorenzo Yacht", "location": "Miami, USA", "type": "Yachting", "image": "https://www.listonegiordano.com/wp-content/uploads/2020/05/San-Lorenzo-Yacht_residential_g_1920x1080.jpg"}
+  ],
+  "downloads": {
+    "access_type": "Login required",
+    "login_roles": ["Customer", "Interior Designer", "Press"],
+    "available_materials": {
+      "customer": ["Guide to selecting parquet flooring", "Catalogue and brochure", "Certifications"],
+      "interior_designer": ["Guide to selecting parquet flooring", "Catalogue and brochure", "Product textures", "Certifications", "Data Sheets"],
+      "press": ["Catalogue and brochure", "Certifications", "Press Kit"]
+    }
+  },
+  "digital_magazine": {
+    "name": "One Magazine",
+    "description": "The digital magazine focusing on architecture, design, culture and nature",
+    "url": "https://www.listonegiordano.com/one/"
+  },
+  "color_filter_categories": ["All", "Bright", "Brown", "Gray", "Dark", "White"]
+}

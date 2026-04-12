@@ -1,0 +1,234 @@
+{
+  "brand": {
+    "name": "Listone Giordano",
+    "registered": "Listone Giordano\u00ae",
+    "parent_company": "Margaritelli S.p.A.",
+    "parent_holding": "Eugenio Margaritelli S.p.A.",
+    "vat": "P.IVA 02981200542",
+    "address": "06089 Miralduolo di Torgiano (Pg) - Italia",
+    "phone": "+39 075 988681",
+    "email": "info@listonegiordano.com",
+    "founded": 1902,
+    "founder": "Eugenio Margaritelli",
+    "inventor": "Prof. Guglielmo Giordano (1984 patent)",
+    "origin": "Italy",
+    "website": "https://www.listonegiordano.com",
+    "arena_website": "https://www.listonegiordanoarena.com",
+    "foundation": "Guglielmo Giordano Foundation (est. 2000)",
+    "foundation_url": "https://www.fondazionegiordano.org/",
+    "foundation_hq": "Villa Spinola",
+    "tagline": "Hardwood flooring for your home",
+    "brand_philosophy": "Synthesis between aesthetics and ethics, outer beauty and substance, appearance and essence \u2014 harmonization between man and nature, industry and environment, technology and health.",
+    "core_values": [
+      "Wood technology",
+      "Aesthetic research",
+      "Respect for nature",
+      "Italian cultural heritage",
+      "Artistic sensibility",
+      "Italian lifestyle"
+    ],
+    "keywords": [
+      "Stability",
+      "Precision",
+      "Reliability",
+      "Beauty",
+      "Long-life",
+      "Respect for the environment"
+    ]
+  },
+  "design_system": {
+    "typography": {
+      "primary_font": {
+        "family": "LG Corporate",
+        "type": "serif",
+        "source": "Custom brand font",
+        "file_url": "https://www.listonegiordano.com/wp-content/themes/qzr-theme/fonts/lg-corporate/listonegiordanocorporate-normal.ttf",
+        "weight": 400,
+        "usage": "Logo wordmark, brand name in header"
+      },
+      "secondary_font": {
+        "family": "Source Sans Pro",
+        "type": "sans-serif",
+        "source": "Google Fonts",
+        "usage": "All body text, headings, navigation, UI elements"
+      },
+      "heading_styles": {
+        "h1": {
+          "font": "Source Sans Pro, sans-serif",
+          "weight": 400,
+          "size_px": 109,
+          "line_height": 1.1,
+          "transform": "none",
+          "color": "white (on hero) or black"
+        },
+        "h2": {
+          "font": "Source Sans Pro, sans-serif",
+          "weight": 400,
+          "size_px": 75,
+          "line_height": 1.15,
+          "transform": "uppercase (for section labels)",
+          "notes": "Used for section headings like GRADES, PATTERN"
+        },
+        "h3": {
+          "font": "Source Sans Pro, sans-serif",
+          "weight": 400,
+          "size_px": 65,
+          "line_height": 1.17
+        },
+        "h4": {
+          "font": "Source Sans Pro, sans-serif",
+          "weight": 400,
+          "size_px": 55,
+          "line_height": 1.2
+        }
+      },
+      "body_text": {
+        "font": "Source Sans Pro, sans-serif",
+        "weight": 300,
+        "size_px": 26,
+        "line_height": 1.42,
+        "color": "rgb(0, 0, 0)"
+      },
+      "navigation": {
+        "font": "Source Sans Pro, sans-serif",
+        "weight": 300,
+        "size_px": 34,
+        "text_transform": "none",
+        "style": "Clean, minimal, large serif-like appearance"
+      }
+    },
+    "color_palette": {
+      "primary": {
+        "black": "#000000",
+        "white": "#FFFFFF",
+        "warm_gray": "#CBCBCB"
+      },
+      "background": {
+        "page_gradient": "Linear gradient from warm beige/taupe to silver-gray",
+        "hero_overlay": "Semi-transparent warm metallic gradient",
+        "section_bg": "#FFFFFF",
+        "footer_bg": "Dark warm gray"
+      },
+      "accent": {
+        "copper_bronze": "#B87333",
+        "notes": "Subtle copper/bronze border at bottom of hero sections and page transitions"
+      },
+      "text": {
+        "primary": "#000000",
+        "secondary": "#FFFFFF",
+        "muted": "#666666"
+      },
+      "ui": {
+        "button_border": "#000000",
+        "button_bg": "transparent",
+        "button_text": "#000000",
+        "button_hover_bg": "#000000",
+        "button_hover_text": "#FFFFFF",
+        "link_color": "#000000",
+        "breadcrumb_color": "#FFFFFF"
+      }
+    },
+    "layout": {
+      "style": "Asymmetric editorial grid",
+      "grid_system": "CSS Grid with percentage-based columns (10-11 columns)",
+      "max_width": "Full-bleed hero sections, content within 1920px",
+      "spacing": "Generous whitespace, editorial magazine feel",
+      "image_treatment": "Full-bleed hero images, asymmetric overlapping grids for product galleries",
+      "scroll_indicator": "Vertical 'SCROLL' text with arrow on right edge"
+    },
+    "navigation": {
+      "style": "Hamburger menu (3-line icon) top-right",
+      "logo_position": "Top-left",
+      "logo_font": "LG Corporate serif",
+      "menu_overlay": "Full-screen overlay with warm gray background gradient",
+      "menu_structure": [
+        {"label": "Brand", "expandable": true, "children": ["Heritage", "Multilayer Technology", "The original green", "Culture"]},
+        {"label": "Hardwood flooring", "expandable": true, "children": ["natural genius", "atelier", "classica", "magnetico", "special edition", "outdoor"]},
+        {"label": "Colors and grades", "expandable": true, "children": ["Colors", "Grades"]},
+        {"label": "Guide to choose wood flooring", "expandable": false},
+        {"label": "Designers", "expandable": false},
+        {"label": "Projects", "expandable": false},
+        {"label": "Stores", "expandable": false},
+        {"label": "Downloads", "expandable": false},
+        {"label": "News", "expandable": false},
+        {"label": "Contacts", "expandable": false}
+      ],
+      "footer_links": ["Certifications", "Technical info", "Cleaning and Maintenance"],
+      "languages": ["IT", "EN", "DE", "FR", "ES", "RU"],
+      "sidebar_icons": ["Catalog/download", "Store locator", "Share"]
+    },
+    "ui_components": {
+      "buttons": {
+        "primary": {
+          "style": "Outlined/bordered",
+          "border": "1px solid black",
+          "padding": "16px 48px",
+          "text_transform": "uppercase",
+          "font_weight": 400,
+          "letter_spacing": "2px"
+        },
+        "link_button": {
+          "style": "Text with arrow",
+          "format": "LABEL \u2192",
+          "text_transform": "uppercase"
+        }
+      },
+      "cards": {
+        "product_card": "Image with text overlay at bottom",
+        "project_card": "Full-width image with title overlay",
+        "collection_card": "Large hero image with collection logo overlay"
+      },
+      "carousel": {
+        "style": "Horizontal scroll with dot indicators",
+        "navigation": "Arrow buttons < > with numbered dots"
+      }
+    },
+    "visual_identity": {
+      "photography_style": "High-end architectural and interior photography, warm natural lighting, editorial quality",
+      "image_aspect_ratios": ["16:9 (hero)", "3:2 (projects)", "1:1 (collection icons)", "portrait (product details)"],
+      "overall_aesthetic": "Ultra-premium luxury, Italian design heritage, minimalist editorial, architectural magazine feel",
+      "brand_tone": "Sophisticated, understated luxury, heritage-proud, environmentally conscious"
+    }
+  },
+  "site_structure": {
+    "pages": {
+      "home": "/en/",
+      "heritage": "/en/heritage/",
+      "technology": "/en/tecnologia/",
+      "green": "/en/verde-originale/",
+      "culture": "/en/culture/",
+      "wood_flooring": "/en/wood-flooring/",
+      "natural_genius": "/en/wood-flooring/natural-genius/",
+      "atelier": "/en/wood-flooring/atelier/",
+      "classica": "/en/wood-flooring/classica/",
+      "magnetico": "/en/wood-flooring/magnetico/",
+      "special_edition": "/en/wood-flooring/special-edition/",
+      "outdoor": "/en/wood-flooring/outdoor/",
+      "colors": "/en/colors/",
+      "grades": "/en/grades/",
+      "guide": "/guida/en/",
+      "designers": "/en/designers/",
+      "projects": "/en/projects/",
+      "stores": "/en/stores/",
+      "downloads": "/en/downloads/",
+      "news": "/en/news/",
+      "contacts": "/en/contacts/",
+      "certifications": "/en/certification/",
+      "technical_info": "/en/technical-info/",
+      "maintenance": "/en/cleaning-and-manteinance/"
+    },
+    "cms": "WordPress",
+    "theme": "qzr-theme (custom)"
+  },
+  "heritage_timeline": [
+    {"year": 1902, "event": "The Beginnings", "detail": "Eugenio Margaritelli specialises in mechanical tools for agriculture and forestry"},
+    {"year": 1930, "event": "Wood, Forest's energy", "detail": "Fernando Margaritelli moves the company into forestry and timber processing"},
+    {"year": 1945, "event": "Reconstruction", "detail": "Margaritelli begins producing wooden railway sleepers, becoming main supplier for Italian State Railways"},
+    {"year": 1960, "event": "Fontaines, Burgundy France", "detail": "The Fontaines sawmill is set up in France"},
+    {"year": 1983, "event": "Listone Giordano", "detail": "Launch of the Listone Giordano brand with multilayer technology"},
+    {"year": 1990, "event": "Network", "detail": "International distribution network established"},
+    {"year": 2000, "event": "Cultura", "detail": "Cultural initiatives including Guggenheim NYC exhibition"},
+    {"year": 2006, "event": "Design", "detail": "Natural Genius collection launches with world-renowned designers"},
+    {"year": 2020, "event": "Listone Giordano Arena", "detail": "Cultural and exhibition space"}
+  ]
+}

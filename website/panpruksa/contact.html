@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Panpruksa Premium Wood Flooring</title>
+  <meta name="description" content="Get in touch with Panpruksa for premium wood flooring enquiries. Offices in Singapore and Bangkok, Thailand.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <a href="index.html" class="logo brand-font">Panpruksa<span>&reg;</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay" id="navOverlay">
+    <div class="nav-menu">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="stores.html">Where to Buy</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
+      <div class="nav-footer">
+        <a href="about.html#technology">Technology</a>
+        <a href="about.html#sustainability">Sustainability</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header (no hero image) -->
+  <section style="padding-top: 8rem; padding-bottom: 3rem;">
+    <div class="container">
+      <p class="label fade-up">Get in Touch</p>
+      <h1 class="fade-up" style="margin-top: 1rem;">Contact</h1>
+    </div>
+  </section>
+
+  <div class="copper-line"></div>
+
+  <!-- Contact Form + Info -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="grid-2">
+        <!-- Form -->
+        <div class="fade-up">
+          <h3 style="margin-bottom: 0.5rem;">Send an Enquiry</h3>
+          <p style="margin-bottom: 2rem; color: var(--text-muted);">Tell us about your project and we'll get back to you within 24 hours.</p>
+
+          <form id="contactForm" data-webhook="WEBHOOK_URL_SET_AT_DEPLOY">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+65 xxxx xxxx">
+              </div>
+              <div class="form-group">
+                <label for="company">Company / Project</label>
+                <input type="text" id="company" name="company" placeholder="Company or project name">
+              </div>
+              <div class="form-group full-width">
+                <label for="country">Country *</label>
+                <select id="country" name="country" required>
+                  <option value="" disabled selected>Select your country</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Vietnam">Vietnam</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your project, space, or requirements..."></textarea>
+              </div>
+              <div class="form-group full-width">
+                <button type="submit" class="btn btn-solid">Send Enquiry</button>
+                <div id="formStatus" class="form-status"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info fade-up">
+          <div class="contact-info-item">
+            <p class="label">Singapore Headquarters</p>
+            <p>
+              <strong>Nubo International Pte. Ltd.</strong><br>
+              20 Jalan Mutiara<br>
+              Singapore 249199<br><br>
+              <a href="tel:+6591911192">+65 9191 1192</a><br>
+              <a href="mailto:contact@nubo.asia">contact@nubo.asia</a>
+            </p>
+          </div>
+
+          <div class="contact-info-item">
+            <p class="label">Thailand Distribution</p>
+            <p>
+              <strong>GO Corporation Co., Ltd.</strong><br>
+              11/2 Floor 8, Unit 8A<br>
+              Sukhumvit 23, Sukhumvit Rd<br>
+              Khlong Toei Nuea, Watthana<br>
+              Bangkok 10110, Thailand<br><br>
+              <a href="tel:+6621245000">+66 2 124 5000</a><br>
+              <a href="mailto:contact@goco.bz">contact@goco.bz</a>
+            </p>
+          </div>
+
+          <div class="contact-info-item">
+            <p class="label">Key Contacts</p>
+            <p>
+              <strong>Edmund Lim</strong> &mdash; CEO<br>
+              <a href="mailto:edmund@nubo.asia">edmund@nubo.asia</a><br><br>
+              <strong>Eukrit Kraikosol</strong> &mdash; Director<br>
+              <a href="mailto:eukrit@nubo.asia">eukrit@nubo.asia</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7889!2d103.8380!3d1.3000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a3a6e3e8e1%3A0x1234567890!2s20+Jalan+Mutiara%2C+Singapore+249199!5e0!3m2!1sen!2ssg!4v1700000000000!5m2!1sen!2ssg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo brand-font">Panpruksa<span>&reg;</span></a>
+          <p>Premium hardwood flooring for Southeast Asia, brought to you by Nubo International Pte. Ltd.</p>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="stores.html">Where to Buy</a>
+          <a href="news.html">News</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Singapore HQ</h5>
+          <a href="tel:+6591911192">+65 9191 1192</a>
+          <a href="mailto:contact@nubo.asia">contact@nubo.asia</a>
+        </div>
+        <div>
+          <h5>Thailand</h5>
+          <a href="tel:+6621245000">+66 2 124 5000</a>
+          <a href="mailto:contact@goco.bz">contact@goco.bz</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Panpruksa by Nubo International Pte. Ltd.</span>
+        <span>BRN: 202424115G</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
