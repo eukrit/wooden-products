@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fence Configurator — Panpruksa</title>
+  <meta name="description" content="Design your perfect WPC fence system and get an instant price estimate. Choose height, length, series, color, and gates.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/products.css">
+  <style>
+    .config-panel { background: var(--white); padding: clamp(2rem, 4vw, 3.5rem); max-width: 900px; margin: 0 auto; }
+    .config-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+    .config-group label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; font-weight: 400; color: var(--text-muted); }
+    .config-group select, .config-group input {
+      width: 100%; padding: 0.85rem 0; font-family: var(--font-body); font-size: 1rem; font-weight: 300;
+      border: none; border-bottom: 1px solid var(--warm-gray); background: transparent; color: var(--black);
+      outline: none; appearance: none; cursor: pointer;
+    }
+    .config-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0 center; padding-right: 1.5rem;
+    }
+    .config-group input:focus, .config-group select:focus { border-bottom-color: var(--black); }
+    .color-options { display: flex; gap: 0.75rem; padding-top: 0.5rem; }
+    .color-option {
+      width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .color-option:hover { transform: scale(1.15); }
+    .color-option.selected { border-color: var(--copper); transform: scale(1.15); }
+
+    .config-result { display: none; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--light-gray); }
+    .config-result h3 { margin-bottom: 1.5rem; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    .result-item { text-align: center; padding: 1rem; background: var(--bg-gray); }
+    .result-item .result-value { font-size: 1.5rem; font-weight: 400; display: block; margin-bottom: 0.25rem; }
+    .result-item .result-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+    .result-price { text-align: center; margin-top: 2rem; }
+    .result-price .price { font-family: var(--font-brand); font-size: clamp(2rem, 4vw, 3rem); color: var(--copper); }
+    .result-price .price-sub { font-size: 1rem; font-weight: 400; margin-top: 0.25rem; }
+    .result-price .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; }
+
+    @media (max-width: 768px) {
+      .config-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <a href="index.html" class="logo brand-font">Panpruksa<span>&reg;</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay" id="navOverlay">
+    <div class="nav-menu">
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="stores.html">Where to Buy</a>
+      <a href="contact.html">Contact</a>
+      <div class="nav-footer">
+        <a href="wpc-fence.html">WPC Fencing</a>
+        <a href="flooring.html">Wood Flooring</a>
+        <a href="configurator.html">Fence Configurator</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section style="padding-top: 8rem; padding-bottom: 3rem;">
+    <div class="container">
+      <p class="label fade-up" style="color: var(--copper);">WPC Fence Systems</p>
+      <h1 class="fade-up" style="margin-top: 1rem;">Fence Configurator</h1>
+      <p class="fade-up" style="color: var(--text-muted); margin-top: 0.75rem; max-width: 500px;">Design your fence system and get an instant budget estimate.</p>
+    </div>
+  </section>
+
+  <div class="copper-line"></div>
+
+  <!-- Configurator -->
+  <section style="background: var(--bg-gray);">
+    <div class="container">
+      <div class="config-panel fade-up">
+
+        <div class="config-row">
+          <div class="config-group">
+            <label for="fence-series">Product Series</label>
+            <select id="fence-series">
+              <option value="coex">Co-Extrusion (Premium)</option>
+              <option value="standard">Standard WPC (Value)</option>
+            </select>
+          </div>
+          <div class="config-group">
+            <label for="fence-height">Fence Height</label>
+            <select id="fence-height">
+              <option value="2.0">2.0m &mdash; Standard Privacy</option>
+              <option value="3.0">3.0m &mdash; Tall Privacy</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="config-row">
+          <div class="config-group">
+            <label for="fence-length">Total Fence Length (meters)</label>
+            <input type="number" id="fence-length" placeholder="e.g. 20" min="1" value="10">
+          </div>
+          <div class="config-group">
+            <label for="bay-width">Bay Width</label>
+            <select id="bay-width">
+              <option value="1.5">1.5m</option>
+              <option value="1.8">1.8m</option>
+              <option value="2.0" selected>2.0m (Recommended)</option>
+              <option value="2.9">2.9m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="config-row">
+          <div class="config-group">
+            <label for="gate-count">Number of Gates</label>
+            <select id="gate-count">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div class="config-group">
+            <label>Color</label>
+            <div class="color-options">
+              <div class="color-option selected" style="background:#3a3a3a;" title="Charcoal"></div>
+              <div class="color-option" style="background:#b8860b;" title="Teak"></div>
+              <div class="color-option" style="background:#5c4033;" title="Walnut"></div>
+              <div class="color-option" style="background:#65000B;" title="Rosewood"></div>
+              <div class="color-option" style="background:#f5e6c8;" title="Sand White"></div>
+              <div class="color-option" style="background:#9e9e9e;" title="Grey"></div>
+              <div class="color-option" style="background:#1a1a1a;" title="Black"></div>
+              <div class="color-option" style="background:#8b7d6b;" title="Antique"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top: 2rem;">
+          <button class="btn btn-solid" onclick="calculateFence()">Calculate Estimate</button>
+        </div>
+
+        <!-- Results -->
+        <div class="config-result" id="configResult">
+          <h3>Your Fence Estimate</h3>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <span class="result-value" id="result-length"></span>
+              <span class="result-label">Total Length</span>
+            </div>
+            <div class="result-item">
+              <span class="result-value" id="result-height"></span>
+              <span class="result-label">Fence Height</span>
+            </div>
+            <div class="result-item">
+              <span class="result-value" id="result-bays"></span>
+              <span class="result-label">Bays</span>
+            </div>
+            <div class="result-item">
+              <span class="result-value" id="result-posts"></span>
+              <span class="result-label">Posts</span>
+            </div>
+            <div class="result-item">
+              <span class="result-value" id="result-boards"></span>
+              <span class="result-label">Boards</span>
+            </div>
+            <div class="result-item">
+              <span class="result-value" id="result-gates"></span>
+              <span class="result-label">Gates</span>
+            </div>
+          </div>
+
+          <div class="result-price">
+            <div class="price" id="result-total"></div>
+            <div class="price-sub">Price per Meter: <strong id="result-per-meter"></strong></div>
+            <p class="disclaimer">Prices are estimates in THB. Final quotation may vary based on site conditions and customization.</p>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="contact.html" class="btn">Request Detailed Quotation</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Specs Reference -->
+  <section>
+    <div class="container">
+      <div class="grid-3 fade-up">
+        <div style="text-align: center;">
+          <h1 class="brand-font" style="color: var(--copper);">25</h1>
+          <p class="label" style="margin-top: 0.25rem;">Year Warranty</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Co-Extrusion series structural warranty</p>
+        </div>
+        <div style="text-align: center;">
+          <h1 class="brand-font" style="color: var(--copper);">B1</h1>
+          <p class="label" style="margin-top: 0.25rem;">Fire Rating</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Self-extinguishing material</p>
+        </div>
+        <div style="text-align: center;">
+          <h1 class="brand-font" style="color: var(--copper);">8</h1>
+          <p class="label" style="margin-top: 0.25rem;">Colors Available</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Custom colors on request</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="values-section" style="text-align: center; padding: clamp(3rem, 6vw, 5rem) 0;">
+    <div class="container fade-up">
+      <h3 style="margin-bottom: 1rem;">View Full Product Range</h3>
+      <p style="opacity: 0.7; margin-bottom: 2rem;">Explore our complete WPC fence system including boards, posts, gates, and accessories.</p>
+      <a href="wpc-fence.html" class="btn btn-white">WPC Fence Products</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo brand-font">Panpruksa<span>&reg;</span></a>
+          <p>Premium wood and composite solutions for Southeast Asia, by Nubo International Pte. Ltd.</p>
+        </div>
+        <div>
+          <h5>Products</h5>
+          <a href="wpc-fence.html">WPC Fencing</a>
+          <a href="flooring.html">Wood Flooring</a>
+          <a href="configurator.html">Fence Configurator</a>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <a href="tel:+6591911192">+65 9191 1192</a>
+          <a href="mailto:contact@nubo.asia">contact@nubo.asia</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Panpruksa by Nubo International Pte. Ltd.</span>
+        <span>BRN: 202424115G</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Color selector
+    document.querySelectorAll('.color-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+
+    // Fence Calculator
+    function calculateFence() {
+      const height = parseFloat(document.getElementById('fence-height').value) || 2.0;
+      const length = parseFloat(document.getElementById('fence-length').value) || 10;
+      const bayWidth = parseFloat(document.getElementById('bay-width').value) || 2.0;
+      const gates = parseInt(document.getElementById('gate-count').value) || 0;
+      const series = document.getElementById('fence-series').value || 'coex';
+
+      const bays = Math.ceil(length / bayWidth);
+      const posts = bays + 1;
+      const boardsPerBay = height <= 2.0 ? 13 : 20;
+      const totalBoards = bays * boardsPerBay;
+
+      let pricePerBay;
+      if (height <= 2.0) {
+        pricePerBay = series === 'coex' ? 6500 : 5500;
+      } else {
+        pricePerBay = series === 'coex' ? 13000 : 11000;
+      }
+      const gatePrice = 15000;
+      const totalPrice = (bays * pricePerBay) + (gates * gatePrice);
+      const pricePerMeter = Math.round(totalPrice / length);
+
+      const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      set('result-bays', bays);
+      set('result-posts', posts);
+      set('result-boards', totalBoards);
+      set('result-gates', gates);
+      set('result-length', length + 'm');
+      set('result-height', height + 'm');
+      set('result-total', '฿' + totalPrice.toLocaleString());
+      set('result-per-meter', '฿' + pricePerMeter.toLocaleString() + '/m');
+
+      document.getElementById('configResult').style.display = 'block';
+      document.getElementById('configResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
