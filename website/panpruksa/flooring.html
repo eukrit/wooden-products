@@ -4,9 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engineered Wood Flooring — Panpruksa</title>
-  <meta name="description" content="Premium engineered hardwood flooring by Panpruksa. Oak, Teak, and Cherry collections with multilayer technology for tropical climates. Singapore and Thailand.">
+  <meta name="description" content="Premium engineered hardwood flooring by Panpruksa. 6 collections, 52 colors, Oak and exotic wood species. Multilayer technology for tropical climates.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/products.css">
+  <style>
+    .collection-hero { position: relative; padding: clamp(4rem,8vw,7rem) 0; overflow: hidden; }
+    .collection-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .collection-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .collection-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 100%); }
+    .collection-hero-content { position: relative; z-index: 1; color: var(--white); max-width: 550px; }
+    .collection-hero-content h2 { margin: 0.5rem 0 1rem; }
+    .collection-hero-content p { opacity: 0.85; font-size: 0.95rem; line-height: 1.7; }
+
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .color-card { text-decoration: none; color: inherit; transition: transform 0.3s ease; }
+    .color-card:hover { transform: translateY(-4px); }
+    .color-card-img { aspect-ratio: 4/3; overflow: hidden; background: var(--light-gray); margin-bottom: 0.75rem; }
+    .color-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .color-card h5 { font-size: 0.9rem; font-weight: 400; margin-bottom: 0.15rem; }
+    .color-card .color-meta { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .filter-btn { padding: 0.4rem 1rem; font-family: var(--font-body); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; border: 1px solid var(--warm-gray); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+    .filter-btn.active, .filter-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    .spec-card { background: var(--white); padding: 2rem; }
+    .spec-card h4 { margin-bottom: 0.5rem; }
+    .spec-card .accent { color: var(--copper); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .spec-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+    @media (max-width: 768px) { .color-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+  </style>
 </head>
 <body>
 
@@ -39,10 +67,9 @@
     </div>
     <div class="hero-content">
       <p class="label">Products / Indoor</p>
-      <h1>Engineered<br>Wood Flooring</h1>
+      <h1>Hardwood<br>Flooring</h1>
     </div>
   </section>
-
   <div class="copper-line"></div>
 
   <!-- Intro -->
@@ -50,11 +77,277 @@
     <div class="container">
       <div class="grid-2">
         <div class="fade-up">
-          <h2>Natural Beauty,<br>Engineered Precision</h2>
+          <h2>6 Collections.<br>52 Colors.</h2>
         </div>
         <div class="fade-up">
-          <p class="lead">Premium multilayer hardwood flooring designed for the demands of tropical living.</p>
-          <p>Our engineered flooring combines the warmth and beauty of real hardwood with advanced multilayer construction that resists warping, cupping, and expansion — even in Southeast Asia's high humidity. Available in Oak, Teak, and Cherry with multiple finish and installation options.</p>
+          <p class="lead">The world's finest hardwood flooring, engineered with multilayer technology for the demands of tropical living.</p>
+          <p>From the timeless elegance of Classica to the designer innovations of Natural Genius, each collection offers a distinct character while sharing the same uncompromising quality — stability, beauty, and long life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CLASSICA ==================== -->
+  <section class="collection-hero" id="classica">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2025/09/Grisaglie_Grigio-Marino_1.jpg" alt="Classica collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Classica</h2>
+        <p>Elegance and modernity. The signature collection featuring the widest range of wood species, sizes, selections, colours, finishes and laying patterns. Oak at its finest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--white);">
+    <div class="container">
+      <p class="label fade-up" style="margin-bottom: 0.5rem;">Classica &middot; Oak</p>
+      <div class="color-grid fade-up">
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/Michelangelo_rovere_puro_classica_1920x1200.jpg" alt="Oak"></div><h5>Oak</h5><span class="color-meta">Bright &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2021/05/Classica-Michelangelo-Rovere-Cannella-1920x1200-1.jpg" alt="Cannella"></div><h5>Cannella</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2025/06/LG-MICHELANGELO-Alpaca-140-Oak-Naturplus2Matt-Elegant-DET-1-1.jpg" alt="Alpaca"></div><h5>Alpaca</h5><span class="color-meta">Bright &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2024/04/Classica-Michelangelo-Rovere-Vicuna.jpg" alt="Vicuña"></div><h5>Vicuña</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/Michelangelo_rovere_tamarindo_prima_classica_1920x1200.jpg" alt="Tamarindo"></div><h5>Tamarindo</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#3a2a1a;"></div><h5>Testa di Moro</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#e8ddd0;"></div><h5>Cashmere</h5><span class="color-meta">White &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#b5a99a;"></div><h5>Tortora</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#e0d8cc;"></div><h5>Biancospino</h5><span class="color-meta">White &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#f0ebe4;"></div><h5>Montblanc</h5><span class="color-meta">White &middot; Oak</span></div>
+      </div>
+
+      <p class="label fade-up" style="margin: 3rem 0 0.5rem;">Classica &middot; Grisaglie (Gray Tones)</p>
+      <div class="color-grid fade-up">
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2025/09/Grisaglie_Grigio-Marino_1.jpg" alt="Grigio Marino" style="object-fit:cover;"></div><h5>Grigio Marino</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#9a9590;"></div><h5>Grigio di Luna</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a827a;"></div><h5>Grigio Argilla</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#7a7570;"></div><h5>Grigio Bretone</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#6a6560;"></div><h5>Grigio Dolomite</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#5a5550;"></div><h5>Grigio Porfido</h5><span class="color-meta">Gray &middot; Oak</span></div>
+      </div>
+
+      <p class="label fade-up" style="margin: 3rem 0 0.5rem;">Classica &middot; Exotic Woods</p>
+      <div class="color-grid fade-up">
+        <div class="color-card"><div class="color-card-img" style="background:#4a3728;"></div><h5>American Walnut</h5><span class="color-meta">Dark &middot; Walnut</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8b5e3c;"></div><h5>Cabreuva KM 31</h5><span class="color-meta">Brown &middot; Cabreuva</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#9a7a4a;"></div><h5>Iroko</h5><span class="color-meta">Brown &middot; Iroko</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#a08050;"></div><h5>Teak</h5><span class="color-meta">Brown &middot; Teak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#9a5030;"></div><h5>Doussié</h5><span class="color-meta">Brown &middot; Doussié</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#7a3020;"></div><h5>Jatoba</h5><span class="color-meta">Brown &middot; Jatoba</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#2a2018;"></div><h5>Wenge</h5><span class="color-meta">Dark &middot; Wenge</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ATELIER ==================== -->
+  <section class="collection-hero" id="atelier">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2025/04/DESIR-1024x576.jpg" alt="Atelier collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Atelier</h2>
+        <p>Craftsmanship and memory. Hand-crafted treatments turn each board into a unique piece. Named after the most beautiful towns of Tuscany and Southern Italy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-gray);">
+    <div class="container">
+      <p class="label fade-up" style="margin-bottom: 0.5rem;">Atelier &middot; 19 Colors</p>
+      <div class="color-grid fade-up">
+        <div class="color-card"><div class="color-card-img" style="background:#8a6a40;"></div><h5>Città della Pieve</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#e8e0d5;"></div><h5>Ostuni</h5><span class="color-meta">White &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#9a7a50;"></div><h5>Pienza</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a7040;"></div><h5>Fiesole</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2022/11/MLG-22-ATE-desir-Civita-Listone-Giordano-02-1-922x1024.jpg" alt="Civita"></div><h5>Civita</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#7a6030;"></div><h5>Tuscania</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#3a2a18;"></div><h5>Bolsena</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a6a3a;"></div><h5>Firenze</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#7a5a2a;"></div><h5>Siena</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#807872;"></div><h5>Monteriggioni</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a8278;"></div><h5>San Gimignano</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#2a2018;"></div><h5>Montalcino</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#35281c;"></div><h5>Bagno Vignoni</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#e5ddd0;"></div><h5>Erice</h5><span class="color-meta">White &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a7050;"></div><h5>Mirantico</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#9a7a58;"></div><h5>Cefalù</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#1a1a1a;"></div><h5>Graphit G1</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#252525;"></div><h5>Graphit G2</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#303030;"></div><h5>Graphit G3</h5><span class="color-meta">Dark &middot; Oak</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NATURAL GENIUS ==================== -->
+  <section class="collection-hero" id="natural-genius">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2025/09/LG-NaturalGenius-TRAFIC3-Aube-Pine-120-Unica-01-1024x1024.jpg" alt="Natural Genius collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Natural Genius</h2>
+        <p>Genius and innovation. Contemporary design by world-renowned designers — Michele De Lucchi, Patricia Urquiola, Daniele Lago, Marc Sadler, Paola Lenti, and Piero Lissoni.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--white);">
+    <div class="container">
+      <p class="label fade-up" style="margin-bottom: 0.5rem;">Natural Genius &middot; Designer Colors</p>
+      <div class="color-grid fade-up">
+        <div class="color-card"><div class="color-card-img" style="background:#1a1510;"></div><h5>Fumée Noire</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/MLG-21-NG-Perigal-Graphite-Listone-Giordano-02.jpg" alt="Graphite"></div><h5>Graphite</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#a09888;"></div><h5>Ciment</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#908878;"></div><h5>Argile</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#6a5030;"></div><h5>Tabac</h5><span class="color-meta">Brown &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img"><img src="https://www.listonegiordano.com/wp-content/uploads/2023/05/Parquet_Fabrique_Corde-ListoneGiordano_1-1-1024x683.jpg" alt="Corde"></div><h5>Corde</h5><span class="color-meta">Bright &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#b0a898;"></div><h5>Cenere</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#2a3530;"></div><h5>Ottanio</h5><span class="color-meta">Dark &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#a0b0a8;"></div><h5>Acqua</h5><span class="color-meta">Gray &middot; Oak</span></div>
+        <div class="color-card"><div class="color-card-img" style="background:#8a7a50;"></div><h5>Olio</h5><span class="color-meta">Brown &middot; Oak</span></div>
+      </div>
+
+      <p class="label fade-up" style="margin: 3rem 0 0.5rem;">Natural Genius &middot; Designer Products</p>
+      <div class="grid-3 fade-up" style="margin-top: 1rem;">
+        <div class="spec-card"><p class="accent">Marc Sadler</p><h4>Trafic</h4><p>Bold geometric patterns that redefine the boundaries of parquet design.</p></div>
+        <div class="spec-card"><p class="accent">Piero Lissoni</p><h4>Nui</h4><p>Organic curves inspired by natural landscapes and flowing water.</p></div>
+        <div class="spec-card"><p class="accent">Paola Lenti</p><h4>Perigal</h4><p>Textile-inspired surface treatments bringing fabric aesthetics to wood.</p></div>
+        <div class="spec-card"><p class="accent">Marc Sadler</p><h4>Fabrique</h4><p>Industrial-modern textures that bridge craft and contemporary design.</p></div>
+        <div class="spec-card"><p class="accent">Daniele Lago</p><h4>Slide</h4><p>Interlocking boards creating dynamic, movement-inspired floor surfaces.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAGNETICO ==================== -->
+  <section class="collection-hero" id="magnetico">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2024/11/Magnetico_Pienza_dettaglio.jpg" alt="Magnetico collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Magnetico</h2>
+        <p>Technology and precision. Cutting-edge magnetic installation technology for commercial spaces — offices, shops, showrooms, and hospitality venues. Easy assembly, impeccable results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPECIAL EDITION ==================== -->
+  <section class="collection-hero" id="special-edition">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2023/06/parquet-graphit-G2-special-edition-circular-A.jpg" alt="Special Edition collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Special Edition</h2>
+        <p>Research and sustainability. A synthesis between aesthetics and ethics — outer beauty and substance, technology and nature, performance and health.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUTDOOR ==================== -->
+  <section class="collection-hero" id="outdoor">
+    <div class="collection-hero-bg">
+      <img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/marine_tek_outdoor_listone_giordano_A_1920x1080.jpg" alt="Outdoor collection">
+    </div>
+    <div class="container">
+      <div class="collection-hero-content fade-up">
+        <p class="label" style="color: var(--copper);">Collection</p>
+        <h2>Outdoor</h2>
+        <p>Technology and design. All wood species perfectly suitable for outdoor use thanks to high resistance to mechanical stress and natural extractors providing extra stability and durability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPECIFICATIONS ==================== -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="fade-up" style="margin-bottom: 3rem;">
+        <p class="label" style="color: var(--copper);">Technical</p>
+        <h2>Specifications</h2>
+      </div>
+
+      <!-- Finishes -->
+      <h3 class="fade-up" style="margin-bottom: 1.5rem;">Finishes</h3>
+      <div class="grid-3 fade-up" style="margin-bottom: 3rem;">
+        <div class="spec-card">
+          <p class="accent">Varnish</p>
+          <h4>Naturplus2</h4>
+          <p>Solvent-free varnish coating which emphasizes the wood's grain and authenticity. Features anti-bacterial Crystalcare technology.</p>
+        </div>
+        <div class="spec-card">
+          <p class="accent">Matte</p>
+          <h4>Mattplus</h4>
+          <p>Solvent-free varnish coating similar to an untreated surface in appearance and colour. Anti-bacterial Crystalcare technology.</p>
+        </div>
+        <div class="spec-card">
+          <p class="accent">Oil</p>
+          <h4>Oleonature</h4>
+          <p>Natural oil-based, air-dried finish with special protective treatment. High protection with convenient maintenance. Crystalcare technology.</p>
+        </div>
+      </div>
+
+      <!-- Grades -->
+      <h3 class="fade-up" style="margin-bottom: 1.5rem;">Grades</h3>
+      <div class="grid-3 fade-up" style="margin-bottom: 3rem;">
+        <div class="spec-card">
+          <p class="accent">Refined</p>
+          <h4>Elegant</h4>
+          <p>Mixed grain with colour variations and small knots. Extra wide boards (140mm+) may feature filled or partially filled knots.</p>
+        </div>
+        <div class="spec-card">
+          <p class="accent">Character</p>
+          <h4>Charme</h4>
+          <p>Mixed grain and colour variations. Widespread presence of knots, including filled or partially filled ones.</p>
+        </div>
+        <div class="spec-card">
+          <p class="accent">Rustic</p>
+          <h4>Esprit</h4>
+          <p>Mixed grain, naturally uneven hue variations, widespread presence of filled or open knots, encased, tight or only partially filled.</p>
+        </div>
+      </div>
+
+      <!-- Dimensions -->
+      <h3 class="fade-up" style="margin-bottom: 1.5rem;">Dimensions (Oak Example)</h3>
+      <div class="fade-up" style="max-width: 600px; margin-bottom: 3rem;">
+        <div class="spec-table">
+          <div class="spec-row"><span class="spec-label">Width</span><span class="spec-value">90mm / 140mm</span></div>
+          <div class="spec-row"><span class="spec-label">Thickness</span><span class="spec-value">12.5mm</span></div>
+          <div class="spec-row"><span class="spec-label">Lengths</span><span class="spec-value">590mm / 600mm / 800mm / 890mm</span></div>
+          <div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Multilayer birch plywood core</span></div>
+          <div class="spec-row"><span class="spec-label">Adhesive</span><span class="spec-value">Marine-grade phenolic glue</span></div>
+          <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Glue-down / Floating / Click-lock</span></div>
+        </div>
+      </div>
+
+      <!-- Laying Patterns -->
+      <h3 class="fade-up" style="margin-bottom: 1.5rem;">Laying Patterns</h3>
+      <div class="grid-3 fade-up">
+        <div class="spec-card" style="text-align: center;">
+          <svg width="80" height="60" viewBox="0 0 80 60" fill="none" stroke="var(--black)" stroke-width="0.8" style="margin: 0 auto 1rem; display: block;">
+            <rect x="2" y="2" width="76" height="12"/><rect x="2" y="18" width="76" height="12"/><rect x="2" y="34" width="76" height="12"/><rect x="2" y="50" width="38" height="8"/><rect x="44" y="50" width="34" height="8"/>
+          </svg>
+          <h4>Regular</h4>
+          <p>Classic straight-lay. Clean, modern, space-expanding.</p>
+        </div>
+        <div class="spec-card" style="text-align: center;">
+          <svg width="80" height="60" viewBox="0 0 80 60" fill="none" stroke="var(--black)" stroke-width="0.8" style="margin: 0 auto 1rem; display: block;">
+            <path d="M40 2 L78 30 L40 58 L2 30 Z"/><path d="M40 12 L65 30 L40 48 L15 30 Z"/><line x1="40" y1="2" x2="40" y2="58"/>
+          </svg>
+          <h4>Chevron 60&deg;</h4>
+          <p>Dramatic V-pattern. Dynamic movement and luxury.</p>
+        </div>
+        <div class="spec-card" style="text-align: center;">
+          <svg width="80" height="60" viewBox="0 0 80 60" fill="none" stroke="var(--black)" stroke-width="0.8" style="margin: 0 auto 1rem; display: block;">
+            <rect x="5" y="2" width="30" height="10"/><rect x="40" y="2" width="10" height="30"/><rect x="5" y="17" width="30" height="10"/><rect x="55" y="2" width="10" height="30"/><rect x="40" y="37" width="10" height="20"/><rect x="55" y="37" width="10" height="20"/>
+          </svg>
+          <h4>Herringbone 90&deg;</h4>
+          <p>Timeless Italian pattern. Elegant character.</p>
         </div>
       </div>
     </div>
@@ -66,205 +359,21 @@
       <div class="fade-up">
         <p class="label" style="color: var(--copper);">Technology</p>
         <h2>Multilayer Construction</h2>
-        <p style="opacity: 0.8; margin-top: 1.5rem; max-width: 700px;">Every board features a precision-engineered multilayer core — real hardwood veneer bonded to cross-grain birch plywood using marine-grade adhesive. This construction delivers stability that solid wood simply cannot match in tropical climates.</p>
       </div>
       <div class="values-grid fade-up">
-        <div class="value-item">
-          <h4>Climate Resistant</h4>
-          <p>Cross-grain plywood core prevents warping and cupping even at 80%+ humidity levels common in Southeast Asia.</p>
-        </div>
-        <div class="value-item">
-          <h4>Real Hardwood Surface</h4>
-          <p>2-3mm genuine hardwood veneer delivers authentic grain, color, and feel that no laminate or vinyl can replicate.</p>
-        </div>
-        <div class="value-item">
-          <h4>Click-Lock Installation</h4>
-          <p>Precision-milled locking profiles enable fast, glue-free floating installation over most existing subfloors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Oak Collection -->
-  <section id="oak" style="background: var(--white);">
-    <div class="container">
-      <div class="fade-up" style="margin-bottom: 3rem;">
-        <p class="label" style="color: var(--copper);">Collection</p>
-        <h2>Oak</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 600px;">The king of hardwood flooring. Our Oak collection offers the widest range of colors, finishes, and dimensions — from bright naturals to deep charcoals and contemporary grays.</p>
-      </div>
-
-      <div class="grid-3 fade-up">
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/Michelangelo_rovere_puro_classica_1920x1200.jpg" alt="Natural Oak flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Natural</p>
-          <h4>Oak Natural</h4>
-          <p>Warm honey tones with authentic grain pattern. The timeless choice for residential and hospitality spaces.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1200 x 150 x 15mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">3.0mm Oak</span></div>
-            <div class="spec-row"><span class="spec-label">Core</span><span class="spec-value">Birch plywood</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Click-lock / Tongue &amp; groove</span></div>
-          </div>
-        </div>
-
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2024/04/Classica-Michelangelo-Rovere-Vicuna.jpg" alt="Oak Glacial flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Cool Tone</p>
-          <h4>Oak Glacial</h4>
-          <p>Cool silver-gray undertones for contemporary interiors. Pairs beautifully with modern minimalist design.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1200 x 150 x 15mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">3.0mm Oak</span></div>
-            <div class="spec-row"><span class="spec-label">Core</span><span class="spec-value">Birch plywood</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Click-lock</span></div>
-          </div>
-        </div>
-
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2025/09/Grisaglie_Grigio-Marino_1-1011x1024.jpg" alt="Oak Gray flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Gray</p>
-          <h4>Oak Grigio</h4>
-          <p>Sophisticated gray tones trending across Southeast Asian luxury residential and commercial projects.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1200 x 165 x 14mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">2.0mm Oak</span></div>
-            <div class="spec-row"><span class="spec-label">Core</span><span class="spec-value">Birch plywood</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Tongue &amp; groove</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Teak Collection -->
-  <section id="teak">
-    <div class="container">
-      <div class="fade-up" style="margin-bottom: 3rem;">
-        <p class="label" style="color: var(--copper);">Collection</p>
-        <h2>Teak</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 600px;">The gold standard of tropical hardwood. Our Teak collection features multiple construction options — from premium three-layer boards to cost-effective multilayer variants.</p>
-      </div>
-
-      <div class="grid-3 fade-up">
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2021/05/Classica-Michelangelo-Rovere-Cannella-1920x1200-1.jpg" alt="Three-layer Teak flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Premium</p>
-          <h4>Teak Three-Layer</h4>
-          <p>Premium construction with 3.0mm Teak veneer on cross-laminated core. Click-lock installation for maximum stability.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1200 x 150 x 15mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">3.0mm Teak</span></div>
-            <div class="spec-row"><span class="spec-label">Grade</span><span class="spec-value">A</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Click-lock</span></div>
-          </div>
-        </div>
-
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/Michelangelo_rovere_tamarindo_prima_classica_1920x1200.jpg" alt="Multilayer Teak flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Value</p>
-          <h4>Teak Multilayer</h4>
-          <p>Birch-core multilayer with 1.2mm Teak veneer. Excellent performance at a more accessible price point.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1200 x 165 x 14mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">1.2mm Teak</span></div>
-            <div class="spec-row"><span class="spec-label">Grade</span><span class="spec-value">A</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Tongue &amp; groove</span></div>
-          </div>
-        </div>
-
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2023/05/Parquet_Fabrique_Corde-ListoneGiordano_1-1-1024x683.jpg" alt="South American Teak flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Exotic</p>
-          <h4>South American Teak</h4>
-          <p>Distinctive grain pattern with rich golden tones. Engineered for the tropical climate with full click-lock installation.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">1210 x 150 x 15mm</span></div>
-            <div class="spec-row"><span class="spec-label">Veneer</span><span class="spec-value">2.0mm Teak</span></div>
-            <div class="spec-row"><span class="spec-label">Grade</span><span class="spec-value">A</span></div>
-            <div class="spec-row"><span class="spec-label">Installation</span><span class="spec-value">Snap-lock</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cherry & Bamboo -->
-  <section style="background: var(--white);">
-    <div class="container">
-      <div class="grid-2 fade-up" style="gap: 2rem;">
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2022/11/MLG-22-ATE-desir-Civita-Listone-Giordano-02-1-922x1024.jpg" alt="Cherry wood flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Specialty</p>
-          <h4>Cherry Engineered</h4>
-          <p>Rich reddish-brown tones with a warm, luxurious character. Cherry develops a beautiful patina over time, deepening in color as it ages.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-value">Cherry hardwood</span></div>
-            <div class="spec-row"><span class="spec-label">Core</span><span class="spec-value">Engineered multilayer</span></div>
-            <div class="spec-row"><span class="spec-label">Finish</span><span class="spec-value">UV lacquer / Natural oil</span></div>
-          </div>
-        </div>
-
-        <div class="flooring-card">
-          <img src="https://www.listonegiordano.com/wp-content/uploads/2020/05/palazzo-del-sol_residential_f_1200x1920-640x1024.jpg" alt="Bamboo flooring" style="width:100%; aspect-ratio:3/2; object-fit:cover; margin-bottom:1.25rem;">
-          <p class="subtitle">Sustainable</p>
-          <h4>Premium Bamboo</h4>
-          <p>Strand-woven bamboo delivers hardness exceeding most hardwoods while being one of the most sustainable flooring materials available. Rapid-renewable harvesting cycle.</p>
-          <div class="spec-table">
-            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-value">Strand-woven Bamboo</span></div>
-            <div class="spec-row"><span class="spec-label">Hardness</span><span class="spec-value">Exceeds Oak</span></div>
-            <div class="spec-row"><span class="spec-label">Certification</span><span class="spec-value">FSC available</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Laying Patterns -->
-  <section>
-    <div class="container">
-      <div class="fade-up text-center" style="margin-bottom: 3rem;">
-        <p class="label" style="color: var(--copper);">Design Options</p>
-        <h2>Laying Patterns</h2>
-      </div>
-      <div class="grid-3 fade-up text-center">
-        <div>
-          <div style="height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <svg width="100" height="80" viewBox="0 0 100 80" fill="none" stroke="var(--black)" stroke-width="1">
-              <rect x="5" y="5" width="90" height="15"/><rect x="5" y="25" width="90" height="15"/><rect x="5" y="45" width="90" height="15"/><rect x="5" y="65" width="45" height="10"/><rect x="55" y="65" width="40" height="10"/>
-            </svg>
-          </div>
-          <h4>Regular</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Classic straight-lay pattern. Clean, modern, and space-expanding.</p>
-        </div>
-        <div>
-          <div style="height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <svg width="100" height="80" viewBox="0 0 100 80" fill="none" stroke="var(--black)" stroke-width="1">
-              <path d="M50 5 L95 40 L50 75 L5 40 Z"/><path d="M50 15 L80 40 L50 65 L20 40 Z"/><line x1="50" y1="5" x2="50" y2="75"/>
-            </svg>
-          </div>
-          <h4>Chevron 60&deg;</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Dramatic V-pattern creating dynamic visual movement and luxury feel.</p>
-        </div>
-        <div>
-          <div style="height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <svg width="100" height="80" viewBox="0 0 100 80" fill="none" stroke="var(--black)" stroke-width="1">
-              <rect x="10" y="5" width="35" height="12" transform="rotate(0)"/><rect x="50" y="5" width="12" height="35"/><rect x="10" y="22" width="35" height="12"/><rect x="50" y="45" width="12" height="35"/><rect x="67" y="5" width="12" height="35"/><rect x="67" y="45" width="12" height="35"/>
-            </svg>
-          </div>
-          <h4>Herringbone 90&deg;</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Timeless Italian pattern. Elegant zigzag adds character to any interior.</p>
-        </div>
+        <div class="value-item"><h4>Birch Plywood Core</h4><p>5 or 7 cross-grain layers of North-European birch provide maximum stability and resist warping in tropical humidity.</p></div>
+        <div class="value-item"><h4>Marine-Grade Glue</h4><p>Phenolic adhesive between layers ensures extreme resistance — the same bonding technology used in marine construction.</p></div>
+        <div class="value-item"><h4>Crystalcare Finish</h4><p>Anti-bacterial technology built into every finish. Protects both the wood surface and the living environment.</p></div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="values-section" style="text-align: center; padding: clamp(3rem, 6vw, 5rem) 0;">
+  <section style="padding: clamp(4rem, 8vw, 8rem) 0; text-align: center;">
     <div class="container fade-up">
-      <h3 style="margin-bottom: 1rem;">Request Samples</h3>
-      <p style="opacity: 0.7; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">See and feel the quality. We'll send sample boards to your project site or office.</p>
-      <a href="contact.html" class="btn btn-white">Request Samples</a>
+      <h2 style="margin-bottom: 1rem;">Request Samples</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">See and feel the quality. We'll send sample boards to your project site or office across Southeast Asia.</p>
+      <a href="contact.html" class="btn">Request Samples</a>
     </div>
   </section>
 
