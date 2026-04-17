@@ -3,640 +3,970 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WPC Fence Collection &mdash; Leka Studio</title>
-<meta name="description" content="Leka Studio WPC Fence Collection — engineered wood-composite fencing with 25-year warranty, zero maintenance, premium aesthetics.">
+<title>WPC Fence Collection — Leka Studio</title>
+<meta name="description" content="Leka Studio WPC Fence Collection — engineered wood-composite fencing with 25-year warranty, zero maintenance, and premium aesthetics. Outdoor Living Division.">
+<meta name="keywords" content="WPC fence, wood plastic composite fence, Leka Studio, outdoor living, Thailand, maintenance-free fence, co-extrusion">
+<meta property="og:title" content="WPC Fence Collection — Leka Studio">
+<meta property="og:description" content="Premium wood-composite fence systems engineered for Thailand's climate. 25-year structural warranty, zero maintenance, nine colourways.">
+<meta property="og:image" content="https://salesheet.leka.studio/wpc-fence/images/141.jpg">
+<meta property="og:url" content="https://salesheet.leka.studio/wpc-fence/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#182557">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --navy: #182557;
-    --purple: #8003FF;
-    --cream: #FFF9E6;
-    --magenta: #970260;
-    --amber: #FFA900;
-    --red-orange: #E54822;
-    --white: #FFFFFF;
-    --light-gray: #F5F5F7;
-    --mid-gray: #E0E0E6;
-    --dark-gray: #6B6B72;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ==========================================================================
+   LEKA DESIGN SYSTEM TOKENS — synced from Figma "Leka Design System Claude"
+   ========================================================================== */
+:root {
+  /* Colour — Primary */
+  --lk-purple:       #8003FF;
+  --lk-navy:         #182557;
+  --lk-cream:        #FFF9E6;
 
-  @page { size: A4; margin: 0; }
+  /* Colour — Accent */
+  --lk-magenta:      #970260;
+  --lk-amber:        #FFA900;
+  --lk-red-orange:   #E54822;
 
-  body {
-    font-family: 'Manrope', sans-serif;
-    color: var(--navy);
-    background: var(--white);
-    -webkit-font-smoothing: antialiased;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+  /* Colour — Utility */
+  --lk-white:        #FFFFFF;
+  --lk-black:        #000000;
+  --lk-purple-bg:    #8000FF;
 
-  .page {
-    width: 210mm;
-    height: 297mm;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    background: var(--white);
-    page-break-after: always;
-    display: flex;
-    flex-direction: column;
-  }
-  .page:last-child { page-break-after: auto; }
+  /* Derived surface / text shades */
+  --lk-navy-80:      rgba(24, 37, 87, 0.80);
+  --lk-navy-60:      rgba(24, 37, 87, 0.60);
+  --lk-navy-12:      rgba(24, 37, 87, 0.12);
+  --lk-navy-06:      rgba(24, 37, 87, 0.06);
+  --lk-cream-80:     rgba(255, 249, 230, 0.80);
+  --lk-cream-60:     rgba(255, 249, 230, 0.60);
 
-  /* Accent bars */
-  .top-bar {
-    flex: 0 0 6px;
-    background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 25%, var(--red-orange) 50%, var(--amber) 75%, var(--purple) 100%);
-  }
-  .bottom-bar {
-    flex: 0 0 5px;
-    background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 25%, var(--red-orange) 50%, var(--amber) 75%, var(--purple) 100%);
-  }
+  /* Spacing scale */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
 
-  /* Header */
-  .header {
-    flex: 0 0 auto;
-    background: var(--navy);
-    padding: 18px 32px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .header .logo svg { height: 28px; width: auto; display: block; }
-  .header .brand-text {
-    color: var(--cream);
-    font-size: 9.5px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-align: right;
-    line-height: 1.45;
-  }
+  /* Border radius */
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
 
-  /* Title */
-  .title-section {
-    flex: 0 0 auto;
-    padding: 14px 32px 12px;
-    border-bottom: 2px solid var(--purple);
-    margin: 0 32px;
-  }
-  .title-section.center { text-align: center; }
-  .title-section h1 {
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .title-section .subtitle {
-    font-size: 9.5px;
-    font-weight: 500;
-    color: var(--purple);
-    letter-spacing: 0.5px;
-  }
+  /* Typography — Manrope */
+  --font:          'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fs-display:    72px;
+  --fs-h1:         48px;
+  --fs-h2:         36px;
+  --fs-h3:         28px;
+  --fs-h4:         24px;
+  --fs-h5:         20px;
+  --fs-h6:         18px;
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-body-sm:    14px;
+  --fs-caption:    12px;
+  --lh-default:    1.366; /* line-height ratio from Figma */
 
-  /* Body */
-  .body {
-    flex: 1 1 auto;
-    padding: 14px 32px 12px;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
+  /* Layout */
+  --container:    1200px;
+  --nav-height:   72px;
+}
 
-  /* Page footer */
-  .page-foot {
-    flex: 0 0 auto;
-    padding: 6px 32px 8px;
-    font-size: 8px;
-    font-weight: 600;
-    color: var(--dark-gray);
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .page-foot .page-brand { color: var(--purple); letter-spacing: 1.5px; text-transform: uppercase; }
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ===== Section ===== */
-  .section { margin-bottom: 12px; }
-  .section:last-child { margin-bottom: 0; }
-  .section-title {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: var(--navy);
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--purple);
-    margin-bottom: 9px;
-  }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-  /* ===== PAGE 1 — COVER ===== */
-  .cover-hero {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
-    margin-bottom: 14px;
-    box-shadow: 0 2px 10px rgba(24,37,87,.12);
-  }
-  .cover-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cover-hero .hero-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(24,37,87,.92) 100%);
-    padding: 50px 24px 18px;
-    color: var(--cream);
-  }
-  .cover-hero .hero-tag {
-    display: inline-block;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: var(--amber);
-    border: 1px solid var(--amber);
-    padding: 3px 10px;
-    border-radius: 30px;
-    margin-bottom: 8px;
-  }
-  .cover-hero h2 {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--cream);
-    line-height: 1.15;
-    letter-spacing: 0.3px;
-  }
-  .cover-hero p { font-size: 10px; margin-top: 4px; color: rgba(255,249,230,.85); }
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-default);
+  color: var(--lk-navy);
+  background: var(--lk-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  .intro-text {
-    font-size: 10.5px;
-    line-height: 1.65;
-    color: var(--navy);
-    margin-bottom: 14px;
-  }
-  .intro-text strong { color: var(--purple); font-weight: 700; }
+img { max-width: 100%; height: auto; display: block; }
+a  { color: var(--lk-purple); text-decoration: none; }
+a:hover { color: var(--lk-magenta); }
 
-  /* Badges */
-  .badges-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
-  .badge {
-    padding: 10px 8px;
-    text-align: center;
-    background: var(--cream);
-    border-left: 3px solid var(--purple);
-  }
-  .badge .badge-num { font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1; }
-  .badge .badge-label {
-    font-size: 8px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1px; color: var(--purple); margin-top: 3px;
-  }
-  .badge .badge-desc { font-size: 8.5px; color: var(--dark-gray); margin-top: 2px; line-height: 1.35; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  color: var(--lk-navy);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(40px, 7vw, var(--fs-h1));    font-weight: 800; }
+h2 { font-size: clamp(28px, 4.5vw, var(--fs-h2));  font-weight: 700; }
+h3 { font-size: clamp(22px, 3vw, var(--fs-h3));    font-weight: 700; }
+h4 { font-size: var(--fs-h4);                       font-weight: 600; }
+h5 { font-size: var(--fs-h5);                       font-weight: 600; }
+h6 { font-size: var(--fs-h6);                       font-weight: 600; }
 
-  /* Feature grid */
-  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .feature-item {
-    padding: 8px 10px;
-    background: var(--cream);
-    border-left: 3px solid var(--amber);
-  }
-  .feature-item .fi-title {
-    font-size: 9px; font-weight: 700;
-    color: var(--navy); text-transform: uppercase;
-    letter-spacing: 0.8px; margin-bottom: 2px;
-  }
-  .feature-item .fi-desc { font-size: 9px; color: var(--navy); line-height: 1.45; }
+.display { font-size: clamp(44px, 8vw, var(--fs-display)); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
 
-  /* ===== PAGE 2 — Products ===== */
-  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-  .product-card { border: 1px solid var(--mid-gray); overflow: hidden; }
-  .product-card .pc-img { height: 110px; overflow: hidden; position: relative; }
-  .product-card .pc-img img { width: 100%; height: 100%; object-fit: cover; }
-  .product-card .pc-tag {
-    position: absolute; top: 8px; left: 8px;
-    background: var(--purple); color: var(--cream);
-    font-size: 7.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.8px;
-    padding: 2px 8px; border-radius: 16px;
-  }
-  .product-card .pc-tag.amber { background: var(--amber); color: var(--navy); }
-  .product-card .pc-body { padding: 10px 12px 12px; }
-  .product-card .pc-body h4 { font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
-  .product-card .pc-body .pc-sub {
-    font-size: 8.5px; font-weight: 600; color: var(--purple);
-    text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px;
-  }
-  .product-card .pc-body .pc-desc { font-size: 9.5px; line-height: 1.5; color: var(--navy); }
+.caption {
+  font-size: var(--fs-caption); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--lk-purple);
+}
 
-  /* Tables */
-  .spec-table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
-  .spec-table thead th {
-    background: var(--navy); color: var(--cream);
-    font-size: 8px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.7px;
-    padding: 6px 8px; text-align: left;
-    border: 1px solid var(--navy);
-  }
-  .spec-table tbody td {
-    padding: 5px 8px;
-    border: 1px solid var(--mid-gray);
-    color: var(--navy); vertical-align: top;
-    line-height: 1.35;
-  }
-  .spec-table tbody td:first-child {
-    font-weight: 600; background: var(--light-gray); width: 34%;
-  }
-  .spec-table tbody tr.subheader td {
-    background: var(--navy); color: var(--cream);
-    font-size: 8.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.7px;
-    padding: 5px 8px;
-  }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--lk-purple);
+}
+.eyebrow::before {
+  content: ''; width: 24px; height: 2px; background: var(--lk-purple);
+}
 
-  /* Gallery strip */
-  .gallery-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .gallery-strip .gs-item {
-    height: 82px; overflow: hidden; position: relative;
-    border: 1px solid var(--mid-gray);
-  }
-  .gallery-strip .gs-item img { width: 100%; height: 100%; object-fit: cover; }
-  .gallery-strip .gs-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(24,37,87,.9));
-    color: var(--cream); font-size: 7.5px; font-weight: 600;
-    padding: 8px 6px 4px;
-    text-transform: uppercase; letter-spacing: 0.7px;
-  }
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
 
-  /* ===== PAGE 3 — Components ===== */
-  .component-list {
-    list-style: none; padding: 0;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 3px 16px;
-  }
-  .component-list li {
-    font-size: 9.5px; color: var(--navy);
-    padding: 3px 0; border-bottom: 1px dotted var(--mid-gray);
-    display: flex; align-items: baseline; gap: 6px;
-  }
-  .component-list li .comp-num {
-    display: inline-block; width: 14px;
-    font-size: 8.5px; font-weight: 800; color: var(--purple);
-  }
+section { padding: var(--space-4xl) 0; }
+section + section { padding-top: 0; }
 
-  /* Configurations */
-  .config-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-  .config-card { border: 1px solid var(--mid-gray); overflow: hidden; display: flex; flex-direction: column; }
-  .config-card .cc-img { height: 72px; overflow: hidden; }
-  .config-card .cc-img img { width: 100%; height: 100%; object-fit: cover; }
-  .config-card .cc-body { padding: 8px 10px 10px; }
-  .config-card .cc-body .cc-type {
-    font-size: 7.5px; font-weight: 700; color: var(--purple);
-    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px;
-  }
-  .config-card .cc-body h5 { font-size: 10.5px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
-  .config-card .cc-body ul {
-    list-style: none; padding: 0;
-    font-size: 8.5px; color: var(--navy); line-height: 1.5;
-  }
-  .config-card .cc-body ul li::before {
-    content: "— "; color: var(--amber); font-weight: 700;
-  }
+.section-header {
+  max-width: 720px; margin-bottom: var(--space-2xl);
+}
+.section-header h2 { margin-top: var(--space-md); }
+.section-header p {
+  margin-top: var(--space-md);
+  font-size: var(--fs-body-lg);
+  color: var(--lk-navy-80);
+  line-height: 1.55;
+}
 
-  /* Diagram */
-  .diagram-box {
-    background: var(--light-gray); padding: 8px;
-    text-align: center; border: 1px solid var(--mid-gray);
-  }
-  .diagram-box img { max-width: 100%; max-height: 120px; display: block; margin: 0 auto; }
-  .diagram-box .caption { font-size: 8.5px; color: var(--dark-gray); margin-top: 4px; font-style: italic; }
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--lk-navy-06);
+  height: var(--nav-height);
+  display: flex; align-items: center;
+}
+.nav .container {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo svg { height: 28px; width: auto; display: block; }
+.nav-links {
+  display: flex; gap: var(--space-xl);
+  list-style: none; align-items: center;
+}
+.nav-links a {
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-navy); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--lk-purple); }
 
-  /* Steps */
-  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .step { text-align: center; padding: 8px 6px; background: var(--cream); }
-  .step .step-num {
-    display: inline-block; width: 20px; height: 20px; line-height: 20px;
-    background: var(--purple); color: var(--cream); border-radius: 50%;
-    font-size: 9px; font-weight: 800; margin-bottom: 4px;
-  }
-  .step .step-title { font-size: 9px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-  .step .step-desc { font-size: 8px; color: var(--dark-gray); line-height: 1.35; }
+/* ==========================================================================
+   BUTTONS — Leka DS
+   ========================================================================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  font-family: var(--font);
+  font-size: var(--fs-body-sm); font-weight: 600;
+  border-radius: var(--radius-full);
+  border: none; cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--lk-purple);   color: var(--lk-white); }
+.btn-primary:hover { background: var(--lk-magenta); transform: translateY(-1px); color: var(--lk-white); }
+.btn-outline {
+  background: transparent; color: var(--lk-purple);
+  border: 1.5px solid var(--lk-purple);
+}
+.btn-outline:hover { background: var(--lk-purple); color: var(--lk-white); }
+.btn-navy { background: var(--lk-navy); color: var(--lk-cream); }
+.btn-navy:hover { background: var(--lk-purple); color: var(--lk-white); }
+.btn-lg  { padding: 16px 32px; font-size: var(--fs-body); }
 
-  /* ===== PAGE 4 — Colours / Apps / Warranty / Contact ===== */
-  .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  .swatch { text-align: center; }
-  .swatch .sw-chip {
-    width: 100%; height: 40px; border-radius: 3px;
-    border: 1px solid var(--mid-gray); margin-bottom: 3px;
-    background-image: linear-gradient(180deg, rgba(0,0,0,.04) 2px, transparent 2px);
-    background-size: 100% 10px;
-  }
-  .swatch .sw-name { font-size: 9px; font-weight: 700; color: var(--navy); }
-  .swatch .sw-code { font-size: 7.5px; color: var(--dark-gray); margin-top: 1px; letter-spacing: 0.4px; }
+/* ==========================================================================
+   BADGES / PILLS — Leka DS
+   ========================================================================== */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 14px;
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  border-radius: var(--radius-full);
+}
+.badge-purple       { background: var(--lk-purple);     color: var(--lk-white); }
+.badge-amber        { background: var(--lk-amber);      color: var(--lk-navy); }
+.badge-red-orange   { background: var(--lk-red-orange); color: var(--lk-white); }
+.badge-navy         { background: var(--lk-navy);       color: var(--lk-cream); }
+.badge-cream        {
+  background: var(--lk-cream); color: var(--lk-navy);
+  border: 1px solid var(--lk-navy-12);
+}
 
-  .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .app-card {
-    padding: 10px 10px; text-align: center;
-    background: var(--light-gray); border-top: 3px solid var(--purple);
-  }
-  .app-card .app-title {
-    font-size: 9.5px; font-weight: 800; color: var(--navy);
-    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px;
-  }
-  .app-card .app-desc { font-size: 8.5px; color: var(--dark-gray); line-height: 1.4; }
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex; align-items: center;
+  background: var(--lk-navy);
+  color: var(--lk-cream);
+  overflow: hidden;
+  padding: var(--space-3xl) 0;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/141.jpg');
+  background-size: cover; background-position: center;
+  opacity: 0.32;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(24,37,87,0.35) 0%, rgba(24,37,87,0.85) 85%, var(--lk-navy) 100%);
+}
+/* Accent blade — Leka brand pattern */
+.hero-accent {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 8px; height: 60%;
+  background: linear-gradient(180deg, var(--lk-purple) 0%, var(--lk-magenta) 40%, var(--lk-amber) 80%, var(--lk-red-orange) 100%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 820px;
+}
+.hero .eyebrow { color: var(--lk-amber); }
+.hero .eyebrow::before { background: var(--lk-amber); }
+.hero h1 {
+  color: var(--lk-cream);
+  margin-top: var(--space-md);
+}
+.hero-sub {
+  font-size: var(--fs-body-lg);
+  color: var(--lk-cream-80);
+  margin-top: var(--space-lg);
+  max-width: 620px;
+  line-height: 1.55;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+.hero-meta .badge-cream {
+  background: rgba(255,249,230,0.12); color: var(--lk-cream);
+  border: 1px solid rgba(255,249,230,0.24);
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-2xl); }
 
-  .compare-table { width: 100%; border-collapse: collapse; font-size: 9px; }
-  .compare-table thead th {
-    background: var(--navy); color: var(--cream);
-    font-size: 7.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.6px;
-    padding: 5px 6px; border: 1px solid var(--navy);
-  }
-  .compare-table thead th:first-child { text-align: left; width: 26%; }
-  .compare-table thead th.highlight { background: var(--purple); }
-  .compare-table tbody td {
-    padding: 4px 6px; border: 1px solid var(--mid-gray);
-    color: var(--navy); text-align: center;
-  }
-  .compare-table tbody td:first-child {
-    text-align: left; font-weight: 600;
-    background: var(--light-gray);
-  }
-  .compare-table tbody td.win {
-    background: #f3eaff; font-weight: 700; color: var(--purple);
-  }
+/* ==========================================================================
+   STATS STRIP
+   ========================================================================== */
+.stats {
+  background: var(--lk-cream);
+  padding: var(--space-2xl) 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+.stat { text-align: center; }
+.stat-num {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800; color: var(--lk-navy);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.stat-num sup { font-size: 0.4em; font-weight: 700; vertical-align: super; margin-left: 4px; }
+.stat-label {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-body-sm); font-weight: 700;
+  color: var(--lk-purple);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.stat-desc {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-body-sm); color: var(--lk-navy-60);
+}
 
-  .warranty-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .warranty-card {
-    background: var(--cream); border-top: 3px solid var(--purple);
-    padding: 10px 12px;
-  }
-  .warranty-card.amber-top { border-top-color: var(--amber); }
-  .warranty-card h5 {
-    font-size: 9px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.8px;
-    color: var(--purple); margin-bottom: 3px;
-  }
-  .warranty-card.amber-top h5 { color: var(--red-orange); }
-  .warranty-card .warranty-years {
-    font-size: 22px; font-weight: 800; color: var(--navy);
-    letter-spacing: -0.3px; line-height: 1; margin-bottom: 3px;
-  }
-  .warranty-card .warranty-years span {
-    font-size: 10px; letter-spacing: 0;
-    color: var(--dark-gray); font-weight: 600; margin-left: 4px;
-  }
-  .warranty-card p { font-size: 9px; color: var(--navy); line-height: 1.45; }
+/* ==========================================================================
+   INTRO / MANIFESTO
+   ========================================================================== */
+.manifesto {
+  padding: var(--space-4xl) 0;
+}
+.manifesto-text {
+  max-width: 900px; margin: 0 auto;
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 1.45;
+  color: var(--lk-navy);
+  font-weight: 500;
+}
+.manifesto-text strong { color: var(--lk-purple); font-weight: 700; }
 
-  .contact-panel {
-    background: var(--navy);
-    color: var(--cream);
-    padding: 18px 24px;
-    margin: 0;
-  }
-  .contact-panel h3 {
-    font-size: 16px; font-weight: 800;
-    letter-spacing: 0.8px; text-transform: uppercase;
-    color: var(--cream); margin-bottom: 3px;
-  }
-  .contact-panel .cp-sub {
-    font-size: 10px; color: var(--amber);
-    margin-bottom: 12px; letter-spacing: 0.4px;
-  }
-  .contact-panel .cp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px 16px; }
-  .contact-panel .cp-item .cp-label {
-    font-size: 7.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1px;
-    color: var(--amber); margin-bottom: 2px;
-  }
-  .contact-panel .cp-item .cp-value {
-    font-size: 10px; color: var(--cream);
-    font-weight: 500; line-height: 1.4;
-  }
+/* ==========================================================================
+   PRODUCT CARDS (Range)
+   ========================================================================== */
+.range-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);
+}
+.range-card {
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.range-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(24,37,87,0.25);
+}
+.range-card-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden; position: relative;
+  background: var(--lk-cream);
+}
+.range-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.range-card-img .badge {
+  position: absolute; top: var(--space-md); left: var(--space-md);
+}
+.range-card-body {
+  padding: var(--space-xl);
+  display: flex; flex-direction: column;
+  flex: 1 1 auto; gap: var(--space-md);
+}
+.range-card-body h3 { margin-top: var(--space-sm); }
+.range-card-body .caption { margin-bottom: -4px; }
+.range-card-body p { color: var(--lk-navy-80); font-size: var(--fs-body); line-height: 1.55; }
 
-  .service-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .service-item {
-    text-align: center; padding: 8px 6px;
-    background: var(--cream); border-bottom: 3px solid var(--magenta);
-  }
-  .service-item .si-title {
-    font-size: 8.5px; font-weight: 800; color: var(--navy);
-    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px;
-  }
-  .service-item .si-desc { font-size: 8px; color: var(--dark-gray); line-height: 1.35; }
+.range-card-specs {
+  list-style: none;
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--lk-navy-12);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm) var(--space-lg);
+}
+.range-card-specs li { font-size: var(--fs-body-sm); color: var(--lk-navy); }
+.range-card-specs li span { display: block; color: var(--lk-navy-60); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 2px; }
 
-  .note-box {
-    font-size: 8px; line-height: 1.5;
-    color: var(--dark-gray); padding: 8px 12px;
-    border: 1px solid var(--mid-gray); background: var(--light-gray);
-  }
-  .note-box .note-title {
-    font-size: 7.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.9px;
-    color: var(--navy); margin-bottom: 3px;
-  }
+/* ==========================================================================
+   SPEC TABLE
+   ========================================================================== */
+.spec-block {
+  background: var(--lk-cream);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+}
+.spec-table {
+  width: 100%; border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.spec-table th, .spec-table td {
+  padding: var(--space-md) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--lk-navy-12);
+}
+.spec-table thead th {
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--lk-purple);
+  border-bottom: 2px solid var(--lk-purple);
+  padding-bottom: var(--space-sm);
+}
+.spec-table tbody td:first-child {
+  font-weight: 600; color: var(--lk-navy-80);
+  width: 34%;
+}
+.spec-table tbody tr:last-child td { border-bottom: none; }
 
-  /* Screen preview */
-  @media screen {
-    body { background: #e8e8ef; padding: 20px 0; }
-    .page {
-      box-shadow: 0 6px 28px rgba(24,37,87,0.18);
-      margin-bottom: 20px;
-    }
+/* ==========================================================================
+   COMPONENTS / COMPOSITION GRID
+   ========================================================================== */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);
+}
+.feature-card {
+  padding: var(--space-xl);
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-lg);
+  display: flex; gap: var(--space-lg);
+}
+.feature-card .fc-icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--lk-purple);
+  color: var(--lk-cream);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px;
+}
+.feature-card.amber .fc-icon { background: var(--lk-amber); color: var(--lk-navy); }
+.feature-card.magenta .fc-icon { background: var(--lk-magenta); }
+.feature-card.red-orange .fc-icon { background: var(--lk-red-orange); }
+.feature-card h5 { margin-bottom: var(--space-sm); }
+.feature-card p  { color: var(--lk-navy-80); font-size: var(--fs-body-sm); line-height: 1.55; }
+
+/* ==========================================================================
+   POST & GATE SYSTEMS (split layout)
+   ========================================================================== */
+.system-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl);
+  align-items: start;
+}
+.system-split h3 { margin-bottom: var(--space-md); }
+.system-split .caption { margin-bottom: var(--space-sm); }
+.system-list {
+  list-style: none;
+  margin-top: var(--space-lg);
+}
+.system-list li {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--lk-navy-12);
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: var(--space-md);
+  font-size: var(--fs-body-sm);
+}
+.system-list li:last-child { border-bottom: none; }
+.system-list li span:first-child {
+  font-weight: 700; color: var(--lk-navy);
+  text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em;
+  padding-top: 2px;
+}
+
+/* ==========================================================================
+   CONFIGURATIONS GRID (3 cards)
+   ========================================================================== */
+.config-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+}
+.config-card {
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.config-card:hover { transform: translateY(-4px); border-color: var(--lk-purple); }
+.config-card-img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--lk-cream); }
+.config-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.config-card-body { padding: var(--space-xl); }
+.config-card-body h4 { margin: var(--space-sm) 0 var(--space-md); }
+.config-card-body ul { list-style: none; }
+.config-card-body ul li {
+  padding: var(--space-sm) 0;
+  font-size: var(--fs-body-sm);
+  color: var(--lk-navy-80);
+  display: flex; align-items: center; gap: var(--space-sm);
+}
+.config-card-body ul li::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--lk-purple); border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   INSTALLATION / STEPS
+   ========================================================================== */
+.install-wrap {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+.install-diagram {
+  background: var(--lk-cream);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+.install-diagram img { max-height: 320px; margin: 0 auto; }
+
+.steps { display: grid; gap: var(--space-md); }
+.step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
+  align-items: start;
+  padding: var(--space-lg);
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-md);
+}
+.step-num {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--lk-purple); color: var(--lk-white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px;
+}
+.step h5 { margin-bottom: var(--space-xs); }
+.step p { font-size: var(--fs-body-sm); color: var(--lk-navy-80); line-height: 1.5; }
+
+/* ==========================================================================
+   COLOUR PALETTE
+   ========================================================================== */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+.swatch {
+  border-radius: var(--radius-md); overflow: hidden;
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  transition: transform 0.2s ease;
+}
+.swatch:hover { transform: translateY(-3px); }
+.swatch-chip { height: 140px; }
+.swatch-body { padding: var(--space-md); }
+.swatch-body h6 { font-size: var(--fs-body-sm); font-weight: 700; }
+.swatch-body .code {
+  font-size: 11px;
+  color: var(--lk-navy-60);
+  font-family: 'SF Mono', Menlo, monospace;
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   APPLICATIONS (3 columns)
+   ========================================================================== */
+.apps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+}
+.app-card {
+  padding: var(--space-2xl) var(--space-xl);
+  background: var(--lk-cream);
+  border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+}
+.app-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--lk-purple);
+}
+.app-card.amber::before       { background: var(--lk-amber); }
+.app-card.red-orange::before  { background: var(--lk-red-orange); }
+.app-card h5 { margin-bottom: var(--space-sm); }
+.app-card p { font-size: var(--fs-body-sm); color: var(--lk-navy-80); line-height: 1.55; }
+
+/* ==========================================================================
+   COMPARISON TABLE
+   ========================================================================== */
+.compare-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-xl);
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+}
+.compare-table {
+  width: 100%; min-width: 720px;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.compare-table thead th {
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  font-weight: 700; font-size: var(--fs-caption);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--lk-navy-80);
+  background: var(--lk-cream);
+  border-bottom: 1px solid var(--lk-navy-12);
+}
+.compare-table thead th.highlight {
+  background: var(--lk-navy); color: var(--lk-cream);
+  font-size: var(--fs-body-sm);
+  position: relative;
+}
+.compare-table thead th.highlight::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 10%; right: 10%;
+  height: 4px; background: var(--lk-amber);
+  border-radius: var(--radius-full);
+}
+.compare-table thead th:first-child { text-align: left; }
+.compare-table tbody td {
+  padding: var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--lk-navy-06);
+  color: var(--lk-navy-80);
+}
+.compare-table tbody td:first-child {
+  text-align: left; font-weight: 600; color: var(--lk-navy);
+}
+.compare-table tbody td.win {
+  color: var(--lk-purple); font-weight: 700;
+  background: rgba(128,3,255,0.04);
+}
+.compare-table tbody tr:last-child td { border-bottom: none; }
+
+/* ==========================================================================
+   WARRANTY CARDS
+   ========================================================================== */
+.warranty-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);
+}
+.warranty-card {
+  padding: var(--space-2xl);
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-xl);
+  position: relative; overflow: hidden;
+}
+.warranty-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 6px;
+  background: var(--lk-purple);
+}
+.warranty-card.amber::before { background: var(--lk-amber); }
+.warranty-years {
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 800; line-height: 1;
+  color: var(--lk-navy);
+  letter-spacing: -0.03em;
+}
+.warranty-years sup { font-size: 0.3em; font-weight: 600; vertical-align: super; margin-left: var(--space-sm); color: var(--lk-navy-60); letter-spacing: 0; }
+.warranty-card h5 { margin: var(--space-md) 0; }
+.warranty-card p  { color: var(--lk-navy-80); font-size: var(--fs-body-sm); line-height: 1.6; }
+
+/* ==========================================================================
+   GALLERY STRIP
+   ========================================================================== */
+.gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md);
+}
+.gallery-item {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden; position: relative;
+  background: var(--lk-cream);
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item .caption-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: var(--space-md);
+  background: linear-gradient(180deg, transparent 0%, rgba(24,37,87,0.9) 100%);
+  color: var(--lk-cream);
+  font-size: var(--fs-body-sm); font-weight: 600;
+}
+
+/* ==========================================================================
+   CTA BANNER
+   ========================================================================== */
+.cta-banner {
+  background: var(--lk-navy);
+  color: var(--lk-cream);
+  padding: var(--space-4xl) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(128,3,255,0.25) 0%, transparent 60%);
+}
+.cta-banner .container { position: relative; z-index: 1; }
+.cta-banner h2 { color: var(--lk-cream); }
+.cta-banner p {
+  font-size: var(--fs-body-lg);
+  color: var(--lk-cream-80);
+  max-width: 560px;
+  margin: var(--space-md) auto var(--space-2xl);
+  line-height: 1.55;
+}
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  background: var(--lk-navy);
+  color: var(--lk-cream-80);
+  padding: var(--space-3xl) 0 var(--space-xl);
+  border-top: 1px solid rgba(255,249,230,0.1);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+.footer-col h6 {
+  color: var(--lk-cream);
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-caption);
+  text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.footer-col a {
+  display: block;
+  color: var(--lk-cream-60);
+  font-size: var(--fs-body-sm);
+  padding: var(--space-xs) 0;
+}
+.footer-col a:hover { color: var(--lk-cream); }
+.footer-col p { font-size: var(--fs-body-sm); color: var(--lk-cream-60); line-height: 1.6; }
+.footer-brand svg { height: 32px; margin-bottom: var(--space-md); }
+.footer-tagline {
+  font-family: var(--font);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--lk-amber);
+  font-size: var(--fs-body-sm);
+  margin-top: var(--space-sm);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,249,230,0.08);
+  padding-top: var(--space-lg);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md);
+  font-size: var(--fs-caption);
+  color: var(--lk-cream-60);
+}
+
+/* ==========================================================================
+   LEKA BRAND DECORATIVE ELEMENT — Diagonal Blades
+   ========================================================================== */
+.deco-blades {
+  position: absolute;
+  width: 200px; height: 200px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 960px) {
+  :root { --nav-height: 64px; }
+  .nav-links { gap: var(--space-md); }
+  .nav-links a:not(.btn) { display: none; }
+  section { padding: var(--space-3xl) 0; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .range-grid, .two-col, .warranty-grid, .system-split, .install-wrap {
+    grid-template-columns: 1fr;
   }
-  @media print {
-    body { background: white; padding: 0; }
-    .page { box-shadow: none; margin: 0; }
-  }
+  .config-grid, .apps, .palette, .gallery { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .install-diagram { order: -1; }
+  .system-list li { grid-template-columns: 120px 1fr; }
+}
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .palette, .apps, .gallery, .config-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-cta .btn { width: 100%; }
+  .system-list li { grid-template-columns: 1fr; gap: var(--space-xs); }
+}
 </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- PAGE 1 — COVER                                                -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="top-bar"></div>
+<!-- SVG symbols for logo reuse -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="leka-logo" viewBox="0 0 598.32 101.73">
+      <path fill="#8003ff" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+      <path fill="#8003ff" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+      <path fill="#970260" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+      <path fill="#970260" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+      <path fill="#e54822" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+      <path fill="#e54822" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+      <path fill="#ffa900" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+      <path fill="#ffa900" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+      <path fill="currentColor" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+      <path fill="currentColor" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+      <path fill="currentColor" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+      <path fill="currentColor" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+      <path fill="currentColor" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+      <path fill="currentColor" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+      <path fill="currentColor" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+      <path fill="currentColor" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+      <path fill="currentColor" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+      <rect fill="currentColor" x="519.59" y="36.34" width="10.27" height="48.62"/>
+      <path fill="currentColor" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+      <path fill="currentColor" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+    </symbol>
+  </defs>
+</svg>
 
-  <div class="header">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="28">
-        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
-        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
-        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
-        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
-        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
-        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
-        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
-        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
-        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
-        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
-        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
-        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
-        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
-        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
-        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
-        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
-        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
-        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
-        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
-        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
-        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
-      </svg>
+<!-- ==========================================================
+     NAV
+     ========================================================== -->
+<nav class="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="Leka Studio" style="color: var(--lk-navy);">
+      <svg role="img"><use href="#leka-logo"></use></svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#range">Range</a></li>
+      <li><a href="#specs">Specifications</a></li>
+      <li><a href="#configurations">Configurations</a></li>
+      <li><a href="#palette">Colours</a></li>
+      <li><a href="#contact" class="btn btn-primary">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ==========================================================
+     HERO
+     ========================================================== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-accent" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <span class="eyebrow">Outdoor Living Division</span>
+    <h1 class="display">WPC&nbsp;Fence<br>Collection</h1>
+    <p class="hero-sub">Natural wood, reinvented for a maintenance-free life.<br>Premium wood-composite fence systems engineered for Thailand's climate.</p>
+    <div class="hero-meta">
+      <span class="badge badge-cream">25-Year Warranty</span>
+      <span class="badge badge-cream">Zero Maintenance</span>
+      <span class="badge badge-cream">B1 Fire Rated</span>
+      <span class="badge badge-cream">60% Recycled</span>
     </div>
-    <div class="brand-text">Outdoor Living Division<br>www.leka.studio</div>
+    <div class="hero-cta">
+      <a href="#range" class="btn btn-primary btn-lg">Explore the Collection</a>
+      <a href="#contact" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Request a Quote</a>
+    </div>
   </div>
+</header>
 
-  <div class="title-section center">
-    <h1>WPC Fence Collection</h1>
-    <div class="subtitle">Product Sales Sheet &mdash; 2026 Edition</div>
-  </div>
-
-  <div class="body">
-    <div class="cover-hero">
-      <img src="images/141.jpg" alt="WPC fence installation">
-      <div class="hero-overlay">
-        <span class="hero-tag">Engineered Outdoor Fencing</span>
-        <h2>Natural wood, reinvented for a maintenance-free life.</h2>
-        <p>Premium wood-composite fence systems engineered for Thailand's climate.</p>
+<!-- ==========================================================
+     STATS STRIP
+     ========================================================== -->
+<section class="stats" style="padding: var(--space-2xl) 0;">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">25<sup>+</sup></div>
+        <div class="stat-label">Year Lifespan</div>
+        <div class="stat-desc">Structural warranty on Premium series</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Colourways</div>
+        <div class="stat-desc">Standard palette, custom RAL on request</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3.0m</div>
+        <div class="stat-label">Max Height</div>
+        <div class="stat-desc">With 80 × 80 mm aluminium post</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">60<sup>%</sup></div>
+        <div class="stat-label">Recycled Content</div>
+        <div class="stat-desc">Wood fibre and post-consumer polymer</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="intro-text">
-      The Leka Studio <strong>WPC Fence Collection</strong> is a complete, factory-engineered fencing system crafted from
-      high-density wood-plastic composite. Each board combines <strong>60% recycled wood fibre</strong> with
-      <strong>40% polymer binder</strong>, producing the warmth and texture of natural timber without the rot, termites,
-      or annual upkeep. The Collection is delivered as a full kit &mdash; boards, aluminium posts, hardware, and gates &mdash;
-      specified for residential, hospitality, and commercial projects.
+<!-- ==========================================================
+     MANIFESTO
+     ========================================================== -->
+<section class="manifesto">
+  <div class="container">
+    <p class="manifesto-text">
+      The Leka Studio WPC Fence Collection is a complete, factory-engineered fencing system
+      crafted from high-density wood-plastic composite. Each board combines
+      <strong>60% recycled wood fibre</strong> with
+      <strong>40% polymer binder</strong>, producing the warmth and texture of natural timber without the rot,
+      termites, or annual upkeep.
     </p>
+  </div>
+</section>
 
-    <div class="badges-row">
-      <div class="badge">
-        <div class="badge-num">25<span style="font-size:12px">+</span></div>
-        <div class="badge-label">Year Lifespan</div>
-        <div class="badge-desc">Structural warranty on Premium series</div>
-      </div>
-      <div class="badge">
-        <div class="badge-num">0</div>
-        <div class="badge-label">Maintenance</div>
-        <div class="badge-desc">No staining, sealing, or repainting</div>
-      </div>
-      <div class="badge">
-        <div class="badge-num">B1</div>
-        <div class="badge-label">Fire Rating</div>
-        <div class="badge-desc">Self-extinguishing classification</div>
-      </div>
-      <div class="badge">
-        <div class="badge-num">60%</div>
-        <div class="badge-label">Recycled</div>
-        <div class="badge-desc">Wood fibre + post-consumer polymer</div>
-      </div>
+<!-- ==========================================================
+     PRODUCT RANGE
+     ========================================================== -->
+<section id="range">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The Collection</span>
+      <h2>Two series, one standard of craft</h2>
+      <p>Premium co-extrusion for signature commercial and hospitality projects, and Classic WPC for residential and mid-scale commercial work — both with the same termite-proof, rot-proof composite core.</p>
     </div>
 
-    <div class="section">
-      <div class="section-title">Why Wood-Plastic Composite</div>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="fi-title">Termite &amp; Rot Proof</div>
-          <div class="fi-desc">Closed-cell composite structure is impermeable to insects and fungal decay &mdash; the two principal causes of timber fence failure.</div>
+    <div class="range-grid">
+      <article class="range-card">
+        <div class="range-card-img">
+          <span class="badge badge-purple">Premium Series</span>
+          <img src="images/141.jpg" alt="Premium co-extrusion fence" loading="lazy">
         </div>
-        <div class="feature-item">
-          <div class="fi-title">Dimensionally Stable</div>
-          <div class="fi-desc">Low thermal movement with zero warp, cup, or split. Boards remain flat and aligned across seasons.</div>
+        <div class="range-card-body">
+          <span class="caption">Shield-wrapped Composite</span>
+          <h3>Premium Co-Extrusion Board</h3>
+          <p>A shield-wrapped board with a dense, fused surface layer bonded to the WPC core during extrusion. Superior UV stability, scratch resistance, and a deep embossed woodgrain. Recommended for hotels, resorts, high-end residential, and signature commercial perimeters.</p>
+          <ul class="range-card-specs">
+            <li><span>Thickness</span>20 mm</li>
+            <li><span>Effective Width</span>148 mm</li>
+            <li><span>UV Warranty</span>10 years</li>
+            <li><span>Structural Warranty</span>25 years</li>
+          </ul>
         </div>
-        <div class="feature-item">
-          <div class="fi-title">UV &amp; Colour Stable</div>
-          <div class="fi-desc">Co-extruded shield layer on Premium series delivers a decade of colour retention under direct sun exposure.</div>
+      </article>
+
+      <article class="range-card">
+        <div class="range-card-img">
+          <span class="badge badge-amber">Classic Series</span>
+          <img src="images/145.jpg" alt="Classic WPC fence" loading="lazy">
         </div>
-        <div class="feature-item">
-          <div class="fi-title">Recyclable &amp; Low-Carbon</div>
-          <div class="fi-desc">Diverts wood waste and plastic from landfill. Fully recyclable at end of service life.</div>
+        <div class="range-card-body">
+          <span class="caption">Solid Wood-Composite</span>
+          <h3>Classic WPC Board</h3>
+          <p>A traditional wood-composite board with natural grain or 3D embossed finish. Shares the termite- and rot-proof benefits of Premium in a streamlined specification. Recommended for residential boundaries, garden privacy, and mid-scale commercial projects.</p>
+          <ul class="range-card-specs">
+            <li><span>Thickness</span>20 – 26 mm</li>
+            <li><span>Effective Width</span>148 mm</li>
+            <li><span>UV Warranty</span>5 years</li>
+            <li><span>Structural Warranty</span>15 years</li>
+          </ul>
         </div>
-      </div>
+      </article>
     </div>
   </div>
+</section>
 
-  <div class="page-foot">
-    <span class="page-brand">Leka Studio &mdash; WPC Fence Collection</span>
-    <span>01 / 04</span>
-  </div>
-  <div class="bottom-bar"></div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE 2 — PRODUCT RANGE                                        -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="top-bar"></div>
-
-  <div class="header">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="28">
-        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
-        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
-        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
-        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
-        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
-        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
-        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
-        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
-        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
-        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
-        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
-        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
-        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
-        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
-        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
-        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
-        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
-        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
-        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
-        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
-        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
-      </svg>
-    </div>
-    <div class="brand-text">Outdoor Living Division<br>www.leka.studio</div>
-  </div>
-
-  <div class="title-section">
-    <h1>Product Range</h1>
-    <div class="subtitle">Two Series, One Standard of Craft</div>
-  </div>
-
-  <div class="body">
-    <div class="section">
-      <div class="section-title">The Collection</div>
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="pc-img">
-            <span class="pc-tag">Premium Series</span>
-            <img src="images/141.jpg" alt="Premium co-extrusion fence">
-          </div>
-          <div class="pc-body">
-            <h4>Premium Co-Extrusion Board</h4>
-            <div class="pc-sub">Shield-wrapped Composite</div>
-            <p class="pc-desc">A shield-wrapped board with a dense, fused surface layer bonded to the WPC core during extrusion. Superior UV stability, scratch resistance, and a deep embossed woodgrain. Recommended for hospitality, high-end residential, and signature commercial perimeters.</p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="pc-img">
-            <span class="pc-tag amber">Classic Series</span>
-            <img src="images/145.jpg" alt="Classic WPC fence">
-          </div>
-          <div class="pc-body">
-            <h4>Classic WPC Board</h4>
-            <div class="pc-sub">Solid Wood-Composite</div>
-            <p class="pc-desc">A traditional wood-composite board with natural grain or 3D embossed finish. Shares the termite- and rot-proof benefits of Premium in a streamlined specification. Recommended for residential boundaries, garden privacy, and mid-scale commercial.</p>
-          </div>
-        </div>
-      </div>
+<!-- ==========================================================
+     SPECIFICATIONS TABLE
+     ========================================================== -->
+<section id="specs">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Technical Data</span>
+      <h2>Board specifications</h2>
+      <p>Side-by-side technical reference. All boards meet B1 self-extinguishing fire classification.</p>
     </div>
 
-    <div class="section">
-      <div class="section-title">Board Specifications</div>
+    <div class="spec-block">
       <table class="spec-table">
         <thead>
           <tr>
@@ -651,277 +981,275 @@
           <tr><td>Board thickness</td><td>20 mm</td><td>20 – 26 mm</td></tr>
           <tr><td>Standard lengths</td><td>1.5 / 1.8 / 2.0 / 2.025 / 2.9 m</td><td>1.5 / 1.8 / 2.0 / 2.9 m</td></tr>
           <tr><td>Unit weight</td><td>~2.2 kg / m</td><td>~1.6 – 2.9 kg / m</td></tr>
-          <tr><td>Surface finish</td><td>Co-extruded polymer shield</td><td>2D woodgrain / 3D embossed</td></tr>
-          <tr><td>UV performance</td><td>Excellent &mdash; 10+ years</td><td>Good &mdash; 5 to 8 years</td></tr>
-          <tr><td>Fire classification</td><td>B1 self-extinguishing</td><td>B1 self-extinguishing</td></tr>
+          <tr><td>Surface finish</td><td>Co-extruded polymer shield; brushed, embossed, or knife-cut</td><td>2D woodgrain or 3D embossed</td></tr>
+          <tr><td>UV performance</td><td>Excellent — 10+ years colour retention</td><td>Good — 5 to 8 years</td></tr>
+          <tr><td>Scratch resistance</td><td>Excellent</td><td>Moderate</td></tr>
+          <tr><td>Fire classification</td><td>B1 — self-extinguishing</td><td>B1 — self-extinguishing</td></tr>
           <tr><td>Structural warranty</td><td>25 years</td><td>15 years</td></tr>
           <tr><td>Surface / fade warranty</td><td>10 years</td><td>5 years</td></tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-title">Material Composition</div>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="fi-title">Core &mdash; Wood-Plastic Composite</div>
-          <div class="fi-desc">~60% recycled hardwood fibre bonded with ~40% food-grade HDPE polymer and UV stabilisers. Hollow-section extrusion.</div>
+<!-- ==========================================================
+     MATERIAL COMPOSITION
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Material Science</span>
+      <h2>Built for longevity</h2>
+    </div>
+    <div class="two-col">
+      <div class="feature-card">
+        <div class="fc-icon">C</div>
+        <div>
+          <h5>Core — Wood-Plastic Composite</h5>
+          <p>Approximately 60% recycled hardwood fibre bonded with 40% food-grade HDPE polymer and UV-stabilising additives. Hollow-section extrusion gives an efficient strength-to-weight ratio and clean cut edges.</p>
         </div>
-        <div class="feature-item">
-          <div class="fi-title">Shield &mdash; ASA Surface (Premium)</div>
-          <div class="fi-desc">A high-density ASA skin co-extruded onto all exposed faces. Seals the core, locks in pigment, resists abrasion.</div>
+      </div>
+      <div class="feature-card amber">
+        <div class="fc-icon">S</div>
+        <div>
+          <h5>Shield — ASA Surface (Premium)</h5>
+          <p>A thin, high-density ASA (acrylic-styrene-acrylonitrile) skin co-extruded onto all exposed faces. Seals the core, locks in pigment, and resists abrasion, staining, and long-term weathering.</p>
+        </div>
+      </div>
+      <div class="feature-card magenta">
+        <div class="fc-icon">F</div>
+        <div>
+          <h5>Fire Performance</h5>
+          <p>Both series carry a B1 self-extinguishing classification — suitable for boundary fencing in most residential and commercial contexts. Documentation available on request.</p>
+        </div>
+      </div>
+      <div class="feature-card red-orange">
+        <div class="fc-icon">E</div>
+        <div>
+          <h5>Environmental</h5>
+          <p>Every linear metre diverts approximately 3 kg of wood waste and 2 kg of plastic from landfill. Fully recyclable at end of service life — no pressure treatment, no toxic leachate.</p>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-title">At a Glance</div>
-      <div class="gallery-strip">
-        <div class="gs-item"><img src="images/140.jpg" alt=""><div class="gs-caption">Residential boundary</div></div>
-        <div class="gs-item"><img src="images/365.jpg" alt=""><div class="gs-caption">Hospitality screening</div></div>
-        <div class="gs-item"><img src="images/147.jpg" alt=""><div class="gs-caption">Commercial perimeter</div></div>
+<!-- ==========================================================
+     POST & GATE SYSTEMS
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Hardware</span>
+      <h2>Post and gate systems</h2>
+      <p>Engineered aluminium substructure sized for full 3.0 m tall fencing. All finishes powder-coated to match standard palette or custom RAL.</p>
+    </div>
+    <div class="system-split">
+      <div>
+        <span class="caption">Aluminium Post System</span>
+        <h3>80 × 80 mm extruded post</h3>
+        <ul class="system-list">
+          <li><span>Material</span>Extruded aluminium alloy, hollow section</li>
+          <li><span>Section</span>80 × 80 mm</li>
+          <li><span>Heights</span>2.0 m · 2.5 m · 3.0 m</li>
+          <li><span>Finish</span>Powder-coated matte black (custom RAL available)</li>
+          <li><span>Post spacing</span>1.5 – 2.9 m (recommended 2.0 m)</li>
+          <li><span>Mounting</span>Cast-in, surface-plate, or pedestal with anchor bolts</li>
+        </ul>
+      </div>
+      <div>
+        <span class="caption">Gate System</span>
+        <h3>Single and double leaf</h3>
+        <ul class="system-list">
+          <li><span>Single gate</span>1.2 m wide × 2.0 m high, aluminium frame</li>
+          <li><span>Double gate</span>2.4 m wide × 2.0 m high (two leaves)</li>
+          <li><span>Hardware</span>Self-closing hinges, lock-ready strike plate</li>
+          <li><span>Finish</span>WPC panels match fence; frame matches post</li>
+          <li><span>Operation</span>Manual or optional electric actuator</li>
+          <li><span>Lead time</span>4 – 6 weeks from colour confirmation</li>
+        </ul>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="page-foot">
-    <span class="page-brand">Leka Studio &mdash; WPC Fence Collection</span>
-    <span>02 / 04</span>
-  </div>
-  <div class="bottom-bar"></div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE 3 — COMPONENTS & CONFIGURATIONS                          -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="top-bar"></div>
-
-  <div class="header">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="28">
-        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
-        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
-        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
-        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
-        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
-        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
-        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
-        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
-        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
-        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
-        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
-        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
-        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
-        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
-        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
-        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
-        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
-        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
-        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
-        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
-        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
-      </svg>
+<!-- ==========================================================
+     CONFIGURATIONS
+     ========================================================== -->
+<section id="configurations" style="background: var(--lk-cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Standard Configurations</span>
+      <h2>Three ways to scale</h2>
+      <p>Factory-ready configurations by height and bay width. Custom panels are cut to exact site dimensions.</p>
     </div>
-    <div class="brand-text">Outdoor Living Division<br>www.leka.studio</div>
+    <div class="config-grid">
+      <article class="config-card">
+        <div class="config-card-img"><img src="images/140.jpg" alt="Standard privacy fence" loading="lazy"></div>
+        <div class="config-card-body">
+          <span class="caption">Type 1</span>
+          <h4>Standard Privacy — 2.0 m</h4>
+          <ul>
+            <li>2.0 m overall height</li>
+            <li>13 boards per bay</li>
+            <li>Residential, garden, pool</li>
+          </ul>
+        </div>
+      </article>
+      <article class="config-card">
+        <div class="config-card-img"><img src="images/145.jpg" alt="Tall privacy fence" loading="lazy"></div>
+        <div class="config-card-body">
+          <span class="caption">Type 2</span>
+          <h4>Tall Privacy — 3.0 m</h4>
+          <ul>
+            <li>3.0 m overall height</li>
+            <li>20 boards per bay</li>
+            <li>Commercial, resort, security</li>
+          </ul>
+        </div>
+      </article>
+      <article class="config-card">
+        <div class="config-card-img"><img src="images/147.jpg" alt="Bespoke panels" loading="lazy"></div>
+        <div class="config-card-body">
+          <span class="caption">Type 3</span>
+          <h4>Bespoke Panels</h4>
+          <ul>
+            <li>Any bay width 1.2 – 2.9 m</li>
+            <li>Height 2.0 or 3.0 m</li>
+            <li>Custom site geometry</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </div>
+</section>
 
-  <div class="title-section">
-    <h1>System Components</h1>
-    <div class="subtitle">Kit of Parts &mdash; Configurations &mdash; Installation</div>
-  </div>
-
-  <div class="body">
-    <div class="section">
-      <div class="section-title">Post &amp; Gate Systems</div>
-      <table class="spec-table">
-        <tbody>
-          <tr class="subheader"><td colspan="2">Aluminium Post System</td></tr>
-          <tr><td>Material</td><td>Extruded aluminium alloy, hollow section</td></tr>
-          <tr><td>Section size</td><td>80 &times; 80 mm</td></tr>
-          <tr><td>Standard heights</td><td>2.0 m &middot; 2.5 m &middot; 3.0 m</td></tr>
-          <tr><td>Finish</td><td>Powder-coated matte black (custom RAL available)</td></tr>
-          <tr><td>Post spacing</td><td>1.5 m – 2.9 m (recommended: 2.0 m)</td></tr>
-          <tr class="subheader"><td colspan="2">Gate System</td></tr>
-          <tr><td>Single gate</td><td>1.2 m wide &times; 2.0 m high, aluminium frame</td></tr>
-          <tr><td>Double gate</td><td>2.4 m wide &times; 2.0 m high (two-leaf)</td></tr>
-          <tr><td>Hardware</td><td>Self-closing hinges; lock-ready strike plate</td></tr>
-        </tbody>
-      </table>
+<!-- ==========================================================
+     INSTALLATION / ASSEMBLY
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Installation</span>
+      <h2>Factory-clipped, site-assembled</h2>
+      <p>A clip-and-channel system lets trained installers complete a 20 m residential fence run in a single day. Certified installation teams are available nationwide through our project desk.</p>
     </div>
 
-    <div class="section">
-      <div class="section-title">Complete Kit &mdash; Per Bay</div>
-      <ul class="component-list">
-        <li><span class="comp-num">01</span> WPC fence boards (13 pcs at 2.0 m; 20 pcs at 3.0 m)</li>
-        <li><span class="comp-num">02</span> Aluminium post 80 &times; 80 mm</li>
-        <li><span class="comp-num">03</span> Decorative post cap</li>
-        <li><span class="comp-num">04</span> Upper aluminium clamp strip</li>
-        <li><span class="comp-num">05</span> Lower aluminium cover strip</li>
-        <li><span class="comp-num">06</span> L-shaped connectors (4 per joint)</li>
-        <li><span class="comp-num">07</span> Stainless steel fixing screws</li>
-        <li><span class="comp-num">08</span> Ground pedestal with anchor bolts (optional)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Standard Configurations</div>
-      <div class="config-grid">
-        <div class="config-card">
-          <div class="cc-img"><img src="images/140.jpg" alt="Type 1"></div>
-          <div class="cc-body">
-            <div class="cc-type">Type 1</div>
-            <h5>Standard Privacy &mdash; 2.0 m</h5>
-            <ul>
-              <li>2.0 m overall height</li>
-              <li>13 boards per bay</li>
-              <li>Residential &amp; garden</li>
-            </ul>
-          </div>
-        </div>
-        <div class="config-card">
-          <div class="cc-img"><img src="images/145.jpg" alt="Type 2"></div>
-          <div class="cc-body">
-            <div class="cc-type">Type 2</div>
-            <h5>Tall Privacy &mdash; 3.0 m</h5>
-            <ul>
-              <li>3.0 m overall height</li>
-              <li>20 boards per bay</li>
-              <li>Commercial &amp; security</li>
-            </ul>
-          </div>
-        </div>
-        <div class="config-card">
-          <div class="cc-img"><img src="images/147.jpg" alt="Type 3"></div>
-          <div class="cc-body">
-            <div class="cc-type">Type 3</div>
-            <h5>Bespoke Panels</h5>
-            <ul>
-              <li>Any bay width 1.2 – 2.9 m</li>
-              <li>Height 2.0 or 3.0 m</li>
-              <li>Custom site geometry</li>
-            </ul>
-          </div>
-        </div>
+    <div class="install-wrap">
+      <div class="install-diagram">
+        <img src="images/380.png" alt="WPC fence assembly diagram — aluminium frame with WPC panel infill">
+        <div class="caption" style="margin-top: var(--space-md);">Typical assembly — aluminium frame, WPC panel infill</div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Assembly &amp; Installation</div>
-      <div class="diagram-box">
-        <img src="images/380.png" alt="Fence system diagram">
-        <div class="caption">Typical WPC fence assembly &mdash; aluminium frame with horizontal WPC panel infill.</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="steps-grid">
+      <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <div class="step-title">Set Posts</div>
-          <div class="step-desc">Anchor posts on concrete pad or cast-in footing.</div>
+          <div><h5>Set Posts</h5><p>Anchor 80 × 80 mm aluminium posts to a concrete pad, cast-in footing, or pedestal with anchor bolts.</p></div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <div class="step-title">Fix Lower Rail</div>
-          <div class="step-desc">Attach lower aluminium cover strip between posts.</div>
+          <div><h5>Fix Lower Rail</h5><p>Attach the lower aluminium cover strip between posts, levelling against the finished ground line.</p></div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <div class="step-title">Slide Boards</div>
-          <div class="step-desc">Drop WPC boards into channel via clip system.</div>
+          <div><h5>Slide Boards</h5><p>Drop WPC boards into the post channel using the clip system — no face-fixing, no visible screws on the board face.</p></div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
-          <div class="step-title">Cap &amp; Close</div>
-          <div class="step-desc">Install upper clamp strip and post caps.</div>
+          <div><h5>Cap & Close</h5><p>Install the upper aluminium clamp strip and decorative post caps. Bay is complete and load-ready.</p></div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="page-foot">
-    <span class="page-brand">Leka Studio &mdash; WPC Fence Collection</span>
-    <span>03 / 04</span>
-  </div>
-  <div class="bottom-bar"></div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE 4 — COLOURS, APPLICATIONS, WARRANTY, CONTACT             -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="top-bar"></div>
-
-  <div class="header">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="28">
-        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
-        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
-        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
-        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
-        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
-        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
-        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
-        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
-        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
-        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
-        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
-        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
-        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
-        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
-        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
-        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
-        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
-        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
-        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
-        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
-        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
-      </svg>
+<!-- ==========================================================
+     PROJECT GALLERY
+     ========================================================== -->
+<section style="background: var(--lk-cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">In Context</span>
+      <h2>At a glance</h2>
+      <p>A selection of completed installations across residential, hospitality, and commercial contexts.</p>
     </div>
-    <div class="brand-text">Outdoor Living Division<br>www.leka.studio</div>
-  </div>
-
-  <div class="title-section">
-    <h1>Colour, Applications &amp; Warranty</h1>
-    <div class="subtitle">Palette &mdash; Use Cases &mdash; Guarantees</div>
-  </div>
-
-  <div class="body">
-    <div class="section">
-      <div class="section-title">Standard Colour Palette</div>
-      <div class="swatch-grid">
-        <div class="swatch"><div class="sw-chip" style="background:#2B2B2B"></div><div class="sw-name">Carbon Black</div><div class="sw-code">LK-01</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#3F3F44"></div><div class="sw-name">Charcoal</div><div class="sw-code">LK-02</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#8C8C90"></div><div class="sw-name">Stone Grey</div><div class="sw-code">LK-03</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#E8DDC5"></div><div class="sw-name">Sand White</div><div class="sw-code">LK-04</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#A06A3A"></div><div class="sw-name">Teak</div><div class="sw-code">LK-05</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#6B4226"></div><div class="sw-name">Walnut</div><div class="sw-code">LK-06</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#4A2820"></div><div class="sw-name">Rosewood</div><div class="sw-code">LK-07</div></div>
-        <div class="swatch"><div class="sw-chip" style="background:#8B5A2B"></div><div class="sw-name">Antique Oak</div><div class="sw-code">LK-08</div></div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/140.jpg" alt="Residential boundary fence" loading="lazy">
+        <div class="caption-overlay">Residential boundary</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/365.jpg" alt="Hospitality perimeter screening" loading="lazy">
+        <div class="caption-overlay">Hospitality screening</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/147.jpg" alt="Commercial perimeter fence" loading="lazy">
+        <div class="caption-overlay">Commercial perimeter</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-title">Applications</div>
-      <div class="app-grid">
-        <div class="app-card">
-          <div class="app-title">Residential</div>
-          <div class="app-desc">Garden boundaries, pool enclosures, driveway screens, side-yard privacy.</div>
-        </div>
-        <div class="app-card">
-          <div class="app-title">Hospitality</div>
-          <div class="app-desc">Hotel perimeters, villa privacy, poolside screening, outdoor dining.</div>
-        </div>
-        <div class="app-card">
-          <div class="app-title">Commercial</div>
-          <div class="app-desc">Office compounds, industrial boundaries, retail frontage, noise barriers.</div>
-        </div>
+<!-- ==========================================================
+     COLOUR PALETTE
+     ========================================================== -->
+<section id="palette">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Colour Palette</span>
+      <h2>Eight standard finishes</h2>
+      <p>The standard Leka WPC palette covers the modern outdoor-living spectrum. Custom RAL or Pantone matches are supported subject to minimum order quantity. Physical sample boards available on request.</p>
+    </div>
+    <div class="palette">
+      <div class="swatch"><div class="swatch-chip" style="background:#2B2B2B"></div><div class="swatch-body"><h6>Carbon Black</h6><div class="code">LK-01</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#3F3F44"></div><div class="swatch-body"><h6>Charcoal</h6><div class="code">LK-02</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#8C8C90"></div><div class="swatch-body"><h6>Stone Grey</h6><div class="code">LK-03</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#E8DDC5"></div><div class="swatch-body"><h6>Sand White</h6><div class="code">LK-04</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#A06A3A"></div><div class="swatch-body"><h6>Teak</h6><div class="code">LK-05</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#6B4226"></div><div class="swatch-body"><h6>Walnut</h6><div class="code">LK-06</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#4A2820"></div><div class="swatch-body"><h6>Rosewood</h6><div class="code">LK-07</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#8B5A2B"></div><div class="swatch-body"><h6>Antique Oak</h6><div class="code">LK-08</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     APPLICATIONS
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Applications</span>
+      <h2>Specified for every context</h2>
+    </div>
+    <div class="apps">
+      <div class="app-card">
+        <h5>Residential</h5>
+        <p>Garden boundaries, pool enclosures, driveway screens, side-yard privacy, and rooftop terraces.</p>
+      </div>
+      <div class="app-card amber">
+        <h5>Hospitality</h5>
+        <p>Hotel perimeters, villa privacy walls, poolside screening, and outdoor dining divisions.</p>
+      </div>
+      <div class="app-card red-orange">
+        <h5>Commercial</h5>
+        <p>Office compounds, industrial boundaries, retail frontages, and acoustic noise barriers.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-title">Compared to Traditional Fencing</div>
+<!-- ==========================================================
+     COMPARISON TABLE
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Why WPC</span>
+      <h2>Compared to traditional fencing</h2>
+      <p>A practical head-to-head across the attributes that matter most in Thailand's climate.</p>
+    </div>
+    <div class="compare-wrap">
       <table class="compare-table">
         <thead>
           <tr>
@@ -933,62 +1261,106 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Maintenance</td><td class="win">None</td><td>Annual</td><td>None</td><td>Occasional</td></tr>
+          <tr><td>Maintenance</td><td class="win">None</td><td>Annual stain / paint</td><td>None</td><td>Occasional repair</td></tr>
           <tr><td>Termite / rot proof</td><td class="win">Yes</td><td>No</td><td>Yes</td><td>Yes</td></tr>
           <tr><td>Natural wood look</td><td class="win">Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
-          <tr><td>Installation speed</td><td class="win">Fast</td><td>Medium</td><td>Medium</td><td>Slow</td></tr>
-          <tr><td>Lifespan (years)</td><td class="win">25+</td><td>5 – 15</td><td>30+</td><td>30+</td></tr>
+          <tr><td>Installation speed</td><td class="win">Fast (clip system)</td><td>Medium</td><td>Medium</td><td>Slow (wet work)</td></tr>
+          <tr><td>Lifespan</td><td class="win">25+ years</td><td>5 – 15 years</td><td>30+ years</td><td>30+ years</td></tr>
           <tr><td>Recycled content</td><td class="win">60%</td><td>0%</td><td>Low</td><td>Low</td></tr>
+          <tr><td>Customisation</td><td class="win">High</td><td>Limited</td><td>Limited</td><td>Very limited</td></tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-title">Warranty Structure</div>
-      <div class="warranty-grid">
-        <div class="warranty-card">
-          <h5>Premium Co-Extrusion</h5>
-          <div class="warranty-years">25<span>yr structural</span></div>
-          <p>Covers board integrity, delamination, and structural failure. Concurrent 10-year surface warranty covers fade and shield wear.</p>
-        </div>
-        <div class="warranty-card amber-top">
-          <h5>Classic WPC</h5>
-          <div class="warranty-years">15<span>yr structural</span></div>
-          <p>Covers board integrity under normal use. Concurrent 5-year surface warranty covers the exposed wood-grain finish.</p>
-        </div>
+<!-- ==========================================================
+     WARRANTY
+     ========================================================== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Warranty</span>
+      <h2>Backed for the long term</h2>
+      <p>Leka warranty is transferable and covers material replacement of affected components. Installation by certified partner teams protects the full warranty.</p>
+    </div>
+    <div class="warranty-grid">
+      <div class="warranty-card">
+        <div class="warranty-years">25<sup>yr structural</sup></div>
+        <h5>Premium Co-Extrusion</h5>
+        <p>Covers board integrity, delamination, and structural failure under normal use. Concurrent 10-year surface warranty covers fade and shield wear.</p>
+      </div>
+      <div class="warranty-card amber">
+        <div class="warranty-years">15<sup>yr structural</sup></div>
+        <h5>Classic WPC</h5>
+        <p>Covers board integrity under normal use. Concurrent 5-year surface warranty covers the exposed wood-grain finish.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="contact-panel">
-    <h3>Speak with a Specialist</h3>
-    <div class="cp-sub">Leka Studio &mdash; Outdoor Living Division</div>
-    <div class="cp-grid">
-      <div class="cp-item">
-        <div class="cp-label">Studio</div>
-        <div class="cp-value">Leka Studio Co., Ltd.<br>Bangkok, Thailand</div>
-      </div>
-      <div class="cp-item">
-        <div class="cp-label">Website</div>
-        <div class="cp-value">www.leka.studio</div>
-      </div>
-      <div class="cp-item">
-        <div class="cp-label">Enquiries</div>
-        <div class="cp-value">hello@leka.studio</div>
-      </div>
-      <div class="cp-item">
-        <div class="cp-label">Project Desk</div>
-        <div class="cp-value">projects@leka.studio</div>
-      </div>
+<!-- ==========================================================
+     CTA BANNER
+     ========================================================== -->
+<section id="contact" class="cta-banner" style="padding: var(--space-4xl) 0;">
+  <div class="container">
+    <span class="eyebrow" style="color: var(--lk-amber);">Next Steps</span>
+    <h2 style="margin-top: var(--space-md);">Let's specify your project.</h2>
+    <p>Our outdoor living specialists will review your drawings, recommend configurations, and deliver shop drawings and sample boards for sign-off.</p>
+    <div class="cta-buttons">
+      <a href="mailto:hello@leka.studio?subject=WPC%20Fence%20Enquiry" class="btn btn-primary btn-lg">Email hello@leka.studio</a>
+      <a href="mailto:projects@leka.studio?subject=WPC%20Fence%20Project%20Brief" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Send a Project Brief</a>
     </div>
   </div>
+</section>
 
-  <div class="page-foot">
-    <span class="page-brand">Leka Studio &mdash; WPC Fence Collection</span>
-    <span>04 / 04</span>
+<!-- ==========================================================
+     FOOTER
+     ========================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand" style="color: var(--lk-cream);">
+        <svg style="color: var(--lk-cream);"><use href="#leka-logo"></use></svg>
+        <p>Outdoor Living Division — designing and delivering engineered outdoor systems for residential, hospitality and commercial projects in Thailand.</p>
+        <p class="footer-tagline">Never Done Playing</p>
+      </div>
+      <div class="footer-col">
+        <h6>Collection</h6>
+        <a href="#range">Product Range</a>
+        <a href="#specs">Specifications</a>
+        <a href="#configurations">Configurations</a>
+        <a href="#palette">Colour Palette</a>
+      </div>
+      <div class="footer-col">
+        <h6>Studio</h6>
+        <a href="https://www.leka.studio">www.leka.studio</a>
+        <a href="mailto:hello@leka.studio">hello@leka.studio</a>
+        <a href="mailto:projects@leka.studio">projects@leka.studio</a>
+        <a href="https://www.leka.studio">About Leka</a>
+      </div>
+      <div class="footer-col">
+        <h6>Contact</h6>
+        <p>Leka Studio Co., Ltd.<br>Bangkok, Thailand</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Leka Studio Co., Ltd. All rights reserved.</span>
+      <span>WPC Fence Collection · 2026 Edition</span>
+    </div>
   </div>
-  <div class="bottom-bar"></div>
-</div>
+</footer>
+
+<script>
+// Subtle scroll behaviour on nav
+const nav = document.querySelector('.nav');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.style.boxShadow = y > 20 ? '0 2px 12px rgba(24,37,87,0.06)' : 'none';
+  lastY = y;
+}, { passive: true });
+</script>
 
 </body>
 </html>
