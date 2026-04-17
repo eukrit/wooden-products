@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WPC Fence Collection — Leka Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #182557;
+    --purple: #8003FF;
+    --cream: #FFF9E6;
+    --magenta: #970260;
+    --amber: #FFA900;
+    --red-orange: #E54822;
+    --white: #FFFFFF;
+    --light-gray: #F5F5F7;
+    --mid-gray: #E0E0E6;
+    --dark-gray: #6B6B72;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Top & bottom accent bars */
+  .top-bar {
+    height: 8px;
+    background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 25%, var(--red-orange) 50%, var(--amber) 75%, var(--purple) 100%);
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 25%, var(--red-orange) 50%, var(--amber) 75%, var(--purple) 100%);
+  }
+
+  /* Header */
+  .header {
+    background: var(--navy);
+    padding: 24px 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header .logo svg { height: 32px; width: auto; }
+  .header .brand-text {
+    color: var(--cream);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* Title */
+  .title-section {
+    padding: 22px 40px 16px;
+    border-bottom: 3px solid var(--purple);
+    margin: 0 40px;
+  }
+  .title-section.center { text-align: center; }
+  .title-section h1 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .title-section .subtitle {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--purple);
+    letter-spacing: 0.5px;
+  }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    bottom: 14px; right: 40px;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    letter-spacing: 1px;
+  }
+
+  /* Body container */
+  .body {
+    padding: 22px 40px 40px;
+  }
+
+  /* ===== PAGE 1 — COVER ===== */
+  .cover-hero {
+    position: relative;
+    margin: 0 40px;
+    height: 320px;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(24,37,87,.15);
+  }
+  .cover-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cover-hero .hero-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(24,37,87,.95) 100%);
+    padding: 60px 32px 24px;
+    color: var(--cream);
+  }
+  .cover-hero .hero-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-bottom: 10px;
+  }
+  .cover-hero h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+  .cover-hero p {
+    font-size: 11px;
+    margin-top: 6px;
+    color: rgba(255,249,230,.85);
+  }
+
+  .cover-intro {
+    margin: 28px 40px 0;
+    font-size: 11.5px;
+    line-height: 1.75;
+    color: var(--navy);
+  }
+  .cover-intro strong { color: var(--purple); font-weight: 700; }
+
+  /* Feature badges */
+  .badges-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 24px 40px 0;
+  }
+  .badge {
+    padding: 14px 12px;
+    text-align: center;
+    background: var(--cream);
+    border-left: 3px solid var(--purple);
+  }
+  .badge .badge-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+  .badge .badge-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--purple);
+    margin-top: 3px;
+  }
+  .badge .badge-desc {
+    font-size: 9.5px;
+    color: var(--dark-gray);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* Section */
+  .section { margin-bottom: 16px; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--purple);
+    margin-bottom: 12px;
+  }
+  .section-body {
+    font-size: 11px;
+    line-height: 1.65;
+    color: var(--navy);
+  }
+
+  /* Product cards */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .product-card {
+    border: 1px solid var(--mid-gray);
+    overflow: hidden;
+  }
+  .product-card .pc-img {
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-card .pc-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .product-card .pc-tag {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: var(--purple);
+    color: var(--cream);
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .product-card .pc-tag.amber { background: var(--amber); color: var(--navy); }
+  .product-card .pc-body {
+    padding: 12px 14px 14px;
+  }
+  .product-card .pc-body h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .product-card .pc-body .pc-sub {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .product-card .pc-body .pc-desc {
+    font-size: 10px;
+    line-height: 1.55;
+    color: var(--navy);
+  }
+
+  /* Spec tables */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-bottom: 10px;
+  }
+  .spec-table thead th {
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 8px 10px;
+    text-align: left;
+    border: 1px solid var(--navy);
+  }
+  .spec-table tbody td {
+    padding: 7px 10px;
+    border: 1px solid var(--mid-gray);
+    color: var(--navy);
+    vertical-align: top;
+  }
+  .spec-table tbody td:first-child {
+    font-weight: 600;
+    background: var(--light-gray);
+    width: 36%;
+  }
+  .spec-table tbody tr.subheader td {
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 10px;
+  }
+
+  /* Two-column feature list */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+    margin-bottom: 14px;
+  }
+  .feature-item {
+    padding: 10px 12px;
+    background: var(--cream);
+    border-left: 3px solid var(--amber);
+  }
+  .feature-item .fi-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 3px;
+  }
+  .feature-item .fi-desc {
+    font-size: 10px;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* Color swatches */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .swatch {
+    text-align: center;
+  }
+  .swatch .sw-chip {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    border: 1px solid var(--mid-gray);
+    margin-bottom: 4px;
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,.08) 1px, transparent 1px);
+    background-size: 100% 8px, 100% 16px;
+  }
+  .swatch .sw-name {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .swatch .sw-code {
+    font-size: 8px;
+    color: var(--dark-gray);
+    margin-top: 1px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Configuration types */
+  .config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .config-card {
+    border: 1px solid var(--mid-gray);
+    overflow: hidden;
+  }
+  .config-card .cc-img {
+    height: 90px;
+    overflow: hidden;
+  }
+  .config-card .cc-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .config-card .cc-body {
+    padding: 10px 12px 12px;
+  }
+  .config-card .cc-body .cc-type {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .config-card .cc-body h5 {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .config-card .cc-body ul {
+    list-style: none;
+    padding: 0;
+    font-size: 9.5px;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+  .config-card .cc-body ul li::before {
+    content: "— ";
+    color: var(--amber);
+    font-weight: 700;
+  }
+
+  /* Application icons */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .app-card {
+    padding: 14px 12px;
+    text-align: center;
+    background: var(--light-gray);
+    border-top: 3px solid var(--purple);
+  }
+  .app-card .app-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .app-card .app-desc {
+    font-size: 9.5px;
+    color: var(--dark-gray);
+    line-height: 1.45;
+  }
+
+  /* Components list */
+  .component-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 18px;
+  }
+  .component-list li {
+    font-size: 10px;
+    color: var(--navy);
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--mid-gray);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .component-list li .comp-num {
+    display: inline-block;
+    width: 16px;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--purple);
+  }
+
+  /* Diagram */
+  .diagram-box {
+    background: var(--light-gray);
+    padding: 12px;
+    text-align: center;
+    border: 1px solid var(--mid-gray);
+  }
+  .diagram-box img {
+    max-width: 100%;
+    max-height: 180px;
+    display: block;
+    margin: 0 auto;
+  }
+  .diagram-box .caption {
+    font-size: 9px;
+    color: var(--dark-gray);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Installation steps */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .step {
+    text-align: center;
+    padding: 10px 8px;
+    background: var(--cream);
+  }
+  .step .step-num {
+    display: inline-block;
+    width: 22px; height: 22px;
+    line-height: 22px;
+    background: var(--purple);
+    color: var(--cream);
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .step .step-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .step .step-desc {
+    font-size: 8.5px;
+    color: var(--dark-gray);
+    line-height: 1.4;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+  .compare-table thead th {
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 7px 8px;
+    border: 1px solid var(--navy);
+  }
+  .compare-table thead th:first-child { text-align: left; width: 28%; }
+  .compare-table thead th.highlight { background: var(--purple); }
+  .compare-table tbody td {
+    padding: 6px 8px;
+    border: 1px solid var(--mid-gray);
+    color: var(--navy);
+    text-align: center;
+  }
+  .compare-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    background: var(--light-gray);
+  }
+  .compare-table tbody td.win {
+    background: #f3eaff;
+    font-weight: 700;
+    color: var(--purple);
+  }
+
+  /* Gallery strip */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .gallery-strip .gs-item {
+    height: 110px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--mid-gray);
+  }
+  .gallery-strip .gs-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .gallery-strip .gs-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(24,37,87,.9));
+    color: var(--cream);
+    font-size: 8.5px;
+    font-weight: 600;
+    padding: 10px 8px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  /* Back cover contact */
+  .contact-panel {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 32px 40px;
+    margin: 0 40px;
+  }
+  .contact-panel h3 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .contact-panel .cp-sub {
+    font-size: 11px;
+    color: var(--amber);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .contact-panel .cp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+  .contact-panel .cp-item .cp-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--amber);
+    margin-bottom: 3px;
+  }
+  .contact-panel .cp-item .cp-value {
+    font-size: 11.5px;
+    color: var(--cream);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* Service area */
+  .service-row {
+    margin: 22px 40px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .service-item {
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--cream);
+    border-bottom: 3px solid var(--magenta);
+  }
+  .service-item .si-title {
+    font-size: 9.5px;
+    font-weight: 800;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .service-item .si-desc {
+    font-size: 8.5px;
+    color: var(--dark-gray);
+    line-height: 1.4;
+  }
+
+  /* Limitations / footer note */
+  .note-box {
+    font-size: 8.5px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    padding: 12px 16px;
+    border: 1px solid var(--mid-gray);
+    background: var(--light-gray);
+    margin-top: 12px;
+  }
+  .note-box .note-title {
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  /* Warranty cards */
+  .warranty-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .warranty-card {
+    background: var(--cream);
+    border-top: 4px solid var(--purple);
+    padding: 14px 16px;
+  }
+  .warranty-card.amber-top { border-top-color: var(--amber); }
+  .warranty-card h5 {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--purple);
+    margin-bottom: 4px;
+  }
+  .warranty-card.amber-top h5 { color: var(--red-orange); }
+  .warranty-card .warranty-years {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .warranty-card .warranty-years span {
+    font-size: 12px;
+    letter-spacing: 0;
+    color: var(--dark-gray);
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .warranty-card p {
+    font-size: 9.5px;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* Screen preview */
+  @media screen {
+    body {
+      background: #e8e8ef;
+      padding: 24px 0;
+    }
+    .page {
+      box-shadow: 0 6px 28px rgba(24,37,87,0.18);
+      margin-bottom: 24px;
+    }
+  }
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 — COVER & OVERVIEW                                     -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="top-bar"></div>
+
+  <div class="header">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="32">
+        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
+        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
+        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      Outdoor Living Division<br>
+      www.leka.studio
+    </div>
+  </div>
+
+  <div class="title-section center">
+    <h1>WPC Fence Collection</h1>
+    <div class="subtitle">Product Sales Sheet &mdash; 2026 Edition</div>
+  </div>
+
+  <div class="body" style="padding-top: 20px; padding-bottom: 10px;">
+    <!-- Hero image -->
+  </div>
+
+  <div class="cover-hero">
+    <img src="../images/141.jpg" alt="WPC fence installation">
+    <div class="hero-overlay">
+      <span class="hero-tag">Engineered Outdoor Fencing</span>
+      <h2>Natural wood, reinvented for a maintenance-free life.</h2>
+      <p>Premium wood-composite fence systems engineered for Thailand's climate.</p>
+    </div>
+  </div>
+
+  <div class="cover-intro">
+    The Leka Studio <strong>WPC Fence Collection</strong> is a complete, factory-engineered fencing system crafted from
+    high-density wood-plastic composite. Each board combines <strong>60% recycled wood fibre</strong> with
+    <strong>40% polymer binder</strong>, producing the warmth and texture of natural timber without the rot, termites,
+    or annual upkeep. The Collection is delivered as a full kit &mdash; boards, aluminium posts, hardware, and gates &mdash;
+    specified for residential, hospitality, and commercial projects.
+  </div>
+
+  <div class="badges-row">
+    <div class="badge">
+      <div class="badge-num">25<span style="font-size:14px;">+</span></div>
+      <div class="badge-label">Year Lifespan</div>
+      <div class="badge-desc">Structural warranty on Premium series</div>
+    </div>
+    <div class="badge">
+      <div class="badge-num">0</div>
+      <div class="badge-label">Maintenance</div>
+      <div class="badge-desc">No staining, sealing, or repainting</div>
+    </div>
+    <div class="badge">
+      <div class="badge-num">B1</div>
+      <div class="badge-label">Fire Rating</div>
+      <div class="badge-desc">Self-extinguishing classification</div>
+    </div>
+    <div class="badge">
+      <div class="badge-num">60%</div>
+      <div class="badge-label">Recycled</div>
+      <div class="badge-desc">Wood fibre + post-consumer polymer</div>
+    </div>
+  </div>
+
+  <div class="body" style="padding-top: 24px;">
+    <div class="section">
+      <div class="section-title">Why Wood-Plastic Composite</div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="fi-title">Termite &amp; Rot Proof</div>
+          <div class="fi-desc">Closed-cell composite structure is impermeable to insects and fungal decay &mdash; the two principal causes of timber fence failure.</div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-title">Dimensionally Stable</div>
+          <div class="fi-desc">Low thermal movement and zero warp, cup, or split. Boards remain flat and aligned across seasons.</div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-title">UV &amp; Colour Stable</div>
+          <div class="fi-desc">Co-extruded shield layer on Premium series delivers a decade of colour retention under direct sun exposure.</div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-title">Recyclable &amp; Low-Carbon</div>
+          <div class="fi-desc">Diverts wood waste and plastic from landfill. Fully recyclable at end of service life.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">01 &nbsp;/&nbsp; 04</div>
+  <div class="bottom-bar"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 — PRODUCT RANGE & CONSTRUCTION                         -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="top-bar"></div>
+
+  <div class="header">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="32">
+        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
+        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
+        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      Outdoor Living Division<br>
+      www.leka.studio
+    </div>
+  </div>
+
+  <div class="title-section">
+    <h1>Product Range</h1>
+    <div class="subtitle">Two Series, One Standard of Craft</div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="section-title">The Collection</div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="pc-img">
+            <span class="pc-tag">Premium Series</span>
+            <img src="../images/141.jpg" alt="Premium co-extrusion fence">
+          </div>
+          <div class="pc-body">
+            <h4>Premium Co-Extrusion Fence Board</h4>
+            <div class="pc-sub">Shield-wrapped Composite</div>
+            <p class="pc-desc">A shield-wrapped board engineered with a dense, fused surface layer bonded to the WPC core during extrusion. Delivers superior UV stability, scratch resistance, and a deep, embossed woodgrain texture. Recommended for hospitality, high-end residential, and signature commercial perimeters.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="pc-img">
+            <span class="pc-tag amber">Classic Series</span>
+            <img src="../images/145.jpg" alt="Classic WPC fence">
+          </div>
+          <div class="pc-body">
+            <h4>Classic WPC Fence Board</h4>
+            <div class="pc-sub">Solid Wood-Composite</div>
+            <p class="pc-desc">A traditional wood-composite board with a natural grain or 3D embossed finish. Shares the termite- and rot-proof benefits of the Premium series in a streamlined specification. Recommended for residential boundaries, garden privacy, and commercial mid-scale projects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Board Specifications</div>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Premium Co-Extrusion</th>
+            <th>Classic WPC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Effective board width</td><td>148 mm</td><td>148 mm</td></tr>
+          <tr><td>Overall profile width</td><td>161.5 mm</td><td>148 mm</td></tr>
+          <tr><td>Board thickness</td><td>20 mm</td><td>20 – 26 mm</td></tr>
+          <tr><td>Standard lengths</td><td>1.5 / 1.8 / 2.0 / 2.025 / 2.9 m</td><td>1.5 / 1.8 / 2.0 / 2.9 m</td></tr>
+          <tr><td>Unit weight</td><td>~2.2 kg / m</td><td>~1.6 – 2.9 kg / m</td></tr>
+          <tr><td>Surface finish</td><td>Co-extruded polymer shield; brushed, embossed or knife-cut</td><td>2D woodgrain or 3D embossed</td></tr>
+          <tr><td>UV performance</td><td>Excellent &mdash; 10+ years colour retention</td><td>Good &mdash; 5 to 8 years colour retention</td></tr>
+          <tr><td>Scratch resistance</td><td>Excellent</td><td>Moderate</td></tr>
+          <tr><td>Fire classification</td><td>B1 &mdash; self-extinguishing</td><td>B1 &mdash; self-extinguishing</td></tr>
+          <tr><td>Structural warranty</td><td>25 years</td><td>15 years</td></tr>
+          <tr><td>Surface / fade warranty</td><td>10 years</td><td>5 years</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Material Composition</div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="fi-title">Core &mdash; Wood-Plastic Composite</div>
+          <div class="fi-desc">~60% recycled hardwood fibre bonded with ~40% food-grade HDPE polymer and UV-stabilising additives. Hollow-section extrusion for strength-to-weight efficiency.</div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-title">Shield &mdash; ASA Surface (Premium only)</div>
+          <div class="fi-desc">A thin, high-density ASA (acrylic-styrene-acrylonitrile) skin co-extruded onto all exposed faces. Seals the core, locks in pigment, and resists abrasion, staining and weathering.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">At a Glance</div>
+      <div class="gallery-strip">
+        <div class="gs-item"><img src="../images/140.jpg" alt=""><div class="gs-caption">Residential boundary</div></div>
+        <div class="gs-item"><img src="../images/365.jpg" alt=""><div class="gs-caption">Hospitality screening</div></div>
+        <div class="gs-item"><img src="../images/147.jpg" alt=""><div class="gs-caption">Commercial perimeter</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-num">02 &nbsp;/&nbsp; 04</div>
+  <div class="bottom-bar"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 — SYSTEM COMPONENTS & CONFIGURATIONS                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="top-bar"></div>
+
+  <div class="header">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="32">
+        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
+        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
+        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      Outdoor Living Division<br>
+      www.leka.studio
+    </div>
+  </div>
+
+  <div class="title-section">
+    <h1>System Components</h1>
+    <div class="subtitle">Kit of Parts &mdash; Configurations &mdash; Installation</div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="section-title">Post &amp; Gate Systems</div>
+      <table class="spec-table">
+        <tbody>
+          <tr class="subheader"><td colspan="2">Aluminium Post System</td></tr>
+          <tr><td>Material</td><td>Extruded aluminium alloy, hollow section</td></tr>
+          <tr><td>Section size</td><td>80 &times; 80 mm</td></tr>
+          <tr><td>Standard heights</td><td>2.0 m &middot; 2.5 m &middot; 3.0 m</td></tr>
+          <tr><td>Finish</td><td>Powder-coated matte black (custom RAL available)</td></tr>
+          <tr><td>Post spacing</td><td>1.5 m – 2.9 m (recommended: 2.0 m)</td></tr>
+          <tr><td>Mounting</td><td>Cast-in, surface-plate, or pedestal with anchor bolts</td></tr>
+          <tr class="subheader"><td colspan="2">Gate System</td></tr>
+          <tr><td>Single gate</td><td>1.2 m wide &times; 2.0 m high, aluminium frame</td></tr>
+          <tr><td>Double gate</td><td>2.4 m wide &times; 2.0 m high (two-leaf)</td></tr>
+          <tr><td>Hardware</td><td>Self-closing hinges; lock-ready strike plate</td></tr>
+          <tr><td>Finish</td><td>WPC panels to match fence; frame powder-coated to match post</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Complete Kit &mdash; Per Bay</div>
+      <ul class="component-list">
+        <li><span class="comp-num">01</span> WPC fence boards (13 pcs at 2.0 m H; 20 pcs at 3.0 m H)</li>
+        <li><span class="comp-num">02</span> Aluminium post &mdash; 80 &times; 80 mm</li>
+        <li><span class="comp-num">03</span> Decorative post cap</li>
+        <li><span class="comp-num">04</span> Upper aluminium clamp strip</li>
+        <li><span class="comp-num">05</span> Lower aluminium cover strip</li>
+        <li><span class="comp-num">06</span> L-shaped connectors &mdash; 4 per joint</li>
+        <li><span class="comp-num">07</span> Stainless steel fixing screws</li>
+        <li><span class="comp-num">08</span> Ground pedestal with anchor bolts (optional)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Standard Fence Configurations</div>
+      <div class="config-grid">
+        <div class="config-card">
+          <div class="cc-img"><img src="../images/140.jpg" alt="Type 1"></div>
+          <div class="cc-body">
+            <div class="cc-type">Type 1</div>
+            <h5>Standard Privacy &mdash; 2.0 m</h5>
+            <ul>
+              <li>2.0 m overall height</li>
+              <li>13 boards per bay</li>
+              <li>2.0 m post spacing</li>
+              <li>Residential &amp; garden</li>
+            </ul>
+          </div>
+        </div>
+        <div class="config-card">
+          <div class="cc-img"><img src="../images/145.jpg" alt="Type 2"></div>
+          <div class="cc-body">
+            <div class="cc-type">Type 2</div>
+            <h5>Tall Privacy &mdash; 3.0 m</h5>
+            <ul>
+              <li>3.0 m overall height</li>
+              <li>20 boards per bay</li>
+              <li>3.0 m aluminium post</li>
+              <li>Commercial &amp; security</li>
+            </ul>
+          </div>
+        </div>
+        <div class="config-card">
+          <div class="cc-img"><img src="../images/147.jpg" alt="Type 3"></div>
+          <div class="cc-body">
+            <div class="cc-type">Type 3</div>
+            <h5>Bespoke Panels</h5>
+            <ul>
+              <li>Any bay width 1.2 – 2.9 m</li>
+              <li>Height 2.0 or 3.0 m</li>
+              <li>Cut to site dimensions</li>
+              <li>Custom site geometry</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Assembly Diagram</div>
+      <div class="diagram-box">
+        <img src="../images/380.png" alt="Fence system diagram">
+        <div class="caption">Typical WPC fence assembly &mdash; aluminium frame with horizontal WPC panel infill.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Installation Sequence</div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Set Posts</div>
+          <div class="step-desc">Anchor aluminium posts on concrete pad or cast-in footing.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Fix Lower Rail</div>
+          <div class="step-desc">Attach lower aluminium cover strip between posts.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">Slide Boards</div>
+          <div class="step-desc">Drop WPC boards into the channel via clip system.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Cap &amp; Close</div>
+          <div class="step-desc">Install upper clamp strip and decorative post caps.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-num">03 &nbsp;/&nbsp; 04</div>
+  <div class="bottom-bar"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 — COLOUR, APPLICATIONS, WARRANTY & CONTACT             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="top-bar"></div>
+
+  <div class="header">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.32 101.73" height="32">
+        <defs><style>.ls1{fill:#970260}.ls2{fill:#FFF9E6}.ls3{fill:#8003ff}.ls4{fill:#e54822}.ls5{fill:#ffa900}</style></defs>
+        <path class="ls3" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+        <path class="ls3" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+        <path class="ls1" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+        <path class="ls1" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+        <path class="ls4" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+        <path class="ls4" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+        <path class="ls5" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+        <path class="ls5" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+        <path class="ls2" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+        <path class="ls2" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+        <path class="ls2" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+        <path class="ls2" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+        <path class="ls2" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+        <path class="ls2" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+        <path class="ls2" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+        <path class="ls2" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+        <path class="ls2" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+        <rect class="ls2" x="519.59" y="36.34" width="10.27" height="48.62"/>
+        <path class="ls2" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+        <path class="ls2" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      Outdoor Living Division<br>
+      www.leka.studio
+    </div>
+  </div>
+
+  <div class="title-section">
+    <h1>Colour, Applications &amp; Warranty</h1>
+    <div class="subtitle">Palette &mdash; Use Cases &mdash; Guarantees</div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="section-title">Standard Colour Palette</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="sw-chip" style="background:#2B2B2B"></div><div class="sw-name">Carbon Black</div><div class="sw-code">LK-01</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#3F3F44"></div><div class="sw-name">Charcoal</div><div class="sw-code">LK-02</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#8C8C90"></div><div class="sw-name">Stone Grey</div><div class="sw-code">LK-03</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#E8DDC5"></div><div class="sw-name">Sand White</div><div class="sw-code">LK-04</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#A06A3A"></div><div class="sw-name">Teak</div><div class="sw-code">LK-05</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#6B4226"></div><div class="sw-name">Walnut</div><div class="sw-code">LK-06</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#4A2820"></div><div class="sw-name">Rosewood</div><div class="sw-code">LK-07</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#8B5A2B"></div><div class="sw-name">Antique Oak</div><div class="sw-code">LK-08</div></div>
+      </div>
+      <div class="note-box" style="margin-top: 0;">
+        <div class="note-title">Colour Note</div>
+        Printed colour chips are a close representation only and may vary from the physical product due to lighting, screen calibration, and batch tolerance. Physical sample boards are available on request. Custom RAL / Pantone colour matches are supported subject to minimum order quantity.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Applications</div>
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-title">Residential</div>
+          <div class="app-desc">Garden boundaries, pool enclosures, driveway screens, side-yard privacy.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">Hospitality</div>
+          <div class="app-desc">Hotel perimeters, villa privacy, poolside screening, outdoor dining divisions.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">Commercial</div>
+          <div class="app-desc">Office compounds, industrial boundaries, retail frontage, noise barriers.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Compared to Traditional Fencing</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th class="highlight">Leka WPC</th>
+            <th>Timber</th>
+            <th>Aluminium Slat</th>
+            <th>Masonry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Maintenance</td><td class="win">None</td><td>Annual</td><td>None</td><td>Occasional</td></tr>
+          <tr><td>Termite &amp; rot proof</td><td class="win">Yes</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Natural wood look</td><td class="win">Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+          <tr><td>Installation speed</td><td class="win">Fast (clip)</td><td>Medium</td><td>Medium</td><td>Slow (wet)</td></tr>
+          <tr><td>Lifespan (years)</td><td class="win">25+</td><td>5 – 15</td><td>30+</td><td>30+</td></tr>
+          <tr><td>Customisation</td><td class="win">High</td><td>Limited</td><td>Limited</td><td>Very limited</td></tr>
+          <tr><td>Recycled content</td><td class="win">60%</td><td>0%</td><td>Low</td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Warranty Structure</div>
+      <div class="warranty-grid">
+        <div class="warranty-card">
+          <h5>Premium Co-Extrusion</h5>
+          <div class="warranty-years">25<span>yr structural</span></div>
+          <p>Covers board integrity, delamination, and structural failure under normal use. A concurrent 10-year surface warranty covers fade and shield wear.</p>
+        </div>
+        <div class="warranty-card amber-top">
+          <h5>Classic WPC</h5>
+          <div class="warranty-years">15<span>yr structural</span></div>
+          <p>Covers board integrity under normal use. A concurrent 5-year surface warranty covers the exposed wood-grain finish.</p>
+        </div>
+      </div>
+      <div class="note-box">
+        <div class="note-title">Warranty Notes</div>
+        Warranty is transferable and is limited to material replacement of the affected components; it excludes labour, site access, and consequential damages. Damage caused by impact, fire, abuse, or failure to follow the installation guide is excluded. Full warranty terms are supplied with each project delivery.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-panel">
+    <h3>Speak with a Specialist</h3>
+    <div class="cp-sub">Leka Studio &mdash; Outdoor Living Division</div>
+    <div class="cp-grid">
+      <div class="cp-item">
+        <div class="cp-label">Studio</div>
+        <div class="cp-value">Leka Studio Co., Ltd.<br>Bangkok, Thailand</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-label">Website</div>
+        <div class="cp-value">www.leka.studio</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-label">Enquiries</div>
+        <div class="cp-value">hello@leka.studio</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-label">Project Desk</div>
+        <div class="cp-value">projects@leka.studio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-row">
+    <div class="service-item">
+      <div class="si-title">Site Survey</div>
+      <div class="si-desc">Complimentary for projects over 50&nbsp;m</div>
+    </div>
+    <div class="service-item">
+      <div class="si-title">Shop Drawings</div>
+      <div class="si-desc">Issued prior to production</div>
+    </div>
+    <div class="service-item">
+      <div class="si-title">Installation</div>
+      <div class="si-desc">Certified partner teams nationwide</div>
+    </div>
+    <div class="service-item">
+      <div class="si-title">After-Sales</div>
+      <div class="si-desc">Full warranty administration</div>
+    </div>
+  </div>
+
+  <div class="page-num">04 &nbsp;/&nbsp; 04</div>
+  <div class="bottom-bar"></div>
+</div>
+
+</body>
+</html>
