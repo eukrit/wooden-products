@@ -753,14 +753,221 @@ section + section { padding-top: 0; }
 }
 
 /* ==========================================================================
-   LEKA BRAND DECORATIVE ELEMENT — Diagonal Blades
+   WARRANTY DETAIL BLOCK
    ========================================================================== */
-.deco-blades {
-  position: absolute;
-  width: 200px; height: 200px;
-  opacity: 0.6;
-  pointer-events: none;
+.warranty-detail {
+  margin-top: var(--space-2xl);
+  background: var(--lk-cream);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
 }
+.warranty-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+}
+.warranty-detail h5 {
+  margin: var(--space-sm) 0 var(--space-md);
+}
+.warranty-detail p {
+  font-size: var(--fs-body-sm);
+  color: var(--lk-navy-80);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+.warranty-detail p:last-child { margin-bottom: 0; }
+.warranty-detail strong { color: var(--lk-navy); }
+.warranty-list {
+  list-style: none;
+  margin: 0 0 var(--space-md);
+  display: grid; gap: var(--space-sm);
+}
+.warranty-list li {
+  padding-left: var(--space-lg);
+  position: relative;
+  font-size: var(--fs-body-sm);
+  color: var(--lk-navy-80);
+  line-height: 1.55;
+}
+.warranty-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--lk-purple);
+}
+.warranty-list-exclude li::before { background: var(--lk-red-orange); }
+.small-note {
+  font-size: var(--fs-caption) !important;
+  color: var(--lk-navy-60) !important;
+  font-style: italic;
+  line-height: 1.6 !important;
+}
+.warranty-footer {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--lk-navy-12);
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-xl);
+}
+.warranty-claim h5 { margin: var(--space-sm) 0 var(--space-md); }
+.warranty-claim p  {
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  color: var(--lk-navy-80);
+}
+.warranty-disclaimer {
+  font-size: var(--fs-caption);
+  line-height: 1.7;
+  color: var(--lk-navy-60);
+  padding: var(--space-md);
+  background: rgba(24,37,87,0.04);
+  border-left: 3px solid var(--lk-navy);
+  border-radius: var(--radius-sm);
+}
+.warranty-disclaimer strong { color: var(--lk-navy); }
+
+/* ==========================================================================
+   QUOTE MODAL
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24,37,87,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-xl);
+  overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--lk-white);
+  border-radius: var(--radius-xl);
+  max-width: 720px;
+  width: 100%;
+  margin: auto 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.35);
+  animation: modal-in 0.3s ease-out;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.modal-head {
+  padding: var(--space-2xl) var(--space-2xl) var(--space-md);
+  border-bottom: 1px solid var(--lk-navy-06);
+  position: relative;
+}
+.modal-head h3 { margin-top: var(--space-sm); }
+.modal-head p  {
+  margin-top: var(--space-sm);
+  color: var(--lk-navy-80);
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+}
+.modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--lk-cream);
+  color: var(--lk-navy);
+  font-size: 22px; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--lk-purple); color: var(--lk-white); }
+.modal-body {
+  padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-lg);
+}
+.form-field { display: flex; flex-direction: column; }
+.form-field.wide { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 11px; font-weight: 700;
+  color: var(--lk-navy);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+}
+.form-field label .req { color: var(--lk-red-orange); margin-left: 2px; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font);
+  font-size: var(--fs-body-sm);
+  padding: 10px 12px;
+  border: 1.5px solid var(--lk-navy-12);
+  border-radius: var(--radius-sm);
+  color: var(--lk-navy);
+  background: var(--lk-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-field textarea { resize: vertical; min-height: 96px; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--lk-purple);
+  box-shadow: 0 0 0 3px rgba(128,3,255,0.12);
+}
+.form-field .hint {
+  font-size: 11px;
+  color: var(--lk-navy-60);
+  margin-top: var(--space-xs);
+}
+
+/* Honeypot — must stay hidden */
+.hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--lk-navy-06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.form-note { font-size: var(--fs-caption); color: var(--lk-navy-60); max-width: 360px; line-height: 1.55; }
+
+.form-status {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-body-sm);
+  display: none;
+}
+.form-status.show { display: block; }
+.form-status.success { background: rgba(128,3,255,0.08); color: var(--lk-purple); border-left: 3px solid var(--lk-purple); }
+.form-status.error   { background: rgba(229,72,34,0.08); color: var(--lk-red-orange); border-left: 3px solid var(--lk-red-orange); }
+.form-status.warning { background: rgba(255,169,0,0.15); color: #8a5a00; border-left: 3px solid var(--lk-amber); }
+
+.btn[disabled], .btn.is-loading { opacity: 0.7; cursor: wait; }
+.btn.is-loading::after {
+  content: '';
+  width: 14px; height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-left: var(--space-sm);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ==========================================================================
    RESPONSIVE
@@ -771,13 +978,17 @@ section + section { padding-top: 0; }
   .nav-links a:not(.btn) { display: none; }
   section { padding: var(--space-3xl) 0; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .range-grid, .two-col, .warranty-grid, .system-split, .install-wrap {
+  .range-grid, .two-col, .warranty-grid, .system-split, .install-wrap,
+  .warranty-detail-grid, .warranty-footer {
     grid-template-columns: 1fr;
   }
   .config-grid, .apps, .palette, .gallery { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .install-diagram { order: -1; }
   .system-list li { grid-template-columns: 120px 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .modal-head, .modal-body { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+  .warranty-detail { padding: var(--space-xl); }
 }
 @media (max-width: 560px) {
   .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-md); }
@@ -785,6 +996,10 @@ section + section { padding-top: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-cta .btn { width: 100%; }
   .system-list li { grid-template-columns: 1fr; gap: var(--space-xs); }
+  .modal-overlay { padding: 0; }
+  .modal { border-radius: 0; min-height: 100vh; }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .form-footer .btn { width: 100%; }
 }
 </style>
 </head>
@@ -831,7 +1046,7 @@ section + section { padding-top: 0; }
       <li><a href="#specs">Specifications</a></li>
       <li><a href="#configurations">Configurations</a></li>
       <li><a href="#palette">Colours</a></li>
-      <li><a href="#contact" class="btn btn-primary">Get a Quote</a></li>
+      <li><a href="#quote" class="btn btn-primary" data-quote-open>Get a Quote</a></li>
     </ul>
   </div>
 </nav>
@@ -854,7 +1069,7 @@ section + section { padding-top: 0; }
     </div>
     <div class="hero-cta">
       <a href="#range" class="btn btn-primary btn-lg">Explore the Collection</a>
-      <a href="#contact" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Request a Quote</a>
+      <a href="#quote" class="btn btn-outline btn-lg" data-quote-open style="color: var(--lk-cream); border-color: var(--lk-cream);">Request a Quote</a>
     </div>
   </div>
 </header>
@@ -1275,25 +1490,68 @@ section + section { padding-top: 0; }
 </section>
 
 <!-- ==========================================================
-     WARRANTY
+     WARRANTY — MANUFACTURER PASS-THROUGH
      ========================================================== -->
-<section>
+<section id="warranty">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Warranty</span>
-      <h2>Backed for the long term</h2>
-      <p>Leka warranty is transferable and covers material replacement of affected components. Installation by certified partner teams protects the full warranty.</p>
+      <span class="eyebrow">Limited Warranty</span>
+      <h2>Backed for the long term, defined in writing</h2>
+      <p>The Leka WPC Fence Collection is distributed by Leka Studio Co., Ltd. and carries a manufacturer-issued limited warranty. Warranty terms summarised below are indicative — the full written warranty document prevails and is delivered with every project.</p>
     </div>
+
     <div class="warranty-grid">
       <div class="warranty-card">
         <div class="warranty-years">25<sup>yr structural</sup></div>
         <h5>Premium Co-Extrusion</h5>
-        <p>Covers board integrity, delamination, and structural failure under normal use. Concurrent 10-year surface warranty covers fade and shield wear.</p>
+        <p>Structural integrity of the WPC core — board failure, delamination, and load performance — under normal residential, hospitality or commercial use. Includes a concurrent <strong>10-year surface warranty</strong> against shield wear.</p>
       </div>
       <div class="warranty-card amber">
         <div class="warranty-years">15<sup>yr structural</sup></div>
         <h5>Classic WPC</h5>
-        <p>Covers board integrity under normal use. Concurrent 5-year surface warranty covers the exposed wood-grain finish.</p>
+        <p>Structural integrity of the WPC core under normal use. Includes a concurrent <strong>5-year surface warranty</strong> against the exposed wood-grain finish.</p>
+      </div>
+    </div>
+
+    <!-- Colour-retention expectation -->
+    <div class="warranty-detail">
+      <div class="warranty-detail-grid">
+        <div>
+          <span class="caption">Colour retention</span>
+          <h5>Fade is measured, not assumed</h5>
+          <p>Outdoor composite boards will shift in tone over time — particularly in the first 90 days of UV exposure, when surface pigment stabilises. Our warranty is written against a measurable industry standard (ΔE colour difference, ISO 4892-2 accelerated weathering) rather than against any subjective expectation of "no change":</p>
+          <ul class="warranty-list">
+            <li><strong>Premium Co-Extrusion</strong> — colour shift shall not exceed <strong>ΔE ≤ 5</strong> over 10&nbsp;years of normal outdoor exposure.</li>
+            <li><strong>Classic WPC</strong> — colour shift shall not exceed <strong>ΔE ≤ 8</strong> over 5&nbsp;years of normal outdoor exposure.</li>
+          </ul>
+          <p class="small-note">ΔE &lt; 5 is considered a visually acceptable change for outdoor building products. Uneven fade limited to areas in permanent shade, standing water, or partial UV exposure is <strong>not</strong> a warrantable defect.</p>
+        </div>
+        <div>
+          <span class="caption">What is excluded</span>
+          <h5>Claim conditions</h5>
+          <p>Warranty is <strong>void or reduced</strong> where boards have been:</p>
+          <ul class="warranty-list warranty-list-exclude">
+            <li>Installed by a non-certified team or in deviation from the Leka installation manual.</li>
+            <li>Painted, stained, sealed, waxed, sanded, or modified after installation.</li>
+            <li>Exposed to standing water, continuous submersion, sea-water spray, or pool-chemical splashback.</li>
+            <li>Damaged by impact, fire, vandalism, vehicle contact, animals, or construction-site mishandling.</li>
+            <li>Installed within 600&nbsp;mm of a heat source above 75&nbsp;°C (barbecues, exhaust, machinery).</li>
+            <li>Cleaned with solvent, chlorine bleach, acid cleaners, or pressure-washed above 1500&nbsp;psi at close range.</li>
+            <li>Used as structural or load-bearing elements beyond published limits.</li>
+          </ul>
+          <p class="small-note">Minor colour or grain variation between production batches is a characteristic of extruded wood-composite products and is not a warrantable defect. Samples should be confirmed against the production lot before acceptance.</p>
+        </div>
+      </div>
+
+      <div class="warranty-footer">
+        <div class="warranty-claim">
+          <span class="caption">Claim process</span>
+          <h5>Written, within 60 days of defect</h5>
+          <p>Claims must be submitted in writing to <a href="mailto:warranty@leka.studio">warranty@leka.studio</a> within <strong>60 days</strong> of the defect becoming apparent, with the original project reference, photographs, installation date and installer identity. Leka will inspect on-site if required and forward validated claims to the manufacturer for adjudication. Remedy is limited, at the manufacturer's discretion, to <strong>board replacement or material credit</strong> — the warranty does not cover labour, site access, removal or reinstallation, or any consequential, incidental, or indirect damages.</p>
+        </div>
+        <div class="warranty-disclaimer">
+          <strong>Disclaimer.</strong> This summary is a commercial description and does not constitute the operative warranty. Warranty terms are <strong>subject in full to the manufacturer's published limited warranty</strong> current at the time of delivery. All other warranties, express or implied, including merchantability and fitness for a particular purpose, are disclaimed to the maximum extent permitted by law. Purchaser may have additional rights under the jurisdiction of purchase.
+        </div>
       </div>
     </div>
   </div>
@@ -1308,8 +1566,8 @@ section + section { padding-top: 0; }
     <h2 style="margin-top: var(--space-md);">Let's specify your project.</h2>
     <p>Our outdoor living specialists will review your drawings, recommend configurations, and deliver shop drawings and sample boards for sign-off.</p>
     <div class="cta-buttons">
-      <a href="mailto:hello@leka.studio?subject=WPC%20Fence%20Enquiry" class="btn btn-primary btn-lg">Email hello@leka.studio</a>
-      <a href="mailto:projects@leka.studio?subject=WPC%20Fence%20Project%20Brief" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Send a Project Brief</a>
+      <a href="#quote" class="btn btn-primary btn-lg" data-quote-open>Request a Quote</a>
+      <a href="mailto:hello@leka.studio?subject=WPC%20Fence%20Enquiry" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Email hello@leka.studio</a>
     </div>
   </div>
 </section>
@@ -1331,6 +1589,7 @@ section + section { padding-top: 0; }
         <a href="#specs">Specifications</a>
         <a href="#configurations">Configurations</a>
         <a href="#palette">Colour Palette</a>
+        <a href="#warranty">Warranty Terms</a>
       </div>
       <div class="footer-col">
         <h6>Studio</h6>
@@ -1351,15 +1610,241 @@ section + section { padding-top: 0; }
   </div>
 </footer>
 
+<!-- ==========================================================
+     QUOTE MODAL
+     ========================================================== -->
+<div class="modal-overlay" id="quote-modal" role="dialog" aria-labelledby="quote-title" aria-modal="true" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" type="button" aria-label="Close" data-quote-close>&times;</button>
+      <span class="eyebrow">Request a Quote</span>
+      <h3 id="quote-title">Tell us about your project</h3>
+      <p>Share your site and scope — a Leka outdoor-living specialist will come back within one business day with a recommended configuration, shop drawings, and a written quotation.</p>
+    </div>
+    <div class="modal-body">
+      <form id="quote-form" novalidate>
+        <!-- Honeypot field (hidden from users, bots fill it) -->
+        <div class="hp-field" aria-hidden="true">
+          <label>Do not fill this field<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="qf-name">Name <span class="req">*</span></label>
+            <input id="qf-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="qf-email">Email <span class="req">*</span></label>
+            <input id="qf-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="qf-phone">Phone</label>
+            <input id="qf-phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. +66 81 234 5678">
+          </div>
+          <div class="form-field">
+            <label for="qf-company">Company / Project Name</label>
+            <input id="qf-company" name="company" type="text" autocomplete="organization">
+          </div>
+
+          <div class="form-field">
+            <label for="qf-type">Project type <span class="req">*</span></label>
+            <select id="qf-type" name="projectType" required>
+              <option value="">Select…</option>
+              <option value="residential">Residential</option>
+              <option value="hospitality">Hospitality (hotel / villa / resort)</option>
+              <option value="commercial">Commercial / industrial</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="qf-location">Project location</label>
+            <input id="qf-location" name="location" type="text" placeholder="City or province">
+          </div>
+
+          <div class="form-field">
+            <label for="qf-length">Total fence length (m) <span class="req">*</span></label>
+            <input id="qf-length" name="length" type="number" min="1" step="0.1" required placeholder="e.g. 50">
+          </div>
+          <div class="form-field">
+            <label for="qf-height">Fence height</label>
+            <select id="qf-height" name="height">
+              <option value="">Select…</option>
+              <option>2.0 m (Standard privacy)</option>
+              <option>2.5 m</option>
+              <option>3.0 m (Tall privacy)</option>
+              <option>Custom / mixed</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="qf-series">Series <span class="req">*</span></label>
+            <select id="qf-series" name="series" required>
+              <option value="">Select…</option>
+              <option value="premium">Premium Co-Extrusion</option>
+              <option value="classic">Classic WPC</option>
+              <option value="undecided">Undecided — recommend one</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="qf-color">Preferred colour</label>
+            <select id="qf-color" name="color">
+              <option value="">Select…</option>
+              <option>LK-01 Carbon Black</option>
+              <option>LK-02 Charcoal</option>
+              <option>LK-03 Stone Grey</option>
+              <option>LK-04 Sand White</option>
+              <option>LK-05 Teak</option>
+              <option>LK-06 Walnut</option>
+              <option>LK-07 Rosewood</option>
+              <option>LK-08 Antique Oak</option>
+              <option>Custom / not sure</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="qf-gates">Number of gates</label>
+            <select id="qf-gates" name="gates">
+              <option value="0">0</option><option>1</option><option>2</option>
+              <option>3</option><option>4+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="qf-timeline">Timeline</label>
+            <select id="qf-timeline" name="timeline">
+              <option value="">Select…</option>
+              <option>Immediate (within 4 weeks)</option>
+              <option>Within 1 – 3 months</option>
+              <option>3 – 6 months</option>
+              <option>Planning stage (6 months +)</option>
+            </select>
+          </div>
+
+          <div class="form-field wide">
+            <label for="qf-message">Additional details</label>
+            <textarea id="qf-message" name="message" placeholder="Site conditions, mounting preferences, drawings available, special requirements…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-status" id="quote-status" role="status" aria-live="polite"></div>
+
+        <div class="form-footer">
+          <p class="form-note">By submitting you consent to Leka Studio contacting you about this enquiry. We do not share your details with third parties.</p>
+          <button type="submit" class="btn btn-primary btn-lg" id="quote-submit">Send enquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
-// Subtle scroll behaviour on nav
-const nav = document.querySelector('.nav');
-let lastY = 0;
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  nav.style.boxShadow = y > 20 ? '0 2px 12px rgba(24,37,87,0.06)' : 'none';
-  lastY = y;
-}, { passive: true });
+(function() {
+  // ===== Nav scroll shadow =====
+  var nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function() {
+    if (!nav) return;
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 12px rgba(24,37,87,0.06)' : 'none';
+  }, { passive: true });
+
+  // ===== Modal open/close =====
+  var modal = document.getElementById('quote-modal');
+  var form = document.getElementById('quote-form');
+  var statusEl = document.getElementById('quote-status');
+  var submitBtn = document.getElementById('quote-submit');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() {
+      var first = modal.querySelector('#qf-name');
+      if (first) first.focus();
+    }, 50);
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+  }
+
+  document.querySelectorAll('[data-quote-open]').forEach(function(el) {
+    el.addEventListener('click', openModal);
+  });
+  document.querySelectorAll('[data-quote-close]').forEach(function(el) {
+    el.addEventListener('click', closeModal);
+  });
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // ===== Form submit =====
+  function showStatus(msg, kind) {
+    statusEl.className = 'form-status show ' + (kind || 'success');
+    statusEl.textContent = msg;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+
+    var fd = new FormData(form);
+    var payload = {};
+    fd.forEach(function(v, k) { payload[k] = v; });
+    payload.source = location.host + location.pathname;
+
+    // Client-side validation
+    var required = ['name', 'email', 'projectType', 'length', 'series'];
+    for (var i = 0; i < required.length; i++) {
+      if (!payload[required[i]] || !String(payload[required[i]]).trim()) {
+        showStatus('Please complete all required fields.', 'error');
+        var el = document.getElementById('qf-' + (required[i] === 'projectType' ? 'type' : required[i]));
+        if (el) el.focus();
+        return;
+      }
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(payload.email)) {
+      showStatus('Please enter a valid email address.', 'error');
+      document.getElementById('qf-email').focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('is-loading');
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      var r = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+      });
+      var data = await r.json().catch(function(){ return {}; });
+
+      if (r.ok && data.ok) {
+        if (data.degraded) {
+          showStatus(data.warning || 'Enquiry received — we will follow up by email shortly.', 'warning');
+        } else {
+          showStatus('Thank you — your enquiry has been sent. A Leka specialist will respond within one business day.', 'success');
+        }
+        form.reset();
+      } else {
+        showStatus(data.error || 'Something went wrong. Please email hello@leka.studio instead.', 'error');
+      }
+    } catch (err) {
+      showStatus('Network error — please try again, or email hello@leka.studio.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
+      submitBtn.textContent = 'Send enquiry';
+    }
+  });
+})();
 </script>
 
 </body>

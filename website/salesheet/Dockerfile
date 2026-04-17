@@ -1,17 +1,32 @@
-# Static salesheet server for salesheet.goco.bz
-FROM nginx:1.27-alpine
+# Leka Salesheet server — Python/Flask with static content
+FROM python:3.12-slim
 
-# Copy nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
 
-# Copy static content — preserves /wpc-fence/ and future product paths
-COPY wpc-fence /usr/share/nginx/html/wpc-fence
+WORKDIR /app
 
-# Optional: a tiny landing/index at /
-COPY index.html /usr/share/nginx/html/index.html
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Cloud Run listens on $PORT (default 8080)
+# Copy server
+COPY server.py .
+
+# Copy static content (everything else) into ./static
+RUN mkdir -p static
+COPY index.html            static/index.html
+COPY wpc-fence             static/wpc-fence
+
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+# Cloud Run respects $PORT. 1 worker is enough for static-ish service; threaded for concurrency.
+CMD exec gunicorn \
+    --bind 0.0.0.0:${PORT} \
+    --workers 2 \
+    --threads 8 \
+    --timeout 30 \
+    --access-logfile - \
+    --error-logfile - \
+    server:app
