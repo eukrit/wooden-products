@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leka Studio &mdash; Sales Sheets</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #182557; --purple: #8003FF; --cream: #FFF9E6;
+    --amber: #FFA900; --red-orange: #E54822; --magenta: #970260;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--navy); color: var(--cream);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    max-width: 560px; text-align: center;
+    padding: 48px 40px;
+    border-top: 6px solid;
+    border-image: linear-gradient(90deg, var(--purple), var(--magenta), var(--red-orange), var(--amber), var(--purple)) 1;
+  }
+  h1 {
+    font-size: 28px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  p { font-size: 14px; opacity: .8; margin-bottom: 32px; line-height: 1.6; }
+  .links {
+    display: grid; gap: 10px;
+  }
+  a {
+    display: block; padding: 14px 20px;
+    background: rgba(255,249,230,.06);
+    border: 1px solid rgba(255,249,230,.15);
+    color: var(--cream); text-decoration: none;
+    font-weight: 600; letter-spacing: 0.5px;
+    transition: all .2s ease;
+  }
+  a:hover { background: var(--purple); border-color: var(--purple); }
+  .brand { font-size: 10px; letter-spacing: 2px; color: var(--amber); margin-bottom: 4px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">Leka Studio</div>
+    <h1>Sales Sheets</h1>
+    <p>Product sales collateral for the Leka Studio outdoor living division.</p>
+    <div class="links">
+      <a href="/wpc-fence/">WPC Fence Collection &mdash; 2026 Edition</a>
+    </div>
+  </div>
+</body>
+</html>
