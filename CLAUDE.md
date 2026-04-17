@@ -91,6 +91,17 @@ Minimum pass rate: 100% on critical path, 80% overall.
 
 ## Project-Specific Notes
 
+### Sales Sheet Microsite Platform
+- **Live URL:** https://salesheet.leka.studio/wpc-fence/
+- **Code:** `website/salesheet/` (Flask + gunicorn on Cloud Run)
+- **Cloud Run service:** `salesheet-leka` (asia-southeast1)
+- **Lead routing:** `POST /api/quote` → Slack `#bd-new-leads` (`C07EF698Q1K`)
+- **Full build playbook:** [`website/salesheet/README.md`](website/salesheet/README.md) —
+  read this before building a new product sales sheet. Covers the Leka
+  Design System tokens (Figma file `ER6pbDqrJ4Uo9FuldnYBfm`), page
+  structure, backend contract, Slack setup, Cloud Run deploy, GoDaddy
+  DNS automation, warranty-copy guardrails, and content rules.
+
 ### Firestore Database: products-wood
 Collections:
 - `vendors` — 45 supplier/manufacturer profiles
