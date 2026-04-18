@@ -80,12 +80,21 @@ def healthz():
 
 
 # ---------- Quote API ----------
-REQUIRED_FIELDS = ["name", "email", "projectType", "length", "series"]
+# Fence-specific (legacy wpc-fence modal)
+FENCE_REQUIRED = ["name", "email", "projectType", "length", "series"]
+# Generic (shared /quote/ form + future sales sheets)
+GENERIC_REQUIRED = ["name", "email", "message"]
+
 ALLOWED_FIELDS = {
-    "name", "email", "phone", "company",
-    "location", "projectType", "length", "height",
-    "series", "color", "gates", "timeline", "message",
-    "source", "_hp",  # honeypot
+    # Common
+    "name", "email", "phone", "company", "message", "source",
+    "product", "productName",
+    # Project context
+    "location", "projectType", "timeline", "quantity",
+    # WPC-fence legacy
+    "length", "height", "series", "color", "gates",
+    # Honeypot
+    "_hp",
 }
 
 PROJECT_TYPES = {"residential", "hospitality", "commercial", "other"}
@@ -113,8 +122,15 @@ def api_quote():
         log.info("Honeypot tripped from ip=%s", ip)
         return jsonify({"ok": True}), 200
 
-    # Validate
-    missing = [f for f in REQUIRED_FIELDS if not str(data.get(f, "")).strip()]
+    # Route by product: wpc-fence (legacy modal) uses strict fence validation;
+    # anything else uses the generic schema.
+    product = str(data.get("product", "")).strip().lower()
+    is_fence = product == "wpc-fence" or (
+        not product and str(data.get("series", "")).strip()  # legacy modal didn't send product
+    )
+
+    required = FENCE_REQUIRED if is_fence else GENERIC_REQUIRED
+    missing = [f for f in required if not str(data.get(f, "")).strip()]
     if missing:
         return jsonify({"ok": False, "error": f"Missing required fields: {', '.join(missing)}"}), 400
 
@@ -122,24 +138,33 @@ def api_quote():
     if not EMAIL_RE.match(email):
         return jsonify({"ok": False, "error": "Please enter a valid email address."}), 400
 
-    ptype = str(data.get("projectType", "")).lower()
-    if ptype not in PROJECT_TYPES:
-        return jsonify({"ok": False, "error": "Invalid project type."}), 400
+    length_m = None
+    if is_fence:
+        ptype = str(data.get("projectType", "")).lower()
+        if ptype not in PROJECT_TYPES:
+            return jsonify({"ok": False, "error": "Invalid project type."}), 400
 
-    series = str(data.get("series", "")).lower()
-    if series not in SERIES_VALUES:
-        return jsonify({"ok": False, "error": "Invalid series selection."}), 400
+        series = str(data.get("series", "")).lower()
+        if series not in SERIES_VALUES:
+            return jsonify({"ok": False, "error": "Invalid series selection."}), 400
 
-    # Length sanity
-    try:
-        length_m = float(str(data.get("length", "0")).strip())
-        if length_m <= 0 or length_m > 10000:
-            raise ValueError
-    except ValueError:
-        return jsonify({"ok": False, "error": "Please enter a valid fence length in metres."}), 400
+        try:
+            length_m = float(str(data.get("length", "0")).strip())
+            if length_m <= 0 or length_m > 10000:
+                raise ValueError
+        except ValueError:
+            return jsonify({"ok": False, "error": "Please enter a valid fence length in metres."}), 400
+    else:
+        # Generic: optional projectType from select — accept unknown values gracefully
+        msg = str(data.get("message", "")).strip()
+        if len(msg) < 10:
+            return jsonify({"ok": False, "error": "Please include at least 10 characters in the project description."}), 400
 
     # Forward to Slack
-    ok, slack_err = _post_to_slack(data, ip=ip, length_m=length_m)
+    if is_fence:
+        ok, slack_err = _post_to_slack(data, ip=ip, length_m=length_m)
+    else:
+        ok, slack_err = _post_generic_to_slack(data, ip=ip)
     if not ok:
         log.error("Slack forward failed: %s — payload=%s", slack_err, _redact(data))
         # Still return 200 to user; sales will recover from logs.
@@ -150,7 +175,10 @@ def api_quote():
             "degraded": True,
         }), 202
 
-    log.info("Quote forwarded to Slack: ip=%s email=%s length=%sm", ip, email, length_m)
+    log.info(
+        "Quote forwarded to Slack: ip=%s email=%s product=%s length=%s",
+        ip, email, product or "general", length_m if length_m is not None else "—",
+    )
     return jsonify({"ok": True}), 200
 
 
@@ -238,6 +266,82 @@ def _post_to_slack(data: dict[str, Any], ip: str, length_m: float) -> tuple[bool
     fallback_text = (
         f"New WPC Fence quote request from {fv('name')} ({fv('email')}) — "
         f"{length_m:g}m {series_label} · {type_label} · {fv('location')}"
+    )
+
+    payload = {
+        "channel": SLACK_LEAD_CHANNEL,
+        "text": fallback_text,
+        "blocks": blocks,
+        "unfurl_links": False,
+        "unfurl_media": False,
+    }
+
+    req = urllib.request.Request(
+        "https://slack.com/api/chat.postMessage",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {SLACK_BOT_TOKEN}",
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r:
+            resp = json.loads(r.read())
+    except urllib.error.URLError as exc:
+        return False, f"network_error: {exc}"
+    except Exception as exc:
+        return False, f"unexpected_error: {exc!r}"
+
+    if not resp.get("ok"):
+        return False, f"slack_error: {resp.get('error')}"
+    return True, ""
+
+
+def _post_generic_to_slack(data: dict[str, Any], ip: str) -> tuple[bool, str]:
+    """Forward a generic (non-fence) quote enquiry to Slack."""
+    if not SLACK_BOT_TOKEN:
+        return False, "SLACK_BOT_TOKEN not configured"
+
+    def fv(k: str, default: str = "—") -> str:
+        v = str(data.get(k, "") or "").strip()
+        return v if v else default
+
+    product_name = fv("productName", "") or fv("product", "general enquiry")
+
+    fields = [
+        {"type": "mrkdwn", "text": f"*Name*\n{fv('name')}"},
+        {"type": "mrkdwn", "text": f"*Email*\n<mailto:{fv('email')}|{fv('email')}>"},
+        {"type": "mrkdwn", "text": f"*Phone*\n{fv('phone')}"},
+        {"type": "mrkdwn", "text": f"*Company*\n{fv('company')}"},
+        {"type": "mrkdwn", "text": f"*Project type*\n{fv('projectType').capitalize() if fv('projectType') != '—' else '—'}"},
+        {"type": "mrkdwn", "text": f"*Location*\n{fv('location')}"},
+        {"type": "mrkdwn", "text": f"*Timeline*\n{fv('timeline')}"},
+        {"type": "mrkdwn", "text": f"*Quantity / area*\n{fv('quantity')}"},
+    ]
+
+    blocks: list[dict[str, Any]] = [
+        {"type": "header", "text": {"type": "plain_text", "text": f"🌿 New quote request — {product_name}"}},
+        {"type": "section", "fields": fields[:8]},
+        {"type": "section", "text": {"type": "mrkdwn",
+            "text": f"*Message*\n>{fv('message')[:2500].replace(chr(10), chr(10)+'>')}"}},
+        {"type": "context", "elements": [
+            {"type": "mrkdwn", "text": f"Submitted from `{fv('source', 'salesheet.leka.studio/quote/')}` · Product `{fv('product', 'general')}` · IP `{ip}`"},
+        ]},
+        {"type": "actions", "elements": [{
+            "type": "button",
+            "text": {"type": "plain_text", "text": "Email back"},
+            "url": f"mailto:{fv('email')}?subject=" + urllib.parse.quote(
+                f"Re: {product_name} enquiry — {fv('name', 'your project')}"
+            ),
+            "style": "primary",
+        }]},
+    ]
+
+    fallback_text = (
+        f"New quote request from {fv('name')} ({fv('email')}) — "
+        f"{product_name} · {fv('projectType')} · {fv('location')}"
     )
 
     payload = {

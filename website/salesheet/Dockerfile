@@ -17,6 +17,7 @@ COPY server.py .
 RUN mkdir -p static
 COPY index.html            static/index.html
 COPY wpc-fence             static/wpc-fence
+COPY quote                 static/quote
 
 ENV PORT=8080
 EXPOSE 8080

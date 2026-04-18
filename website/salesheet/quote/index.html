@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Quote — Leka Studio</title>
+<meta name="description" content="Request a tailored quotation from Leka Studio. Our team responds within one business day.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Request a Quote — Leka Studio">
+<meta property="og:description" content="Request a tailored quotation. We reply within one business day.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#182557">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   LEKA DESIGN SYSTEM TOKENS
+   ========================================================================== */
+:root {
+  --lk-purple:     #8003FF;
+  --lk-navy:       #182557;
+  --lk-cream:      #FFF9E6;
+  --lk-magenta:    #970260;
+  --lk-amber:      #FFA900;
+  --lk-red-orange: #E54822;
+  --lk-white:      #FFFFFF;
+
+  --lk-navy-80: rgba(24,37,87,0.80);
+  --lk-navy-60: rgba(24,37,87,0.60);
+  --lk-navy-12: rgba(24,37,87,0.12);
+  --lk-navy-06: rgba(24,37,87,0.06);
+  --lk-cream-80: rgba(255,249,230,0.80);
+  --lk-cream-60: rgba(255,249,230,0.60);
+
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+  --space-3xl: 64px; --space-4xl: 96px;
+
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px;
+  --radius-xl: 24px; --radius-full: 9999px;
+
+  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fs-display: 72px; --fs-h1: 48px; --fs-h2: 36px;
+  --fs-h3: 28px; --fs-h4: 24px; --fs-h5: 20px;
+  --fs-h6: 18px; --fs-body-lg: 18px; --fs-body: 16px;
+  --fs-body-sm: 14px; --fs-caption: 12px;
+  --lh: 1.366;
+
+  --container: 1080px;
+  --nav-height: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  color: var(--lk-navy);
+  background: var(--lk-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--lk-purple); text-decoration: none; }
+a:hover { color: var(--lk-magenta); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font); color: var(--lk-navy);
+  letter-spacing: -0.01em; line-height: 1.15;
+}
+h1 { font-size: clamp(36px, 6vw, var(--fs-h1)); font-weight: 800; }
+h2 { font-size: clamp(28px, 4.5vw, var(--fs-h2)); font-weight: 700; }
+h3 { font-size: clamp(22px, 3vw, var(--fs-h3)); font-weight: 700; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--space-lg); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--lk-purple);
+}
+.eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--lk-purple); }
+
+/* ---- NAV ---- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,249,230,0.92);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--lk-navy-06);
+  height: var(--nav-height);
+  display: flex; align-items: center;
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav-logo svg { height: 28px; width: auto; display: block; }
+.nav-back {
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-navy); display: inline-flex; align-items: center; gap: var(--space-sm);
+}
+.nav-back:hover { color: var(--lk-purple); }
+.nav-back::before { content: '←'; font-size: 16px; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
+  padding: 14px 28px;
+  font-family: var(--font); font-size: var(--fs-body); font-weight: 600;
+  border-radius: var(--radius-full); border: none; cursor: pointer;
+  transition: all 0.2s ease; text-decoration: none; white-space: nowrap;
+}
+.btn-primary { background: var(--lk-purple); color: var(--lk-white); }
+.btn-primary:hover { background: var(--lk-magenta); transform: translateY(-1px); color: var(--lk-white); }
+.btn-outline {
+  background: transparent; color: var(--lk-purple);
+  border: 1.5px solid var(--lk-purple);
+}
+.btn-outline:hover { background: var(--lk-purple); color: var(--lk-white); }
+.btn[disabled], .btn.is-loading { opacity: 0.7; cursor: wait; }
+.btn.is-loading::after {
+  content: ''; width: 14px; height: 14px;
+  border: 2px solid currentColor; border-top-color: transparent;
+  border-radius: 50%; animation: spin 0.6s linear infinite;
+  margin-left: var(--space-sm);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- HEADER ---- */
+.hero {
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  background: linear-gradient(180deg, var(--lk-cream) 0%, var(--lk-white) 100%);
+  position: relative;
+}
+.hero h1 { margin-top: var(--space-md); }
+.hero p {
+  margin-top: var(--space-md);
+  font-size: var(--fs-body-lg);
+  color: var(--lk-navy-80);
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+/* ---- PRODUCT CHIP ---- */
+.product-chip {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: 8px 16px 8px 10px;
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-navy);
+}
+.product-chip-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--lk-purple);
+}
+.product-chip .change {
+  color: var(--lk-purple); font-weight: 600; margin-left: var(--space-sm);
+}
+
+/* ---- FORM CARD ---- */
+.form-section { padding: var(--space-2xl) 0 var(--space-4xl); }
+.form-card {
+  background: var(--lk-white);
+  border: 1px solid var(--lk-navy-12);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: 0 20px 60px -30px rgba(24,37,87,0.25);
+}
+
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-lg);
+}
+.form-field { display: flex; flex-direction: column; }
+.form-field.wide { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 11px; font-weight: 700;
+  color: var(--lk-navy);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+}
+.form-field label .req { color: var(--lk-red-orange); margin-left: 2px; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font);
+  font-size: var(--fs-body-sm);
+  padding: 12px 14px;
+  border: 1.5px solid var(--lk-navy-12);
+  border-radius: var(--radius-sm);
+  color: var(--lk-navy);
+  background: var(--lk-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-field textarea { resize: vertical; min-height: 120px; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--lk-purple);
+  box-shadow: 0 0 0 3px rgba(128,3,255,0.12);
+}
+.form-field .hint {
+  font-size: 11px; color: var(--lk-navy-60);
+  margin-top: var(--space-xs);
+}
+
+.section-divider {
+  grid-column: 1 / -1;
+  padding-top: var(--space-md);
+  margin-top: var(--space-sm);
+  border-top: 1px solid var(--lk-navy-06);
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--lk-purple);
+}
+
+.hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--lk-navy-06);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-md); flex-wrap: wrap;
+}
+.form-note {
+  font-size: var(--fs-caption); color: var(--lk-navy-60);
+  max-width: 380px; line-height: 1.55;
+}
+
+.form-status {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-body-sm);
+  display: none;
+}
+.form-status.show { display: block; }
+.form-status.success { background: rgba(128,3,255,0.08); color: var(--lk-purple); border-left: 3px solid var(--lk-purple); }
+.form-status.error   { background: rgba(229,72,34,0.08); color: var(--lk-red-orange); border-left: 3px solid var(--lk-red-orange); }
+.form-status.warning { background: rgba(255,169,0,0.15); color: #8a5a00; border-left: 3px solid var(--lk-amber); }
+
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+.success-screen.show { display: block; }
+.success-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--lk-purple); color: var(--lk-white);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 800;
+  margin-bottom: var(--space-lg);
+}
+.success-screen h3 { margin-bottom: var(--space-md); }
+.success-screen p {
+  color: var(--lk-navy-80); max-width: 480px; margin: 0 auto var(--space-lg);
+  line-height: 1.55;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--lk-navy);
+  color: var(--lk-cream-80);
+  padding: var(--space-3xl) 0 var(--space-xl);
+  margin-top: var(--space-4xl);
+}
+.footer .container { text-align: center; }
+.footer svg { height: 28px; margin-bottom: var(--space-md); }
+.footer-tagline {
+  font-weight: 300; font-style: italic;
+  color: var(--lk-amber); font-size: var(--fs-body-sm);
+  margin-bottom: var(--space-lg);
+}
+.footer-bottom {
+  font-size: var(--fs-caption); color: var(--lk-cream-60);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255,249,230,0.1);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 860px) {
+  :root { --nav-height: 64px; }
+  .form-card { padding: var(--space-xl); }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 var(--space-md); }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .form-footer .btn { width: 100%; }
+  .form-note { max-width: none; text-align: center; }
+  .form-card { padding: var(--space-lg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Leka logo symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="leka-logo" viewBox="0 0 598.32 101.73">
+      <path fill="#8003ff" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+      <path fill="#8003ff" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+      <path fill="#970260" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+      <path fill="#970260" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+      <path fill="#e54822" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+      <path fill="#e54822" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+      <path fill="#ffa900" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+      <path fill="#ffa900" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+      <path fill="currentColor" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+      <path fill="currentColor" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+      <path fill="currentColor" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+      <path fill="currentColor" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+      <path fill="currentColor" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+      <path fill="currentColor" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+      <path fill="currentColor" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+      <path fill="currentColor" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+      <path fill="currentColor" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+      <rect fill="currentColor" x="519.59" y="36.34" width="10.27" height="48.62"/>
+      <path fill="currentColor" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+      <path fill="currentColor" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ==== NAV ==== -->
+<nav class="nav">
+  <div class="container">
+    <a href="https://leka.studio" class="nav-logo" aria-label="Leka Studio home">
+      <svg role="img" aria-label="Leka"><use href="#leka-logo"/></svg>
+    </a>
+    <a href="#" class="nav-back" id="navBack">Back to product</a>
+  </div>
+</nav>
+
+<!-- ==== HERO ==== -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Request a Quote</span>
+    <h1>Tell us about your project</h1>
+    <p>Share a few details and our team will reply within one business day with pricing, lead time, and availability.</p>
+    <div class="product-chip" id="productChip" hidden>
+      <span class="product-chip-dot"></span>
+      <span>Enquiry for</span>
+      <strong id="productName">—</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ==== FORM ==== -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-card" id="formCard">
+
+      <form id="quoteForm" novalidate>
+        <!-- Honeypot -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp">Leave this field empty</label>
+          <input type="text" id="hp" name="_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-grid">
+
+          <div class="section-divider">Your details</div>
+
+          <div class="form-field">
+            <label for="name">Full name<span class="req">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name" maxlength="120">
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" maxlength="200">
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40">
+          </div>
+
+          <div class="form-field">
+            <label for="company">Company / project</label>
+            <input type="text" id="company" name="company" autocomplete="organization" maxlength="160">
+          </div>
+
+          <div class="section-divider">Project</div>
+
+          <div class="form-field">
+            <label for="projectType">Project type</label>
+            <select id="projectType" name="projectType">
+              <option value="">— Select —</option>
+              <option value="residential">Residential</option>
+              <option value="hospitality">Hospitality / F&amp;B</option>
+              <option value="commercial">Commercial / office</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="location">Project location</label>
+            <input type="text" id="location" name="location" placeholder="City / province" maxlength="160">
+          </div>
+
+          <div class="form-field">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">— Select —</option>
+              <option value="asap">ASAP (this month)</option>
+              <option value="1-3-months">1–3 months</option>
+              <option value="3-6-months">3–6 months</option>
+              <option value="6-months-plus">6 months+</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="quantity">Approx. quantity / area</label>
+            <input type="text" id="quantity" name="quantity" placeholder="e.g. 40 m², 25 lm, 120 panels" maxlength="80">
+          </div>
+
+          <div class="form-field wide">
+            <label for="message">Tell us about your project<span class="req">*</span></label>
+            <textarea id="message" name="message" required minlength="10" maxlength="3000"
+              placeholder="Describe the space, materials of interest, specific products, and anything we should know."></textarea>
+            <span class="hint">Minimum 10 characters. Include product codes if you know them.</span>
+          </div>
+
+        </div>
+
+        <div class="form-footer">
+          <p class="form-note">
+            By submitting you agree to be contacted about this enquiry. We never share your details.
+          </p>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send enquiry</button>
+        </div>
+
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-screen" id="successScreen" aria-live="polite">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h3>Thank you — we've got it.</h3>
+        <p>Our team will review your enquiry and reply by email within one business day. If it's urgent, reach us directly at <a href="mailto:hello@leka.studio">hello@leka.studio</a>.</p>
+        <a href="https://leka.studio" class="btn btn-outline">Back to Leka Studio</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==== FOOTER ==== -->
+<footer class="footer">
+  <div class="container">
+    <svg style="color:var(--lk-cream)" role="img" aria-label="Leka Studio"><use href="#leka-logo"/></svg>
+    <div class="footer-tagline">Outdoor living, engineered.</div>
+    <div class="footer-bottom">
+      © <span id="yr"></span> GO Corporation Co., Ltd. · Leka Studio
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // ---- Query-param prefill ----
+  var params = new URLSearchParams(window.location.search);
+  var product      = (params.get('product')     || '').slice(0, 80);
+  var productName  = (params.get('productName') || '').slice(0, 120);
+  var back         = (params.get('back')        || '').slice(0, 400);
+
+  // Accept only same-origin or leka.studio back URLs
+  var navBack = document.getElementById('navBack');
+  var safeBack = 'https://leka.studio';
+  if (back) {
+    try {
+      var u = new URL(back, window.location.origin);
+      if (u.origin === window.location.origin || /(^|\.)leka\.studio$/.test(u.hostname)) {
+        safeBack = u.href;
+      }
+    } catch (e) {}
+  } else if (document.referrer) {
+    try {
+      var r = new URL(document.referrer);
+      if (r.origin === window.location.origin || /(^|\.)leka\.studio$/.test(r.hostname)) {
+        safeBack = r.href;
+      }
+    } catch (e) {}
+  }
+  navBack.href = safeBack;
+
+  // Show product chip
+  if (productName || product) {
+    var chip = document.getElementById('productChip');
+    document.getElementById('productName').textContent = productName || product;
+    chip.hidden = false;
+  }
+
+  // Prefill any matching form fields from query params
+  ['projectType', 'location', 'timeline', 'quantity', 'company', 'phone'].forEach(function (k) {
+    var v = params.get(k);
+    if (v) {
+      var el = document.getElementById(k);
+      if (el) el.value = v.slice(0, 400);
+    }
+  });
+
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ---- Submit handler ----
+  var form      = document.getElementById('quoteForm');
+  var statusEl  = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('submitBtn');
+  var formCard  = document.getElementById('formCard');
+  var successEl = document.getElementById('successScreen');
+
+  function setStatus(kind, msg) {
+    statusEl.className = 'form-status show ' + kind;
+    statusEl.textContent = msg;
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+
+    var payload = {
+      product:     product || 'general',
+      productName: productName || '',
+      source:      'salesheet.leka.studio/quote/',
+    };
+    new FormData(form).forEach(function (v, k) {
+      if (typeof v === 'string') payload[k] = v.trim();
+    });
+
+    // Quick client-side validation
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus('error', 'Please fill in your name, email, and project description.');
+      return;
+    }
+    if (payload.message.length < 10) {
+      setStatus('error', 'Please include at least 10 characters in the project description.');
+      return;
+    }
+
+    submitBtn.classList.add('is-loading');
+    submitBtn.disabled = true;
+
+    fetch('/api/quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+      .then(function (res) {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.disabled = false;
+        if (res.body && res.body.ok) {
+          form.style.display = 'none';
+          statusEl.className = 'form-status';
+          successEl.classList.add('show');
+          window.scrollTo({ top: formCard.offsetTop - 80, behavior: 'smooth' });
+        } else {
+          setStatus('error', (res.body && res.body.error) || 'Something went wrong. Please try again or email hello@leka.studio.');
+        }
+      })
+      .catch(function () {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.disabled = false;
+        setStatus('error', 'Network error. Please try again or email hello@leka.studio.');
+      });
+  });
+})();
+</script>
+</body>
+</html>
