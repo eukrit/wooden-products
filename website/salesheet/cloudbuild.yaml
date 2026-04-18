@@ -6,7 +6,7 @@
 substitutions:
   _SERVICE: salesheet-leka
   _REGION: asia-southeast1
-  _REPO: asia-southeast1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy
+  _REPO: asia-southeast1-docker.pkg.dev/ai-agents-go/cloud-run-source-deploy
 
 options:
   logging: CLOUD_LOGGING_ONLY
