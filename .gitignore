@@ -52,3 +52,11 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Salesheet local dev mirror (Docker creates at build time)
+website/salesheet/static/
+
+# Claude Code local artifacts
+.claude/pdf-pages/
+.claude/render-test-*.png
+.claude/swatch-chart.jpg

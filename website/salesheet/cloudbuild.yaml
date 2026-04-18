@@ -45,8 +45,8 @@ steps:
       - '--max-instances=5'
       - '--port=8080'
       - '--service-account=claude@ai-agents-go.iam.gserviceaccount.com'
-      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K'
-      - '--set-secrets=SLACK_BOT_TOKEN=slack-bot-token:latest'
+      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image,RENDER_DAILY_BUDGET=200'
+      - '--set-secrets=SLACK_BOT_TOKEN=slack-bot-token:latest,GEMINI_API_KEY=gemini-api-key:latest'
       - '--quiet'
 
 images:

@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WPC Fence Configurator — Leka Studio</title>
+<meta name="description" content="Interactive WPC fence configurator — dial in series, bay width, board gap, height, colour and gates, and render the spec into a scene with AI.">
+<meta name="theme-color" content="#182557">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   LEKA DESIGN SYSTEM TOKENS — synced with parent wpc-fence page
+   ========================================================================== */
+:root {
+  --lk-purple:       #8003FF;
+  --lk-navy:         #182557;
+  --lk-cream:        #FFF9E6;
+  --lk-magenta:      #970260;
+  --lk-amber:        #FFA900;
+  --lk-red-orange:   #E54822;
+  --lk-white:        #FFFFFF;
+  --lk-black:        #000000;
+  --lk-purple-bg:    #8000FF;
+  --lk-navy-80:      rgba(24, 37, 87, 0.80);
+  --lk-navy-60:      rgba(24, 37, 87, 0.60);
+  --lk-navy-12:      rgba(24, 37, 87, 0.12);
+  --lk-navy-06:      rgba(24, 37, 87, 0.06);
+  --lk-cream-80:     rgba(255, 249, 230, 0.80);
+  --lk-cream-60:     rgba(255, 249, 230, 0.60);
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+  --font:          'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fs-display:    72px;
+  --fs-h1:         48px;
+  --fs-h2:         36px;
+  --fs-h3:         28px;
+  --fs-h4:         24px;
+  --fs-h5:         20px;
+  --fs-h6:         18px;
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-body-sm:    14px;
+  --fs-caption:    12px;
+  --lh-default:    1.366;
+  --container:    1280px;
+  --nav-height:   72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-default);
+  color: var(--lk-navy);
+  background: var(--lk-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; height: auto; display: block; }
+a  { color: var(--lk-purple); text-decoration: none; }
+a:hover { color: var(--lk-magenta); }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  color: var(--lk-navy);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(36px, 5vw, 44px);   font-weight: 800; }
+h2 { font-size: var(--fs-h2);              font-weight: 700; }
+h3 { font-size: var(--fs-h3);              font-weight: 700; }
+h4 { font-size: var(--fs-h4);              font-weight: 600; }
+h5 { font-size: var(--fs-h5);              font-weight: 600; }
+h6 { font-size: var(--fs-h6);              font-weight: 600; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  font-size: var(--fs-caption); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--lk-purple);
+}
+.eyebrow::before {
+  content: ''; width: 24px; height: 2px; background: var(--lk-purple);
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ==========================================================================
+   NAV — copied from parent page
+   ========================================================================== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--lk-navy-06);
+  height: var(--nav-height);
+  display: flex; align-items: center;
+}
+.nav .container {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  max-width: var(--container);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo svg { height: 28px; width: auto; display: block; }
+.nav-links {
+  display: flex; gap: var(--space-xl);
+  list-style: none; align-items: center;
+}
+.nav-links a {
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-navy); text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--lk-purple); }
+.nav-links a.btn-primary,
+.nav-links a.btn-primary:link,
+.nav-links a.btn-primary:visited,
+.nav-links a.btn-primary:hover,
+.nav-links a.btn-primary:focus { color: var(--lk-white); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  font-family: var(--font);
+  font-size: var(--fs-body-sm); font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn-primary { background: var(--lk-purple); color: var(--lk-white) !important; }
+.btn-primary:hover { background: var(--lk-magenta); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--lk-navy); border-color: var(--lk-navy-12); }
+.btn-outline:hover { border-color: var(--lk-purple); color: var(--lk-purple); }
+.btn-lg { padding: 16px 32px; font-size: var(--fs-body); }
+.btn[disabled], .btn.is-loading { opacity: 0.7; cursor: wait; }
+.btn.is-loading::after {
+  content: '';
+  width: 14px; height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-left: var(--space-sm);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ==========================================================================
+   PAGE HEADER
+   ========================================================================== */
+.page-head {
+  padding: var(--space-2xl) 0 var(--space-lg);
+}
+.page-head h1 { margin-top: var(--space-md); }
+.page-head p {
+  margin-top: var(--space-md);
+  font-size: var(--fs-body-lg);
+  color: var(--lk-navy-80);
+  max-width: 720px;
+}
+
+/* ==========================================================================
+   CONFIGURATOR LAYOUT
+   ========================================================================== */
+.config-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-4xl);
+  align-items: flex-start;
+}
+
+/* Left column — preview + controls */
+.config-main {
+  display: flex; flex-direction: column; gap: var(--space-lg);
+  min-width: 0;
+}
+
+.preview-card {
+  background: var(--lk-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 1px 0 var(--lk-navy-06);
+  border: 1px solid var(--lk-navy-06);
+}
+.preview-card h5 {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.preview-card .variant-badge {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  background: var(--lk-navy); color: var(--lk-cream);
+}
+.preview-card .variant-badge.slatted { background: var(--lk-amber); color: var(--lk-navy); }
+
+.preview-svg-wrap {
+  background: linear-gradient(180deg, #EEF2FB 0%, #F7F4E7 100%);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  overflow: hidden;
+  position: relative;
+}
+.preview-svg {
+  width: 100%; height: auto; display: block;
+  max-height: 380px;
+}
+
+.controls-card {
+  background: var(--lk-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid var(--lk-navy-06);
+}
+.control-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--lk-navy-06);
+  align-items: center;
+}
+.control-row:last-child { border-bottom: 0; }
+.control-row > label {
+  font-size: var(--fs-body-sm); font-weight: 700;
+  color: var(--lk-navy);
+}
+.control-row .helper {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  color: var(--lk-navy-60);
+  margin-top: 2px;
+  letter-spacing: normal; text-transform: none;
+}
+
+/* Segmented control */
+.segmented {
+  display: inline-flex;
+  background: var(--lk-navy-06);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+.segmented button {
+  font-family: var(--font);
+  font-size: var(--fs-body-sm); font-weight: 600;
+  padding: 8px 16px;
+  border: 0; background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--lk-navy-80);
+  transition: all 0.15s ease;
+}
+.segmented button:hover { color: var(--lk-navy); }
+.segmented button[aria-pressed="true"] {
+  background: var(--lk-white);
+  color: var(--lk-purple);
+  box-shadow: 0 1px 2px rgba(24,37,87,0.08);
+}
+
+/* Number input */
+.num-input {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid var(--lk-navy-12);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--lk-white);
+}
+.num-input button {
+  width: 36px; height: 40px;
+  background: transparent; border: 0;
+  font-size: 18px; font-weight: 700;
+  color: var(--lk-navy-80);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.num-input button:hover { background: var(--lk-navy-06); color: var(--lk-purple); }
+.num-input input {
+  width: 64px; height: 40px;
+  text-align: center;
+  font-family: var(--font);
+  font-size: var(--fs-body); font-weight: 700;
+  color: var(--lk-navy);
+  border: 0; outline: none;
+  background: transparent;
+  -moz-appearance: textfield;
+}
+.num-input input::-webkit-outer-spin-button,
+.num-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Range slider */
+.slider-row { display: flex; align-items: center; gap: var(--space-md); }
+.slider-row input[type="range"] { flex: 1 1 auto; accent-color: var(--lk-purple); }
+.slider-row .slider-value {
+  min-width: 64px;
+  font-family: var(--font); font-size: var(--fs-body); font-weight: 700;
+  color: var(--lk-purple);
+  text-align: right;
+}
+
+/* Swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: var(--space-sm);
+}
+.swatch-btn {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.swatch-btn:hover { transform: translateY(-2px); }
+.swatch-btn[aria-pressed="true"] {
+  border-color: var(--lk-purple);
+  box-shadow: 0 0 0 2px rgba(128,3,255,0.18);
+}
+.swatch-btn .chip {
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+}
+.swatch-btn .label {
+  display: block;
+  font-size: 10px; font-weight: 700;
+  color: var(--lk-navy-80);
+  padding: 4px 0 6px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* Scene picker + render */
+.scene-picker {
+  display: flex; flex-wrap: wrap; gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.scene-btn {
+  font-family: var(--font);
+  font-size: 12px; font-weight: 600;
+  padding: 8px 14px;
+  background: var(--lk-navy-06);
+  border: 0;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--lk-navy-80);
+  transition: all 0.15s ease;
+}
+.scene-btn:hover { background: var(--lk-navy-12); color: var(--lk-navy); }
+.scene-btn[aria-pressed="true"] {
+  background: var(--lk-purple);
+  color: var(--lk-white);
+}
+.render-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; align-items: center; }
+.render-result {
+  margin-top: var(--space-md);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--lk-navy-06);
+  aspect-ratio: 3 / 2;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  min-height: 220px;
+}
+.render-result img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.render-result.is-empty { color: var(--lk-navy-60); font-size: var(--fs-body-sm); padding: var(--space-lg); text-align: center; }
+.render-result.is-loading::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 80%);
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.render-msg { font-size: var(--fs-body-sm); color: var(--lk-navy-60); margin-top: var(--space-sm); }
+.render-msg.error { color: var(--lk-red-orange); }
+
+/* Summary panel */
+.summary-card {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-md));
+  background: var(--lk-navy);
+  color: var(--lk-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 10px 30px rgba(24,37,87,0.18);
+}
+.summary-card h4 {
+  color: var(--lk-cream);
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-h5);
+  font-weight: 700;
+}
+.summary-list { list-style: none; padding: 0; margin: 0; }
+.summary-list li {
+  display: flex; justify-content: space-between;
+  padding: 8px 0;
+  font-size: var(--fs-body-sm);
+  border-bottom: 1px solid rgba(255,249,230,0.10);
+}
+.summary-list li span:first-child {
+  color: var(--lk-cream-60);
+  font-weight: 500;
+}
+.summary-list li span:last-child {
+  color: var(--lk-cream);
+  font-weight: 700;
+  text-align: right;
+}
+.summary-total {
+  margin-top: var(--space-md); padding-top: var(--space-md);
+  border-top: 2px solid var(--lk-amber);
+  display: flex; justify-content: space-between;
+  font-size: var(--fs-h4); font-weight: 800;
+  color: var(--lk-amber);
+}
+.summary-total span:first-child { color: var(--lk-cream); }
+.summary-stats {
+  margin-top: var(--space-md);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  text-align: center;
+}
+.summary-stats .stat-box {
+  background: rgba(255,249,230,0.06);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-xs);
+}
+.summary-stats .stat-box .num {
+  display: block;
+  font-size: var(--fs-h4); font-weight: 800;
+  color: var(--lk-cream);
+  line-height: 1;
+}
+.summary-stats .stat-box .lbl {
+  display: block;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--lk-cream-60);
+  margin-top: 4px;
+}
+.summary-card .btn-primary {
+  width: 100%;
+  margin-top: var(--space-lg);
+  background: var(--lk-amber);
+  color: var(--lk-navy) !important;
+  font-weight: 700;
+}
+.summary-card .btn-primary:hover { background: #FFBE2E; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-navy-80);
+  margin-bottom: var(--space-md);
+}
+.back-link:hover { color: var(--lk-purple); }
+
+/* ==========================================================================
+   QUOTE MODAL — copy from parent page
+   ========================================================================== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(24,37,87,0.72);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: flex-start; justify-content: center;
+  z-index: 200;
+  overflow-y: auto;
+  padding: var(--space-xl) var(--space-md);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--lk-white);
+  border-radius: var(--radius-lg);
+  max-width: 640px; width: 100%;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+  position: relative;
+}
+.modal-head {
+  padding: var(--space-2xl) var(--space-2xl) var(--space-md);
+  border-bottom: 1px solid var(--lk-navy-06);
+}
+.modal-head h3 { margin-top: var(--space-sm); }
+.modal-head p { color: var(--lk-navy-80); font-size: var(--fs-body-sm); margin-top: var(--space-sm); }
+.modal-close {
+  position: absolute; top: var(--space-md); right: var(--space-md);
+  width: 36px; height: 36px;
+  border: 0; background: var(--lk-navy-06);
+  border-radius: var(--radius-full);
+  font-size: 20px; cursor: pointer;
+  color: var(--lk-navy);
+}
+.modal-close:hover { background: var(--lk-navy-12); }
+.modal-body { padding: var(--space-lg) var(--space-2xl) var(--space-2xl); }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-lg);
+}
+.form-field { display: flex; flex-direction: column; }
+.form-field.wide { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 11px; font-weight: 700;
+  color: var(--lk-navy);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+}
+.form-field label .req { color: var(--lk-red-orange); margin-left: 2px; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font);
+  font-size: var(--fs-body-sm);
+  padding: 10px 12px;
+  border: 1.5px solid var(--lk-navy-12);
+  border-radius: var(--radius-sm);
+  color: var(--lk-navy);
+  background: var(--lk-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-field textarea { resize: vertical; min-height: 96px; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--lk-purple);
+  box-shadow: 0 0 0 3px rgba(128,3,255,0.12);
+}
+.hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.spec-preview {
+  background: var(--lk-cream);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  font-size: var(--fs-body-sm);
+}
+.spec-preview h6 {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--lk-purple);
+  margin-bottom: 6px;
+}
+.spec-preview dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+.spec-preview dl > div { display: flex; justify-content: space-between; gap: var(--space-sm); }
+.spec-preview dt { color: var(--lk-navy-60); }
+.spec-preview dd { color: var(--lk-navy); font-weight: 700; text-align: right; margin: 0; }
+.form-status {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-body-sm);
+  display: none;
+}
+.form-status.show { display: block; }
+.form-status.success { background: rgba(128,3,255,0.08); color: var(--lk-purple); border-left: 3px solid var(--lk-purple); }
+.form-status.error   { background: rgba(229,72,34,0.08); color: var(--lk-red-orange); border-left: 3px solid var(--lk-red-orange); }
+.form-status.warning { background: rgba(255,169,0,0.15); color: #8a5a00; border-left: 3px solid var(--lk-amber); }
+.form-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--lk-navy-06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.form-note { font-size: var(--fs-caption); color: var(--lk-navy-60); max-width: 360px; line-height: 1.55; }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .config-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+@media (max-width: 860px) {
+  :root { --nav-height: 64px; }
+  .nav-links a:not(.btn) { display: none; }
+  .config-layout { grid-template-columns: 1fr; }
+  .summary-card { position: static; }
+  .control-row { grid-template-columns: 1fr; gap: var(--space-sm); }
+  .modal-head, .modal-body { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 var(--space-md); }
+  .form-grid { grid-template-columns: 1fr; }
+  .summary-stats { grid-template-columns: repeat(3, 1fr); }
+  .modal-overlay { padding: 0; }
+  .modal { border-radius: 0; min-height: 100vh; max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .swatch-grid { grid-template-columns: repeat(4, 1fr); }
+  .segmented { flex-direction: row; }
+  .segmented button { padding: 8px 10px; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG logo symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="leka-logo" viewBox="0 0 598.32 101.73">
+      <path fill="#8003ff" d="m11.31,41.11l2.98.26c.87.08,1.64-.57,1.73-1.44.85-8.27,2.52-14.7,4.73-18.59-4.81,5.24-8.35,11.66-10.15,18.78-.12.47.22.94.71.99Z"/>
+      <path fill="#8003ff" d="m66.48,42.61l6.35-5c1.9-1.49,2.17-4.27.6-6.1-3.08-3.58-8.41-9.47-14.79-15.12-3.52-3.12-6.94-5.78-10.24-7.99-.81-.54-1.8-.76-2.76-.6-7.76,1.3-14.83,4.64-20.62,9.46,7.92-2.3,24.79,12.07,35.61,24.78,1.47,1.73,4.06,1.97,5.84.57Z"/>
+      <path fill="#970260" d="m44.11,43.16c1.73-1.47,1.97-4.06.56-5.85l-2.56-3.25-2.44-3.1c-1.49-1.9-4.27-2.18-6.1-.6-3.58,3.08-9.47,8.41-15.12,14.79-3.12,3.52-5.78,6.94-7.99,10.24-.54.81-.76,1.8-.6,2.76,1.3,7.76,4.64,14.83,9.46,20.62-2.3-7.91,12.07-24.79,24.78-35.61Z"/>
+      <path fill="#970260" d="m23.41,83.04c5.24,4.81,11.66,8.35,18.78,10.15.47.12.94-.22.99-.71l.26-2.98c.08-.87-.57-1.64-1.44-1.73-8.27-.85-14.7-2.52-18.59-4.73Z"/>
+      <path fill="#e54822" d="m47.21,85.34c3.53,3.12,6.94,5.78,10.25,7.99.81.54,1.8.76,2.76.6,7.76-1.3,14.82-4.64,20.62-9.46-7.91,2.31-24.79-12.07-35.61-24.78-1.47-1.73-4.06-1.97-5.85-.56l-3.25,2.56-3.1,2.44c-1.9,1.49-2.18,4.27-.6,6.1,3.08,3.58,8.41,9.47,14.78,15.12Z"/>
+      <path fill="#e54822" d="m89.85,61.79c-.85,8.27-2.52,14.7-4.74,18.6,4.81-5.24,8.35-11.67,10.15-18.78.12-.47-.22-.94-.71-.99l-2.98-.26c-.87-.08-1.64.57-1.73,1.44Z"/>
+      <path fill="#ffa900" d="m82.46,18.68c-5.24-4.81-11.67-8.35-18.78-10.15-.47-.12-.94.22-.99.71l-.26,2.98c-.08.87.57,1.64,1.44,1.73,8.27.85,14.7,2.52,18.6,4.74Z"/>
+      <path fill="#ffa900" d="m61.75,58.57c-1.73,1.47-1.97,4.06-.56,5.85l2.55,3.23,2.45,3.12c1.49,1.9,4.27,2.18,6.1.6,3.58-3.08,9.47-8.41,15.12-14.79,3.12-3.52,5.78-6.94,7.99-10.24.54-.81.76-1.8.6-2.76-1.3-7.76-4.64-14.83-9.46-20.62,2.31,7.91-12.07,24.79-24.78,35.61Z"/>
+      <path fill="currentColor" d="m157.37,75.93c-5.74,0-8.77-3.06-8.77-8.86V15.35h-10.27v52.52c0,11.04,6.69,17.62,17.89,17.62,1.41,0,3.41-.11,4.93-.61l1.09-.36v-9.52l-2.01.55c-.97.26-1.88.39-2.86.39Z"/>
+      <path fill="currentColor" d="m187.58,34.92c-14.54,0-25.51,11.04-25.51,25.69s11,25.77,25.6,25.77c8.3,0,15.2-3.38,19.97-9.76l.82-1.09-6.38-6.51-1.12,1.4c-3.4,4.25-7.84,6.4-13.19,6.4-7.4,0-13.01-4.46-14.73-11.52h38.19l.17-1.4c.1-.8.19-2.37.19-3.3,0-14.88-10.09-25.69-24-25.69Zm-.09,9.47c7.21,0,12.51,4.63,13.64,11.7h-28.13c1.63-7.17,7.15-11.7,14.49-11.7Z"/>
+      <path fill="currentColor" d="m256.31,43.07c0-2.14-.08-3.63-.28-5.32l-.17-1.41h-10.43l.26,1.82c.24,1.66.34,3.1.34,4.82,0,8.28-5.17,13.02-14.17,13.02-1.1,0-2.11,0-3.01-.04V15.35h-10.27v69.62h10.27v-19.51c1.05.07,2.21.11,3.28.11,1.55,0,3.03-.12,4.37-.25l11.46,19.65h11.94l-13.51-22.86c6.33-3.77,9.92-10.61,9.92-19.04Z"/>
+      <path fill="currentColor" d="m302.38,40.96c-3.35-3.4-8.79-6.03-15.95-6.03-14.73,0-25.42,10.8-25.42,25.69s10.38,25.77,25.26,25.77c6.64-.07,12.45-2.52,16.11-6.55v5.13h9.83v-48.62h-9.83v4.62Zm-.18,19.65c0,9.39-6.52,16.21-15.5,16.21s-15.33-6.97-15.33-16.21,6.45-16.21,15.33-16.21,15.5,6.67,15.5,16.21Z"/>
+      <path fill="currentColor" d="m326.65,73.54c-3.32,0-6.02,2.7-6.02,6.02s2.7,6.02,6.02,6.02,6.02-2.7,6.02-6.02-2.7-6.02-6.02-6.02Z"/>
+      <path fill="currentColor" d="m354.82,44.13c3.89,0,7,2.28,8.33,6.11l.62,1.78,8.17-4.49-.47-1.29c-2.66-7.19-8.79-11.32-16.82-11.32-8.99,0-15.76,6.02-15.76,13.99s5.49,11.85,10.85,14.29l5.59,2.57c4.96,2.24,5.97,4.02,5.97,5.99,0,4.72-4.46,5.23-6.38,5.23-5.33,0-8.53-3.84-9.25-7.4l-.42-2.11-8.54,4.61.26,1.17c1.77,7.97,8.64,13.12,17.5,13.12,10.22,0,17.09-5.87,17.09-14.61s-5.75-12.02-10.76-14.29l-6.02-2.75c-4.9-2.26-5.8-3.76-5.8-5.9,0-2.81,2.35-4.7,5.85-4.7Z"/>
+      <path fill="currentColor" d="m390.34,24.2h-10.27v12.14h-5.49v9.38h5.49v22.41c0,11.26,6.46,17.71,17.71,17.71,2.05,0,4.14-.36,5.73-1l1-.4v-9.6l-2.16.83c-.89.34-2.06.51-3.5.51-5.64,0-8.51-2.95-8.51-8.77v-21.7h15.24v-9.38h-15.24v-12.14Z"/>
+      <path fill="currentColor" d="m440.39,66.54c0,6.15-3.99,10.28-9.92,10.28s-9.92-4.23-9.92-10.28v-30.2h-10.27v30.11c0,11.55,8.49,19.93,20.19,19.93s20.19-8.12,20.19-19.75v-30.29h-10.27v30.2Z"/>
+      <path fill="currentColor" d="m498.5,40.15c0,.14,0,.28,0,.42-3.76-3.48-9.61-5.64-15.86-5.64-14.81,0-25.15,10.56-25.15,25.69s10.31,25.77,25.07,25.77c6.76,0,12.56-2.34,16.39-6.45v5.03h9.74V15.35h-10.18v24.8Zm.27,20.46c0,9.34-6.48,16.12-15.41,16.12s-15.41-6.78-15.41-16.12,6.48-16.21,15.41-16.21,15.41,6.82,15.41,16.21Z"/>
+      <rect fill="currentColor" x="519.59" y="36.34" width="10.27" height="48.62"/>
+      <path fill="currentColor" d="m524.72,18.8c-3.43,0-6.11,2.64-6.11,6.02s2.63,6.2,6.11,6.2,6.11-2.72,6.11-6.2-2.74-6.02-6.11-6.02Z"/>
+      <path fill="currentColor" d="m562.9,34.92c-14.59,0-25.6,11.04-25.6,25.69s11,25.77,25.6,25.77,25.6-11.08,25.6-25.77-11-25.69-25.6-25.69Zm0,41.9c-8.78,0-15.15-6.82-15.15-16.21s6.37-16.21,15.15-16.21,15.24,6.82,15.24,16.21-6.41,16.21-15.24,16.21Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="Leka Studio" style="color: var(--lk-navy);">
+      <svg role="img"><use href="#leka-logo"></use></svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/wpc-fence/">Overview</a></li>
+      <li><a href="/wpc-fence/#range">Range</a></li>
+      <li><a href="/wpc-fence/#specs">Specifications</a></li>
+      <li><a href="/wpc-fence/#palette">Colours</a></li>
+      <li><a href="#quote" class="btn btn-primary" data-quote-open>Request Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEAD -->
+<section class="page-head">
+  <div class="container">
+    <a class="back-link" href="/wpc-fence/">← Back to WPC Fence Collection</a>
+    <span class="eyebrow">Interactive Configurator</span>
+    <h1>Design your fence.</h1>
+    <p>Dial in the series, bay width, board gap, height, colour and gate count. The preview and the running total update as you go — render a scene in context when you're ready.</p>
+  </div>
+</section>
+
+<!-- CONFIGURATOR -->
+<div class="container">
+  <div class="config-layout">
+    <!-- ========== LEFT: PREVIEW + CONTROLS ========== -->
+    <div class="config-main">
+
+      <!-- Live SVG preview -->
+      <div class="preview-card">
+        <h5>
+          Live preview
+          <span class="variant-badge" id="variant-badge">Privacy</span>
+        </h5>
+        <div class="preview-svg-wrap">
+          <svg class="preview-svg" id="fence-svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid meet" aria-label="Side elevation of configured WPC fence"></svg>
+        </div>
+      </div>
+
+      <!-- Scene render -->
+      <div class="preview-card">
+        <h5>Render in a scene <span style="font-size:10px; font-weight:600; color:var(--lk-navy-60); letter-spacing:0.1em; text-transform:uppercase;">Powered by Gemini</span></h5>
+        <div class="scene-picker" role="group" aria-label="Scene">
+          <button type="button" class="scene-btn" data-scene="residential" aria-pressed="true">Residential</button>
+          <button type="button" class="scene-btn" data-scene="hospitality" aria-pressed="false">Hospitality</button>
+          <button type="button" class="scene-btn" data-scene="hospital" aria-pressed="false">Hospital</button>
+          <button type="button" class="scene-btn" data-scene="school" aria-pressed="false">School</button>
+          <button type="button" class="scene-btn" data-scene="resort" aria-pressed="false">Resort</button>
+        </div>
+        <div class="render-actions">
+          <button type="button" class="btn btn-primary" id="btn-render">Render scene</button>
+          <span class="render-msg" id="render-msg">Picks a context to visualise your configured fence.</span>
+        </div>
+        <div class="render-result is-empty" id="render-result">
+          Select a scene and click <strong>Render scene</strong>. The AI render takes about 10 – 15 seconds.
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-card">
+        <div class="control-row">
+          <label>Series
+            <span class="helper">Warranty tier</span>
+          </label>
+          <div class="segmented" role="group" aria-label="Series">
+            <button type="button" data-ctrl="series" data-value="premium" aria-pressed="true">Premium</button>
+            <button type="button" data-ctrl="series" data-value="classic" aria-pressed="false">Classic</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Bay width
+            <span class="helper">Post-to-post span</span>
+          </label>
+          <div class="segmented" role="group" aria-label="Bay width">
+            <button type="button" data-ctrl="bay" data-value="1.5" aria-pressed="false">1.5 m</button>
+            <button type="button" data-ctrl="bay" data-value="1.8" aria-pressed="false">1.8 m</button>
+            <button type="button" data-ctrl="bay" data-value="2.0" aria-pressed="true">2.0 m</button>
+            <button type="button" data-ctrl="bay" data-value="2.9" aria-pressed="false">2.9 m</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Height
+            <span class="helper">Overall fence height</span>
+          </label>
+          <div class="segmented" role="group" aria-label="Height">
+            <button type="button" data-ctrl="height" data-value="1.5" aria-pressed="false">1.5 m</button>
+            <button type="button" data-ctrl="height" data-value="2.0" aria-pressed="true">2.0 m</button>
+            <button type="button" data-ctrl="height" data-value="2.5" aria-pressed="false">2.5 m</button>
+            <button type="button" data-ctrl="height" data-value="3.0" aria-pressed="false">3.0 m</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Gap between boards
+            <span class="helper">0 = privacy · 1–15 cm = slatted</span>
+          </label>
+          <div class="slider-row">
+            <input type="range" id="gap-slider" min="0" max="15" step="1" value="0" aria-label="Gap between boards in centimetres">
+            <span class="slider-value" id="gap-value">0 cm</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Fence run
+            <span class="helper">Total linear metres</span>
+          </label>
+          <div class="num-input">
+            <button type="button" id="len-dec" aria-label="Decrease length">−</button>
+            <input type="number" id="len-input" min="1" max="10000" step="1" value="48">
+            <button type="button" id="len-inc" aria-label="Increase length">+</button>
+            <span style="margin-left:12px; font-weight:700; color:var(--lk-navy-80);">m</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Colour
+            <span class="helper">Click to preview</span>
+          </label>
+          <div class="swatch-grid" id="swatch-grid" role="group" aria-label="Colour swatches"></div>
+        </div>
+
+        <div class="control-row">
+          <label>Single gates
+            <span class="helper">1.2 m wide each</span>
+          </label>
+          <div class="num-input">
+            <button type="button" id="sg-dec" aria-label="Decrease single gates">−</button>
+            <input type="number" id="sg-input" min="0" max="10" step="1" value="0">
+            <button type="button" id="sg-inc" aria-label="Increase single gates">+</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Double gates
+            <span class="helper">2.4 m wide each</span>
+          </label>
+          <div class="num-input">
+            <button type="button" id="dg-dec" aria-label="Decrease double gates">−</button>
+            <input type="number" id="dg-input" min="0" max="10" step="1" value="0">
+            <button type="button" id="dg-inc" aria-label="Increase double gates">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== RIGHT: SUMMARY ========== -->
+    <aside class="summary-card" id="summary">
+      <h4>Your configuration</h4>
+      <ul class="summary-list">
+        <li><span>Series</span><span id="s-series">Premium Co-Extrusion</span></li>
+        <li><span>Style</span><span id="s-style">Privacy</span></li>
+        <li><span>Height</span><span id="s-height">2.0 m</span></li>
+        <li><span>Bay width</span><span id="s-bay">2.0 m</span></li>
+        <li><span>Board gap</span><span id="s-gap">0 cm</span></li>
+        <li><span>Colour</span><span id="s-color">LK-01 Carbon Black</span></li>
+        <li><span>Fence run</span><span id="s-run">48.0 m</span></li>
+        <li><span>Single gates</span><span id="s-sg">0 × 1.2 m</span></li>
+        <li><span>Double gates</span><span id="s-dg">0 × 2.4 m</span></li>
+      </ul>
+      <div class="summary-total">
+        <span>Total length</span>
+        <span id="s-total">48.0 m</span>
+      </div>
+      <div class="summary-stats">
+        <div class="stat-box"><span class="num" id="s-bays">24</span><span class="lbl">Bays</span></div>
+        <div class="stat-box"><span class="num" id="s-posts">25</span><span class="lbl">Posts</span></div>
+        <div class="stat-box"><span class="num" id="s-boards">312</span><span class="lbl">Boards</span></div>
+      </div>
+      <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
+    </aside>
+  </div>
+</div>
+
+<!-- QUOTE MODAL -->
+<div class="modal-overlay" id="quote-modal" role="dialog" aria-labelledby="quote-title" aria-modal="true" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" type="button" aria-label="Close" data-quote-close>&times;</button>
+      <span class="eyebrow">Request a Quote</span>
+      <h3 id="quote-title">Lock in your configuration</h3>
+      <p>A Leka outdoor-living specialist will review your spec and come back within one business day with shop drawings and written pricing.</p>
+    </div>
+    <div class="modal-body">
+      <div class="spec-preview" id="spec-preview">
+        <h6>Your configured spec</h6>
+        <dl id="spec-preview-list"></dl>
+      </div>
+
+      <form id="quote-form" novalidate>
+        <!-- Honeypot -->
+        <div class="hp-field" aria-hidden="true">
+          <label>Do not fill this field<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <!-- Hidden configurator fields -->
+        <input type="hidden" name="product" value="wpc-fence">
+        <input type="hidden" name="productName" value="WPC Fence (Configurator)">
+        <input type="hidden" name="series" id="qf-series">
+        <input type="hidden" name="height" id="qf-height">
+        <input type="hidden" name="bayWidth" id="qf-bay">
+        <input type="hidden" name="boardGap" id="qf-gap">
+        <input type="hidden" name="color" id="qf-color">
+        <input type="hidden" name="length" id="qf-length">
+        <input type="hidden" name="fenceRun" id="qf-run">
+        <input type="hidden" name="singleGates" id="qf-sg">
+        <input type="hidden" name="doubleGates" id="qf-dg">
+        <input type="hidden" name="gates" id="qf-gates">
+        <input type="hidden" name="totalLength" id="qf-total">
+        <input type="hidden" name="sceneImageUrl" id="qf-scene">
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="qf-name">Name <span class="req">*</span></label>
+            <input id="qf-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="qf-email">Email <span class="req">*</span></label>
+            <input id="qf-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="qf-phone">Phone</label>
+            <input id="qf-phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. +66 81 234 5678">
+          </div>
+          <div class="form-field">
+            <label for="qf-company">Company / Project</label>
+            <input id="qf-company" name="company" type="text" autocomplete="organization">
+          </div>
+
+          <div class="form-field">
+            <label for="qf-type">Project type <span class="req">*</span></label>
+            <select id="qf-type" name="projectType" required>
+              <option value="">Select…</option>
+              <option value="residential">Residential</option>
+              <option value="hospitality">Hospitality (hotel / villa / resort)</option>
+              <option value="commercial">Commercial / institutional (hospital, school)</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="qf-location">Project location</label>
+            <input id="qf-location" name="location" type="text" placeholder="City or province">
+          </div>
+
+          <div class="form-field">
+            <label for="qf-timeline">Timeline</label>
+            <select id="qf-timeline" name="timeline">
+              <option value="">Select…</option>
+              <option>Immediate (within 4 weeks)</option>
+              <option>Within 1 – 3 months</option>
+              <option>3 – 6 months</option>
+              <option>Planning stage (6 months +)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="qf-quantity">Additional quantity / notes</label>
+            <input id="qf-quantity" name="quantity" type="text" placeholder="Area, extra bays, mixed heights…">
+          </div>
+
+          <div class="form-field wide">
+            <label for="qf-message">Message</label>
+            <textarea id="qf-message" name="message" placeholder="Site conditions, mounting preferences, drawings available…">I've configured a fence in the Leka WPC Configurator — please review the spec above and send shop drawings plus a written quotation.</textarea>
+          </div>
+        </div>
+
+        <div class="form-status" id="quote-status" role="status" aria-live="polite"></div>
+
+        <div class="form-footer">
+          <p class="form-note">By submitting you consent to Leka Studio contacting you about this enquiry. We do not share your details with third parties.</p>
+          <button type="submit" class="btn btn-primary btn-lg" id="quote-submit">Send enquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ===== Palette — 8 manufacturer woodgrain finishes (crops shipped in images/swatches/) =====
+  var PALETTE = [
+    { code: 'LK-01', name: 'Charcoal Black',  hex: '#2B2B2B' },
+    { code: 'LK-02', name: 'Ancient Wood',    hex: '#3F3F44' },
+    { code: 'LK-03', name: 'Light Grey',      hex: '#8C8C90' },
+    { code: 'LK-04', name: 'Sand White',      hex: '#E8DDC5' },
+    { code: 'LK-05', name: 'Teak',            hex: '#A06A3A' },
+    { code: 'LK-06', name: 'Mahogany',        hex: '#6B4226' },
+    { code: 'LK-07', name: 'Rosewood',        hex: '#4A2820' },
+    { code: 'LK-08', name: 'Maple',           hex: '#8B5A2B' }
+  ];
+
+  var SERIES_LABEL = {
+    premium: 'Premium Co-Extrusion',
+    classic: 'Classic WPC'
+  };
+
+  // ===== State =====
+  var state = {
+    series: 'premium',
+    bay: 2.0,         // m
+    height: 2.0,      // m
+    gap: 0,           // cm
+    length: 48,       // m (fence run only)
+    colorIdx: 0,
+    singleGates: 0,
+    doubleGates: 0,
+    scene: 'residential',
+    sceneImageUrl: ''
+  };
+
+  // ===== Swatch rendering =====
+  function renderSwatches() {
+    var grid = document.getElementById('swatch-grid');
+    grid.innerHTML = '';
+    PALETTE.forEach(function(c, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'swatch-btn';
+      btn.setAttribute('aria-pressed', i === state.colorIdx ? 'true' : 'false');
+      btn.setAttribute('aria-label', c.code + ' ' + c.name);
+      btn.setAttribute('data-idx', String(i));
+      btn.title = c.code + ' — ' + c.name;
+      var chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.style.backgroundColor = c.hex;
+      chip.style.backgroundImage = 'url(../images/swatches/' + c.code.toLowerCase() + '.jpg)';
+      var lbl = document.createElement('span');
+      lbl.className = 'label';
+      lbl.textContent = c.code;
+      btn.appendChild(chip);
+      btn.appendChild(lbl);
+      btn.addEventListener('click', function() {
+        state.colorIdx = parseInt(btn.getAttribute('data-idx'), 10);
+        Array.from(grid.querySelectorAll('.swatch-btn')).forEach(function(b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        update();
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  // ===== Segmented control =====
+  function wireSegmented() {
+    document.querySelectorAll('[data-ctrl]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var ctrl = btn.getAttribute('data-ctrl');
+        var val  = btn.getAttribute('data-value');
+        // Toggle pressed in its group
+        var parent = btn.parentElement;
+        Array.from(parent.querySelectorAll('[data-ctrl="' + ctrl + '"]')).forEach(function(b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        if (ctrl === 'series') state.series = val;
+        if (ctrl === 'bay')    state.bay    = parseFloat(val);
+        if (ctrl === 'height') state.height = parseFloat(val);
+        update();
+      });
+    });
+  }
+
+  // ===== Slider =====
+  function wireSlider() {
+    var s = document.getElementById('gap-slider');
+    s.addEventListener('input', function() {
+      state.gap = parseInt(s.value, 10);
+      update();
+    });
+  }
+
+  // ===== Number inputs (stepper) =====
+  function wireStepper(dec, inp, inc, key, min, max) {
+    var input = document.getElementById(inp);
+    var minV = min, maxV = max;
+    function commit(v) {
+      v = Math.min(maxV, Math.max(minV, Math.round(v)));
+      input.value = v;
+      state[key] = v;
+      update();
+    }
+    document.getElementById(dec).addEventListener('click', function() { commit((parseInt(input.value,10)||0) - 1); });
+    document.getElementById(inc).addEventListener('click', function() { commit((parseInt(input.value,10)||0) + 1); });
+    input.addEventListener('change', function() { commit(parseInt(input.value,10) || 0); });
+    input.addEventListener('input', function() {
+      var v = parseInt(input.value,10);
+      if (!isNaN(v)) { state[key] = Math.min(maxV, Math.max(minV, v)); update(); }
+    });
+  }
+
+  // ===== Scene picker =====
+  function wireScene() {
+    document.querySelectorAll('.scene-btn').forEach(function(b) {
+      b.addEventListener('click', function() {
+        state.scene = b.getAttribute('data-scene');
+        document.querySelectorAll('.scene-btn').forEach(function(x) {
+          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+        });
+        // Reset previous render since scene changed
+        var msg = document.getElementById('render-msg');
+        msg.className = 'render-msg';
+        msg.textContent = 'Scene set to ' + b.textContent + '. Click Render scene to generate.';
+      });
+    });
+  }
+
+  // ===== Computations =====
+  function computed() {
+    var c = PALETTE[state.colorIdx];
+    var fenceRun   = state.length;
+    var sgM        = state.singleGates * 1.2;
+    var dgM        = state.doubleGates * 2.4;
+    var total      = fenceRun + sgM + dgM;
+    var bays       = Math.max(1, Math.ceil(fenceRun / state.bay));
+    var posts      = bays + 1;
+    // Boards per bay (height direction): 148mm boards + gap
+    var boardMm    = 148;
+    var gapMm      = state.gap * 10;
+    var topRail    = 40;  // mm
+    var bottomRail = 60;  // mm
+    var usableMm   = Math.max(0, state.height * 1000 - topRail - bottomRail);
+    var pitchMm    = boardMm + (gapMm > 0 ? gapMm : 0);
+    var boardsPerBay = Math.max(1, Math.floor((usableMm + gapMm) / pitchMm));
+    var totalBoards  = bays * boardsPerBay;
+    var style      = state.gap === 0 ? 'Privacy' : 'Slatted';
+    return { c: c, fenceRun: fenceRun, sgM: sgM, dgM: dgM, total: total,
+             bays: bays, posts: posts, boardsPerBay: boardsPerBay,
+             totalBoards: totalBoards, style: style, gapMm: gapMm };
+  }
+
+  // ===== Render SVG preview =====
+  function renderSvg() {
+    var r = computed();
+    var svg = document.getElementById('fence-svg');
+    var W = 1200, H = 480;
+    // Pad for margins
+    var padX = 60, padY = 40;
+    var innerW = W - 2 * padX, innerH = H - 2 * padY;
+    // 80×80mm posts — scale against bay width
+    var bayWidthMm = state.bay * 1000;
+    var heightMm   = state.height * 1000;
+    // Choose pixel-per-mm to fit inner area comfortably
+    var scaleX = innerW / (bayWidthMm + 80); // include left + right post
+    var scaleY = innerH / heightMm;
+    var scale  = Math.min(scaleX, scaleY);
+
+    var postW  = 80 * scale;
+    var fenceH = heightMm * scale;
+    var bayWpx = bayWidthMm * scale;
+
+    var totalW = bayWpx + 2 * postW;
+    var left   = (W - totalW) / 2;
+    var top    = (H - fenceH) / 2 + 20;
+
+    // Ground line
+    var ground = top + fenceH;
+
+    var color = r.c.hex;
+    var swatchUrl = '../images/swatches/' + r.c.code.toLowerCase() + '.jpg';
+
+    var parts = [];
+
+    // Defs — pattern for swatch texture, and sky gradient
+    parts.push('<defs>');
+    parts.push(
+      '<pattern id="wood-pattern" patternUnits="userSpaceOnUse" width="120" height="80">' +
+        '<rect width="120" height="80" fill="' + color + '"/>' +
+        '<image href="' + swatchUrl + '" x="0" y="0" width="120" height="80" preserveAspectRatio="xMidYMid slice" opacity="1"/>' +
+      '</pattern>'
+    );
+    parts.push(
+      '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0" stop-color="#EEF2FB"/>' +
+        '<stop offset="1" stop-color="#F7F4E7"/>' +
+      '</linearGradient>'
+    );
+    parts.push('</defs>');
+
+    // Background
+    parts.push('<rect width="' + W + '" height="' + H + '" fill="url(#sky)"/>');
+
+    // Ground
+    parts.push('<rect x="0" y="' + ground + '" width="' + W + '" height="' + (H - ground) + '" fill="#d6cfa9"/>');
+    parts.push('<line x1="0" y1="' + ground + '" x2="' + W + '" y2="' + ground + '" stroke="#a89d6d" stroke-width="2"/>');
+
+    // Posts — matte black
+    var postColor = '#1a1a1a';
+    parts.push('<rect x="' + left + '" y="' + top + '" width="' + postW + '" height="' + fenceH + '" fill="' + postColor + '" rx="2"/>');
+    parts.push('<rect x="' + (left + postW + bayWpx) + '" y="' + top + '" width="' + postW + '" height="' + fenceH + '" fill="' + postColor + '" rx="2"/>');
+
+    // Post caps
+    parts.push('<rect x="' + (left - 4) + '" y="' + (top - 8) + '" width="' + (postW + 8) + '" height="10" fill="#0a0a0a" rx="2"/>');
+    parts.push('<rect x="' + (left + postW + bayWpx - 4) + '" y="' + (top - 8) + '" width="' + (postW + 8) + '" height="10" fill="#0a0a0a" rx="2"/>');
+
+    // Top & bottom rails (inside bay)
+    var railColor = '#2a2a2a';
+    var topRailPx    = 40 * scale;
+    var bottomRailPx = 60 * scale;
+    parts.push('<rect x="' + (left + postW) + '" y="' + top + '" width="' + bayWpx + '" height="' + topRailPx + '" fill="' + railColor + '"/>');
+    parts.push('<rect x="' + (left + postW) + '" y="' + (ground - bottomRailPx) + '" width="' + bayWpx + '" height="' + bottomRailPx + '" fill="' + railColor + '"/>');
+
+    // Boards — stacked inside rails
+    var boardHpx = 148 * scale;
+    var gapPx    = r.gapMm * scale;
+    var infillTop = top + topRailPx;
+    var infillBot = ground - bottomRailPx;
+    var y = infillTop;
+    var boardsDrawn = 0;
+    while (y + boardHpx <= infillBot + 0.5 && boardsDrawn < 200) {
+      parts.push(
+        '<rect x="' + (left + postW) + '" y="' + y + '" width="' + bayWpx + '" height="' + boardHpx +
+        '" fill="url(#wood-pattern)" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>'
+      );
+      // Subtle board-edge shadow
+      parts.push(
+        '<rect x="' + (left + postW) + '" y="' + (y + boardHpx - 2) + '" width="' + bayWpx + '" height="2" fill="rgba(0,0,0,0.18)"/>'
+      );
+      y += boardHpx + gapPx;
+      boardsDrawn++;
+    }
+
+    // Info overlay (scale bar)
+    var barY = H - 22;
+    var barLenM = 1; // 1m reference
+    var barLenPx = 1000 * scale;
+    parts.push(
+      '<g font-family="Manrope, sans-serif" font-size="12" fill="#182557">' +
+        '<line x1="' + padX + '" y1="' + barY + '" x2="' + (padX + barLenPx) + '" y2="' + barY + '" stroke="#182557" stroke-width="2"/>' +
+        '<line x1="' + padX + '" y1="' + (barY - 4) + '" x2="' + padX + '" y2="' + (barY + 4) + '" stroke="#182557" stroke-width="2"/>' +
+        '<line x1="' + (padX + barLenPx) + '" y1="' + (barY - 4) + '" x2="' + (padX + barLenPx) + '" y2="' + (barY + 4) + '" stroke="#182557" stroke-width="2"/>' +
+        '<text x="' + (padX + barLenPx + 8) + '" y="' + (barY + 4) + '" font-weight="700">1 m</text>' +
+      '</g>'
+    );
+
+    // Label showing one bay dimension
+    parts.push(
+      '<text x="' + (left + postW + bayWpx / 2) + '" y="' + (top - 18) + '" ' +
+      'font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="#182557" text-anchor="middle">' +
+        state.bay + ' m bay · ' + state.height + ' m high · ' + r.boardsPerBay + ' boards' +
+      '</text>'
+    );
+
+    svg.innerHTML = parts.join('');
+  }
+
+  // ===== Update summary + everything =====
+  function fmt(n, d) { d = (d == null ? 1 : d); return n.toFixed(d).replace(/\.0$/, '.0'); }
+
+  function update() {
+    var r = computed();
+    // Summary text
+    document.getElementById('s-series').textContent = SERIES_LABEL[state.series];
+    document.getElementById('s-style').textContent  = r.style;
+    document.getElementById('s-height').textContent = state.height.toFixed(1) + ' m';
+    document.getElementById('s-bay').textContent    = state.bay.toFixed(1) + ' m';
+    document.getElementById('s-gap').textContent    = state.gap + ' cm';
+    document.getElementById('s-color').textContent  = r.c.code + ' ' + r.c.name;
+    document.getElementById('s-run').textContent    = r.fenceRun.toFixed(1) + ' m';
+    document.getElementById('s-sg').textContent     = state.singleGates + ' × 1.2 m';
+    document.getElementById('s-dg').textContent     = state.doubleGates + ' × 2.4 m';
+    document.getElementById('s-total').textContent  = r.total.toFixed(1) + ' m';
+    document.getElementById('s-bays').textContent   = r.bays;
+    document.getElementById('s-posts').textContent  = r.posts;
+    document.getElementById('s-boards').textContent = r.totalBoards;
+
+    // Gap slider label
+    document.getElementById('gap-value').textContent = state.gap + ' cm';
+
+    // Variant badge
+    var badge = document.getElementById('variant-badge');
+    badge.textContent = r.style;
+    badge.classList.toggle('slatted', r.style === 'Slatted');
+
+    // Clear stale scene render when spec changes
+    resetRender('Spec changed — click Render scene to regenerate.');
+
+    // Redraw svg
+    renderSvg();
+  }
+
+  // ===== Scene render =====
+  function resetRender(msg) {
+    var el = document.getElementById('render-result');
+    el.className = 'render-result is-empty';
+    el.innerHTML = (msg || 'Select a scene and click <strong>Render scene</strong>.');
+    state.sceneImageUrl = '';
+  }
+
+  function wireRender() {
+    var btn = document.getElementById('btn-render');
+    var res = document.getElementById('render-result');
+    var msg = document.getElementById('render-msg');
+    btn.addEventListener('click', async function() {
+      var r = computed();
+      var payload = {
+        series: state.series,
+        height: state.height,
+        bayWidth: state.bay,
+        gap: state.gap,
+        colorCode: r.c.code,
+        colorName: r.c.name,
+        colorHex: r.c.hex,
+        scene: state.scene
+      };
+      btn.disabled = true;
+      btn.classList.add('is-loading');
+      btn.textContent = 'Rendering…';
+      msg.className = 'render-msg';
+      msg.textContent = 'Rendering your fence in ' + state.scene + '… (≈10 s)';
+      res.className = 'render-result is-loading';
+      res.innerHTML = '';
+      try {
+        var resp = await fetch('/api/render-scene', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var data = await resp.json().catch(function(){ return {}; });
+        if (resp.ok && data.ok && (data.imageBase64 || data.imageUrl)) {
+          var src = data.imageUrl || ('data:image/png;base64,' + data.imageBase64);
+          res.className = 'render-result';
+          res.innerHTML = '<img src="' + src + '" alt="Rendered WPC fence in ' + state.scene + ' context">';
+          state.sceneImageUrl = src;
+          msg.textContent = 'Rendered. Click Request quote to attach this image to your enquiry.';
+        } else {
+          res.className = 'render-result is-empty';
+          res.innerHTML = (data.error || 'Render failed. Please try again.');
+          msg.className = 'render-msg error';
+          msg.textContent = data.error || 'Render failed. Please try again or use a different scene.';
+        }
+      } catch (err) {
+        res.className = 'render-result is-empty';
+        res.innerHTML = 'Network error — please try again.';
+        msg.className = 'render-msg error';
+        msg.textContent = 'Network error. Check your connection and retry.';
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        btn.textContent = 'Render scene';
+      }
+    });
+  }
+
+  // ===== Quote modal =====
+  function populateQuoteHidden() {
+    var r = computed();
+    document.getElementById('qf-series').value = state.series;
+    document.getElementById('qf-height').value = state.height + ' m';
+    document.getElementById('qf-bay').value    = state.bay + ' m';
+    document.getElementById('qf-gap').value    = state.gap + ' cm';
+    document.getElementById('qf-color').value  = r.c.code + ' ' + r.c.name;
+    document.getElementById('qf-length').value = r.total.toFixed(1);   // API bound: positive fence length — send total
+    document.getElementById('qf-run').value    = r.fenceRun.toFixed(1);
+    document.getElementById('qf-sg').value     = state.singleGates;
+    document.getElementById('qf-dg').value     = state.doubleGates;
+    document.getElementById('qf-gates').value  = state.singleGates + state.doubleGates;
+    document.getElementById('qf-total').value  = r.total.toFixed(1);
+    document.getElementById('qf-scene').value  = state.sceneImageUrl;
+
+    // Visible spec recap
+    var dl = document.getElementById('spec-preview-list');
+    var rows = [
+      ['Series', SERIES_LABEL[state.series]],
+      ['Style',  r.style],
+      ['Height', state.height.toFixed(1) + ' m'],
+      ['Bay width', state.bay.toFixed(1) + ' m'],
+      ['Board gap', state.gap + ' cm'],
+      ['Colour', r.c.code + ' ' + r.c.name],
+      ['Fence run', r.fenceRun.toFixed(1) + ' m'],
+      ['Single gates', state.singleGates + ' × 1.2 m'],
+      ['Double gates', state.doubleGates + ' × 2.4 m'],
+      ['Total length', r.total.toFixed(1) + ' m']
+    ];
+    dl.innerHTML = rows.map(function(kv) {
+      return '<div><dt>' + kv[0] + '</dt><dd>' + kv[1] + '</dd></div>';
+    }).join('');
+  }
+
+  function wireModal() {
+    var modal = document.getElementById('quote-modal');
+    var form  = document.getElementById('quote-form');
+    var statusEl = document.getElementById('quote-status');
+    var submitBtn = document.getElementById('quote-submit');
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      populateQuoteHidden();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        var first = modal.querySelector('#qf-name');
+        if (first) first.focus();
+      }, 50);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+    }
+
+    document.querySelectorAll('[data-quote-open]').forEach(function(el) {
+      el.addEventListener('click', openModal);
+    });
+    document.querySelectorAll('[data-quote-close]').forEach(function(el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    function showStatus(m, kind) {
+      statusEl.className = 'form-status show ' + (kind || 'success');
+      statusEl.textContent = m;
+    }
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+
+      var fd = new FormData(form);
+      var payload = {};
+      fd.forEach(function(v, k) { payload[k] = v; });
+      payload.source = location.host + location.pathname;
+
+      var required = ['name', 'email', 'projectType', 'length', 'series'];
+      for (var i = 0; i < required.length; i++) {
+        if (!payload[required[i]] || !String(payload[required[i]]).trim()) {
+          showStatus('Please complete all required fields.', 'error');
+          var el = document.getElementById('qf-' + (required[i] === 'projectType' ? 'type' : required[i]));
+          if (el) el.focus();
+          return;
+        }
+      }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(payload.email)) {
+        showStatus('Please enter a valid email address.', 'error');
+        document.getElementById('qf-email').focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        var r = await fetch('/api/quote', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        var data = await r.json().catch(function(){ return {}; });
+        if (r.ok && data.ok) {
+          if (data.degraded) {
+            showStatus(data.warning || 'Enquiry received — we will follow up by email shortly.', 'warning');
+          } else {
+            showStatus('Thank you — your enquiry has been sent with your full configuration. A Leka specialist will respond within one business day.', 'success');
+          }
+          form.reset();
+        } else {
+          showStatus(data.error || 'Something went wrong. Please email hello@leka.studio instead.', 'error');
+        }
+      } catch (err) {
+        showStatus('Network error — please try again, or email hello@leka.studio.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        submitBtn.textContent = 'Send enquiry';
+      }
+    });
+  }
+
+  // ===== Init =====
+  renderSwatches();
+  wireSegmented();
+  wireSlider();
+  wireStepper('len-dec', 'len-input', 'len-inc', 'length',      1,  10000);
+  wireStepper('sg-dec',  'sg-input',  'sg-inc',  'singleGates', 0,  10);
+  wireStepper('dg-dec',  'dg-input',  'dg-inc',  'doubleGates', 0,  10);
+  wireScene();
+  wireRender();
+  wireModal();
+  update();
+})();
+</script>
+
+</body>
+</html>

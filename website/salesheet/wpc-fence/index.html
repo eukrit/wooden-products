@@ -564,7 +564,7 @@ section + section { padding-top: 0; }
    APPLICATIONS (3 columns)
    ========================================================================== */
 .apps {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-md);
 }
 .app-card {
   padding: var(--space-2xl) var(--space-xl);
@@ -1163,7 +1163,8 @@ section + section { padding-top: 0; }
       <span class="badge badge-cream">60% Recycled</span>
     </div>
     <div class="hero-cta">
-      <a href="#range" class="btn btn-primary btn-lg">Explore the Collection</a>
+      <a href="/wpc-fence/configurator/" class="btn btn-primary btn-lg">Configure your fence ▶</a>
+      <a href="#range" class="btn btn-outline btn-lg" style="color: var(--lk-cream); border-color: var(--lk-cream);">Explore the Collection</a>
       <a href="#quote" class="btn btn-outline btn-lg" data-quote-open style="color: var(--lk-cream); border-color: var(--lk-cream);">Request a Quote</a>
     </div>
   </div>
@@ -1432,6 +1433,9 @@ section + section { padding-top: 0; }
         </div>
       </article>
     </div>
+    <div style="margin-top: var(--space-2xl); display: flex; justify-content: center;">
+      <a href="/wpc-fence/configurator/" class="btn btn-primary btn-lg">Configure your own fence ▶</a>
+    </div>
   </div>
 </section>
 
@@ -1511,14 +1515,14 @@ section + section { padding-top: 0; }
       <p>The standard Leka WPC palette covers the modern outdoor-living spectrum. Custom RAL or Pantone matches are supported subject to minimum order quantity. Physical sample boards available on request.</p>
     </div>
     <div class="palette">
-      <div class="swatch"><div class="swatch-chip" style="background:#2B2B2B"></div><div class="swatch-body"><h6>Carbon Black</h6><div class="code">LK-01</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#3F3F44"></div><div class="swatch-body"><h6>Charcoal</h6><div class="code">LK-02</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#8C8C90"></div><div class="swatch-body"><h6>Stone Grey</h6><div class="code">LK-03</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#E8DDC5"></div><div class="swatch-body"><h6>Sand White</h6><div class="code">LK-04</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#A06A3A"></div><div class="swatch-body"><h6>Teak</h6><div class="code">LK-05</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#6B4226"></div><div class="swatch-body"><h6>Walnut</h6><div class="code">LK-06</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#4A2820"></div><div class="swatch-body"><h6>Rosewood</h6><div class="code">LK-07</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#8B5A2B"></div><div class="swatch-body"><h6>Antique Oak</h6><div class="code">LK-08</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#2B2B2B url(images/swatches/lk-01.jpg) center/cover"></div><div class="swatch-body"><h6>Charcoal Black</h6><div class="code">LK-01</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#3F3F44 url(images/swatches/lk-02.jpg) center/cover"></div><div class="swatch-body"><h6>Ancient Wood</h6><div class="code">LK-02</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#8C8C90 url(images/swatches/lk-03.jpg) center/cover"></div><div class="swatch-body"><h6>Light Grey</h6><div class="code">LK-03</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#E8DDC5 url(images/swatches/lk-04.jpg) center/cover"></div><div class="swatch-body"><h6>Sand White</h6><div class="code">LK-04</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#A06A3A url(images/swatches/lk-05.jpg) center/cover"></div><div class="swatch-body"><h6>Teak</h6><div class="code">LK-05</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#6B4226 url(images/swatches/lk-06.jpg) center/cover"></div><div class="swatch-body"><h6>Mahogany</h6><div class="code">LK-06</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#4A2820 url(images/swatches/lk-07.jpg) center/cover"></div><div class="swatch-body"><h6>Rosewood</h6><div class="code">LK-07</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#8B5A2B url(images/swatches/lk-08.jpg) center/cover"></div><div class="swatch-body"><h6>Maple</h6><div class="code">LK-08</div></div></div>
     </div>
   </div>
 </section>
@@ -1542,8 +1546,16 @@ section + section { padding-top: 0; }
         <p>Hotel perimeters, villa privacy walls, poolside screening, and outdoor dining divisions.</p>
       </div>
       <div class="app-card red-orange">
-        <h5>Commercial</h5>
-        <p>Office compounds, industrial boundaries, retail frontages, and acoustic noise barriers.</p>
+        <h5>Hospital</h5>
+        <p>Hospital courtyards, healing-garden enclosures, service-yard screening, and staff-only zone dividers.</p>
+      </div>
+      <div class="app-card">
+        <h5>School</h5>
+        <p>Campus perimeters, playground boundaries, sports-field screens, and safety barriers between zones.</p>
+      </div>
+      <div class="app-card amber">
+        <h5>Resort</h5>
+        <p>Beachfront perimeters, villa compound walls, pool-deck enclosures, and back-of-house privacy screens.</p>
       </div>
     </div>
   </div>
@@ -1784,14 +1796,14 @@ section + section { padding-top: 0; }
             <label for="qf-color">Preferred colour</label>
             <select id="qf-color" name="color">
               <option value="">Select…</option>
-              <option>LK-01 Carbon Black</option>
-              <option>LK-02 Charcoal</option>
-              <option>LK-03 Stone Grey</option>
+              <option>LK-01 Charcoal Black</option>
+              <option>LK-02 Ancient Wood</option>
+              <option>LK-03 Light Grey</option>
               <option>LK-04 Sand White</option>
               <option>LK-05 Teak</option>
-              <option>LK-06 Walnut</option>
+              <option>LK-06 Mahogany</option>
               <option>LK-07 Rosewood</option>
-              <option>LK-08 Antique Oak</option>
+              <option>LK-08 Maple</option>
               <option>Custom / not sure</option>
             </select>
           </div>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wooden-products — Build Summary</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --fg: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #8003FF;
+    --amber: #FFA900;
+    --ok: #10b981;
+    --warn: #f59e0b;
+    --card: #1e293b;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: 32px 20px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 32px; margin: 0 0 8px; }
+  h2 { font-size: 22px; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 16px; margin: 16px 0 8px; color: var(--accent); }
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .meta-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .meta-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .meta-card .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .meta-card .val { font-size: 16px; font-weight: 700; margin-top: 2px; word-break: break-all; }
+  .status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .status.ok   { background: rgba(16,185,129,0.15); color: var(--ok); }
+  .status.warn { background: rgba(245,158,11,0.15); color: var(--warn); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  code {
+    background: rgba(128,3,255,0.15);
+    color: #c4b5fd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  ul.changes { padding-left: 18px; margin: 8px 0; }
+  ul.changes li { margin-bottom: 6px; }
+  .callout {
+    background: rgba(128,3,255,0.08);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+  footer {
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  a { color: var(--amber); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Build Summary</span>
+  <h1>wooden-products</h1>
+  <p style="color: var(--muted); margin: 0;">WPC Fence Configurator — interactive spec tool + Gemini scene render</p>
+
+  <div class="meta-grid">
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.3.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-18</div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
+    <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
+    <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
+    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-fence/configurator/">salesheet.leka.studio/wpc-fence/configurator/</a></div></div>
+  </div>
+
+  <h2>What shipped in 0.3.0</h2>
+
+  <h3>New — Interactive WPC Fence Configurator</h3>
+  <ul class="changes">
+    <li>Dedicated page at <code>/wpc-fence/configurator/</code> with real-time SVG side-elevation preview.</li>
+    <li>Controls: Series (Premium / Classic), Bay width (1.5 / 1.8 / 2.0 / 2.9 m), Height (1.5 / 2.0 / 2.5 / 3.0 m), Gap slider 0–15 cm (0 = privacy, 1–15 = slatted), Fence run input, 8-swatch colour picker, single/double gate steppers.</li>
+    <li>Sticky summary panel with live bay count, post count, total boards, and total length with gates added in (single × 1.2 m, double × 2.4 m).</li>
+    <li>Quote modal pre-fills the full spec and submits to the existing <code>/api/quote</code> Slack lead flow.</li>
+  </ul>
+
+  <h3>New — Gemini Scene Render</h3>
+  <ul class="changes">
+    <li>New endpoint <code>POST /api/render-scene</code> calls Gemini 2.5 Flash Image ("Nanobanana") via REST to render the configured fence into one of five scenes: residential · hospitality · hospital · school · resort.</li>
+    <li>SHA-256 spec cache (re-runs for the same spec hit memory instantly).</li>
+    <li>Per-IP rate limit: 20 s. Daily budget guard: 200 renders/day (configurable via <code>RENDER_DAILY_BUDGET</code>).</li>
+    <li>Rendered image is attached to the Slack lead when the user submits a quote after rendering.</li>
+  </ul>
+
+  <h3>Changed — Parent WPC Fence page</h3>
+  <ul class="changes">
+    <li>New hero CTA "Configure your fence" + matching CTA under the Configurations section.</li>
+    <li>Applications expanded 3 → 5 cards to mirror the configurator scenes: Residential / Hospitality / Hospital / School / Resort.</li>
+  </ul>
+
+  <h2>Files touched</h2>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>website/salesheet/wpc-fence/configurator/index.html</code></td><td>New (1 file, ~800 lines)</td></tr>
+      <tr><td><code>website/salesheet/server.py</code></td><td>+ <code>/api/render-scene</code>, extended <code>ALLOWED_FIELDS</code>, extended Slack block builder</td></tr>
+      <tr><td><code>website/salesheet/cloudbuild.yaml</code></td><td>+ <code>GEMINI_API_KEY</code> secret, <code>GEMINI_IMAGE_MODEL</code> env</td></tr>
+      <tr><td><code>website/salesheet/wpc-fence/index.html</code></td><td>+ configurator CTAs, Applications 3 → 5 cards</td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.3.0] entry</td></tr>
+      <tr><td><code>build-summary.html</code></td><td>New — this file</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Pre-deploy checklist</h2>
+  <ul class="changes">
+    <li>✅ Add GCP Secret Manager secret <code>gemini-api-key</code> from <code>Credentials Claude Code/gemini-api-key.txt</code></li>
+    <li>⚠️ Capture manufacturer woodgrain textures → <code>website/salesheet/wpc-fence/images/swatches/lk-01.jpg</code> … <code>lk-08.jpg</code> (configurator ships with hex fallback but textures make the swatches photoreal)</li>
+    <li>✅ Push to <code>main</code> — Cloud Build <code>deploy-salesheet</code> trigger deploys <code>salesheet-leka</code> automatically</li>
+    <li>✅ Smoke test <code>/wpc-fence/configurator/</code> — drag controls, render 1 scene per tier, submit a test quote and confirm Slack <code>#bd-new-leads</code> receives the extended spec + scene image</li>
+  </ul>
+
+  <h2>Verification snapshot</h2>
+  <div class="callout">
+    Gate math sanity check: fence run 48 m + 1 single + 0 double → 49.2 m. 48 + 2 single + 1 double → 52.8 m. Board count for 2.5 m height + 0 cm gap → 16 boards per bay (inside 40 mm top rail + 60 mm bottom rail, 148 mm effective board). Slider at 15 cm with 1.5 m height → ~9 boards per bay (slatted look).
+  </div>
+
+  <h2>Links</h2>
+  <ul class="changes">
+    <li><a href="https://salesheet.leka.studio/wpc-fence/">Parent WPC Fence page</a></li>
+    <li><a href="https://salesheet.leka.studio/wpc-fence/configurator/">Configurator (post-deploy)</a></li>
+    <li><a href="https://github.com/eukrit/wooden-products">GitHub — eukrit/wooden-products</a></li>
+    <li><a href="https://www.notion.so/gocorp/Coding-Project-Dashboard-Claude-32c82cea8bb080f1bbd7f26770ae9e80">Notion Dashboard</a></li>
+  </ul>
+
+  <footer>
+    wooden-products · 0.3.0 · 2026-04-18 · generated by Claude Code
+  </footer>
+</div>
+</body>
+</html>
