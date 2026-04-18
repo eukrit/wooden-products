@@ -970,10 +970,32 @@ section + section { padding-top: 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE — breakpoints
+     1200   desktop container limit (below: fluid)
+     1024   small desktop / tablet landscape  — trim section padding, nav gaps
+      860   tablet portrait                   — collapse 4-col grids to 2, 3-col to 2, hide nav links
+      640   large phone                       — collapse remaining multi-col to 1
+      480   small phone                       — tighter gutters, type scale down, full-width CTAs
+      360   extra-small phone                 — minimal padding, smaller hero
    ========================================================================== */
-@media (max-width: 960px) {
-  :root { --nav-height: 64px; }
+
+/* Small desktop / tablet landscape */
+@media (max-width: 1024px) {
+  :root {
+    --space-4xl: 80px;
+    --space-3xl: 56px;
+  }
+  .nav-links { gap: var(--space-lg); }
+  .container { padding: 0 var(--space-lg); }
+}
+
+/* Tablet portrait */
+@media (max-width: 860px) {
+  :root {
+    --nav-height: 64px;
+    --space-4xl: 64px;
+    --space-3xl: 48px;
+  }
   .nav-links { gap: var(--space-md); }
   .nav-links a:not(.btn) { display: none; }
   section { padding: var(--space-3xl) 0; }
@@ -985,21 +1007,89 @@ section + section { padding-top: 0; }
   .config-grid, .apps, .palette, .gallery { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .install-diagram { order: -1; }
-  .system-list li { grid-template-columns: 120px 1fr; }
+  .system-list li { grid-template-columns: 140px 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .modal-head, .modal-body { padding-left: var(--space-xl); padding-right: var(--space-xl); }
   .warranty-detail { padding: var(--space-xl); }
+  .spec-block { padding: var(--space-xl); }
+  .hero { min-height: auto; padding: var(--space-2xl) 0 var(--space-3xl); }
 }
-@media (max-width: 560px) {
+
+/* Large phone */
+@media (max-width: 640px) {
+  :root {
+    --space-4xl: 56px;
+    --space-2xl: 36px;
+  }
+  .container { padding: 0 var(--space-md); }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-md); }
   .palette, .apps, .gallery, .config-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
   .hero-cta .btn { width: 100%; }
-  .system-list li { grid-template-columns: 1fr; gap: var(--space-xs); }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .system-list li { grid-template-columns: 1fr; gap: var(--space-xs); padding: var(--space-sm) 0; }
   .modal-overlay { padding: 0; }
-  .modal { border-radius: 0; min-height: 100vh; }
+  .modal { border-radius: 0; min-height: 100vh; max-width: 100%; }
+  .modal-head, .modal-body { padding-left: var(--space-lg); padding-right: var(--space-lg); }
   .form-footer { flex-direction: column; align-items: stretch; }
   .form-footer .btn { width: 100%; }
+  .form-note { max-width: none; text-align: center; }
+  .warranty-detail { padding: var(--space-lg); }
+  .range-card-body, .config-card-body { padding: var(--space-lg); }
+  .range-card-specs { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+  .cta-buttons { flex-direction: column; align-items: stretch; }
+  .cta-buttons .btn { width: 100%; }
+  .spec-table th, .spec-table td { padding: var(--space-sm); }
+  .spec-block { padding: var(--space-lg); }
+  .install-diagram { padding: var(--space-lg); }
+  .install-diagram img { max-height: 220px; }
+  .footer-bottom { flex-direction: column; text-align: left; gap: var(--space-sm); }
+}
+
+/* Small phone */
+@media (max-width: 480px) {
+  :root {
+    --fs-body-lg: 16px;
+    --space-4xl: 48px;
+  }
+  .container { padding: 0 var(--space-md); }
+  .stats-grid { gap: var(--space-sm); }
+  .stat-num { font-size: clamp(32px, 10vw, 48px); }
+  .hero .btn { padding: 14px 20px; }
+  .nav .btn { padding: 10px 16px; font-size: 13px; }
+  .nav-logo svg { height: 24px; }
+  .range-card-img { aspect-ratio: 3 / 2; }
+  .config-card-img { aspect-ratio: 16 / 10; }
+  .compare-wrap { margin: 0 calc(var(--space-md) * -1); border-radius: 0; border-left: 0; border-right: 0; }
+  .warranty-years { font-size: clamp(48px, 14vw, 72px); }
+  .modal-head { padding-top: var(--space-xl); padding-bottom: var(--space-sm); }
+  .modal-body { padding-top: var(--space-md); padding-bottom: var(--space-xl); }
+}
+
+/* Extra-small phone */
+@media (max-width: 360px) {
+  :root {
+    --space-4xl: 40px;
+    --space-3xl: 40px;
+  }
+  .container { padding: 0 var(--space-sm); }
+  .hero-meta .badge-cream { font-size: 10px; padding: 3px 10px; }
+  .nav-logo svg { height: 22px; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* Short viewport (landscape phones) — don't force hero to fill screen */
+@media (max-height: 600px) {
+  .hero { min-height: auto; padding: var(--space-2xl) 0; }
+}
+
+/* Honour reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
