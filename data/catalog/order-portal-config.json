@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "description": "Finalized configuration decisions for the Leka Wood Products order portal. Loaded by the order-portal Flask app at runtime.",
+    "decided": "2026-04-20",
+    "status": "ready for implementation"
+  },
+
+  "order_number": {
+    "prefix": "SO-WD-",
+    "format": "SO-WD-{YYYY}-{NNNN}",
+    "counter_collection": "counters",
+    "counter_doc": "order_number",
+    "example": "SO-WD-2026-0001"
+  },
+
+  "slack": {
+    "channel_id": "C0AUABRBK41",
+    "channel_name": "#orders-wood-products",
+    "created_at": "2026-04-20",
+    "env_var": "SLACK_ORDER_CHANNEL",
+    "purpose": "New Wood-Products orders from the Leka Studio sales portal. Each submitted order (SO-WD-YYYY-NNNN) posts here with a link to the admin dashboard and auto-creates a Xero draft invoice.",
+    "topic": "Wood-Products Customer orders · SO-WD-XXXX · min GM 25% · admin: salesheet.leka.studio/admin/orders/"
+  },
+
+  "xero": {
+    "fallback_contact_name": "Wood Product Customer",
+    "fallback_contact_auto_create": true,
+    "fallback_contact_purpose": "Used when an order's customer.email doesn't match any existing Xero Contact. One-time auto-created by the order portal on first submission; subsequent unmatched orders reuse this contact.",
+    "invoice_status_on_submit": "DRAFT",
+    "invoice_status_on_confirm": "AUTHORISED",
+    "tracking_category_name": "Leka-Wood-Products",
+    "line_item_code_prefix": "LK-",
+    "tenant_id_secret": "xero-tenant-id",
+    "client_secret": "xero-client-secret",
+    "tokens_json": "xero_tokens.json (GCS + local Credentials folder)"
+  },
+
+  "auth": {
+    "provider": "firebase-authentication",
+    "providers_enabled": ["email_password", "google", "microsoft"],
+    "admin_email_domain": "goco.bz",
+    "admin_auto_promote_rule": "Any user signing in with an email ending @goco.bz is auto-assigned role=admin on first login; all others default to role=external_sales.",
+    "session_ttl_hours": 8,
+    "firebase_project": "ai-agents-go",
+    "service_account_secret": "firebase-admin-sa"
+  },
+
+  "pricing": {
+    "min_gm_percent_sales": 25,
+    "default_gm_percent": 45,
+    "admin_can_override_gm": true,
+    "landed_cost_source": "data/catalog/leka-landed-cost.json (FCL-40 method, THB/m)",
+    "fx_buffer_percent": 2
+  },
+
+  "roles": {
+    "external_sales": {
+      "permissions": [
+        "create_draft",
+        "edit_own_draft",
+        "submit_own_order",
+        "view_own_orders"
+      ],
+      "min_gm_floor_percent": 25,
+      "cannot": [
+        "view_other_user_orders",
+        "see_vendor_codes",
+        "view_landed_cost_below_markup",
+        "act_as_user"
+      ]
+    },
+    "admin": {
+      "permissions": [
+        "view_all_orders",
+        "edit_any_order",
+        "act_as_user",
+        "confirm_order",
+        "cancel_order",
+        "override_gm_floor",
+        "see_vendor_codes",
+        "see_landed_cost"
+      ]
+    }
+  },
+
+  "customer_block_required_fields": [
+    "name",
+    "email",
+    "phone"
+  ],
+  "customer_block_optional_fields": [
+    "company",
+    "billing_address",
+    "project_type",
+    "notes"
+  ]
+}
