@@ -102,6 +102,106 @@ def palette_strip(category_slug: str, codes: list[str]) -> str:
 </div>"""
 
 
+def cross_section_svg(p: dict, series_code: str) -> str:
+    """Inline SVG cross-section sized to the product's real width×thickness."""
+    w = float(p.get("w", 140))
+    t = float(p.get("t", 20))
+    cat_slug = [k for k, v in CATS.items() if any(pp["sku"] == p["sku"] for pp in v.get("products", []))][0]
+    sub = p.get("sub", "")
+    # Accent colour per series
+    accent = {"lkp": "#8003FF", "lka": "#970260", "lkh": "#FFA900", "lks": "#E54822", "lkd": "#182557"}.get(series_code, "#8003FF")
+    # Fill colour approximating the series' default tone
+    fill = {"lkp": "#8B6B4A", "lka": "#A98765", "lkh": "#6B4226", "lks": "#2B2B2B", "lkd": "#3F3F44"}.get(series_code, "#8B6B4A")
+
+    # Viewbox 400×200 — scale profile to fit with side dimension annotations
+    VB_W, VB_H = 400, 200
+    pad_x, pad_y = 50, 40
+    max_w = VB_W - 2 * pad_x
+    # Scale so the longer dimension (width) fits
+    scale = max_w / w
+    draw_w = w * scale
+    draw_h = min(t * scale * 3.2, VB_H - 2 * pad_y)  # cap so very thin sections stay readable
+    x0 = (VB_W - draw_w) / 2
+    y0 = (VB_H - draw_h) / 2
+
+    # Decide profile geometry by sub-category
+    hollows = ""
+    grain_lines = ""
+    path_d = None
+    n_hollow = 0
+    if "hollow" in sub or "grooved" in sub.lower() or "deckway" in sub:
+        # Hollow rect with interior cells
+        n_hollow = 6 if "grooved" in sub else 5
+    elif "fluted" in sub or "grille" in sub or "small-panel" in sub:
+        # Fluted panel profile — rib pattern on top surface
+        n_ribs = 5
+        rib_w = draw_w / n_ribs
+        # path with teeth pattern
+        parts = [f"M{x0:.1f},{y0 + draw_h*0.35:.1f}"]
+        for i in range(n_ribs):
+            rx = x0 + i * rib_w
+            parts.append(f"L{rx + rib_w*0.15:.1f},{y0 + draw_h*0.35:.1f}")
+            parts.append(f"L{rx + rib_w*0.15:.1f},{y0:.1f}")
+            parts.append(f"L{rx + rib_w*0.85:.1f},{y0:.1f}")
+            parts.append(f"L{rx + rib_w*0.85:.1f},{y0 + draw_h*0.35:.1f}")
+        parts.append(f"L{x0 + draw_w:.1f},{y0 + draw_h*0.35:.1f}")
+        parts.append(f"L{x0 + draw_w:.1f},{y0 + draw_h:.1f}")
+        parts.append(f"L{x0:.1f},{y0 + draw_h:.1f} Z")
+        path_d = " ".join(parts)
+    elif "flat" in sub or "fence" in sub or "solid" in sub:
+        # Tongue-and-groove flat profile
+        pass
+    elif "beams" in sub or "columns" in sub:
+        # Solid column/beam
+        pass
+    elif "edging" in sub:
+        # L-shaped edging
+        pass
+
+    # Base rectangle + overlays
+    body_svg = ""
+    if path_d:
+        body_svg = f'<path d="{path_d}" fill="{fill}" stroke="#182557" stroke-width="1.5"/>'
+    else:
+        body_svg = f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{draw_w:.1f}" height="{draw_h:.1f}" rx="2" fill="{fill}" stroke="#182557" stroke-width="1.5"/>'
+        # Cap shield stripe (Signature / Shield)
+        if series_code in ("lkp", "lka"):
+            body_svg += f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{draw_w:.1f}" height="4" fill="{accent}" opacity=".6"/>'
+            body_svg += f'<rect x="{x0:.1f}" y="{y0 + draw_h - 4:.1f}" width="{draw_w:.1f}" height="4" fill="{accent}" opacity=".6"/>'
+        # Interior hollows
+        if n_hollow:
+            if "grooved" in sub:
+                r = draw_h * 0.25
+                for i in range(n_hollow):
+                    cx = x0 + (i + 0.5) * (draw_w / n_hollow)
+                    body_svg += f'<circle cx="{cx:.1f}" cy="{y0 + draw_h/2:.1f}" r="{r:.1f}" fill="#F3F3F5" stroke="#182557" stroke-width=".5"/>'
+            else:
+                cw = draw_w / (n_hollow + 1)
+                ch = draw_h * 0.5
+                for i in range(n_hollow):
+                    cx = x0 + (i + 0.5) * cw + cw * 0.5
+                    body_svg += f'<rect x="{cx:.1f}" y="{y0 + draw_h*0.25:.1f}" width="{cw*0.7:.1f}" height="{ch:.1f}" fill="#F3F3F5" stroke="#182557" stroke-width=".5"/>'
+        # 3D emboss hints for heritage
+        if series_code == "lkh" and ("-em" in p["sku"].lower() or "embossed" in p["name"].lower()):
+            for i in range(4):
+                y = y0 + draw_h * (0.15 + i * 0.2)
+                body_svg += f'<path d="M{x0+6:.1f},{y:.1f} Q{x0 + draw_w/2:.1f},{y+2:.1f} {x0 + draw_w - 6:.1f},{y:.1f}" stroke="#2B2B2B" stroke-width=".8" fill="none" opacity=".4"/>'
+
+    # Dimension annotations
+    dim_svg = (
+        f'<line x1="{x0:.1f}" y1="{y0 + draw_h + 12:.1f}" x2="{x0 + draw_w:.1f}" y2="{y0 + draw_h + 12:.1f}" stroke="{accent}" stroke-width="1"/>'
+        f'<text x="{VB_W/2:.1f}" y="{y0 + draw_h + 26:.1f}" text-anchor="middle" font-family="Manrope" font-size="11" fill="{accent}" font-weight="600">{w:g} mm</text>'
+        f'<line x1="{x0 + draw_w + 12:.1f}" y1="{y0:.1f}" x2="{x0 + draw_w + 12:.1f}" y2="{y0 + draw_h:.1f}" stroke="{accent}" stroke-width="1"/>'
+        f'<text x="{x0 + draw_w + 22:.1f}" y="{y0 + draw_h/2 + 4:.1f}" font-family="Manrope" font-size="11" fill="{accent}" font-weight="600">{t:g} mm</text>'
+    )
+
+    return f'''<svg class="p-section" viewBox="0 0 {VB_W} {VB_H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{p['name']} cross-section">
+  <rect width="{VB_W}" height="{VB_H}" fill="#FAFAFB"/>
+  {body_svg}
+  {dim_svg}
+</svg>'''
+
+
 def product_card(p: dict, cat_palette: list[str]) -> str:
     series_code = p["sku"].split("-")[0].lower()  # lkp, lkh, lka, lks, lkd
     series_name = SERIES.get(series_code.upper(), {"name": "Leka"})["name"]
@@ -115,11 +215,16 @@ def product_card(p: dict, cat_palette: list[str]) -> str:
         for c in cat_palette if c in PALETTE
     )
     length_m = p.get("len", 2900) / 1000
+    section = cross_section_svg(p, series_code)
     return f"""<article class="product" data-sub="{p['sub']}">
   <div class="p-img contain">
     <span class="p-badge {series_code}">{series_name}</span>
     <span class="p-sku">{p['sku']}</span>
     <img src="{p['image']}" alt="{p['name']} — {sub_name}" loading="lazy">
+  </div>
+  <div class="p-section-wrap">
+    <div class="p-section-label">Cross-Section</div>
+    {section}
   </div>
   <div class="p-body">
     <div>

@@ -82,7 +82,7 @@
       },
       "products": [
         { "sku": "LKP-CL-F-156-21",   "sub": "signature-flat",  "name": "Signature Cladding 156 × 21",      "w": 156, "t": 21, "len": 2900, "vendor_code": "AL-GS156/21C", "finishes": ["WG","KC","ST"], "image": "/wpc-profile/images/products/coex-p6-r7.jpg" },
-        { "sku": "LKP-CL-F-156-18",   "sub": "signature-flat",  "name": "Signature Cladding 156 × 18",      "w": 156, "t": 18, "len": 2900, "vendor_code": "AL-GS156-18A", "finishes": ["WG","KC"],     "image": "/wpc-profile/images/products/coex-p6-r5.jpg" },
+        { "sku": "LKP-CL-F-156-18",   "sub": "signature-flat",  "name": "Signature Cladding 156 × 18",      "w": 156, "t": 18, "len": 2900, "vendor_code": "AL-GS156-18A", "finishes": ["WG","KC"],     "image": "/wpc-profile/images/products/coex-p6-r6.jpg" },
         { "sku": "LKA-CL-122-10",     "sub": "shield-flat",     "name": "Shield Flat Wall 122 × 10",        "w": 122, "t": 10, "len": 2900, "vendor_code": "AOLO-122*10",  "finishes": ["WG","KC"],     "image": "/wpc-profile/images/asa/122x10-panel.jpg" },
         { "sku": "LKA-CL-112-16",     "sub": "shield-flat",     "name": "Shield Small Wall 112 × 16",       "w": 112, "t": 16, "len": 2900, "vendor_code": "AOLO-112*16",  "finishes": ["WG","KC"],     "image": "/wpc-profile/images/asa/112x16-smallpanel.jpg" },
         { "sku": "LKA-CL-G-121-12",   "sub": "shield-grille",   "name": "Shield Small Grille 121 × 12",     "w": 121, "t": 12, "len": 2900, "vendor_code": "AOLO-121*12",  "finishes": ["WG","KC"],     "image": "/wpc-profile/images/asa/121x12-smallgrille.jpg" },
@@ -134,8 +134,8 @@
         "heritage-boards": { "name": "Heritage Fence Boards","series": "LKH","description": "Solid-WPC horizontal & vertical slat boards." }
       },
       "products": [
-        { "sku": "LKP-FN-161-20",   "sub": "signature-kit",    "name": "Signature Fence Board 161.5 × 20",    "w": 161.5, "t": 20, "len": 2025, "vendor_code": "GK161.5/20C", "finishes": ["WG","KC"], "image": "/wpc-profile/images/products/coex-p2-r8.jpg" },
-        { "sku": "LKP-FN-215-20",   "sub": "signature-kit",    "name": "Signature Wide Fence Board 215 × 20", "w": 215,   "t": 20, "len": 2900, "vendor_code": "AL-GK215-20A","finishes": ["WG","KC"], "image": "/wpc-profile/images/products/coex-p2-r10.jpg" },
+        { "sku": "LKP-FN-161-20",   "sub": "signature-kit",    "name": "Signature Fence Board 161.5 × 20",    "w": 161.5, "t": 20, "len": 2025, "vendor_code": "GK161.5/20C", "finishes": ["WG","KC"], "image": "/wpc-profile/images/products/coex-p2-r7.jpg" },
+        { "sku": "LKP-FN-215-20",   "sub": "signature-kit",    "name": "Signature Wide Fence Board 215 × 20", "w": 215,   "t": 20, "len": 2900, "vendor_code": "AL-GK215-20A","finishes": ["WG","KC"], "image": "/wpc-profile/images/products/coex-p2-r6.jpg" },
         { "sku": "LKA-FN-140-32",   "sub": "shield-fence",     "name": "Shield Fence Board 140 × 32",         "w": 140,   "t": 32, "len": 2025, "vendor_code": "AOLO-140*32", "finishes": ["WG","KC"], "image": "/wpc-profile/images/asa/140x32-fence.jpg" }
       ]
     },
