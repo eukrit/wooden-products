@@ -416,17 +416,67 @@ def _post_generic_to_slack(data: dict[str, Any], ip: str) -> tuple[bool, str]:
 
 
 # ---------- Scene Render (Gemini 2.5 Flash Image / "Nanobanana") ----------
-_SCENE_DESCRIPTIONS = {
-    "residential":  "modern Thai villa with tropical garden and paved driveway",
-    "hospitality":  "boutique resort pool terrace with teak decking and palms",
-    "hospital":     "contemporary hospital courtyard with wayfinding and soft landscaping",
-    "school":       "international school playground perimeter with green lawn",
-    "resort":       "beachfront luxury resort with sea view and coconut palms",
+# Directorial template (approved "Variant C / Lifestyle In-Use"):
+#   Pedestrian 3/4 vantage · camera 1.5 m · bright softened afternoon sun
+#   · 50 mm full-frame, f/2.8, medium-shallow DoF · warm editorial-lifestyle grading
+#   · 16:9 landscape · people in left third, mid-ground, providing human scale.
+# Each scene varies ONLY the context phrase and the people phrase.
+_SCENES: dict[str, dict[str, str]] = {
+    "residential": {
+        "context": ("a modern Thai villa driveway perimeter with tropical landscaping, paved cobblestone "
+                    "driveway, lawn, frangipani trees, and a glimpse of contemporary architecture beyond."),
+        "people":  ("a Thai family of three — father mid-30s carrying a toddler on his shoulders, mother "
+                    "laughing beside him, mid-stride engaged with each other — casual modern weekend attire, "
+                    "genuine unposed expressions."),
+    },
+    "hospitality": {
+        "context": ("a boutique tropical hotel garden path lined with teak decking, manicured ornamental "
+                    "planting, coconut palms, and a glimpse of cabana loungers and low ambient lighting beyond."),
+        "people":  ("a couple in their 30s in elegant resort-casual attire — she in a linen sundress, he in a "
+                    "short-sleeve shirt and tailored shorts — walking side by side, the woman laughing and "
+                    "glancing at her partner, mid-stride and unposed."),
+    },
+    "hospital": {
+        "context": ("a contemporary hospital healing courtyard with manicured lawn, a low pebbled water "
+                    "feature, subtle wayfinding signage, soft hardscape in warm beige, and the calm facade of "
+                    "a modern hospital wing beyond."),
+        "people":  ("a Thai nurse in clean light-blue scrubs walking beside an elderly patient in comfortable "
+                    "daywear seated in a wheelchair, the nurse gently pushing the chair; both look forward "
+                    "with quiet dignified warmth — restorative, not clinical."),
+    },
+    "school": {
+        "context": ("an international school campus perimeter with an open green lawn, a paved pedestrian "
+                    "path, ornamental shrubs, and the clean modern facade of school buildings beyond, with a "
+                    "flagpole and subtle playground equipment at the edge of the frame."),
+        "people":  ("three students around 10 to 12 years old in tidy school uniforms — two girls and a boy — "
+                    "walking together along the path, backpacks on, mid-conversation and laughing, books "
+                    "under one arm; genuine unposed expressions."),
+    },
+    "resort": {
+        "context": ("a beachfront luxury resort pathway — raked white sand on one side, a neatly edged garden "
+                    "with frangipani and coconut palms on the other, a glimpse of the ocean and distant beach "
+                    "umbrellas beyond."),
+        "people":  ("a young family of three walking barefoot on the path — father mid-30s carrying a rolled "
+                    "beach towel, mother in a flowing summer dress holding her daughter's hand, daughter "
+                    "about 6 years old in a swimsuit and sun hat, all smiling, relaxed and unposed."),
+    },
 }
+# Back-compat alias used by the request validator
+_SCENE_DESCRIPTIONS = {k: v["context"] for k, v in _SCENES.items()}
+
 _SERIES_LABEL = {
     "premium": "Premium Co-Extrusion (shield-wrapped composite, embossed woodgrain)",
     "classic": "Classic WPC (solid wood-composite, 3D embossed woodgrain)",
 }
+
+_CAMERA_CLAUSE = (
+    "Perspective: natural pedestrian three-quarter vantage, camera at 1.5 m, the fence forms a continuous "
+    "horizontal backdrop filling the right two-thirds of the frame and receding gently into the distance. "
+    "Lighting: bright afternoon sun softened by scattered tropical clouds, warm but not stylised. "
+    "Camera & lens: 50 mm full-frame equivalent, aperture f/2.8, medium-shallow depth of field — people "
+    "and the nearest fence boards sharp, far background softly blurred. "
+    "Colour grading: natural, slightly warm, editorial-lifestyle."
+)
 
 # In-memory cache: {sha256: {"base64": str, "ts": float}}
 _render_cache: dict[str, dict[str, Any]] = {}
@@ -446,8 +496,9 @@ def _spec_hash(spec: dict[str, Any]) -> str:
 
 
 def _build_render_prompt(spec: dict[str, Any], has_ref: bool = False) -> str:
+    """Variant-C lifestyle-in-use prompt with scene-specific context + people."""
     scene_key = str(spec.get("scene", "residential")).lower()
-    scene_desc = _SCENE_DESCRIPTIONS.get(scene_key, _SCENE_DESCRIPTIONS["residential"])
+    scene = _SCENES.get(scene_key, _SCENES["residential"])
     series_desc = _SERIES_LABEL.get(str(spec.get("series", "premium")).lower(), _SERIES_LABEL["premium"])
     height = spec.get("height", 2.0)
     bay = spec.get("bayWidth", 2.0)
@@ -460,16 +511,23 @@ def _build_render_prompt(spec: dict[str, Any], has_ref: bool = False) -> str:
         else f"slatted / louvered fence with a {gap} cm horizontal gap between each 148 mm WPC board"
     )
     ref_line = (
-        " The attached reference image shows the EXACT woodgrain finish and colour of the "
-        "manufacturer's WPC board — reproduce that grain pattern and tone faithfully on every board."
+        " The attached reference image shows the EXACT woodgrain pattern and tone of the manufacturer's WPC "
+        "board — reproduce that grain and tone faithfully on every board. The grain MUST run horizontally "
+        "along the length of each plank (parallel to the ground line), and the embossed grain texture must "
+        "be clearly visible in the final photograph — not smoothed out."
         if has_ref else ""
     )
+    product = (
+        f"A {height} m tall {gap_line}, finished in {color_name} ({color_hex}) woodgrain — {series_desc}. "
+        f"{bay} m bays between 80 x 80 mm matte-black extruded aluminium posts.{ref_line}"
+    )
     return (
-        f"Photorealistic architectural photograph of a {height} m tall {gap_line}. "
-        f"Board finish: {color_name} ({color_hex}) — {series_desc}.{ref_line} "
-        f"Bay width {bay} m between 80 x 80 mm matte-black extruded aluminium posts. "
-        f"Context: installed as a perimeter at a {scene_desc}. "
-        f"Golden-hour natural light, wide-angle lens, 3:2 aspect ratio, high detail, realistic shadows."
+        f"Photorealistic lifestyle photograph. {product} "
+        f"Context: {scene['context']} "
+        f"{_CAMERA_CLAUSE} "
+        f"People: {scene['people']} The people are arranged in the left third of the frame, mid-ground, so "
+        "the fence still reads as the architectural backdrop while the people provide human scale and warmth. "
+        "No text, no logos, no watermarks."
     )
 
 
@@ -507,7 +565,8 @@ def _call_gemini_image(prompt: str, ref_b64: str | None = None, ref_mime: str | 
         "contents": [{"parts": parts}],
         "generationConfig": {
             "responseModalities": ["IMAGE"],
-            "temperature": 0.8,
+            "temperature": 0.75,
+            "imageConfig": {"aspectRatio": "16:9"},
         },
     }
     req = urllib.request.Request(

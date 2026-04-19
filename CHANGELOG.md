@@ -40,15 +40,44 @@ All notable changes to this project will be documented in this file.
 - Domain: existing live host is `salesheet.leka.studio`. User request mentions `salesheet.lekastudio.com` — likely a typo for the existing `leka.studio` domain; left the deployment pointing at the current Cloud Run service. Confirm before any DNS change.
 - First-Generation catalog extraction yielded 130 heritage strip photos — only 7 wired into products so far. Remaining 120+ available for future Heritage SKU expansion.
 
-## [0.4.0] - 2026-04-19
+## [0.4.3] - 2026-04-19
 
 ### Added
 - `website/salesheet/catalog/index.html` — complete Leka-branded WPC profiles catalog at `/catalog/`. Covers all 16 core WPC profiles across 4 categories (decking, cladding, wide wall panels, fence) in 2 engineered lines (Signature Co-Ex / Heritage Solid WPC). Each product card renders an inline SVG technical cross-section scaled to actual dimensions, 3-up spec panel (width × thickness × length), surface finish chips, and the full 8-colour swatch palette. Includes tab-filter per category (All / Signature / Heritage), colour palette section mirroring `/wpc-fence/images/swatches/`, four-finish gallery (Brushed / 3D Embossed / Knife-Cut / Stipple) and a 12-tile "250+ extended catalog on request" summary.
 - `data/catalog/leka-sku-map.json` — internal-only mapping of every Leka SKU (e.g. `LKP-DK-140-23`) to the underlying vendor code and source PI. Documents the SKU scheme (`LK[P|H]-[TYPE]-[WIDTH]-[THICKNESS][-VARIANT]`), 10 product types, 4 variant suffixes, all 16 priced products, and the unpriced extended-catalog counts. Not served to the public — reference only for sales & procurement.
 - New route `/catalog/` — wired into `website/salesheet/Dockerfile` (`COPY catalog static/catalog`) so the Flask static server exposes it on Cloud Run under `salesheet.leka.studio/catalog/`.
 
+### Note
+- Originally landed on branch as v0.4.0 at commit d81a21a, renumbered to 0.4.3 during the branch/main merge since main had its own 0.4.0–0.4.2 stream for fence configurator work.
+
 ### Changed
 - `website/salesheet/index.html` — landing page now links both `/catalog/` (complete profile library) and `/wpc-fence/` (fence-specific sales sheet) so customers land on either the broad catalog or the configurator-led fence flow.
+
+## [0.4.2] - 2026-04-19
+
+### Changed
+- `website/salesheet/wpc-fence/configurator/index.html` — three SVG preview refinements:
+  - Boards now stack from the **bottom up**. The first (bottom-most) board sits flush against the top of the bottom rail — no gap beneath it. Any remainder space (when the fence height isn't a perfect multiple of board-plus-gap) appears at the top under the top rail, matching how a real field-installed fence is built.
+  - Replaced the pixel-per-mm `scale` variable with a natural millimetre `viewBox`. The SVG is drawn in real-world mm coordinates and the viewBox matches the fence's actual proportions, so the preview scales responsively via CSS rather than an internal multiplier.
+  - Zoomed in: tighter margins around the assembly (was ~90 px padding scaled; now 100 mm side / 180 mm top / 320 mm bottom in viewBox units) so the fence fills the preview area. The wrapper uses `height: clamp(320px, 46vh, 460px)` with the SVG at 100% × 100% and `preserveAspectRatio="xMidYMid meet"` for clean contain-scaling across viewport sizes.
+
+## [0.4.1] - 2026-04-19
+
+### Changed
+- `website/salesheet/wpc-fence/images/swatches/lk-0n.jpg` — all 8 swatches rotated 90° so the woodgrain runs horizontally (704×399 landscape). Fixes both the SVG plank fill (grain now runs along the length of each horizontal plank) and the reference image sent to Gemini.
+- `website/salesheet/server.py` — `_build_render_prompt` adds an explicit "grain MUST run horizontally along the length of each plank, embossed grain must be clearly visible" directive, so Gemini preserves the woodgrain in the final render rather than smoothing it out.
+- `website/salesheet/wpc-fence/configurator/index.html` — right-panel layout swap:
+  - Old "Your configuration" summary card replaced by an interactive `config-panel` containing all controls (Series / Bay / Height / Gap / Fence run / Gates), a compact totals band (Total length + Bays / Posts / Boards), and the Request-a-quote button.
+  - Left column simplified to preview (SVG + swatch picker) + scene render only. The colour picker still lives beside the SVG preview; the right-panel header shows a mini-chip of the currently-selected colour.
+
+## [0.4.0] - 2026-04-19
+
+### Changed
+- `website/salesheet/server.py` — `/api/render-scene` now generates scenes with a consistent directorial template ("Variant C / Lifestyle In-Use") and explicit 16:9 landscape aspect ratio:
+  - Replaced the free-form scene description map with a structured `_SCENES` dict holding a `context` clause + a scene-appropriate `people` clause per scene (residential family, hospitality couple, hospital nurse + patient, school students, resort family).
+  - `_build_render_prompt` now emits a single disciplined template: 50 mm / f/2.8, pedestrian 3/4 vantage, 1.5 m camera height, bright softened afternoon light, medium-shallow DoF, editorial-lifestyle colour grading.
+  - `_call_gemini_image` now passes `generationConfig.imageConfig.aspectRatio: "16:9"` so Gemini returns landscape 1344×768 PNGs instead of portrait defaults.
+- `website/salesheet/wpc-fence/configurator/index.html` — render-result container aspect ratio updated from `3/2` to `16/9` to match the new output.
 
 ## [0.3.1] - 2026-04-19
 
