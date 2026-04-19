@@ -1,18 +1,13 @@
 """Crop vendor catalog PDF pages into clean, brand-free Leka assets.
 
-Extracts:
-  - Full colour-grid cards (4 textures x 8 colours) from jackson_ce_p10/11/12
-  - Wall-panel colour card (9 panels) from jackson_ce_p13
-  - Individual Co-Ex product photos from jackson_ce p1-p9 (leftmost cell of each row)
-  - ASA Shield Series product photos from aolo_asa p2-p7 (top + bottom product)
-  - DIY tile hero photos from diy p2-p6
-  - First-generation Heritage strip from firstgen p3-p10 (leftmost column)
+v2: re-extracted at 220 DPI + auto-tight-bbox centering + tighter source coords
+to eliminate Chinese titles, row numbers, and adjacent-cell bleed.
 
 Output: website/salesheet/wpc-profile/images/{grain,products,asa,diy,heritage}/
 """
 from __future__ import annotations
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / ".claude" / "pdf-pages"
@@ -21,114 +16,137 @@ for sub in ("grain", "products", "asa", "diy", "heritage"):
     (OUT / sub).mkdir(parents=True, exist_ok=True)
 
 
-# ----- 1. COLOUR GRID CARDS ---------------------------------------------
-# jackson_ce_p10/p11/p12: 993 x 1404, 4 col x 2 row grid of wood-grain swatches
-# Crop the whole grid minus the Chinese header at top.
-# Header is in the top ~110px. Grid runs y~120 to y~1380.
+def auto_tight(img: Image.Image, pad: int = 20, threshold: int = 235) -> Image.Image:
+    """Detect non-white content and crop tight to its bbox, with padding."""
+    gray = img.convert("L")
+    # Non-white pixels have value < threshold
+    mask = gray.point(lambda p: 255 if p < threshold else 0)
+    bbox = mask.getbbox()
+    if not bbox:
+        return img
+    x1, y1, x2, y2 = bbox
+    x1 = max(0, x1 - pad)
+    y1 = max(0, y1 - pad)
+    x2 = min(img.width, x2 + pad)
+    y2 = min(img.height, y2 + pad)
+    return img.crop((x1, y1, x2, y2))
+
+
+def has_content(img: Image.Image, min_var: int = 300) -> bool:
+    """Check if crop contains meaningful image content (not blank or uniform)."""
+    gray = img.resize((32, 32)).convert("L")
+    pixels = list(gray.getdata())
+    mean = sum(pixels) / len(pixels)
+    var = sum((p - mean) ** 2 for p in pixels) / len(pixels)
+    return var >= min_var
+
+
+# ===================================================================
+# 1. COLOUR GRID CARDS (jackson_ce_p10/p11/p12/p13)
+# ===================================================================
+# At 220 DPI each page is 1820x2573.
+# Grid: 4 cols x 2 rows of wood-grain swatches.
+# Header strip at top (~220px); then 2 rows of swatches.
+
 COLOUR_CARDS = {
-    "p10": ("knifecut",  "Knife-Cut Texture"),
-    "p11": ("stipple",   "Stipple Texture"),
-    "p12": ("woodgrain", "2nd-Gen Wood-Grain (Main)"),
-    "p13": ("wallpanel", "Wall-Panel Profile Colour Card"),
+    "p10": ("knifecut",   "Knife-Cut Texture"),
+    "p11": ("stipple",    "Stipple Texture"),
+    "p12": ("woodgrain",  "2nd-Gen Wood-Grain (Main)"),
+    "p13": ("wallpanel",  "Wall-Panel Profile Card"),
 }
-for pnum, (slug, _label) in COLOUR_CARDS.items():
+for pnum, (slug, _) in COLOUR_CARDS.items():
     src = PDF / f"jackson_ce_{pnum}.png"
     if not src.exists():
         continue
     img = Image.open(src)
-    w, h = img.size
-    # Crop below the Chinese header
-    grid = img.crop((15, 125, w - 15, h - 20))
-    grid.save(OUT / "grain" / f"grid-{slug}.jpg", quality=88, optimize=True)
+    # Crop below header (header in top ~230px), trim small bottom margin
+    grid = img.crop((20, 230, img.width - 20, img.height - 30))
+    grid.save(OUT / "grain" / f"grid-{slug}.jpg", quality=90, optimize=True)
 
+# Individual swatch cells from jackson_ce_p12 (main wood-grain)
+GRID_CODES = [
+    ("lk-08", "maple"),        # 枫木
+    ("lk-05", "teak"),         # 柚木
+    ("lk-06", "mahogany"),     # 红木
+    ("lk-07", "rosewood"),     # 紫檀
+    ("lk-04", "sand-white"),   # 沙白
+    ("lk-02", "ancient-wood"), # 古木
+    ("lk-03", "light-grey"),   # 浅灰
+    ("lk-01", "charcoal"),     # 炭黑
+]
+# 220 DPI: 4-col × 2-row grid occupies roughly x=40..1780, y=230..2540
+# Each cell ≈ 440 wide, 1150 tall (incl. Chinese label at bottom ~100px)
+# Tight swatch crop (excl. label): 380w × 990h per cell
+CELL_W, CELL_H = 380, 990
+COL_X = [80, 520, 960, 1400]
+ROW_Y = [260, 1420]
 
-# Individual swatch cells — 4 columns x 2 rows from p12 (main wood-grain)
-# Grid occupies roughly x=40..955, y=130..1380  (after trimming header)
-# Each row ~625px tall (incl. Chinese label below swatch)
-# Swatch area within each cell: ~500px tall, excluding the label
-# Grid order: 枫木 柚木 红木 紫檀 / 沙白 古木 浅灰 炭黑  →  LK-08 LK-05 LK-06 LK-07 / LK-04 LK-02 LK-03 LK-01
 GRID_SRC = {
     "woodgrain": PDF / "jackson_ce_p12.png",
     "knifecut":  PDF / "jackson_ce_p10.png",
     "stipple":   PDF / "jackson_ce_p11.png",
 }
-GRID_CODES = [
-    ("lk-08", "maple"),
-    ("lk-05", "teak"),
-    ("lk-06", "mahogany"),
-    ("lk-07", "rosewood"),
-    ("lk-04", "sand-white"),
-    ("lk-02", "ancient-wood"),
-    ("lk-03", "light-grey"),
-    ("lk-01", "charcoal"),
-]
-# Cell geometry (approximate — calibrated for jackson_ce_p12 993x1404)
-# Tight crop excluding Chinese labels at bottom of each cell
-CELL_W = 200
-CELL_H = 370
-COL_X = [60, 300, 540, 780]
-ROW_Y = [165, 790]
-
 for texture, src in GRID_SRC.items():
     if not src.exists():
         continue
     img = Image.open(src)
     idx = 0
-    for r, y in enumerate(ROW_Y):
-        for c, x in enumerate(COL_X):
+    for y in ROW_Y:
+        for x in COL_X:
             if idx >= len(GRID_CODES):
                 break
             code, color_name = GRID_CODES[idx]
             crop = img.crop((x, y, x + CELL_W, y + CELL_H))
             crop.save(OUT / "grain" / f"{code}-{color_name}-{texture}.jpg",
-                      quality=85, optimize=True)
+                      quality=88, optimize=True)
             idx += 1
 
 
-# ----- 2. CO-EX PRODUCT PHOTOS ------------------------------------------
-# jackson_ce_p1..p9: 993 x 1404, product table.
-# Leftmost product photo cell: x~50..180, rows start ~y=220, row height ~175px
-# Product photos per page: 6 (most pages)
-# We grab all photo cells we can detect; HTML references by SKU separately.
+# ===================================================================
+# 2. CO-EX PRODUCT PHOTOS (jackson_ce_p1..p9)
+# ===================================================================
+# At 220 DPI: 1820x2573. Table structure (measured against _debug_p1_topleft.png):
+#   Col 1 (row#):   x=  0 .. ~105  (EXCLUDE)
+#   Col 2 (photo):  x=105 .. ~355  (TARGET)
+#   Col 3 (code):   x=365 .. ~560  (EXCLUDE — vendor code)
+# Row height: ~270px. p1 has a tall header (title+logo+header row + green banner)
+# so first product row starts at y~770; pages p2-p9 start at y~30.
 for pnum in range(1, 10):
     src = PDF / f"jackson_ce_p{pnum}.png"
     if not src.exists():
         continue
     img = Image.open(src)
-    W, H = img.size
-    # p1 has a tall header (AOLO logo + title bar) — first product row starts ~y=340
-    # Subsequent pages start flush with an item row at y~15
-    y0 = 340 if pnum == 1 else 15
-    row_h = 155
-    # Product photo cell: x~55..185, row height ~155, vertical padding inside cell
+    H = img.size[1]
+    y0 = 770 if pnum == 1 else 25
+    row_h = 270
     for i in range(10):
-        y1 = y0 + i * row_h + 8
-        y2 = y0 + (i + 1) * row_h - 8
-        if y2 > H - 20:
+        # Very conservative y-pads: 30 top / 30 bottom — fully inside the 270px cell
+        # so bordering rows/gridlines cannot leak in.
+        y_top = y0 + i * row_h + 28
+        y_bot = y0 + (i + 1) * row_h - 28
+        if y_bot > H - 30:
             break
-        crop = img.crop((60, y1, 185, y2))
-        # Reject rows that are mostly white (no product photo)
-        gray = crop.convert("L")
-        extrema = gray.getextrema()
-        if extrema[1] - extrema[0] < 50:
+        # x window strictly within the photo column
+        rough = img.crop((115, y_top, 350, y_bot))
+        if not has_content(rough, min_var=400):
             continue
-        # Reject crops that are solid coloured (likely category-title bars)
-        # by checking std deviation on a downsized version
-        small = crop.resize((32, 32))
-        pixels = list(small.convert("L").getdata())
-        mean = sum(pixels) / len(pixels)
-        var = sum((p - mean) ** 2 for p in pixels) / len(pixels)
-        if var < 300:
+        # Trim only internal whitespace — bbox within these hard bounds, small pad
+        tight = auto_tight(rough, pad=6, threshold=238)
+        if tight.width < 80 or tight.height < 80:
             continue
-        crop.save(OUT / "products" / f"coex-p{pnum}-r{i+1}.jpg",
-                  quality=82, optimize=True)
+        tight.save(OUT / "products" / f"coex-p{pnum}-r{i+1}.jpg",
+                   quality=90, optimize=True)
 
 
-# ----- 3. ASA SHIELD PRODUCT PHOTOS -------------------------------------
-# aolo_asa p2..p7: 969 x 785, two products per page
-# Product photo in left half, top and bottom.
-# Top product: ~x=50..350, y=30..330
-# Bottom product: ~x=50..350, y=410..720
+# ===================================================================
+# 3. ASA SHIELD PRODUCT PHOTOS (aolo_asa_p2..p7)
+# ===================================================================
+# At 220 DPI: 1777x1439. Two products per page (top + bottom half).
+# Each half: title text at top (~120px), then product photo + cross-section drawing.
+# Product PHOTO occupies left portion of each half (photos of physical samples).
+# Cross-section drawing is on right (which we want OUT — that's a technical diagram).
+# So: crop left ~45% of each half, and skip the top ~130px title.
+
 ASA_PRODUCTS = [
     ("p2", "top",    "170x14-grille"),
     ("p2", "bottom", "189x20-grille"),
@@ -148,16 +166,36 @@ for pnum, pos, slug in ASA_PRODUCTS:
     if not src.exists():
         continue
     img = Image.open(src)
+    W, H = img.size
+    # Main 3D hero photo only. ASA page layout per half:
+    #   Title "XXX*YY格栅" at top  (y ~ 20..170 within each half)
+    #   Hero photo on LEFT  (x ~ 60..860, y ~ 180..500)
+    #   Cross-section drawing + spec text on RIGHT (x > 900) — EXCLUDE
+    #   On p3 there are small auxiliary photos below the hero (y > 500) — EXCLUDE
+    half = H // 2
     if pos == "top":
-        crop = img.crop((40, 30, 380, 360))
+        rough = img.crop((60, 185, int(W * 0.50), 490))
     else:
-        crop = img.crop((40, 410, 380, 740))
-    crop.save(OUT / "asa" / f"{slug}.jpg", quality=88, optimize=True)
+        rough = img.crop((60, half + 185, int(W * 0.50), half + 490))
+    # Auto-tight INWARDS only: no top-padding (prevents re-expansion into title)
+    gray = rough.convert("L")
+    mask = gray.point(lambda p: 255 if p < 235 else 0)
+    bbox = mask.getbbox()
+    if bbox:
+        x1, y1, x2, y2 = bbox
+        pad = 14
+        x1 = max(0, x1 - pad)
+        y1 = max(0, y1 - min(pad, 4))  # minimal upward pad
+        x2 = min(rough.width, x2 + pad)
+        y2 = min(rough.height, y2 + pad)
+        rough = rough.crop((x1, y1, x2, y2))
+    rough.save(OUT / "asa" / f"{slug}.jpg", quality=90, optimize=True)
 
 
-# ----- 4. DIY TILE HERO PHOTOS ------------------------------------------
-# diy_p2..p8: 1754 x 1241, spread layout (left table, right hero)
-# Hero photo at right side: roughly x=900..1720, y=30..1200
+# ===================================================================
+# 4. DIY HERO PHOTOS (diy_p2..p8)
+# ===================================================================
+# At 220 DPI: 2573x1820 (landscape). Right side has large hero photo(s).
 DIY_PAGES = {
     "p2": "overview",
     "p3": "wpc-coex-tile",
@@ -172,41 +210,52 @@ for pnum, slug in DIY_PAGES.items():
     if not src.exists():
         continue
     img = Image.open(src)
-    # Right-side photo block
-    crop = img.crop((880, 30, 1720, 1200))
-    crop.save(OUT / "diy" / f"{slug}.jpg", quality=85, optimize=True)
-    # Also extract the small product tile photo from left column (if table page)
-    # Small tile preview: ~x=70..310, y=100..310
+    # Right-side hero block ~x=1290..2530, y=40..1760
+    rough = img.crop((1290, 40, 2530, 1760))
+    tight = auto_tight(rough, pad=20)
+    tight.save(OUT / "diy" / f"{slug}.jpg", quality=88, optimize=True)
+    # Tile sample swatch for category pages (top-left quadrant of table pages)
     if pnum in ("p3", "p4", "p5"):
-        tile = img.crop((60, 85, 320, 320))
-        tile.save(OUT / "diy" / f"{slug}-tile.jpg", quality=88, optimize=True)
+        sample = img.crop((90, 120, 470, 470))
+        sample_tight = auto_tight(sample, pad=12)
+        sample_tight.save(OUT / "diy" / f"{slug}-tile.jpg", quality=90, optimize=True)
 
 
-# ----- 5. HERITAGE STRIP PHOTOS -----------------------------------------
-# firstgen p3..p15: 1241 x 1755, product table with photos in leftmost column
-# Row height ~155px, photo cell: x~30..180, rows start y~10
+# ===================================================================
+# 5. HERITAGE STRIP PHOTOS (firstgen_p3..p15)
+# ===================================================================
+# At 220 DPI: 1820x2573. Measured via _debug_fg3_topleft.png:
+#   Col 1 (row#):   x=  0 .. ~140  (EXCLUDE — row numbers like "15", "16")
+#   Col 2 (photo):  x=140 .. ~405  (TARGET)
+#   Col 3 (code):   x=410 .. ~610  (EXCLUDE — vendor codes AL-K140-40A etc.)
+# Row height ~310px at 220 DPI. First row at y~15.
 for pnum in range(3, 16):
     src = PDF / f"firstgen_p{pnum}.png"
     if not src.exists():
         continue
     img = Image.open(src)
-    y0 = 10
-    row_h = 155
+    H = img.size[1]
+    y0 = 15
+    row_h = 310
     for i in range(10):
-        y1 = y0 + i * row_h
-        y2 = y1 + row_h - 10
-        if y2 > img.size[1] - 10:
+        # Conservative 35px vertical pad — keeps crop inside the 310px cell.
+        y_top = y0 + i * row_h + 35
+        y_bot = y0 + (i + 1) * row_h - 35
+        if y_bot > H - 20:
             break
-        crop = img.crop((30, y1, 195, y2))
-        gray = crop.convert("L")
-        extrema = gray.getextrema()
-        if extrema[1] - extrema[0] < 30:
+        rough = img.crop((150, y_top, 400, y_bot))
+        if not has_content(rough, min_var=400):
             continue
-        crop.save(OUT / "heritage" / f"hg-p{pnum}-r{i+1}.jpg",
-                  quality=82, optimize=True)
+        tight = auto_tight(rough, pad=6, threshold=238)
+        if tight.width < 80 or tight.height < 80:
+            continue
+        tight.save(OUT / "heritage" / f"hg-p{pnum}-r{i+1}.jpg",
+                   quality=88, optimize=True)
 
 
-# Summary
+# ===================================================================
+# SUMMARY
+# ===================================================================
 for sub in ("grain", "products", "asa", "diy", "heritage"):
     n = len(list((OUT / sub).glob("*")))
     print(f"{sub:10s}: {n} images")

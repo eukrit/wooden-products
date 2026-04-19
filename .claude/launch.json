@@ -10,8 +10,8 @@
     },
     {
       "name": "wpc-profile-site",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["http-server", "./website/salesheet", "-p", "8085", "-c-1"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8085", "--directory", "./website/salesheet"],
       "port": 8085,
       "autoPort": true
     },

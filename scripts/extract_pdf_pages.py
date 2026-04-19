@@ -17,13 +17,17 @@ OUT  = ROOT / ".claude" / "pdf-pages"
 OUT.mkdir(parents=True, exist_ok=True)
 
 SOURCES = [
-    # (pdf_path, prefix)
+    # (pdf_path, prefix) - resolve ASA filename via directory glob to avoid Unicode literal issues
     (r"C:\Users\Eukrit\OneDrive\Documents\Claude Code\2026 Wood Products Claude\data\raw\slack\vendor-anhui-aolo-wpc\DIY CATALOG(1).pdf", "diy"),
     (r"C:\Users\Eukrit\OneDrive\Documents\Claude Code\2026 Wood Products Claude\data\raw\slack\supplier-flooring-and-decking\First generation catalog from Jackson 250801.pdf", "firstgen"),
-    (r"C:\Users\Eukrit\OneDrive\Documents\Claude Code\2026 Wood Products Claude\data\raw\slack\supplier-flooring-and-decking\Co-extrusion products catalog from Jackson.pdf", "coex_full"),
+    (r"C:\Users\Eukrit\OneDrive\Documents\Claude Code\2026 Wood Products Claude\data\raw\slack\supplier-flooring-and-decking\Co-extrusion products catalog from Jackson.pdf", "jackson_ce"),
 ]
+# Append AOLO ASA by glob so Chinese chars in filename don't require manual escaping
+_asa = list(Path(r"C:\Users\Eukrit\OneDrive\Documents\Claude Code\2026 Wood Products Claude\data\raw\slack\vendor-anhui-aolo-wpc").glob("*ASA*.pdf"))
+if _asa:
+    SOURCES.append((str(_asa[0]), "aolo_asa"))
 
-DPI = 150
+DPI = 220
 
 for pdf_path, prefix in SOURCES:
     p = Path(pdf_path)
@@ -31,7 +35,8 @@ for pdf_path, prefix in SOURCES:
         print(f"SKIP (missing): {p.name}")
         continue
     doc = fitz.open(p)
-    print(f"-> {p.name} - {len(doc)} pages")
+    safe_name = p.name.encode("ascii", "replace").decode("ascii")
+    print(f"-> {safe_name} - {len(doc)} pages")
     for i, page in enumerate(doc, start=1):
         mat = fitz.Matrix(DPI / 72.0, DPI / 72.0)
         pix = page.get_pixmap(matrix=mat, alpha=False)
