@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2026-04-19
+
+### Changed
+- `website/salesheet/wpc-fence/images/swatches/lk-0n.jpg` — all 8 swatches rotated 90° so the woodgrain runs horizontally (704×399 landscape). Fixes both the SVG plank fill (grain now runs along the length of each horizontal plank) and the reference image sent to Gemini.
+- `website/salesheet/server.py` — `_build_render_prompt` adds an explicit "grain MUST run horizontally along the length of each plank, embossed grain must be clearly visible" directive, so Gemini preserves the woodgrain in the final render rather than smoothing it out.
+- `website/salesheet/wpc-fence/configurator/index.html` — right-panel layout swap:
+  - Old "Your configuration" summary card replaced by an interactive `config-panel` containing all controls (Series / Bay / Height / Gap / Fence run / Gates), a compact totals band (Total length + Bays / Posts / Boards), and the Request-a-quote button.
+  - Left column simplified to preview (SVG + swatch picker) + scene render only. The colour picker still lives beside the SVG preview; the right-panel header shows a mini-chip of the currently-selected colour.
+
 ## [0.4.0] - 2026-04-19
 
 ### Changed

@@ -438,78 +438,136 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 .render-msg { font-size: var(--fs-body-sm); color: var(--lk-navy-60); margin-top: var(--space-sm); }
 .render-msg.error { color: var(--lk-red-orange); }
 
-/* Summary panel */
-.summary-card {
+/* ============================================================
+   CONFIG PANEL — interactive controls + totals (right column)
+   ============================================================ */
+.config-panel {
   position: sticky;
   top: calc(var(--nav-height) + var(--space-md));
+  background: var(--lk-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--lk-navy-06);
+  box-shadow: 0 4px 16px rgba(24,37,87,0.08);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  max-height: calc(100vh - var(--nav-height) - var(--space-md) * 2);
+}
+.config-panel-header {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--lk-navy-06);
+}
+.config-panel-header h4 {
+  font-size: var(--fs-h5);
+  margin: 0;
+}
+.config-panel-header .caption-row {
+  font-size: 11px; color: var(--lk-navy-60);
+  margin-top: 2px;
+}
+.config-panel-controls {
+  padding: 4px var(--space-lg) var(--space-sm);
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+/* Narrow right-panel controls — stacked label above input */
+.config-panel-controls .control-row {
+  grid-template-columns: 1fr;
+  gap: var(--space-xs);
+  padding: var(--space-sm) 0;
+}
+.config-panel-controls .control-row > label {
+  font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.config-panel-controls .control-row .helper {
+  font-size: 10px;
+}
+/* Compact segmented on narrow panel */
+.config-panel-controls .segmented {
+  flex-wrap: wrap;
+  width: 100%;
+}
+.config-panel-controls .segmented button {
+  flex: 1 1 auto;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.config-panel-controls .num-input {
+  width: 100%;
+}
+.config-panel-controls .num-input input { flex: 1 1 auto; }
+
+/* Dark totals band at bottom */
+.config-panel-totals {
   background: var(--lk-navy);
   color: var(--lk-cream);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: 0 10px 30px rgba(24,37,87,0.18);
-}
-.summary-card h4 {
-  color: var(--lk-cream);
-  margin-bottom: var(--space-md);
-  font-size: var(--fs-h5);
-  font-weight: 700;
-}
-.summary-list { list-style: none; padding: 0; margin: 0; }
-.summary-list li {
-  display: flex; justify-content: space-between;
-  padding: 8px 0;
-  font-size: var(--fs-body-sm);
-  border-bottom: 1px solid rgba(255,249,230,0.10);
-}
-.summary-list li span:first-child {
-  color: var(--lk-cream-60);
-  font-weight: 500;
-}
-.summary-list li span:last-child {
-  color: var(--lk-cream);
-  font-weight: 700;
-  text-align: right;
-}
-.summary-total {
-  margin-top: var(--space-md); padding-top: var(--space-md);
-  border-top: 2px solid var(--lk-amber);
-  display: flex; justify-content: space-between;
-  font-size: var(--fs-h4); font-weight: 800;
-  color: var(--lk-amber);
-}
-.summary-total span:first-child { color: var(--lk-cream); }
-.summary-stats {
-  margin-top: var(--space-md);
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  padding: var(--space-md) var(--space-lg);
+  display: flex; flex-direction: column;
   gap: var(--space-sm);
+}
+.config-panel-totals .total-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  border-bottom: 2px solid var(--lk-amber);
+  padding-bottom: var(--space-sm);
+}
+.config-panel-totals .total-row .label {
+  font-size: var(--fs-body-sm); font-weight: 600;
+  color: var(--lk-cream-80);
+}
+.config-panel-totals .total-row .value {
+  font-size: var(--fs-h3); font-weight: 800;
+  color: var(--lk-amber);
+  line-height: 1;
+}
+.config-panel-totals .stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
   text-align: center;
 }
-.summary-stats .stat-box {
-  background: rgba(255,249,230,0.06);
+.config-panel-totals .stats-row .stat-box {
+  background: rgba(255,249,230,0.08);
   border-radius: var(--radius-sm);
-  padding: var(--space-sm) var(--space-xs);
+  padding: 6px 4px;
 }
-.summary-stats .stat-box .num {
+.config-panel-totals .stats-row .num {
   display: block;
-  font-size: var(--fs-h4); font-weight: 800;
+  font-size: var(--fs-h5); font-weight: 800;
   color: var(--lk-cream);
   line-height: 1;
 }
-.summary-stats .stat-box .lbl {
+.config-panel-totals .stats-row .lbl {
   display: block;
-  font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--lk-cream-60);
-  margin-top: 4px;
+  margin-top: 3px;
 }
-.summary-card .btn-primary {
+.config-panel-totals .btn-primary {
   width: 100%;
-  margin-top: var(--space-lg);
   background: var(--lk-amber);
   color: var(--lk-navy) !important;
   font-weight: 700;
+  margin-top: var(--space-xs);
 }
-.summary-card .btn-primary:hover { background: #FFBE2E; }
+.config-panel-totals .btn-primary:hover { background: #FFBE2E; }
+
+/* Current colour chip inline with title */
+.config-panel-header .current-color {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 6px;
+}
+.config-panel-header .current-color .mini-chip {
+  width: 28px; height: 28px; border-radius: var(--radius-sm);
+  background-size: cover; background-position: center;
+  border: 1px solid var(--lk-navy-12);
+  flex: 0 0 auto;
+}
+.config-panel-header .current-color .tag {
+  display: flex; flex-direction: column;
+  font-size: 11px; line-height: 1.2;
+}
+.config-panel-header .current-color .tag .c-code { color: var(--lk-purple); font-weight: 700; letter-spacing: 0.08em; }
+.config-panel-header .current-color .tag .c-name { color: var(--lk-navy); font-weight: 600; }
 
 .back-link {
   display: inline-flex; align-items: center; gap: 4px;
@@ -647,7 +705,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   :root { --nav-height: 64px; }
   .nav-links a:not(.btn) { display: none; }
   .config-layout { grid-template-columns: 1fr; }
-  .summary-card { position: static; }
+  .config-panel { position: static; max-height: none; }
   .control-row { grid-template-columns: 1fr; gap: var(--space-sm); }
   .preview-grid { grid-template-columns: 1fr; }
   .swatch-grid { grid-template-columns: repeat(4, 1fr); }
@@ -773,8 +831,23 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
         </div>
       </div>
 
-      <!-- Controls -->
-      <div class="controls-card">
+    </div>
+
+    <!-- ========== RIGHT: CONTROLS + TOTALS ========== -->
+    <aside class="config-panel" id="summary">
+      <div class="config-panel-header">
+        <h4>Configure your fence</h4>
+        <div class="caption-row" id="s-style-caption"><span id="s-style">Privacy</span> · <span id="s-series">Premium Co-Extrusion</span></div>
+        <div class="current-color" title="Colour picker on the left panel">
+          <span class="mini-chip" id="s-color-chip"></span>
+          <span class="tag">
+            <span class="c-code" id="s-color-code">LK-01</span>
+            <span class="c-name" id="s-color-name">Charcoal Black</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="config-panel-controls">
         <div class="control-row">
           <label>Series
             <span class="helper">Warranty tier</span>
@@ -855,32 +928,24 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ========== RIGHT: SUMMARY ========== -->
-    <aside class="summary-card" id="summary">
-      <h4>Your configuration</h4>
-      <ul class="summary-list">
-        <li><span>Series</span><span id="s-series">Premium Co-Extrusion</span></li>
-        <li><span>Style</span><span id="s-style">Privacy</span></li>
-        <li><span>Height</span><span id="s-height">2.0 m</span></li>
-        <li><span>Bay width</span><span id="s-bay">2.0 m</span></li>
-        <li><span>Board gap</span><span id="s-gap">0 cm</span></li>
-        <li><span>Colour</span><span id="s-color">LK-01 Carbon Black</span></li>
-        <li><span>Fence run</span><span id="s-run">48.0 m</span></li>
-        <li><span>Single gates</span><span id="s-sg">0 × 1.2 m</span></li>
-        <li><span>Double gates</span><span id="s-dg">0 × 2.4 m</span></li>
-      </ul>
-      <div class="summary-total">
-        <span>Total length</span>
-        <span id="s-total">48.0 m</span>
+      <div class="config-panel-totals">
+        <div class="total-row">
+          <div>
+            <span class="label">Total length</span>
+            <div style="font-size:10px; color:var(--lk-cream-60); margin-top:2px;">
+              run <span id="s-run">48.0</span> m + gates (<span id="s-sg">0</span>s · <span id="s-dg">0</span>d)
+            </div>
+          </div>
+          <span class="value" id="s-total">48.0 m</span>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box"><span class="num" id="s-bays">24</span><span class="lbl">Bays</span></div>
+          <div class="stat-box"><span class="num" id="s-posts">25</span><span class="lbl">Posts</span></div>
+          <div class="stat-box"><span class="num" id="s-boards">312</span><span class="lbl">Boards</span></div>
+        </div>
+        <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
       </div>
-      <div class="summary-stats">
-        <div class="stat-box"><span class="num" id="s-bays">24</span><span class="lbl">Bays</span></div>
-        <div class="stat-box"><span class="num" id="s-posts">25</span><span class="lbl">Posts</span></div>
-        <div class="stat-box"><span class="num" id="s-boards">312</span><span class="lbl">Boards</span></div>
-      </div>
-      <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
     </aside>
   </div>
 </div>
@@ -1266,16 +1331,20 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 
   function update() {
     var r = computed();
-    // Summary text
-    document.getElementById('s-series').textContent = SERIES_LABEL[state.series];
-    document.getElementById('s-style').textContent  = r.style;
-    document.getElementById('s-height').textContent = state.height.toFixed(1) + ' m';
-    document.getElementById('s-bay').textContent    = state.bay.toFixed(1) + ' m';
-    document.getElementById('s-gap').textContent    = state.gap + ' cm';
-    document.getElementById('s-color').textContent  = r.c.code + ' ' + r.c.name;
-    document.getElementById('s-run').textContent    = r.fenceRun.toFixed(1) + ' m';
-    document.getElementById('s-sg').textContent     = state.singleGates + ' × 1.2 m';
-    document.getElementById('s-dg').textContent     = state.doubleGates + ' × 2.4 m';
+    // Header caption + colour tag
+    document.getElementById('s-series').textContent     = SERIES_LABEL[state.series];
+    document.getElementById('s-style').textContent      = r.style;
+    document.getElementById('s-color-code').textContent = r.c.code;
+    document.getElementById('s-color-name').textContent = r.c.name;
+    var chip = document.getElementById('s-color-chip');
+    if (chip) {
+      chip.style.backgroundColor = r.c.hex;
+      chip.style.backgroundImage = 'url(../images/swatches/' + r.c.code.toLowerCase() + '.jpg)';
+    }
+    // Totals strip
+    document.getElementById('s-run').textContent    = r.fenceRun.toFixed(1);
+    document.getElementById('s-sg').textContent     = state.singleGates;
+    document.getElementById('s-dg').textContent     = state.doubleGates;
     document.getElementById('s-total').textContent  = r.total.toFixed(1) + ' m';
     document.getElementById('s-bays').textContent   = r.bays;
     document.getElementById('s-posts').textContent  = r.posts;

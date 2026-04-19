@@ -512,7 +512,9 @@ def _build_render_prompt(spec: dict[str, Any], has_ref: bool = False) -> str:
     )
     ref_line = (
         " The attached reference image shows the EXACT woodgrain pattern and tone of the manufacturer's WPC "
-        "board — reproduce that grain and tone faithfully on every board."
+        "board — reproduce that grain and tone faithfully on every board. The grain MUST run horizontally "
+        "along the length of each plank (parallel to the ground line), and the embossed grain texture must "
+        "be clearly visible in the final photograph — not smoothed out."
         if has_ref else ""
     )
     product = (
