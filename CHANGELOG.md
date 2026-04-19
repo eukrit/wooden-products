@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2026-04-19
+
+### Added
+- `website/salesheet/catalog/index.html` — complete Leka-branded WPC profiles catalog at `/catalog/`. Covers all 16 core WPC profiles across 4 categories (decking, cladding, wide wall panels, fence) in 2 engineered lines (Signature Co-Ex / Heritage Solid WPC). Each product card renders an inline SVG technical cross-section scaled to actual dimensions, 3-up spec panel (width × thickness × length), surface finish chips, and the full 8-colour swatch palette. Includes tab-filter per category (All / Signature / Heritage), colour palette section mirroring `/wpc-fence/images/swatches/`, four-finish gallery (Brushed / 3D Embossed / Knife-Cut / Stipple) and a 12-tile "250+ extended catalog on request" summary.
+- `data/catalog/leka-sku-map.json` — internal-only mapping of every Leka SKU (e.g. `LKP-DK-140-23`) to the underlying vendor code and source PI. Documents the SKU scheme (`LK[P|H]-[TYPE]-[WIDTH]-[THICKNESS][-VARIANT]`), 10 product types, 4 variant suffixes, all 16 priced products, and the unpriced extended-catalog counts. Not served to the public — reference only for sales & procurement.
+- New route `/catalog/` — wired into `website/salesheet/Dockerfile` (`COPY catalog static/catalog`) so the Flask static server exposes it on Cloud Run under `salesheet.leka.studio/catalog/`.
+
+### Changed
+- `website/salesheet/index.html` — landing page now links both `/catalog/` (complete profile library) and `/wpc-fence/` (fence-specific sales sheet) so customers land on either the broad catalog or the configurator-led fence flow.
+
 ## [0.3.1] - 2026-04-19
 
 ### Changed

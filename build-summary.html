@@ -91,18 +91,58 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">WPC Fence Configurator — interactive spec tool + Gemini scene render</p>
+  <p style="color: var(--muted); margin: 0;">Complete WPC Profiles Catalog — 16 products, 4 categories, 8 colourways, 250+ extended</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.3.0</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-18</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.4.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-19</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-fence/configurator/">salesheet.leka.studio/wpc-fence/configurator/</a></div></div>
+    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/catalog/">salesheet.leka.studio/catalog/</a></div></div>
   </div>
 
-  <h2>What shipped in 0.3.0</h2>
+  <h2>What shipped in 0.4.0</h2>
+
+  <h3>New — Complete WPC Profiles Catalog</h3>
+  <ul class="changes">
+    <li>Single-page Leka-branded catalog at <code>/catalog/</code> covering every core WPC profile Leka sources — 16 SKUs across 4 categories and 2 engineered lines.</li>
+    <li><strong>Decking (8):</strong> 2 Signature Co-Ex (140×23, 148×22) + 6 Heritage Solid WPC (140×25 2D/3D, 140×20 2D/3D, 145×21 6-hole, 148×23 3D).</li>
+    <li><strong>Cladding (3):</strong> Signature Co-Ex 156×21 + Heritage 148×21 in 2D and 3D finishes.</li>
+    <li><strong>Wide Wall Panels (3):</strong> Signature 219×26 full-back, Signature 219×26 half-covered (vented), Heritage 219×26.</li>
+    <li><strong>Fence (1):</strong> Signature Co-Ex 161.5×20 fence board — linked back to the existing <code>/wpc-fence/</code> configurator.</li>
+    <li>Per-product card shows: inline SVG technical cross-section scaled to real dimensions, 3-up spec panel, surface finish chips, and all 8 Leka colourways.</li>
+    <li>Category tab filter (All / Signature / Heritage) wired per section via vanilla JS.</li>
+    <li>Extended catalog summary: 12 tiles documenting the 250+ additional unpriced profiles available on MOQ request (columns, joists, beams, bench strips, DIY tiles, ASA line).</li>
+  </ul>
+
+  <h3>New — Leka SKU Scheme</h3>
+  <ul class="changes">
+    <li>Scheme: <code>LK[P|H]-[TYPE]-[WIDTH]-[THICKNESS][-VARIANT]</code>. P = Premium Co-Ex / H = Heritage. Types: DK (decking), CL (cladding), PN (panel), FN (fence), plus CM/BN/JS/BM/TL for extended catalog.</li>
+    <li><code>data/catalog/leka-sku-map.json</code> — internal-only mapping of every Leka SKU to the vendor code and source PI. Documents every product, unpriced catalog counts, and the full 8-colour palette.</li>
+    <li>All customer-facing surfaces reference Leka SKUs only — no vendor names, no factory codes.</li>
+  </ul>
+
+  <h3>Changed — Salesheet landing page</h3>
+  <ul class="changes">
+    <li><code>website/salesheet/index.html</code> — now surfaces both entry points: <code>/catalog/</code> (broad profile library) and <code>/wpc-fence/</code> (fence configurator flow).</li>
+    <li><code>website/salesheet/Dockerfile</code> — <code>COPY catalog static/catalog</code> so Cloud Run serves the new route.</li>
+  </ul>
+
+  <h2>Files touched (0.4.0)</h2>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>website/salesheet/catalog/index.html</code></td><td>New — full catalog page (~1000 lines, inline SVGs)</td></tr>
+      <tr><td><code>data/catalog/leka-sku-map.json</code></td><td>New — internal Leka → vendor SKU map (16 products + extended catalog)</td></tr>
+      <tr><td><code>website/salesheet/Dockerfile</code></td><td>+ <code>COPY catalog static/catalog</code></td></tr>
+      <tr><td><code>website/salesheet/index.html</code></td><td>+ link to <code>/catalog/</code></td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.4.0] entry</td></tr>
+      <tr><td><code>build-summary.html</code></td><td>Updated for 0.4.0</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.3.0 (WPC Fence Configurator + Gemini render)</summary>
 
   <h3>New — Interactive WPC Fence Configurator</h3>
   <ul class="changes">
@@ -152,16 +192,19 @@
     Gate math sanity check: fence run 48 m + 1 single + 0 double → 49.2 m. 48 + 2 single + 1 double → 52.8 m. Board count for 2.5 m height + 0 cm gap → 16 boards per bay (inside 40 mm top rail + 60 mm bottom rail, 148 mm effective board). Slider at 15 cm with 1.5 m height → ~9 boards per bay (slatted look).
   </div>
 
+  </details>
+
   <h2>Links</h2>
   <ul class="changes">
+    <li><a href="https://salesheet.leka.studio/catalog/">Complete Catalog (post-deploy)</a></li>
     <li><a href="https://salesheet.leka.studio/wpc-fence/">Parent WPC Fence page</a></li>
-    <li><a href="https://salesheet.leka.studio/wpc-fence/configurator/">Configurator (post-deploy)</a></li>
+    <li><a href="https://salesheet.leka.studio/wpc-fence/configurator/">Fence Configurator</a></li>
     <li><a href="https://github.com/eukrit/wooden-products">GitHub — eukrit/wooden-products</a></li>
     <li><a href="https://www.notion.so/gocorp/Coding-Project-Dashboard-Claude-32c82cea8bb080f1bbd7f26770ae9e80">Notion Dashboard</a></li>
   </ul>
 
   <footer>
-    wooden-products · 0.3.0 · 2026-04-18 · generated by Claude Code
+    wooden-products · 0.4.0 · 2026-04-19 · generated by Claude Code
   </footer>
 </div>
 </body>
