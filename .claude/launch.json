@@ -9,6 +9,13 @@
       "autoPort": true
     },
     {
+      "name": "wpc-profile-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "./website/salesheet", "-p", "8085", "-c-1"],
+      "port": 8085,
+      "autoPort": true
+    },
+    {
       "name": "panpruksa",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["http-server", "./website/panpruksa", "-p", "8090", "-c-1"],

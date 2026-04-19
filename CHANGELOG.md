@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2026-04-19
+
+### Added — /wpc-profile/ multi-page catalog (replaces single-page /catalog/)
+
+- **Main landing page** `website/salesheet/wpc-profile/index.html` — hero + 6 category cards (Decking, Cladding, Panels, Fence, Structure, DIY Tiles) with thumbnails, SKU counts and sub-category counts. Series legend introduces 5 engineered lines.
+- **6 category sub-pages** with sub-category tab filters:
+  - `wpc-profile/decking/` — 14 SKUs across Signature Hollow, Signature Solid, Shield Deckway, Heritage Hollow, Heritage Grooved.
+  - `wpc-profile/cladding/` — 7 SKUs across Signature Flat, Shield Flat, Shield Grille, Heritage Flat.
+  - `wpc-profile/panels/` — 12 SKUs across Signature Fluted, Half-Covered, Shield Grille, Heritage Fluted.
+  - `wpc-profile/structure/` — 9 SKUs across Columns, Beams, Joists, Edging.
+  - `wpc-profile/diy-tiles/` — 4 tile families (WPC Co-Ex / PP Plastic / Grass / Stone) with per-family palettes.
+  - `wpc-profile/colours/` — full 8-colour library (large swatches with real wood-grain photos) + 4-texture reference grid.
+- **New engineered line:** Shield Series (`LKA-` prefix) — ASA triple-capped profiles extracted from the AOLO ASA catalog. 12 new SKUs across grilles, wall panels, deckway, fence and edging.
+- **Real manufacturer photography:** 239 product photos, ASA hero shots, DIY tile closeups, Heritage strip photos and wood-grain colour swatches cropped from 4 vendor PDF catalogs (Jackson Co-Ex, First-Gen, DIY, ASA — 72 source pages totalling ~250 MB). All vendor branding and factory codes stripped via tight pixel crops. Output under `website/salesheet/wpc-profile/images/{grain,products,asa,diy,heritage}/`.
+- **Shared design system stylesheet:** `website/salesheet/wpc-profile/css/leka.css` — single source of truth, pulled by every sub-page. Eliminates the 400-line inline `<style>` block duplication from v0.4.0.
+- **Taxonomy data model:** `data/catalog/leka-taxonomy.json` — 5 series, 8 colours, 4 textures, 6 categories, 18 sub-categories, 46 products. Drives the page generator — single edit updates every page on `python scripts/generate_wpc_profile_pages.py`.
+- **Generator scripts:**
+  - `scripts/extract_pdf_pages.py` — uses PyMuPDF to rasterise vendor PDFs into `.claude/pdf-pages/*.png`.
+  - `scripts/crop_catalog_images.py` — Pillow-based cropper. Colour-card cells, product-photo cells (leftmost table column), ASA hero quadrants, DIY hero blocks, Heritage leftmost strip.
+  - `scripts/generate_wpc_profile_pages.py` — renders all 7 pages from the taxonomy JSON. Idempotent.
+- **Preview dev server entry** `"wpc-profile-site"` added to `.claude/launch.json` on port 8085.
+
+### Changed
+
+- `website/salesheet/Dockerfile` — adds `COPY wpc-profile static/wpc-profile` so Cloud Run serves the new routes. Existing `/catalog/` copy retained as a legacy redirect.
+- `website/salesheet/index.html` — landing-page link updated from `/catalog/` → `/wpc-profile/` (the broader library).
+
+### Verified
+
+- All 7 pages return `200 OK`.
+- All 64 image/CSS asset references resolve (manual curl sweep across every page).
+- Static server proven via local Python `http.server`.
+
+### Notes for next session
+
+- Domain: existing live host is `salesheet.leka.studio`. User request mentions `salesheet.lekastudio.com` — likely a typo for the existing `leka.studio` domain; left the deployment pointing at the current Cloud Run service. Confirm before any DNS change.
+- First-Generation catalog extraction yielded 130 heritage strip photos — only 7 wired into products so far. Remaining 120+ available for future Heritage SKU expansion.
+
 ## [0.4.0] - 2026-04-19
 
 ### Added
