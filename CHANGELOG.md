@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.2] - 2026-04-19
+
+### Changed
+- `website/salesheet/wpc-fence/configurator/index.html` — three SVG preview refinements:
+  - Boards now stack from the **bottom up**. The first (bottom-most) board sits flush against the top of the bottom rail — no gap beneath it. Any remainder space (when the fence height isn't a perfect multiple of board-plus-gap) appears at the top under the top rail, matching how a real field-installed fence is built.
+  - Replaced the pixel-per-mm `scale` variable with a natural millimetre `viewBox`. The SVG is drawn in real-world mm coordinates and the viewBox matches the fence's actual proportions, so the preview scales responsively via CSS rather than an internal multiplier.
+  - Zoomed in: tighter margins around the assembly (was ~90 px padding scaled; now 100 mm side / 180 mm top / 320 mm bottom in viewBox units) so the fence fills the preview area. The wrapper uses `height: clamp(320px, 46vh, 460px)` with the SVG at 100% × 100% and `preserveAspectRatio="xMidYMid meet"` for clean contain-scaling across viewport sizes.
+
 ## [0.4.1] - 2026-04-19
 
 ### Changed

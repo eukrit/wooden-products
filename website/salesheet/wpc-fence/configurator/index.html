@@ -227,10 +227,14 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   overflow: hidden;
   position: relative;
   min-width: 0;
+  /* Responsive fixed height — SVG fills this with preserveAspectRatio="meet" */
+  height: clamp(320px, 46vh, 460px);
+  display: flex; align-items: center; justify-content: center;
 }
 .preview-svg {
-  width: 100%; height: auto; display: block;
-  max-height: 380px;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Preview + swatch split — colour picker sits to the right of the live SVG */
@@ -1207,118 +1211,117 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   }
 
   // ===== Render SVG preview =====
+  // Drawing happens in REAL-WORLD mm coordinates. The viewBox is set to match the
+  // fence's natural dimensions so the SVG scales responsively via CSS (no
+  // pixel-per-mm "scale" multiplier anywhere). Margins are tight so the fence
+  // fills the preview ("zoomed in"). Boards stack from the BOTTOM up, with the
+  // first board sitting flush against the bottom rail.
   function renderSvg() {
     var r = computed();
     var svg = document.getElementById('fence-svg');
-    var W = 1200, H = 480;
-    // Pad for margins
-    var padX = 60, padY = 40;
-    var innerW = W - 2 * padX, innerH = H - 2 * padY;
-    // 80×80mm posts — scale against bay width
-    var bayWidthMm = state.bay * 1000;
-    var heightMm   = state.height * 1000;
-    // Choose pixel-per-mm to fit inner area comfortably
-    var scaleX = innerW / (bayWidthMm + 80); // include left + right post
-    var scaleY = innerH / heightMm;
-    var scale  = Math.min(scaleX, scaleY);
 
-    var postW  = 80 * scale;
-    var fenceH = heightMm * scale;
-    var bayWpx = bayWidthMm * scale;
+    // Real-world dimensions (mm)
+    var postW     = 80;
+    var bayWmm    = state.bay * 1000;
+    var heightMm  = state.height * 1000;
+    var topRailH  = 40;
+    var botRailH  = 60;
+    var boardH    = 148;
+    var gapMm     = r.gapMm;
 
-    var totalW = bayWpx + 2 * postW;
-    var left   = (W - totalW) / 2;
-    var top    = (H - fenceH) / 2 + 20;
+    // Tight margins — "zoomed in" fence
+    var marginSide = 100;    // breathing room left/right
+    var marginTop  = 180;    // post cap + bay label
+    var marginBot  = 320;    // ground strip + 1 m scale bar + label
 
-    // Ground line
-    var ground = top + fenceH;
+    var assemblyW = bayWmm + 2 * postW;
+    var viewW = assemblyW + 2 * marginSide;
+    var viewH = heightMm + marginTop + marginBot;
+    svg.setAttribute('viewBox', '0 0 ' + viewW + ' ' + viewH);
 
-    var color = r.c.hex;
+    var left    = marginSide;             // x of left post
+    var top     = marginTop;               // y of post top
+    var ground  = top + heightMm;          // y of ground line
+    var boardX  = left + postW;            // x of board infill
+    var infillTop = top + topRailH;
+    var infillBot = ground - botRailH;
+
+    var color     = r.c.hex;
     var swatchUrl = '../images/swatches/' + r.c.code.toLowerCase() + '.jpg';
 
     var parts = [];
-
-    // Defs — sky gradient only. Boards are filled with a per-board <image> below so
-    // the texture never tiles (tiling would introduce vertical seams inside a board).
-    parts.push('<defs>');
     parts.push(
-      '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="#EEF2FB"/>' +
-        '<stop offset="1" stop-color="#F7F4E7"/>' +
-      '</linearGradient>'
+      '<defs>' +
+        '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0" stop-color="#EEF2FB"/>' +
+          '<stop offset="1" stop-color="#F7F4E7"/>' +
+        '</linearGradient>' +
+      '</defs>'
     );
-    parts.push('</defs>');
 
     // Background
-    parts.push('<rect width="' + W + '" height="' + H + '" fill="url(#sky)"/>');
+    parts.push('<rect width="' + viewW + '" height="' + viewH + '" fill="url(#sky)"/>');
 
     // Ground
-    parts.push('<rect x="0" y="' + ground + '" width="' + W + '" height="' + (H - ground) + '" fill="#d6cfa9"/>');
-    parts.push('<line x1="0" y1="' + ground + '" x2="' + W + '" y2="' + ground + '" stroke="#a89d6d" stroke-width="2"/>');
+    parts.push('<rect x="0" y="' + ground + '" width="' + viewW + '" height="' + (viewH - ground) + '" fill="#d6cfa9"/>');
+    parts.push('<line x1="0" y1="' + ground + '" x2="' + viewW + '" y2="' + ground + '" stroke="#a89d6d" stroke-width="6"/>');
 
-    // Posts — matte black
+    // Posts — 80×heightMm matte black
     var postColor = '#1a1a1a';
-    parts.push('<rect x="' + left + '" y="' + top + '" width="' + postW + '" height="' + fenceH + '" fill="' + postColor + '" rx="2"/>');
-    parts.push('<rect x="' + (left + postW + bayWpx) + '" y="' + top + '" width="' + postW + '" height="' + fenceH + '" fill="' + postColor + '" rx="2"/>');
+    parts.push('<rect x="' + left + '" y="' + top + '" width="' + postW + '" height="' + heightMm + '" fill="' + postColor + '" rx="4"/>');
+    parts.push('<rect x="' + (left + postW + bayWmm) + '" y="' + top + '" width="' + postW + '" height="' + heightMm + '" fill="' + postColor + '" rx="4"/>');
 
     // Post caps
-    parts.push('<rect x="' + (left - 4) + '" y="' + (top - 8) + '" width="' + (postW + 8) + '" height="10" fill="#0a0a0a" rx="2"/>');
-    parts.push('<rect x="' + (left + postW + bayWpx - 4) + '" y="' + (top - 8) + '" width="' + (postW + 8) + '" height="10" fill="#0a0a0a" rx="2"/>');
+    var capExt = 14, capH = 28;
+    parts.push('<rect x="' + (left - capExt) + '" y="' + (top - capH) + '" width="' + (postW + 2 * capExt) + '" height="' + capH + '" fill="#0a0a0a" rx="4"/>');
+    parts.push('<rect x="' + (left + postW + bayWmm - capExt) + '" y="' + (top - capH) + '" width="' + (postW + 2 * capExt) + '" height="' + capH + '" fill="#0a0a0a" rx="4"/>');
 
-    // Top & bottom rails (inside bay)
+    // Rails
     var railColor = '#2a2a2a';
-    var topRailPx    = 40 * scale;
-    var bottomRailPx = 60 * scale;
-    parts.push('<rect x="' + (left + postW) + '" y="' + top + '" width="' + bayWpx + '" height="' + topRailPx + '" fill="' + railColor + '"/>');
-    parts.push('<rect x="' + (left + postW) + '" y="' + (ground - bottomRailPx) + '" width="' + bayWpx + '" height="' + bottomRailPx + '" fill="' + railColor + '"/>');
+    parts.push('<rect x="' + boardX + '" y="' + top + '" width="' + bayWmm + '" height="' + topRailH + '" fill="' + railColor + '"/>');
+    parts.push('<rect x="' + boardX + '" y="' + (ground - botRailH) + '" width="' + bayWmm + '" height="' + botRailH + '" fill="' + railColor + '"/>');
 
-    // Boards — stacked inside rails. Each board renders as ONE <image> (preserveAspectRatio="slice"),
-    // so the swatch JPG fills the full board area with no tiling and therefore no vertical seams.
-    var boardHpx = 148 * scale;
-    var gapPx    = r.gapMm * scale;
-    var infillTop = top + topRailPx;
-    var infillBot = ground - bottomRailPx;
-    var y = infillTop;
+    // Boards — stack from the BOTTOM up. First board sits flush against the bottom
+    // rail with no gap beneath it. Partial space (if any) ends up at the top, below
+    // the top rail, as expected for a real field-installed fence.
+    var y = infillBot - boardH;
     var boardsDrawn = 0;
-    var boardX = left + postW;
-    while (y + boardHpx <= infillBot + 0.5 && boardsDrawn < 200) {
-      // Colour backdrop in case the image hasn't loaded yet
+    while (y >= infillTop - 0.5 && boardsDrawn < 200) {
       parts.push(
-        '<rect x="' + boardX + '" y="' + y + '" width="' + bayWpx + '" height="' + boardHpx +
+        '<rect x="' + boardX + '" y="' + y + '" width="' + bayWmm + '" height="' + boardH +
         '" fill="' + color + '"/>'
       );
-      // Woodgrain texture — single image per board, scaled/cropped to fill (no tiling)
       parts.push(
         '<image href="' + swatchUrl + '" x="' + boardX + '" y="' + y +
-        '" width="' + bayWpx + '" height="' + boardHpx +
+        '" width="' + bayWmm + '" height="' + boardH +
         '" preserveAspectRatio="xMidYMid slice"/>'
       );
-      // Thin top-edge hairline so adjacent boards read as distinct planks
+      // Hairline on the top edge of each plank to read as distinct boards
       parts.push(
-        '<line x1="' + boardX + '" y1="' + (y + boardHpx - 0.5) + '" x2="' + (boardX + bayWpx) + '" y2="' + (y + boardHpx - 0.5) +
-        '" stroke="rgba(0,0,0,0.22)" stroke-width="0.5"/>'
+        '<line x1="' + boardX + '" y1="' + y + '" x2="' + (boardX + bayWmm) + '" y2="' + y +
+        '" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>'
       );
-      y += boardHpx + gapPx;
+      y -= (boardH + gapMm);
       boardsDrawn++;
     }
 
-    // Info overlay (scale bar)
-    var barY = H - 22;
-    var barLenM = 1; // 1m reference
-    var barLenPx = 1000 * scale;
+    // 1 m scale bar — below ground line
+    var barY = ground + 170;
+    var barLen = 1000;     // 1 m in mm
+    var barX0 = marginSide;
     parts.push(
-      '<g font-family="Manrope, sans-serif" font-size="12" fill="#182557">' +
-        '<line x1="' + padX + '" y1="' + barY + '" x2="' + (padX + barLenPx) + '" y2="' + barY + '" stroke="#182557" stroke-width="2"/>' +
-        '<line x1="' + padX + '" y1="' + (barY - 4) + '" x2="' + padX + '" y2="' + (barY + 4) + '" stroke="#182557" stroke-width="2"/>' +
-        '<line x1="' + (padX + barLenPx) + '" y1="' + (barY - 4) + '" x2="' + (padX + barLenPx) + '" y2="' + (barY + 4) + '" stroke="#182557" stroke-width="2"/>' +
-        '<text x="' + (padX + barLenPx + 8) + '" y="' + (barY + 4) + '" font-weight="700">1 m</text>' +
+      '<g font-family="Manrope, sans-serif" font-size="72" fill="#182557">' +
+        '<line x1="' + barX0 + '" y1="' + barY + '" x2="' + (barX0 + barLen) + '" y2="' + barY + '" stroke="#182557" stroke-width="8"/>' +
+        '<line x1="' + barX0 + '" y1="' + (barY - 26) + '" x2="' + barX0 + '" y2="' + (barY + 26) + '" stroke="#182557" stroke-width="8"/>' +
+        '<line x1="' + (barX0 + barLen) + '" y1="' + (barY - 26) + '" x2="' + (barX0 + barLen) + '" y2="' + (barY + 26) + '" stroke="#182557" stroke-width="8"/>' +
+        '<text x="' + (barX0 + barLen + 40) + '" y="' + (barY + 24) + '" font-weight="700">1 m</text>' +
       '</g>'
     );
 
-    // Label showing one bay dimension
+    // Bay / height / board-count label, above posts
     parts.push(
-      '<text x="' + (left + postW + bayWpx / 2) + '" y="' + (top - 18) + '" ' +
-      'font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="#182557" text-anchor="middle">' +
+      '<text x="' + (boardX + bayWmm / 2) + '" y="' + (top - capH - 30) + '" ' +
+      'font-family="Manrope, sans-serif" font-size="78" font-weight="700" fill="#182557" text-anchor="middle">' +
         state.bay + ' m bay · ' + state.height + ' m high · ' + r.boardsPerBay + ' boards' +
       '</text>'
     );
