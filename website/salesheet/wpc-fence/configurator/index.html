@@ -226,10 +226,32 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   padding: var(--space-md);
   overflow: hidden;
   position: relative;
+  min-width: 0;
 }
 .preview-svg {
   width: 100%; height: auto; display: block;
   max-height: 380px;
+}
+
+/* Preview + swatch split — colour picker sits to the right of the live SVG */
+.preview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: var(--space-md);
+  align-items: stretch;
+}
+.preview-swatches {
+  display: flex; flex-direction: column; gap: var(--space-xs);
+  min-width: 0;
+}
+.preview-swatches h6 {
+  font-size: 11px; font-weight: 700;
+  color: var(--lk-navy);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 2px;
+}
+.preview-swatches .helper-row {
+  font-size: 11px; color: var(--lk-navy-60); margin-bottom: var(--space-xs);
 }
 
 .controls-card {
@@ -325,10 +347,10 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   text-align: right;
 }
 
-/* Swatches */
+/* Swatches — bigger chips with code + name */
 .swatch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
 }
 .swatch-btn {
@@ -336,28 +358,37 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: transparent;
+  background: var(--lk-white);
   padding: 0;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  text-align: left;
 }
-.swatch-btn:hover { transform: translateY(-2px); }
+.swatch-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(24,37,87,0.08); }
 .swatch-btn[aria-pressed="true"] {
   border-color: var(--lk-purple);
   box-shadow: 0 0 0 2px rgba(128,3,255,0.18);
 }
 .swatch-btn .chip {
-  height: 48px;
+  height: 72px;
   background-size: cover;
   background-position: center;
+  display: block;
 }
 .swatch-btn .label {
-  display: block;
+  display: flex; flex-direction: column;
+  padding: 6px 8px 8px;
+  gap: 1px;
+}
+.swatch-btn .label .code {
   font-size: 10px; font-weight: 700;
-  color: var(--lk-navy-80);
-  padding: 4px 0 6px;
-  text-align: center;
-  letter-spacing: 0.04em;
+  color: var(--lk-purple);
+  letter-spacing: 0.08em;
+}
+.swatch-btn .label .name {
+  font-size: 11px; font-weight: 600;
+  color: var(--lk-navy);
+  line-height: 1.2;
 }
 
 /* Scene picker + render */
@@ -618,6 +649,8 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   .config-layout { grid-template-columns: 1fr; }
   .summary-card { position: static; }
   .control-row { grid-template-columns: 1fr; gap: var(--space-sm); }
+  .preview-grid { grid-template-columns: 1fr; }
+  .swatch-grid { grid-template-columns: repeat(4, 1fr); }
   .modal-head, .modal-body { padding-left: var(--space-xl); padding-right: var(--space-xl); }
 }
 @media (max-width: 640px) {
@@ -703,14 +736,21 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     <!-- ========== LEFT: PREVIEW + CONTROLS ========== -->
     <div class="config-main">
 
-      <!-- Live SVG preview -->
+      <!-- Live SVG preview + colour picker -->
       <div class="preview-card">
         <h5>
           Live preview
           <span class="variant-badge" id="variant-badge">Privacy</span>
         </h5>
-        <div class="preview-svg-wrap">
-          <svg class="preview-svg" id="fence-svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid meet" aria-label="Side elevation of configured WPC fence"></svg>
+        <div class="preview-grid">
+          <div class="preview-svg-wrap">
+            <svg class="preview-svg" id="fence-svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid meet" aria-label="Side elevation of configured WPC fence"></svg>
+          </div>
+          <div class="preview-swatches">
+            <h6>Colour finish</h6>
+            <div class="helper-row">8 manufacturer woodgrains</div>
+            <div class="swatch-grid" id="swatch-grid" role="group" aria-label="Colour swatches"></div>
+          </div>
         </div>
       </div>
 
@@ -773,9 +813,11 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
           <label>Gap between boards
             <span class="helper">0 = privacy · 1–15 cm = slatted</span>
           </label>
-          <div class="slider-row">
-            <input type="range" id="gap-slider" min="0" max="15" step="1" value="0" aria-label="Gap between boards in centimetres">
-            <span class="slider-value" id="gap-value">0 cm</span>
+          <div class="num-input">
+            <button type="button" id="gap-dec" aria-label="Decrease gap">−</button>
+            <input type="number" id="gap-input" min="0" max="15" step="1" value="0">
+            <button type="button" id="gap-inc" aria-label="Increase gap">+</button>
+            <span style="margin-left:12px; font-weight:700; color:var(--lk-navy-80);">cm</span>
           </div>
         </div>
 
@@ -789,13 +831,6 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
             <button type="button" id="len-inc" aria-label="Increase length">+</button>
             <span style="margin-left:12px; font-weight:700; color:var(--lk-navy-80);">m</span>
           </div>
-        </div>
-
-        <div class="control-row">
-          <label>Colour
-            <span class="helper">Click to preview</span>
-          </label>
-          <div class="swatch-grid" id="swatch-grid" role="group" aria-label="Colour swatches"></div>
         </div>
 
         <div class="control-row">
@@ -1005,7 +1040,14 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
       chip.style.backgroundImage = 'url(../images/swatches/' + c.code.toLowerCase() + '.jpg)';
       var lbl = document.createElement('span');
       lbl.className = 'label';
-      lbl.textContent = c.code;
+      var codeEl = document.createElement('span');
+      codeEl.className = 'code';
+      codeEl.textContent = c.code;
+      var nameEl = document.createElement('span');
+      nameEl.className = 'name';
+      nameEl.textContent = c.name;
+      lbl.appendChild(codeEl);
+      lbl.appendChild(nameEl);
       btn.appendChild(chip);
       btn.appendChild(lbl);
       btn.addEventListener('click', function() {
@@ -1038,14 +1080,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     });
   }
 
-  // ===== Slider =====
-  function wireSlider() {
-    var s = document.getElementById('gap-slider');
-    s.addEventListener('input', function() {
-      state.gap = parseInt(s.value, 10);
-      update();
-    });
-  }
+  // (gap uses the shared wireStepper below)
 
   // ===== Number inputs (stepper) =====
   function wireStepper(dec, inp, inc, key, min, max) {
@@ -1138,14 +1173,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 
     var parts = [];
 
-    // Defs — pattern for swatch texture, and sky gradient
+    // Defs — sky gradient only. Boards are filled with a per-board <image> below so
+    // the texture never tiles (tiling would introduce vertical seams inside a board).
     parts.push('<defs>');
-    parts.push(
-      '<pattern id="wood-pattern" patternUnits="userSpaceOnUse" width="120" height="80">' +
-        '<rect width="120" height="80" fill="' + color + '"/>' +
-        '<image href="' + swatchUrl + '" x="0" y="0" width="120" height="80" preserveAspectRatio="xMidYMid slice" opacity="1"/>' +
-      '</pattern>'
-    );
     parts.push(
       '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">' +
         '<stop offset="0" stop-color="#EEF2FB"/>' +
@@ -1177,21 +1207,31 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     parts.push('<rect x="' + (left + postW) + '" y="' + top + '" width="' + bayWpx + '" height="' + topRailPx + '" fill="' + railColor + '"/>');
     parts.push('<rect x="' + (left + postW) + '" y="' + (ground - bottomRailPx) + '" width="' + bayWpx + '" height="' + bottomRailPx + '" fill="' + railColor + '"/>');
 
-    // Boards — stacked inside rails
+    // Boards — stacked inside rails. Each board renders as ONE <image> (preserveAspectRatio="slice"),
+    // so the swatch JPG fills the full board area with no tiling and therefore no vertical seams.
     var boardHpx = 148 * scale;
     var gapPx    = r.gapMm * scale;
     var infillTop = top + topRailPx;
     var infillBot = ground - bottomRailPx;
     var y = infillTop;
     var boardsDrawn = 0;
+    var boardX = left + postW;
     while (y + boardHpx <= infillBot + 0.5 && boardsDrawn < 200) {
+      // Colour backdrop in case the image hasn't loaded yet
       parts.push(
-        '<rect x="' + (left + postW) + '" y="' + y + '" width="' + bayWpx + '" height="' + boardHpx +
-        '" fill="url(#wood-pattern)" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>'
+        '<rect x="' + boardX + '" y="' + y + '" width="' + bayWpx + '" height="' + boardHpx +
+        '" fill="' + color + '"/>'
       );
-      // Subtle board-edge shadow
+      // Woodgrain texture — single image per board, scaled/cropped to fill (no tiling)
       parts.push(
-        '<rect x="' + (left + postW) + '" y="' + (y + boardHpx - 2) + '" width="' + bayWpx + '" height="2" fill="rgba(0,0,0,0.18)"/>'
+        '<image href="' + swatchUrl + '" x="' + boardX + '" y="' + y +
+        '" width="' + bayWpx + '" height="' + boardHpx +
+        '" preserveAspectRatio="xMidYMid slice"/>'
+      );
+      // Thin top-edge hairline so adjacent boards read as distinct planks
+      parts.push(
+        '<line x1="' + boardX + '" y1="' + (y + boardHpx - 0.5) + '" x2="' + (boardX + bayWpx) + '" y2="' + (y + boardHpx - 0.5) +
+        '" stroke="rgba(0,0,0,0.22)" stroke-width="0.5"/>'
       );
       y += boardHpx + gapPx;
       boardsDrawn++;
@@ -1241,8 +1281,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     document.getElementById('s-posts').textContent  = r.posts;
     document.getElementById('s-boards').textContent = r.totalBoards;
 
-    // Gap slider label
-    document.getElementById('gap-value').textContent = state.gap + ' cm';
+    // Keep the gap stepper input in sync when state.gap is changed from elsewhere
+    var gapInput = document.getElementById('gap-input');
+    if (gapInput && parseInt(gapInput.value, 10) !== state.gap) gapInput.value = state.gap;
 
     // Variant badge
     var badge = document.getElementById('variant-badge');
@@ -1456,7 +1497,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   // ===== Init =====
   renderSwatches();
   wireSegmented();
-  wireSlider();
+  wireStepper('gap-dec', 'gap-input', 'gap-inc', 'gap',         0,  15);
   wireStepper('len-dec', 'len-input', 'len-inc', 'length',      1,  10000);
   wireStepper('sg-dec',  'sg-input',  'sg-inc',  'singleGates', 0,  10);
   wireStepper('dg-dec',  'dg-input',  'dg-inc',  'doubleGates', 0,  10);
