@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.1] - 2026-04-19
+
+### Changed — Gemini 3 Pro Image Preview cleanup pass
+
+- All 60 taxonomy-referenced catalog images (46 product photos + 8 Leka colour grain swatches + 4 texture grid cards + 2 additional) reprocessed through `gemini-3-pro-image-preview`.
+- Input: the v0.6.0 PIL-extracted crops.
+- Output: 1024×1024 studio-quality product photos — pure white seamless background, soft natural shadow, product centred, no text / labels / grid lines / adjacent-row bleed.
+- `scripts/gemini_clean_images.py` — reusable processor. Pulls `gemini-api-key` from GCP Secret Manager, rate-limits at 2.5 s between calls, retries on transient failures, supports `--overwrite` or `_clean.jpg` suffix output, `--filter` / `--limit` / `--skip` args for selective re-runs.
+
+## [0.6.0] - 2026-04-19
+
+### Changed — Image review pass (PIL-only, superseded by v0.6.1)
+
+- PDFs re-extracted at 220 DPI (was 150) for higher source resolution (`scripts/extract_pdf_pages.py`).
+- Co-Ex product crops: tighter x-bounds (115..350) exclude row# column AND vendor-code column; conservative 28px y-pads prevent neighbor-row bleed.
+- Heritage crops: new x-bounds (150..400) exclude the wider first-generation row# column; row height recalibrated to 310px at 220 DPI; 35px y-pads.
+- ASA crops: exclude Chinese title text ("XXX*YY格栅") by starting at y=185 per half; exclude the right-side cross-section drawing + spec text by cutting x at 50% page width; custom bbox with minimal upward padding.
+
+### Added — Inline SVG cross-sections per product card
+
+- `cross_section_svg()` in `scripts/generate_wpc_profile_pages.py` renders a scaled cross-section SVG sized to the product's real width × thickness.
+- Profile geometry varies by sub-category: hollow / grooved (6-hole circles) / fluted (rib teeth) / solid (plain rectangle).
+- Cap shield stripes drawn on Signature (LKP) and Shield (LKA) series. Embossed grain hints drawn on Heritage (LKH) 3D variants.
+- Dimension annotations (W mm, T mm) rendered in the series accent colour.
+- Cross-section sits between the photo and the spec/palette body on each card — brings back the technical consolidated preview from v0.4.0 /catalog/.
+
 ## [0.5.0] - 2026-04-19
 
 ### Added — /wpc-profile/ multi-page catalog (replaces single-page /catalog/)
