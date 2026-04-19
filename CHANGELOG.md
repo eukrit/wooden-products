@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2026-04-19
+
+### Changed
+- `website/salesheet/server.py` — `/api/render-scene` now generates scenes with a consistent directorial template ("Variant C / Lifestyle In-Use") and explicit 16:9 landscape aspect ratio:
+  - Replaced the free-form scene description map with a structured `_SCENES` dict holding a `context` clause + a scene-appropriate `people` clause per scene (residential family, hospitality couple, hospital nurse + patient, school students, resort family).
+  - `_build_render_prompt` now emits a single disciplined template: 50 mm / f/2.8, pedestrian 3/4 vantage, 1.5 m camera height, bright softened afternoon light, medium-shallow DoF, editorial-lifestyle colour grading.
+  - `_call_gemini_image` now passes `generationConfig.imageConfig.aspectRatio: "16:9"` so Gemini returns landscape 1344×768 PNGs instead of portrait defaults.
+- `website/salesheet/wpc-fence/configurator/index.html` — render-result container aspect ratio updated from `3/2` to `16/9` to match the new output.
+
 ## [0.3.1] - 2026-04-19
 
 ### Changed
