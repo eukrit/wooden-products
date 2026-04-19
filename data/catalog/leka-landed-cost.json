@@ -1,0 +1,3147 @@
+{
+  "_meta": {
+    "generated": "2026-04-19",
+    "fx_usd_to_thb": 32.617,
+    "container_type": "40HC (68 cbm usable)",
+    "engine": "shipping-automation/mcp-server/cost_engine.py",
+    "moq_policy": "Per-SKU MOQ 200 pcs; mixed-SKU 1x40HC container"
+  },
+  "rows": [
+    {
+      "sku": "LKP-DK-H-140-23",
+      "name": "Signature Deck Board 140 \u00d7 23",
+      "category": "decking",
+      "sub": "signature-hollow",
+      "vendor_code": "AL-GK140/23C",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 23,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.74,
+        "kg_per_pc": 7.946,
+        "usd_per_m": 2.55,
+        "usd_per_pc": 7.395,
+        "cbm_per_pc_raw": 0.00934,
+        "cbm_per_pc_packed": 0.01214,
+        "pcs_per_40hc": 3400,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 41.27,
+          "kg": 27016.4,
+          "goods_usd": 25143.0
+        },
+        "source": "PI-NS20240516LJ + Jackson p1",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1768163.23,
+          "per_m_thb": 179.33,
+          "per_pc_thb": 520.05,
+          "shipping_cost_thb": 948074.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 115.61
+        },
+        "fcl_40": {
+          "total_landed_thb": 1040641.45,
+          "per_m_thb": 105.54,
+          "per_pc_thb": 306.07,
+          "shipping_cost_thb": 220552.22,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.89
+        },
+        "lcl": {
+          "total_landed_thb": 1618848.31,
+          "per_m_thb": 164.18,
+          "per_pc_thb": 476.13,
+          "shipping_cost_thb": 798759.08,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 97.4
+        },
+        "air": {
+          "total_landed_thb": 3824611.86,
+          "per_m_thb": 387.89,
+          "per_pc_thb": 1124.89,
+          "shipping_cost_thb": 3004522.63,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 366.37
+        }
+      }
+    },
+    {
+      "sku": "LKP-DK-H-148-22",
+      "name": "Signature Deck Board 148 \u00d7 22",
+      "category": "decking",
+      "sub": "signature-hollow",
+      "vendor_code": "AL-GK148/22A",
+      "dimensions_mm": {
+        "w": 148,
+        "t": 22,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.75,
+        "kg_per_pc": 7.975,
+        "usd_per_m": 2.58,
+        "usd_per_pc": 7.482,
+        "cbm_per_pc_raw": 0.00944,
+        "cbm_per_pc_packed": 0.01228,
+        "pcs_per_40hc": 3400,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 41.74,
+          "kg": 27115.0,
+          "goods_usd": 25438.8
+        },
+        "source": "PI-NS20240516LJ + Jackson p2",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1781262.34,
+          "per_m_thb": 180.66,
+          "per_pc_thb": 523.9,
+          "shipping_cost_thb": 951525.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 114.68
+        },
+        "fcl_40": {
+          "total_landed_thb": 1051589.5,
+          "per_m_thb": 106.65,
+          "per_pc_thb": 309.29,
+          "shipping_cost_thb": 221852.16,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.74
+        },
+        "lcl": {
+          "total_landed_thb": 1632233.45,
+          "per_m_thb": 165.54,
+          "per_pc_thb": 480.07,
+          "shipping_cost_thb": 802496.11,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 96.72
+        },
+        "air": {
+          "total_landed_thb": 3846083.73,
+          "per_m_thb": 390.07,
+          "per_pc_thb": 1131.2,
+          "shipping_cost_thb": 3016346.39,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 363.53
+        }
+      }
+    },
+    {
+      "sku": "LKP-DK-H-145-21",
+      "name": "Signature Deck Board 145 \u00d7 21",
+      "category": "decking",
+      "sub": "signature-hollow",
+      "vendor_code": "AL-GK145-21C",
+      "dimensions_mm": {
+        "w": 145,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.26,
+        "kg_per_pc": 6.554,
+        "usd_per_m": 2.0,
+        "usd_per_pc": 5.8,
+        "cbm_per_pc_raw": 0.00883,
+        "cbm_per_pc_packed": 0.01148,
+        "pcs_per_40hc": 3500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 40.18,
+          "kg": 22939.0,
+          "goods_usd": 20300.0
+        },
+        "source": "Jackson p2 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1467490.1,
+          "per_m_thb": 144.58,
+          "per_pc_thb": 419.28,
+          "shipping_cost_thb": 805365.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 121.63
+        },
+        "fcl_40": {
+          "total_landed_thb": 861394.02,
+          "per_m_thb": 84.87,
+          "per_pc_thb": 246.11,
+          "shipping_cost_thb": 199268.92,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.1
+        },
+        "lcl": {
+          "total_landed_thb": 1338819.79,
+          "per_m_thb": 131.9,
+          "per_pc_thb": 382.52,
+          "shipping_cost_thb": 676694.69,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 102.2
+        },
+        "air": {
+          "total_landed_thb": 3210173.34,
+          "per_m_thb": 316.27,
+          "per_pc_thb": 917.19,
+          "shipping_cost_thb": 2548048.24,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 384.83
+        }
+      }
+    },
+    {
+      "sku": "LKP-DK-S-140-18",
+      "name": "Signature Solid Deck 140 \u00d7 18",
+      "category": "decking",
+      "sub": "signature-solid",
+      "vendor_code": "AL-GS140-18B",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 18,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 3.17,
+        "kg_per_pc": 9.193,
+        "usd_per_m": 2.8,
+        "usd_per_pc": 8.12,
+        "cbm_per_pc_raw": 0.00731,
+        "cbm_per_pc_packed": 0.0095,
+        "pcs_per_40hc": 3000,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 28.5,
+          "kg": 27579.0,
+          "goods_usd": 24360.0
+        },
+        "source": "Jackson p2 (est price, solid)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1762315.12,
+          "per_m_thb": 202.56,
+          "per_pc_thb": 587.44,
+          "shipping_cost_thb": 967765.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 121.8
+        },
+        "fcl_40": {
+          "total_landed_thb": 1011661.33,
+          "per_m_thb": 116.28,
+          "per_pc_thb": 337.22,
+          "shipping_cost_thb": 217111.21,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 27.33
+        },
+        "lcl": {
+          "total_landed_thb": 1603773.97,
+          "per_m_thb": 184.34,
+          "per_pc_thb": 534.59,
+          "shipping_cost_thb": 809223.85,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 101.85
+        },
+        "air": {
+          "total_landed_thb": 3855679.45,
+          "per_m_thb": 443.18,
+          "per_pc_thb": 1285.23,
+          "shipping_cost_thb": 3061129.33,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 385.27
+        }
+      }
+    },
+    {
+      "sku": "LKP-DK-S-140-23",
+      "name": "Signature Solid Deck 140 \u00d7 23",
+      "category": "decking",
+      "sub": "signature-solid",
+      "vendor_code": "AL-GS140-23A",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 23,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 3.96,
+        "kg_per_pc": 11.484,
+        "usd_per_m": 3.4,
+        "usd_per_pc": 9.86,
+        "cbm_per_pc_raw": 0.00934,
+        "cbm_per_pc_packed": 0.01214,
+        "pcs_per_40hc": 2700,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 32.78,
+          "kg": 31006.8,
+          "goods_usd": 26622.0
+        },
+        "source": "Jackson p2 (est price, solid)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1956067.77,
+          "per_m_thb": 249.82,
+          "per_pc_thb": 724.47,
+          "shipping_cost_thb": 1087738.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 125.27
+        },
+        "fcl_40": {
+          "total_landed_thb": 1095381.68,
+          "per_m_thb": 139.9,
+          "per_pc_thb": 405.7,
+          "shipping_cost_thb": 227051.91,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.15
+        },
+        "lcl": {
+          "total_landed_thb": 1772219.26,
+          "per_m_thb": 226.34,
+          "per_pc_thb": 656.38,
+          "shipping_cost_thb": 903889.49,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 104.1
+        },
+        "air": {
+          "total_landed_thb": 4305257.47,
+          "per_m_thb": 549.84,
+          "per_pc_thb": 1594.54,
+          "shipping_cost_thb": 3436927.7,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 395.81
+        }
+      }
+    },
+    {
+      "sku": "LKP-DK-S-200-25",
+      "name": "Signature Resilient Deck 200 \u00d7 25",
+      "category": "decking",
+      "sub": "signature-solid",
+      "vendor_code": "AL-GK200-25A",
+      "dimensions_mm": {
+        "w": 200,
+        "t": 25,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 4.26,
+        "kg_per_pc": 12.354,
+        "usd_per_m": 3.8,
+        "usd_per_pc": 11.02,
+        "cbm_per_pc_raw": 0.0145,
+        "cbm_per_pc_packed": 0.01885,
+        "pcs_per_40hc": 2500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 47.13,
+          "kg": 30885.0,
+          "goods_usd": 27550.0
+        },
+        "source": "Jackson p4 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1982073.35,
+          "per_m_thb": 273.39,
+          "per_pc_thb": 792.83,
+          "shipping_cost_thb": 1083475.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 120.57
+        },
+        "fcl_40": {
+          "total_landed_thb": 1129728.5,
+          "per_m_thb": 155.82,
+          "per_pc_thb": 451.89,
+          "shipping_cost_thb": 231130.15,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 25.72
+        },
+        "lcl": {
+          "total_landed_thb": 1803555.54,
+          "per_m_thb": 248.77,
+          "per_pc_thb": 721.42,
+          "shipping_cost_thb": 904957.19,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 100.71
+        },
+        "air": {
+          "total_landed_thb": 4326604.26,
+          "per_m_thb": 596.77,
+          "per_pc_thb": 1730.64,
+          "shipping_cost_thb": 3428005.91,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 381.48
+        }
+      }
+    },
+    {
+      "sku": "LKA-DK-140-24",
+      "name": "Shield Deckway 140 \u00d7 24",
+      "category": "decking",
+      "sub": "shield-deckway",
+      "vendor_code": "AOLO-140*24",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 24,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.3,
+        "kg_per_pc": 6.67,
+        "usd_per_m": 2.8,
+        "usd_per_pc": 8.12,
+        "cbm_per_pc_raw": 0.00974,
+        "cbm_per_pc_packed": 0.01267,
+        "pcs_per_40hc": 5368,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 35804.6,
+          "goods_usd": 43588.16
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 2677374.61,
+          "per_m_thb": 171.99,
+          "per_pc_thb": 498.77,
+          "shipping_cost_thb": 1255659.6,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 88.32
+        },
+        "fcl_40": {
+          "total_landed_thb": 1723327.28,
+          "per_m_thb": 110.7,
+          "per_pc_thb": 321.04,
+          "shipping_cost_thb": 301612.27,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 21.21
+        },
+        "lcl": {
+          "total_landed_thb": 2518751.09,
+          "per_m_thb": 161.8,
+          "per_pc_thb": 469.22,
+          "shipping_cost_thb": 1097036.08,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 77.16
+        },
+        "air": {
+          "total_landed_thb": 5445279.98,
+          "per_m_thb": 349.79,
+          "per_pc_thb": 1014.4,
+          "shipping_cost_thb": 4023564.97,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 283.01
+        }
+      }
+    },
+    {
+      "sku": "LKA-DK-156-17",
+      "name": "Shield Sports-Floor 156 \u00d7 17",
+      "category": "decking",
+      "sub": "shield-deckway",
+      "vendor_code": "AOLO-156*17",
+      "dimensions_mm": {
+        "w": 156,
+        "t": 17,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.3,
+        "kg_per_pc": 3.77,
+        "usd_per_m": 2.0,
+        "usd_per_pc": 5.8,
+        "cbm_per_pc_raw": 0.00769,
+        "cbm_per_pc_packed": 0.01,
+        "pcs_per_40hc": 6801,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 25639.8,
+          "goods_usd": 39445.8
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 2186495.61,
+          "per_m_thb": 110.86,
+          "per_pc_thb": 321.5,
+          "shipping_cost_thb": 899891.95,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 69.94
+        },
+        "fcl_40": {
+          "total_landed_thb": 1570011.71,
+          "per_m_thb": 79.6,
+          "per_pc_thb": 230.85,
+          "shipping_cost_thb": 283408.05,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 22.03
+        },
+        "lcl": {
+          "total_landed_thb": 2114192.4,
+          "per_m_thb": 107.19,
+          "per_pc_thb": 310.86,
+          "shipping_cost_thb": 827588.74,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 64.32
+        },
+        "air": {
+          "total_landed_thb": 4207050.96,
+          "per_m_thb": 213.31,
+          "per_pc_thb": 618.59,
+          "shipping_cost_thb": 2920447.3,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 226.99
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-H-140-25-WG",
+      "name": "Heritage Deck 140 \u00d7 25 \u2014 Wood-Grain",
+      "category": "decking",
+      "sub": "heritage-hollow",
+      "vendor_code": "AL-K140/25L",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 25,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.7,
+        "kg_per_pc": 7.83,
+        "usd_per_m": 1.8,
+        "usd_per_pc": 5.22,
+        "cbm_per_pc_raw": 0.01015,
+        "cbm_per_pc_packed": 0.0132,
+        "pcs_per_40hc": 3800,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 50.14,
+          "kg": 29754.0,
+          "goods_usd": 19836.0
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1690880.81,
+          "per_m_thb": 153.44,
+          "per_pc_thb": 444.97,
+          "shipping_cost_thb": 1043890.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 161.35
+        },
+        "fcl_40": {
+          "total_landed_thb": 844220.62,
+          "per_m_thb": 76.61,
+          "per_pc_thb": 222.16,
+          "shipping_cost_thb": 197229.81,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.48
+        },
+        "lcl": {
+          "total_landed_thb": 1490092.74,
+          "per_m_thb": 135.22,
+          "per_pc_thb": 392.13,
+          "shipping_cost_thb": 843101.93,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 130.31
+        },
+        "air": {
+          "total_landed_thb": 3920381.92,
+          "per_m_thb": 355.75,
+          "per_pc_thb": 1031.68,
+          "shipping_cost_thb": 3273391.11,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 505.94
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-H-140-25-EM",
+      "name": "Heritage Deck 140 \u00d7 25 \u2014 3D Embossed",
+      "category": "decking",
+      "sub": "heritage-hollow",
+      "vendor_code": "AL-K140/25L",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 25,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.7,
+        "kg_per_pc": 7.83,
+        "usd_per_m": 1.8,
+        "usd_per_pc": 5.22,
+        "cbm_per_pc_raw": 0.01015,
+        "cbm_per_pc_packed": 0.0132,
+        "pcs_per_40hc": 3800,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 50.14,
+          "kg": 29754.0,
+          "goods_usd": 19836.0
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1690880.81,
+          "per_m_thb": 153.44,
+          "per_pc_thb": 444.97,
+          "shipping_cost_thb": 1043890.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 161.35
+        },
+        "fcl_40": {
+          "total_landed_thb": 844220.62,
+          "per_m_thb": 76.61,
+          "per_pc_thb": 222.16,
+          "shipping_cost_thb": 197229.81,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.48
+        },
+        "lcl": {
+          "total_landed_thb": 1490092.74,
+          "per_m_thb": 135.22,
+          "per_pc_thb": 392.13,
+          "shipping_cost_thb": 843101.93,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 130.31
+        },
+        "air": {
+          "total_landed_thb": 3920381.92,
+          "per_m_thb": 355.75,
+          "per_pc_thb": 1031.68,
+          "shipping_cost_thb": 3273391.11,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 505.94
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-H-140-20-WG",
+      "name": "Heritage Deck 140 \u00d7 20 \u2014 Wood-Grain",
+      "category": "decking",
+      "sub": "heritage-hollow",
+      "vendor_code": "AL-K140/20A",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 20,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.0,
+        "kg_per_pc": 5.8,
+        "usd_per_m": 1.44,
+        "usd_per_pc": 4.176,
+        "cbm_per_pc_raw": 0.00812,
+        "cbm_per_pc_packed": 0.01056,
+        "pcs_per_40hc": 4600,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 48.56,
+          "kg": 26680.0,
+          "goods_usd": 19209.6
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1562859.52,
+          "per_m_thb": 117.16,
+          "per_pc_thb": 339.75,
+          "shipping_cost_thb": 936300.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 149.44
+        },
+        "fcl_40": {
+          "total_landed_thb": 821036.52,
+          "per_m_thb": 61.55,
+          "per_pc_thb": 178.49,
+          "shipping_cost_thb": 194477.0,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 31.04
+        },
+        "lcl": {
+          "total_landed_thb": 1390928.58,
+          "per_m_thb": 104.27,
+          "per_pc_thb": 302.38,
+          "shipping_cost_thb": 764369.06,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 121.99
+        },
+        "air": {
+          "total_landed_thb": 3569102.12,
+          "per_m_thb": 267.55,
+          "per_pc_thb": 775.89,
+          "shipping_cost_thb": 2942542.6,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 469.63
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-H-140-20-EM",
+      "name": "Heritage Deck 140 \u00d7 20 \u2014 3D Embossed",
+      "category": "decking",
+      "sub": "heritage-hollow",
+      "vendor_code": "AL-K140/20A",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 20,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.0,
+        "kg_per_pc": 5.8,
+        "usd_per_m": 1.44,
+        "usd_per_pc": 4.176,
+        "cbm_per_pc_raw": 0.00812,
+        "cbm_per_pc_packed": 0.01056,
+        "pcs_per_40hc": 4600,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 48.56,
+          "kg": 26680.0,
+          "goods_usd": 19209.6
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1562859.52,
+          "per_m_thb": 117.16,
+          "per_pc_thb": 339.75,
+          "shipping_cost_thb": 936300.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 149.44
+        },
+        "fcl_40": {
+          "total_landed_thb": 821036.52,
+          "per_m_thb": 61.55,
+          "per_pc_thb": 178.49,
+          "shipping_cost_thb": 194477.0,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 31.04
+        },
+        "lcl": {
+          "total_landed_thb": 1390928.58,
+          "per_m_thb": 104.27,
+          "per_pc_thb": 302.38,
+          "shipping_cost_thb": 764369.06,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 121.99
+        },
+        "air": {
+          "total_landed_thb": 3569102.12,
+          "per_m_thb": 267.55,
+          "per_pc_thb": 775.89,
+          "shipping_cost_thb": 2942542.6,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 469.63
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-G-145-21",
+      "name": "Heritage Deck 145 \u00d7 21 \u2014 6-Hole",
+      "category": "decking",
+      "sub": "heritage-grooved",
+      "vendor_code": "AL-K145/21A",
+      "dimensions_mm": {
+        "w": 145,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.26,
+        "kg_per_pc": 6.554,
+        "usd_per_m": 1.98,
+        "usd_per_pc": 5.742,
+        "cbm_per_pc_raw": 0.00883,
+        "cbm_per_pc_packed": 0.01148,
+        "pcs_per_40hc": 3500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 40.18,
+          "kg": 22939.0,
+          "goods_usd": 20097.0
+        },
+        "source": "PI-NS20240516LJ + Jackson p2",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1460868.85,
+          "per_m_thb": 143.93,
+          "per_pc_thb": 417.39,
+          "shipping_cost_thb": 805365.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 122.86
+        },
+        "fcl_40": {
+          "total_landed_thb": 853880.66,
+          "per_m_thb": 84.13,
+          "per_pc_thb": 243.97,
+          "shipping_cost_thb": 198376.81,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.26
+        },
+        "lcl": {
+          "total_landed_thb": 1331306.43,
+          "per_m_thb": 131.16,
+          "per_pc_thb": 380.37,
+          "shipping_cost_thb": 675802.58,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 103.1
+        },
+        "air": {
+          "total_landed_thb": 3202659.98,
+          "per_m_thb": 315.53,
+          "per_pc_thb": 915.05,
+          "shipping_cost_thb": 2547156.13,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 388.58
+        }
+      }
+    },
+    {
+      "sku": "LKH-DK-G-148-23",
+      "name": "Heritage Deck 148 \u00d7 23 \u2014 3D Embossed",
+      "category": "decking",
+      "sub": "heritage-grooved",
+      "vendor_code": "AL-K148/23B",
+      "dimensions_mm": {
+        "w": 148,
+        "t": 23,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.75,
+        "kg_per_pc": 7.975,
+        "usd_per_m": 1.98,
+        "usd_per_pc": 5.742,
+        "cbm_per_pc_raw": 0.00987,
+        "cbm_per_pc_packed": 0.01283,
+        "pcs_per_40hc": 3500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 44.92,
+          "kg": 27912.5,
+          "goods_usd": 20097.0
+        },
+        "source": "PI-NS20240516LJ (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1634941.35,
+          "per_m_thb": 161.08,
+          "per_pc_thb": 467.13,
+          "shipping_cost_thb": 979437.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 149.42
+        },
+        "fcl_40": {
+          "total_landed_thb": 853880.66,
+          "per_m_thb": 84.13,
+          "per_pc_thb": 243.97,
+          "shipping_cost_thb": 198376.81,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.26
+        },
+        "lcl": {
+          "total_landed_thb": 1454236.43,
+          "per_m_thb": 143.27,
+          "per_pc_thb": 415.5,
+          "shipping_cost_thb": 798732.58,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 121.85
+        },
+        "air": {
+          "total_landed_thb": 3733494.07,
+          "per_m_thb": 367.83,
+          "per_pc_thb": 1066.71,
+          "shipping_cost_thb": 3077990.22,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 469.56
+        }
+      }
+    },
+    {
+      "sku": "LKP-CL-F-156-21",
+      "name": "Signature Cladding 156 \u00d7 21",
+      "category": "cladding",
+      "sub": "signature-flat",
+      "vendor_code": "AL-GS156/21C",
+      "dimensions_mm": {
+        "w": 156,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.67,
+        "kg_per_pc": 4.843,
+        "usd_per_m": 1.56,
+        "usd_per_pc": 4.524,
+        "cbm_per_pc_raw": 0.0095,
+        "cbm_per_pc_packed": 0.01235,
+        "pcs_per_40hc": 5600,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 27120.8,
+          "goods_usd": 25334.4
+        },
+        "source": "PI-NS20240516LJ + Jackson p6",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1778060.12,
+          "per_m_thb": 109.49,
+          "per_pc_thb": 317.51,
+          "shipping_cost_thb": 951728.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 115.17
+        },
+        "fcl_40": {
+          "total_landed_thb": 1047725.49,
+          "per_m_thb": 64.52,
+          "per_pc_thb": 187.09,
+          "shipping_cost_thb": 221393.36,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.79
+        },
+        "lcl": {
+          "total_landed_thb": 1628512.8,
+          "per_m_thb": 100.28,
+          "per_pc_thb": 290.81,
+          "shipping_cost_thb": 802180.67,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 97.08
+        },
+        "air": {
+          "total_landed_thb": 3842838.77,
+          "per_m_thb": 236.63,
+          "per_pc_thb": 686.22,
+          "shipping_cost_thb": 3016506.64,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 365.05
+        }
+      }
+    },
+    {
+      "sku": "LKP-CL-F-156-18",
+      "name": "Signature Cladding 156 \u00d7 18",
+      "category": "cladding",
+      "sub": "signature-flat",
+      "vendor_code": "AL-GS156-18A",
+      "dimensions_mm": {
+        "w": 156,
+        "t": 18,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.53,
+        "kg_per_pc": 4.437,
+        "usd_per_m": 1.4,
+        "usd_per_pc": 4.06,
+        "cbm_per_pc_raw": 0.00814,
+        "cbm_per_pc_packed": 0.01059,
+        "pcs_per_40hc": 5800,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 61.4,
+          "kg": 25734.6,
+          "goods_usd": 23548.0
+        },
+        "source": "Jackson p6 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1671276.12,
+          "per_m_thb": 99.36,
+          "per_pc_thb": 288.15,
+          "shipping_cost_thb": 903211.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 117.6
+        },
+        "fcl_40": {
+          "total_landed_thb": 981607.87,
+          "per_m_thb": 58.36,
+          "per_pc_thb": 169.24,
+          "shipping_cost_thb": 213542.75,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 27.8
+        },
+        "lcl": {
+          "total_landed_thb": 1528132.48,
+          "per_m_thb": 90.85,
+          "per_pc_thb": 263.47,
+          "shipping_cost_thb": 760067.36,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 98.96
+        },
+        "air": {
+          "total_landed_thb": 3628768.57,
+          "per_m_thb": 215.74,
+          "per_pc_thb": 625.65,
+          "shipping_cost_thb": 2860703.45,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 372.46
+        }
+      }
+    },
+    {
+      "sku": "LKA-CL-122-10",
+      "name": "Shield Flat Wall 122 \u00d7 10",
+      "category": "cladding",
+      "sub": "shield-flat",
+      "vendor_code": "AOLO-122*10",
+      "dimensions_mm": {
+        "w": 122,
+        "t": 10,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.6,
+        "kg_per_pc": 1.74,
+        "usd_per_m": 1.2,
+        "usd_per_pc": 3.48,
+        "cbm_per_pc_raw": 0.00354,
+        "cbm_per_pc_packed": 0.0046,
+        "pcs_per_40hc": 14784,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 25724.2,
+          "goods_usd": 51448.32
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 2580935.45,
+          "per_m_thb": 60.2,
+          "per_pc_thb": 174.58,
+          "shipping_cost_thb": 902845.6,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 53.8
+        },
+        "fcl_40": {
+          "total_landed_thb": 2014244.79,
+          "per_m_thb": 46.98,
+          "per_pc_thb": 136.24,
+          "shipping_cost_thb": 336154.94,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 20.03
+        },
+        "lcl": {
+          "total_landed_thb": 2560511.35,
+          "per_m_thb": 59.72,
+          "per_pc_thb": 173.19,
+          "shipping_cost_thb": 882421.5,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 52.58
+        },
+        "air": {
+          "total_landed_thb": 4660291.2,
+          "per_m_thb": 108.7,
+          "per_pc_thb": 315.23,
+          "shipping_cost_thb": 2982201.35,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 177.71
+        }
+      }
+    },
+    {
+      "sku": "LKA-CL-112-16",
+      "name": "Shield Small Wall 112 \u00d7 16",
+      "category": "cladding",
+      "sub": "shield-flat",
+      "vendor_code": "AOLO-112*16",
+      "dimensions_mm": {
+        "w": 112,
+        "t": 16,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.68,
+        "kg_per_pc": 1.972,
+        "usd_per_m": 1.25,
+        "usd_per_pc": 3.625,
+        "cbm_per_pc_raw": 0.0052,
+        "cbm_per_pc_packed": 0.00676,
+        "pcs_per_40hc": 10065,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 19848.2,
+          "goods_usd": 36485.62
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1887237.93,
+          "per_m_thb": 64.66,
+          "per_pc_thb": 187.51,
+          "shipping_cost_thb": 697186.3,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 58.58
+        },
+        "fcl_40": {
+          "total_landed_thb": 1460450.74,
+          "per_m_thb": 50.04,
+          "per_pc_thb": 145.1,
+          "shipping_cost_thb": 270399.11,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 22.72
+        },
+        "lcl": {
+          "total_landed_thb": 1861480.71,
+          "per_m_thb": 63.77,
+          "per_pc_thb": 184.95,
+          "shipping_cost_thb": 671429.08,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 56.42
+        },
+        "air": {
+          "total_landed_thb": 3479339.11,
+          "per_m_thb": 119.2,
+          "per_pc_thb": 345.69,
+          "shipping_cost_thb": 2289287.48,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 192.37
+        }
+      }
+    },
+    {
+      "sku": "LKA-CL-G-121-12",
+      "name": "Shield Small Grille 121 \u00d7 12",
+      "category": "cladding",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-121*12",
+      "dimensions_mm": {
+        "w": 121,
+        "t": 12,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.51,
+        "kg_per_pc": 1.479,
+        "usd_per_m": 1.15,
+        "usd_per_pc": 3.335,
+        "cbm_per_pc_raw": 0.00421,
+        "cbm_per_pc_packed": 0.00547,
+        "pcs_per_40hc": 12422,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 18372.1,
+          "goods_usd": 41427.37
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1996761.36,
+          "per_m_thb": 55.43,
+          "per_pc_thb": 160.74,
+          "shipping_cost_thb": 645524.83,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 47.77
+        },
+        "fcl_40": {
+          "total_landed_thb": 1643352.88,
+          "per_m_thb": 45.62,
+          "per_pc_thb": 132.29,
+          "shipping_cost_thb": 292116.36,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 21.62
+        },
+        "lcl": {
+          "total_landed_thb": 2007899.52,
+          "per_m_thb": 55.74,
+          "per_pc_thb": 161.64,
+          "shipping_cost_thb": 656663.0,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 48.6
+        },
+        "air": {
+          "total_landed_thb": 3504699.6,
+          "per_m_thb": 97.29,
+          "per_pc_thb": 282.14,
+          "shipping_cost_thb": 2153463.08,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 159.37
+        }
+      }
+    },
+    {
+      "sku": "LKH-CL-F-148-21-WG",
+      "name": "Heritage Cladding 148 \u00d7 21 \u2014 WG",
+      "category": "cladding",
+      "sub": "heritage-flat",
+      "vendor_code": "AL-S148/21/A",
+      "dimensions_mm": {
+        "w": 148,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.8,
+        "kg_per_pc": 5.22,
+        "usd_per_m": 1.19,
+        "usd_per_pc": 3.451,
+        "cbm_per_pc_raw": 0.00901,
+        "cbm_per_pc_packed": 0.01172,
+        "pcs_per_40hc": 6000,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 31320.0,
+          "goods_usd": 20706.0
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1774067.6,
+          "per_m_thb": 101.96,
+          "per_pc_thb": 295.68,
+          "shipping_cost_thb": 1098700.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 162.68
+        },
+        "fcl_40": {
+          "total_landed_thb": 876420.76,
+          "per_m_thb": 50.37,
+          "per_pc_thb": 146.07,
+          "shipping_cost_thb": 201053.16,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 29.77
+        },
+        "lcl": {
+          "total_landed_thb": 1560999.7,
+          "per_m_thb": 89.71,
+          "per_pc_thb": 260.17,
+          "shipping_cost_thb": 885632.1,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 131.13
+        },
+        "air": {
+          "total_landed_thb": 4119725.16,
+          "per_m_thb": 236.77,
+          "per_pc_thb": 686.62,
+          "shipping_cost_thb": 3444357.56,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 510.0
+        }
+      }
+    },
+    {
+      "sku": "LKH-CL-F-148-21-EM",
+      "name": "Heritage Cladding 148 \u00d7 21 \u2014 EM",
+      "category": "cladding",
+      "sub": "heritage-flat",
+      "vendor_code": "AL-S148/21/A",
+      "dimensions_mm": {
+        "w": 148,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.8,
+        "kg_per_pc": 5.22,
+        "usd_per_m": 1.19,
+        "usd_per_pc": 3.451,
+        "cbm_per_pc_raw": 0.00901,
+        "cbm_per_pc_packed": 0.01172,
+        "pcs_per_40hc": 6000,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 31320.0,
+          "goods_usd": 20706.0
+        },
+        "source": "PI-NS20240516LJ (avg 2D/3D)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1774067.6,
+          "per_m_thb": 101.96,
+          "per_pc_thb": 295.68,
+          "shipping_cost_thb": 1098700.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 162.68
+        },
+        "fcl_40": {
+          "total_landed_thb": 876420.76,
+          "per_m_thb": 50.37,
+          "per_pc_thb": 146.07,
+          "shipping_cost_thb": 201053.16,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 29.77
+        },
+        "lcl": {
+          "total_landed_thb": 1560999.7,
+          "per_m_thb": 89.71,
+          "per_pc_thb": 260.17,
+          "shipping_cost_thb": 885632.1,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 131.13
+        },
+        "air": {
+          "total_landed_thb": 4119725.16,
+          "per_m_thb": 236.77,
+          "per_pc_thb": 686.62,
+          "shipping_cost_thb": 3444357.56,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 510.0
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-R-169-26",
+      "name": "Signature Fluted Panel 169 \u00d7 26",
+      "category": "panels",
+      "sub": "signature-fluted",
+      "vendor_code": "AL-GK169-26A",
+      "dimensions_mm": {
+        "w": 169,
+        "t": 26,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.19,
+        "kg_per_pc": 6.351,
+        "usd_per_m": 2.2,
+        "usd_per_pc": 6.38,
+        "cbm_per_pc_raw": 0.01274,
+        "cbm_per_pc_packed": 0.01657,
+        "pcs_per_40hc": 3200,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 53.01,
+          "kg": 20323.2,
+          "goods_usd": 20416.0
+        },
+        "source": "Jackson p4 (est price from size)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1379720.67,
+          "per_m_thb": 148.68,
+          "per_pc_thb": 431.16,
+          "shipping_cost_thb": 713812.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 107.19
+        },
+        "fcl_40": {
+          "total_landed_thb": 865687.38,
+          "per_m_thb": 93.29,
+          "per_pc_thb": 270.53,
+          "shipping_cost_thb": 199778.71,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.0
+        },
+        "lcl": {
+          "total_landed_thb": 1278458.41,
+          "per_m_thb": 137.76,
+          "per_pc_thb": 399.52,
+          "shipping_cost_thb": 612549.74,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 91.99
+        },
+        "air": {
+          "total_landed_thb": 2935275.82,
+          "per_m_thb": 316.3,
+          "per_pc_thb": 917.27,
+          "shipping_cost_thb": 2269367.15,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 340.79
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-R-195-20",
+      "name": "Signature Fluted Guardrail 195 \u00d7 20",
+      "category": "panels",
+      "sub": "signature-fluted",
+      "vendor_code": "AL-GK195-20A",
+      "dimensions_mm": {
+        "w": 195,
+        "t": 20,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.32,
+        "kg_per_pc": 6.728,
+        "usd_per_m": 1.95,
+        "usd_per_pc": 5.655,
+        "cbm_per_pc_raw": 0.01131,
+        "cbm_per_pc_packed": 0.0147,
+        "pcs_per_40hc": 3500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 51.46,
+          "kg": 23548.0,
+          "goods_usd": 19792.5
+        },
+        "source": "Jackson p4 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1472251.97,
+          "per_m_thb": 145.05,
+          "per_pc_thb": 420.64,
+          "shipping_cost_thb": 826680.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 128.05
+        },
+        "fcl_40": {
+          "total_landed_thb": 842610.61,
+          "per_m_thb": 83.02,
+          "per_pc_thb": 240.75,
+          "shipping_cost_thb": 197038.64,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.52
+        },
+        "lcl": {
+          "total_landed_thb": 1335089.03,
+          "per_m_thb": 131.54,
+          "per_pc_thb": 381.45,
+          "shipping_cost_thb": 689517.06,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 106.81
+        },
+        "air": {
+          "total_landed_thb": 3256390.02,
+          "per_m_thb": 320.83,
+          "per_pc_thb": 930.4,
+          "shipping_cost_thb": 2610818.05,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 404.42
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-R-205-25",
+      "name": "Signature Fluted Panel 205 \u00d7 25",
+      "category": "panels",
+      "sub": "signature-fluted",
+      "vendor_code": "AL-GK205-25A",
+      "dimensions_mm": {
+        "w": 205,
+        "t": 25,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.75,
+        "kg_per_pc": 7.975,
+        "usd_per_m": 2.6,
+        "usd_per_pc": 7.54,
+        "cbm_per_pc_raw": 0.01486,
+        "cbm_per_pc_packed": 0.01932,
+        "pcs_per_40hc": 3100,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 59.9,
+          "kg": 24722.5,
+          "goods_usd": 23374.0
+        },
+        "source": "Jackson p4 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1630177.26,
+          "per_m_thb": 181.33,
+          "per_pc_thb": 525.86,
+          "shipping_cost_thb": 867787.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 113.82
+        },
+        "fcl_40": {
+          "total_landed_thb": 975167.85,
+          "per_m_thb": 108.47,
+          "per_pc_thb": 314.57,
+          "shipping_cost_thb": 212778.09,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 27.91
+        },
+        "lcl": {
+          "total_landed_thb": 1496676.38,
+          "per_m_thb": 166.48,
+          "per_pc_thb": 482.8,
+          "shipping_cost_thb": 734286.62,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 96.31
+        },
+        "air": {
+          "total_landed_thb": 3514304.58,
+          "per_m_thb": 390.91,
+          "per_pc_thb": 1133.65,
+          "shipping_cost_thb": 2751914.82,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 360.96
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-R-219-26",
+      "name": "Signature Fluted Panel 219 \u00d7 26",
+      "category": "panels",
+      "sub": "signature-fluted",
+      "vendor_code": "AL-GK219-26A",
+      "dimensions_mm": {
+        "w": 219,
+        "t": 26,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.91,
+        "kg_per_pc": 8.439,
+        "usd_per_m": 2.91,
+        "usd_per_pc": 8.439,
+        "cbm_per_pc_raw": 0.01651,
+        "cbm_per_pc_packed": 0.02147,
+        "pcs_per_40hc": 3240,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 27342.4,
+          "goods_usd": 27342.36
+        },
+        "source": "PI-NS20240516LJ + Jackson p4",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1851308.36,
+          "per_m_thb": 197.03,
+          "per_pc_thb": 571.39,
+          "shipping_cost_thb": 959482.6,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 107.59
+        },
+        "fcl_40": {
+          "total_landed_thb": 1122043.4,
+          "per_m_thb": 119.42,
+          "per_pc_thb": 346.31,
+          "shipping_cost_thb": 230217.65,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 25.81
+        },
+        "lcl": {
+          "total_landed_thb": 1708307.01,
+          "per_m_thb": 181.81,
+          "per_pc_thb": 527.26,
+          "shipping_cost_thb": 816481.26,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 91.55
+        },
+        "air": {
+          "total_landed_thb": 3940804.33,
+          "per_m_thb": 419.41,
+          "per_pc_thb": 1216.3,
+          "shipping_cost_thb": 3048978.58,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 341.88
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-V-219-26",
+      "name": "Signature Half-Covered Panel 219 \u00d7 26",
+      "category": "panels",
+      "sub": "signature-vented",
+      "vendor_code": "AL-GK219-26D",
+      "dimensions_mm": {
+        "w": 219,
+        "t": 26,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.91,
+        "kg_per_pc": 8.439,
+        "usd_per_m": 2.7,
+        "usd_per_pc": 7.83,
+        "cbm_per_pc_raw": 0.01651,
+        "cbm_per_pc_packed": 0.02147,
+        "pcs_per_40hc": 3240,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 27342.4,
+          "goods_usd": 25369.2
+        },
+        "source": "PI-NS20240516LJ + Jackson p4",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1786949.8,
+          "per_m_thb": 190.18,
+          "per_pc_thb": 551.53,
+          "shipping_cost_thb": 959482.6,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 115.95
+        },
+        "fcl_40": {
+          "total_landed_thb": 1049013.49,
+          "per_m_thb": 111.64,
+          "per_pc_thb": 323.77,
+          "shipping_cost_thb": 221546.29,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.77
+        },
+        "lcl": {
+          "total_landed_thb": 1635277.1,
+          "per_m_thb": 174.04,
+          "per_pc_thb": 504.72,
+          "shipping_cost_thb": 807809.9,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 97.62
+        },
+        "air": {
+          "total_landed_thb": 3867774.43,
+          "per_m_thb": 411.64,
+          "per_pc_thb": 1193.76,
+          "shipping_cost_thb": 3040307.23,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 367.42
+        }
+      }
+    },
+    {
+      "sku": "LKP-PN-R-245-33",
+      "name": "Signature XL Panel 245 \u00d7 33",
+      "category": "panels",
+      "sub": "signature-fluted",
+      "vendor_code": "AL-GK245-33A",
+      "dimensions_mm": {
+        "w": 245,
+        "t": 33,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 3.86,
+        "kg_per_pc": 11.194,
+        "usd_per_m": 3.6,
+        "usd_per_pc": 10.44,
+        "cbm_per_pc_raw": 0.02345,
+        "cbm_per_pc_packed": 0.03048,
+        "pcs_per_40hc": 2400,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 26865.6,
+          "goods_usd": 25056.0
+        },
+        "source": "Jackson p5 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1760047.55,
+          "per_m_thb": 252.88,
+          "per_pc_thb": 733.35,
+          "shipping_cost_thb": 942796.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 115.36
+        },
+        "fcl_40": {
+          "total_landed_thb": 1037421.44,
+          "per_m_thb": 149.05,
+          "per_pc_thb": 432.26,
+          "shipping_cost_thb": 220169.89,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.94
+        },
+        "lcl": {
+          "total_landed_thb": 1611900.98,
+          "per_m_thb": 231.59,
+          "per_pc_thb": 671.63,
+          "shipping_cost_thb": 794649.43,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 97.23
+        },
+        "air": {
+          "total_landed_thb": 3805296.59,
+          "per_m_thb": 546.74,
+          "per_pc_thb": 1585.54,
+          "shipping_cost_thb": 2988045.04,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 365.62
+        }
+      }
+    },
+    {
+      "sku": "LKA-PN-170-14",
+      "name": "Shield Grille 170 \u00d7 14",
+      "category": "panels",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-170*14",
+      "dimensions_mm": {
+        "w": 170,
+        "t": 14,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.9,
+        "kg_per_pc": 2.61,
+        "usd_per_m": 1.65,
+        "usd_per_pc": 4.785,
+        "cbm_per_pc_raw": 0.0069,
+        "cbm_per_pc_packed": 0.00897,
+        "pcs_per_40hc": 7578,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 67.99,
+          "kg": 19778.6,
+          "goods_usd": 36260.73
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1877466.53,
+          "per_m_thb": 85.43,
+          "per_pc_thb": 247.75,
+          "shipping_cost_thb": 694750.3,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 58.74
+        },
+        "fcl_40": {
+          "total_landed_thb": 1452127.0,
+          "per_m_thb": 66.08,
+          "per_pc_thb": 191.62,
+          "shipping_cost_thb": 269410.77,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 22.78
+        },
+        "lcl": {
+          "total_landed_thb": 1851436.66,
+          "per_m_thb": 84.25,
+          "per_pc_thb": 244.32,
+          "shipping_cost_thb": 668720.43,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 56.54
+        },
+        "air": {
+          "total_landed_thb": 3463586.79,
+          "per_m_thb": 157.61,
+          "per_pc_thb": 457.06,
+          "shipping_cost_thb": 2280870.56,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 192.85
+        }
+      }
+    },
+    {
+      "sku": "LKA-PN-189-20",
+      "name": "Shield Grille 189 \u00d7 20",
+      "category": "panels",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-189*20",
+      "dimensions_mm": {
+        "w": 189,
+        "t": 20,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.48,
+        "kg_per_pc": 4.292,
+        "usd_per_m": 2.1,
+        "usd_per_pc": 6.09,
+        "cbm_per_pc_raw": 0.01096,
+        "cbm_per_pc_packed": 0.01425,
+        "pcs_per_40hc": 4771,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 67.99,
+          "kg": 20477.1,
+          "goods_usd": 29055.39
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1666899.28,
+          "per_m_thb": 120.48,
+          "per_pc_thb": 349.38,
+          "shipping_cost_thb": 719199.62,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 75.89
+        },
+        "fcl_40": {
+          "total_landed_thb": 1185445.47,
+          "per_m_thb": 85.68,
+          "per_pc_thb": 248.47,
+          "shipping_cost_thb": 237745.82,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 25.09
+        },
+        "lcl": {
+          "total_landed_thb": 1602021.23,
+          "per_m_thb": 115.79,
+          "per_pc_thb": 335.78,
+          "shipping_cost_thb": 654321.58,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 69.04
+        },
+        "air": {
+          "total_landed_thb": 3271463.46,
+          "per_m_thb": 236.45,
+          "per_pc_thb": 685.7,
+          "shipping_cost_thb": 2323763.81,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 245.2
+        }
+      }
+    },
+    {
+      "sku": "LKA-PN-207-16",
+      "name": "Shield Grille 207 \u00d7 16",
+      "category": "panels",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-207*16",
+      "dimensions_mm": {
+        "w": 207,
+        "t": 16,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.1,
+        "kg_per_pc": 3.19,
+        "usd_per_m": 2.0,
+        "usd_per_pc": 5.8,
+        "cbm_per_pc_raw": 0.0096,
+        "cbm_per_pc_packed": 0.01249,
+        "pcs_per_40hc": 5445,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 67.99,
+          "kg": 17369.5,
+          "goods_usd": 31581.0
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1640511.73,
+          "per_m_thb": 103.89,
+          "per_pc_thb": 301.29,
+          "shipping_cost_thb": 610434.25,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 59.26
+        },
+        "fcl_40": {
+          "total_landed_thb": 1278922.46,
+          "per_m_thb": 80.99,
+          "per_pc_thb": 234.88,
+          "shipping_cost_thb": 248844.98,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 24.16
+        },
+        "lcl": {
+          "total_landed_thb": 1618688.13,
+          "per_m_thb": 102.51,
+          "per_pc_thb": 297.28,
+          "shipping_cost_thb": 588610.65,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 57.14
+        },
+        "air": {
+          "total_landed_thb": 3033260.46,
+          "per_m_thb": 192.09,
+          "per_pc_thb": 557.07,
+          "shipping_cost_thb": 2003182.98,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 194.47
+        }
+      }
+    },
+    {
+      "sku": "LKA-PN-219-25",
+      "name": "Shield Grille 219 \u00d7 25",
+      "category": "panels",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-219*25",
+      "dimensions_mm": {
+        "w": 219,
+        "t": 25,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.5,
+        "kg_per_pc": 4.35,
+        "usd_per_m": 2.4,
+        "usd_per_pc": 6.96,
+        "cbm_per_pc_raw": 0.01588,
+        "cbm_per_pc_packed": 0.02064,
+        "pcs_per_40hc": 3294,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 67.99,
+          "kg": 14328.9,
+          "goods_usd": 22926.24
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1251796.67,
+          "per_m_thb": 131.04,
+          "per_pc_thb": 380.02,
+          "shipping_cost_thb": 504011.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 67.4
+        },
+        "fcl_40": {
+          "total_landed_thb": 958595.5,
+          "per_m_thb": 100.35,
+          "per_pc_thb": 291.01,
+          "shipping_cost_thb": 210810.33,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 28.19
+        },
+        "lcl": {
+          "total_landed_thb": 1223205.42,
+          "per_m_thb": 128.05,
+          "per_pc_thb": 371.34,
+          "shipping_cost_thb": 475420.25,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 63.58
+        },
+        "air": {
+          "total_landed_thb": 2388397.32,
+          "per_m_thb": 250.03,
+          "per_pc_thb": 725.08,
+          "shipping_cost_thb": 1640612.15,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 219.4
+        }
+      }
+    },
+    {
+      "sku": "LKA-PN-224-21",
+      "name": "Shield Grille 224 \u00d7 21",
+      "category": "panels",
+      "sub": "shield-grille",
+      "vendor_code": "AOLO-224*21",
+      "dimensions_mm": {
+        "w": 224,
+        "t": 21,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.2,
+        "kg_per_pc": 3.48,
+        "usd_per_m": 2.3,
+        "usd_per_pc": 6.67,
+        "cbm_per_pc_raw": 0.01364,
+        "cbm_per_pc_packed": 0.01773,
+        "pcs_per_40hc": 3834,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 67.99,
+          "kg": 13342.3,
+          "goods_usd": 25572.78
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1303588.57,
+          "per_m_thb": 117.24,
+          "per_pc_thb": 340.01,
+          "shipping_cost_thb": 469481.2,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 56.29
+        },
+        "fcl_40": {
+          "total_landed_thb": 1056548.32,
+          "per_m_thb": 95.03,
+          "per_pc_thb": 275.57,
+          "shipping_cost_thb": 222440.95,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 26.67
+        },
+        "lcl": {
+          "total_landed_thb": 1296772.95,
+          "per_m_thb": 116.63,
+          "per_pc_thb": 338.23,
+          "shipping_cost_thb": 462665.58,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 55.47
+        },
+        "air": {
+          "total_landed_thb": 2381049.99,
+          "per_m_thb": 214.15,
+          "per_pc_thb": 621.04,
+          "shipping_cost_thb": 1546942.62,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 185.46
+        }
+      }
+    },
+    {
+      "sku": "LKH-PN-R-219-26",
+      "name": "Heritage Fluted Panel 219 \u00d7 26",
+      "category": "panels",
+      "sub": "heritage-fluted",
+      "vendor_code": "AL-K219/26B",
+      "dimensions_mm": {
+        "w": 219,
+        "t": 26,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.9,
+        "kg_per_pc": 8.41,
+        "usd_per_m": 2.05,
+        "usd_per_pc": 5.945,
+        "cbm_per_pc_raw": 0.01651,
+        "cbm_per_pc_packed": 0.02147,
+        "pcs_per_40hc": 3240,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 27248.4,
+          "goods_usd": 19261.8
+        },
+        "source": "PI-NS20240516LJ (est kg/m)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1584456.13,
+          "per_m_thb": 168.63,
+          "per_pc_thb": 489.03,
+          "shipping_cost_thb": 956194.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 152.2
+        },
+        "fcl_40": {
+          "total_landed_thb": 822968.53,
+          "per_m_thb": 87.59,
+          "per_pc_thb": 254.0,
+          "shipping_cost_thb": 194706.4,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.99
+        },
+        "lcl": {
+          "total_landed_thb": 1406909.73,
+          "per_m_thb": 149.73,
+          "per_pc_thb": 434.23,
+          "shipping_cost_thb": 778647.6,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 123.94
+        },
+        "air": {
+          "total_landed_thb": 3631700.88,
+          "per_m_thb": 386.52,
+          "per_pc_thb": 1120.9,
+          "shipping_cost_thb": 3003438.75,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 478.06
+        }
+      }
+    },
+    {
+      "sku": "LKP-FN-161-20",
+      "name": "Signature Fence Board 161.5 \u00d7 20",
+      "category": "fence",
+      "sub": "signature-kit",
+      "vendor_code": "GK161.5/20C",
+      "dimensions_mm": {
+        "w": 161.5,
+        "t": 20,
+        "len": 2025
+      },
+      "packaging": {
+        "kg_per_m": 2.2,
+        "kg_per_pc": 4.455,
+        "usd_per_m": 2.2,
+        "usd_per_pc": 4.455,
+        "cbm_per_pc_raw": 0.00654,
+        "cbm_per_pc_packed": 0.0085,
+        "pcs_per_40hc": 5100,
+        "moq_pcs": 200,
+        "moq_m": 405.0,
+        "full_container": {
+          "cbm": 43.37,
+          "kg": 22720.5,
+          "goods_usd": 22720.5
+        },
+        "source": "PI-GK20260410LJ + Jackson p2",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1538792.05,
+          "per_m_thb": 149.0,
+          "per_pc_thb": 301.72,
+          "shipping_cost_thb": 797717.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 107.64
+        },
+        "fcl_40": {
+          "total_landed_thb": 950980.72,
+          "per_m_thb": 92.08,
+          "per_pc_thb": 186.47,
+          "shipping_cost_thb": 209906.18,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 28.32
+        },
+        "lcl": {
+          "total_landed_thb": 1423005.82,
+          "per_m_thb": 137.79,
+          "per_pc_thb": 279.02,
+          "shipping_cost_thb": 681931.28,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 92.02
+        },
+        "air": {
+          "total_landed_thb": 3276438.99,
+          "per_m_thb": 317.25,
+          "per_pc_thb": 642.44,
+          "shipping_cost_thb": 2535364.45,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 342.12
+        }
+      }
+    },
+    {
+      "sku": "LKP-FN-215-20",
+      "name": "Signature Wide Fence Board 215 \u00d7 20",
+      "category": "fence",
+      "sub": "signature-kit",
+      "vendor_code": "AL-GK215-20A",
+      "dimensions_mm": {
+        "w": 215,
+        "t": 20,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.91,
+        "kg_per_pc": 8.439,
+        "usd_per_m": 2.8,
+        "usd_per_pc": 8.12,
+        "cbm_per_pc_raw": 0.01247,
+        "cbm_per_pc_packed": 0.01621,
+        "pcs_per_40hc": 2900,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 47.01,
+          "kg": 24473.1,
+          "goods_usd": 23548.0
+        },
+        "source": "Jackson p2 (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1627123.62,
+          "per_m_thb": 193.47,
+          "per_pc_thb": 561.08,
+          "shipping_cost_thb": 859058.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 111.85
+        },
+        "fcl_40": {
+          "total_landed_thb": 981607.87,
+          "per_m_thb": 116.72,
+          "per_pc_thb": 338.49,
+          "shipping_cost_thb": 213542.75,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 27.8
+        },
+        "lcl": {
+          "total_landed_thb": 1496951.98,
+          "per_m_thb": 178.0,
+          "per_pc_thb": 516.19,
+          "shipping_cost_thb": 728886.86,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 94.9
+        },
+        "air": {
+          "total_landed_thb": 3494125.52,
+          "per_m_thb": 415.47,
+          "per_pc_thb": 1204.87,
+          "shipping_cost_thb": 2726060.4,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 354.93
+        }
+      }
+    },
+    {
+      "sku": "LKA-FN-140-32",
+      "name": "Shield Fence Board 140 \u00d7 32",
+      "category": "fence",
+      "sub": "shield-fence",
+      "vendor_code": "AOLO-140*32",
+      "dimensions_mm": {
+        "w": 140,
+        "t": 32,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.8,
+        "kg_per_pc": 8.12,
+        "usd_per_m": 3.4,
+        "usd_per_pc": 9.86,
+        "cbm_per_pc_raw": 0.01299,
+        "cbm_per_pc_packed": 0.01689,
+        "pcs_per_40hc": 5765,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 46811.8,
+          "goods_usd": 56842.9
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 3494957.87,
+          "per_m_thb": 209.05,
+          "per_pc_thb": 606.24,
+          "shipping_cost_thb": 1640913.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 88.5
+        },
+        "fcl_40": {
+          "total_landed_thb": 2213907.11,
+          "per_m_thb": 132.42,
+          "per_pc_thb": 384.03,
+          "shipping_cost_thb": 359862.24,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 19.41
+        },
+        "lcl": {
+          "total_landed_thb": 3281396.87,
+          "per_m_thb": 196.27,
+          "per_pc_thb": 569.19,
+          "shipping_cost_thb": 1427352.0,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 76.99
+        },
+        "air": {
+          "total_landed_thb": 7110690.05,
+          "per_m_thb": 425.32,
+          "per_pc_thb": 1233.42,
+          "shipping_cost_thb": 5256645.18,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 283.52
+        }
+      }
+    },
+    {
+      "sku": "LKS-CM-100-100",
+      "name": "Column 100 \u00d7 100 Co-Ex",
+      "category": "structure",
+      "sub": "columns",
+      "vendor_code": "AL-GK100-100C",
+      "dimensions_mm": {
+        "w": 100,
+        "t": 100,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 4.64,
+        "kg_per_pc": 13.456,
+        "usd_per_m": 5.0,
+        "usd_per_pc": 14.5,
+        "cbm_per_pc_raw": 0.029,
+        "cbm_per_pc_packed": 0.0377,
+        "pcs_per_40hc": 900,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 33.93,
+          "kg": 12110.4,
+          "goods_usd": 13050.0
+        },
+        "source": "Jackson p3 column (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 852015.85,
+          "per_m_thb": 326.44,
+          "per_pc_thb": 946.68,
+          "shipping_cost_thb": 426364.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 100.17
+        },
+        "fcl_40": {
+          "total_landed_thb": 593059.55,
+          "per_m_thb": 227.23,
+          "per_pc_thb": 658.96,
+          "shipping_cost_thb": 167407.7,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 39.33
+        },
+        "lcl": {
+          "total_landed_thb": 802834.81,
+          "per_m_thb": 307.6,
+          "per_pc_thb": 892.04,
+          "shipping_cost_thb": 377182.96,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 88.61
+        },
+        "air": {
+          "total_landed_thb": 1786075.32,
+          "per_m_thb": 684.32,
+          "per_pc_thb": 1984.53,
+          "shipping_cost_thb": 1360423.47,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 319.61
+        }
+      }
+    },
+    {
+      "sku": "LKS-CM-120-120",
+      "name": "Column 120 \u00d7 120",
+      "category": "structure",
+      "sub": "columns",
+      "vendor_code": "AL-GK120-120C",
+      "dimensions_mm": {
+        "w": 120,
+        "t": 120,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 5.34,
+        "kg_per_pc": 15.486,
+        "usd_per_m": 6.2,
+        "usd_per_pc": 17.98,
+        "cbm_per_pc_raw": 0.04176,
+        "cbm_per_pc_packed": 0.05429,
+        "pcs_per_40hc": 700,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 38.0,
+          "kg": 10840.2,
+          "goods_usd": 12586.0
+        },
+        "source": "Jackson p3 column (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 792424.56,
+          "per_m_thb": 390.36,
+          "per_pc_thb": 1132.04,
+          "shipping_cost_thb": 381907.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 93.03
+        },
+        "fcl_40": {
+          "total_landed_thb": 575886.15,
+          "per_m_thb": 283.69,
+          "per_pc_thb": 822.69,
+          "shipping_cost_thb": 165368.59,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 40.28
+        },
+        "lcl": {
+          "total_landed_thb": 754265.87,
+          "per_m_thb": 371.56,
+          "per_pc_thb": 1077.52,
+          "shipping_cost_thb": 343748.31,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 83.74
+        },
+        "air": {
+          "total_landed_thb": 1633330.29,
+          "per_m_thb": 804.6,
+          "per_pc_thb": 2333.33,
+          "shipping_cost_thb": 1222812.73,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 297.87
+        }
+      }
+    },
+    {
+      "sku": "LKS-CM-150-150",
+      "name": "Column 150 \u00d7 150",
+      "category": "structure",
+      "sub": "columns",
+      "vendor_code": "AL-K150-150A",
+      "dimensions_mm": {
+        "w": 150,
+        "t": 150,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 6.5,
+        "kg_per_pc": 18.85,
+        "usd_per_m": 6.8,
+        "usd_per_pc": 19.72,
+        "cbm_per_pc_raw": 0.06525,
+        "cbm_per_pc_packed": 0.08483,
+        "pcs_per_40hc": 650,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 55.14,
+          "kg": 12252.5,
+          "goods_usd": 12818.0
+        },
+        "source": "Firstgen p15 (est solid)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 849422.21,
+          "per_m_thb": 450.62,
+          "per_pc_thb": 1306.8,
+          "shipping_cost_thb": 431337.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 103.17
+        },
+        "fcl_40": {
+          "total_landed_thb": 584472.85,
+          "per_m_thb": 310.07,
+          "per_pc_thb": 899.19,
+          "shipping_cost_thb": 166388.15,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 39.8
+        },
+        "lcl": {
+          "total_landed_thb": 797760.39,
+          "per_m_thb": 423.22,
+          "per_pc_thb": 1227.32,
+          "shipping_cost_thb": 379675.69,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 90.81
+        },
+        "air": {
+          "total_landed_thb": 1792655.3,
+          "per_m_thb": 951.01,
+          "per_pc_thb": 2757.93,
+          "shipping_cost_thb": 1374570.6,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 328.78
+        }
+      }
+    },
+    {
+      "sku": "LKS-CM-200-200",
+      "name": "Column 200 \u00d7 200",
+      "category": "structure",
+      "sub": "columns",
+      "vendor_code": "AL-K4200-200A",
+      "dimensions_mm": {
+        "w": 200,
+        "t": 200,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 11.0,
+        "kg_per_pc": 31.9,
+        "usd_per_m": 10.5,
+        "usd_per_pc": 30.45,
+        "cbm_per_pc_raw": 0.116,
+        "cbm_per_pc_packed": 0.1508,
+        "pcs_per_40hc": 380,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 57.3,
+          "kg": 12122.0,
+          "goods_usd": 11571.0
+        },
+        "source": "Firstgen p15 (est solid)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 804181.31,
+          "per_m_thb": 729.75,
+          "per_pc_thb": 2116.27,
+          "shipping_cost_thb": 426770.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 113.08
+        },
+        "fcl_40": {
+          "total_landed_thb": 538319.32,
+          "per_m_thb": 488.49,
+          "per_pc_thb": 1416.63,
+          "shipping_cost_thb": 160908.01,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 42.63
+        },
+        "lcl": {
+          "total_landed_thb": 748381.29,
+          "per_m_thb": 679.11,
+          "per_pc_thb": 1969.42,
+          "shipping_cost_thb": 370969.98,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 98.29
+        },
+        "air": {
+          "total_landed_thb": 1732573.18,
+          "per_m_thb": 1572.21,
+          "per_pc_thb": 4559.4,
+          "shipping_cost_thb": 1355161.87,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 359.07
+        }
+      }
+    },
+    {
+      "sku": "LKS-BM-60-42",
+      "name": "Beam 60 \u00d7 42",
+      "category": "structure",
+      "sub": "beams",
+      "vendor_code": "AL-GK60-42B",
+      "dimensions_mm": {
+        "w": 60,
+        "t": 42,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 1.25,
+        "kg_per_pc": 3.625,
+        "usd_per_m": 1.8,
+        "usd_per_pc": 5.22,
+        "cbm_per_pc_raw": 0.00731,
+        "cbm_per_pc_packed": 0.0095,
+        "pcs_per_40hc": 2800,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 26.6,
+          "kg": 10150.0,
+          "goods_usd": 14616.0
+        },
+        "source": "Jackson p3 beam (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 834480.07,
+          "per_m_thb": 102.77,
+          "per_pc_thb": 298.03,
+          "shipping_cost_thb": 357750.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 75.04
+        },
+        "fcl_40": {
+          "total_landed_thb": 651019.8,
+          "per_m_thb": 80.17,
+          "per_pc_thb": 232.51,
+          "shipping_cost_thb": 174289.73,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 36.56
+        },
+        "lcl": {
+          "total_landed_thb": 812339.85,
+          "per_m_thb": 100.04,
+          "per_pc_thb": 290.12,
+          "shipping_cost_thb": 335609.78,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 70.4
+        },
+        "air": {
+          "total_landed_thb": 1634797.17,
+          "per_m_thb": 201.33,
+          "per_pc_thb": 583.86,
+          "shipping_cost_thb": 1158067.1,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 242.92
+        }
+      }
+    },
+    {
+      "sku": "LKS-BM-100-50",
+      "name": "Beam 100 \u00d7 50",
+      "category": "structure",
+      "sub": "beams",
+      "vendor_code": "AL-GK100-50C",
+      "dimensions_mm": {
+        "w": 100,
+        "t": 50,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 2.39,
+        "kg_per_pc": 6.931,
+        "usd_per_m": 2.9,
+        "usd_per_pc": 8.41,
+        "cbm_per_pc_raw": 0.0145,
+        "cbm_per_pc_packed": 0.01885,
+        "pcs_per_40hc": 2200,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 41.47,
+          "kg": 15248.2,
+          "goods_usd": 18502.0
+        },
+        "source": "Jackson p3 beam (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1139666.73,
+          "per_m_thb": 178.63,
+          "per_pc_thb": 518.03,
+          "shipping_cost_thb": 536187.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 88.85
+        },
+        "fcl_40": {
+          "total_landed_thb": 794847.07,
+          "per_m_thb": 124.58,
+          "per_pc_thb": 361.29,
+          "shipping_cost_thb": 191367.34,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 31.71
+        },
+        "lcl": {
+          "total_landed_thb": 1082179.33,
+          "per_m_thb": 169.62,
+          "per_pc_thb": 491.9,
+          "shipping_cost_thb": 478699.6,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 79.32
+        },
+        "air": {
+          "total_landed_thb": 2322768.08,
+          "per_m_thb": 364.07,
+          "per_pc_thb": 1055.8,
+          "shipping_cost_thb": 1719288.35,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 284.9
+        }
+      }
+    },
+    {
+      "sku": "LKS-BM-120-62",
+      "name": "Beam 120 \u00d7 62",
+      "category": "structure",
+      "sub": "beams",
+      "vendor_code": "AL-GK120-62A",
+      "dimensions_mm": {
+        "w": 120,
+        "t": 62,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 3.11,
+        "kg_per_pc": 9.019,
+        "usd_per_m": 3.6,
+        "usd_per_pc": 10.44,
+        "cbm_per_pc_raw": 0.02158,
+        "cbm_per_pc_packed": 0.02805,
+        "pcs_per_40hc": 1800,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 50.49,
+          "kg": 16234.2,
+          "goods_usd": 18792.0
+        },
+        "source": "Jackson p3 beam (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 1183635.66,
+          "per_m_thb": 226.75,
+          "per_pc_thb": 657.58,
+          "shipping_cost_thb": 570697.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 93.11
+        },
+        "fcl_40": {
+          "total_landed_thb": 805580.45,
+          "per_m_thb": 154.33,
+          "per_pc_thb": 447.54,
+          "shipping_cost_thb": 192641.79,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 31.43
+        },
+        "lcl": {
+          "total_landed_thb": 1117283.68,
+          "per_m_thb": 214.04,
+          "per_pc_thb": 620.71,
+          "shipping_cost_thb": 504345.02,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 82.28
+        },
+        "air": {
+          "total_landed_thb": 2438739.71,
+          "per_m_thb": 467.19,
+          "per_pc_thb": 1354.86,
+          "shipping_cost_thb": 1825801.05,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 297.88
+        }
+      }
+    },
+    {
+      "sku": "LKS-EG-45-45",
+      "name": "L-Edging 45 \u00d7 45",
+      "category": "structure",
+      "sub": "edging",
+      "vendor_code": "AOLO-45*45",
+      "dimensions_mm": {
+        "w": 45,
+        "t": 45,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.32,
+        "kg_per_pc": 0.928,
+        "usd_per_m": 0.75,
+        "usd_per_pc": 2.175,
+        "cbm_per_pc_raw": 0.00587,
+        "cbm_per_pc_packed": 0.00763,
+        "pcs_per_40hc": 8907,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 68.0,
+          "kg": 8265.7,
+          "goods_usd": 19372.72
+        },
+        "source": "AOLO-ASA catalog (est price)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 947172.19,
+          "per_m_thb": 36.67,
+          "per_pc_thb": 106.34,
+          "shipping_cost_thb": 315292.02,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 49.9
+        },
+        "fcl_40": {
+          "total_landed_thb": 827074.04,
+          "per_m_thb": 32.02,
+          "per_pc_thb": 92.86,
+          "shipping_cost_thb": 195193.87,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 30.89
+        },
+        "lcl": {
+          "total_landed_thb": 951425.48,
+          "per_m_thb": 36.83,
+          "per_pc_thb": 106.82,
+          "shipping_cost_thb": 319545.31,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 50.57
+        },
+        "air": {
+          "total_landed_thb": 1609734.94,
+          "per_m_thb": 62.32,
+          "per_pc_thb": 180.73,
+          "shipping_cost_thb": 977854.77,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 154.75
+        }
+      }
+    },
+    {
+      "sku": "LKS-EG-50-50",
+      "name": "L-Edging 50 \u00d7 50",
+      "category": "structure",
+      "sub": "edging",
+      "vendor_code": "AL-GS50-50A",
+      "dimensions_mm": {
+        "w": 50,
+        "t": 50,
+        "len": 2900
+      },
+      "packaging": {
+        "kg_per_m": 0.75,
+        "kg_per_pc": 2.175,
+        "usd_per_m": 1.1,
+        "usd_per_pc": 3.19,
+        "cbm_per_pc_raw": 0.00725,
+        "cbm_per_pc_packed": 0.00943,
+        "pcs_per_40hc": 4500,
+        "moq_pcs": 200,
+        "moq_m": 580.0,
+        "full_container": {
+          "cbm": 42.41,
+          "kg": 9787.5,
+          "goods_usd": 14355.0
+        },
+        "source": "Jackson p6 edging (est)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 813279.53,
+          "per_m_thb": 62.32,
+          "per_pc_thb": 180.73,
+          "shipping_cost_thb": 345062.5,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 73.7
+        },
+        "fcl_40": {
+          "total_landed_thb": 641359.76,
+          "per_m_thb": 49.15,
+          "per_pc_thb": 142.52,
+          "shipping_cost_thb": 173142.72,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 36.98
+        },
+        "lcl": {
+          "total_landed_thb": 793719.9,
+          "per_m_thb": 60.82,
+          "per_pc_thb": 176.38,
+          "shipping_cost_thb": 325502.86,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 69.52
+        },
+        "air": {
+          "total_landed_thb": 1586446.61,
+          "per_m_thb": 121.57,
+          "per_pc_thb": 352.54,
+          "shipping_cost_thb": 1118229.57,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 238.83
+        }
+      }
+    },
+    {
+      "sku": "LKD-WC-300",
+      "name": "WPC Co-Ex Tile",
+      "category": "diy-tiles",
+      "sub": "wpc-coex",
+      "vendor_code": "JY-WPCOE-4H/4S",
+      "dimensions_mm": {
+        "w": 300,
+        "t": 22,
+        "len": 300
+      },
+      "packaging": {
+        "kg_per_m": null,
+        "kg_per_pc": 0.4,
+        "usd_per_m": null,
+        "usd_per_pc": 1.85,
+        "cbm_per_pc_raw": 0.00198,
+        "cbm_per_pc_packed": 0.00257,
+        "pcs_per_40hc": 12474,
+        "moq_pcs": 200,
+        "moq_m": null,
+        "full_container": {
+          "cbm": 32.11,
+          "kg": 4989.6,
+          "goods_usd": 23076.9
+        },
+        "source": "DIY catalog p3 (300x300 tile)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 929835.25,
+          "per_m_thb": 248.47,
+          "per_pc_thb": 74.54,
+          "shipping_cost_thb": 177136.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 23.53
+        },
+        "fcl_40": {
+          "total_landed_thb": 964171.68,
+          "per_m_thb": 257.65,
+          "per_pc_thb": 77.29,
+          "shipping_cost_thb": 211472.43,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 28.1
+        },
+        "lcl": {
+          "total_landed_thb": 997942.12,
+          "per_m_thb": 266.67,
+          "per_pc_thb": 80.0,
+          "shipping_cost_thb": 245242.87,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 32.58
+        },
+        "air": {
+          "total_landed_thb": 1397166.66,
+          "per_m_thb": 373.35,
+          "per_pc_thb": 112.01,
+          "shipping_cost_thb": 644467.41,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 85.62
+        }
+      }
+    },
+    {
+      "sku": "LKD-PP-300",
+      "name": "PP Plastic Tile",
+      "category": "diy-tiles",
+      "sub": "pp-plastic",
+      "vendor_code": "JY-PP9C/D/G/I",
+      "dimensions_mm": {
+        "w": 300,
+        "t": 20,
+        "len": 300
+      },
+      "packaging": {
+        "kg_per_m": null,
+        "kg_per_pc": 0.28,
+        "usd_per_m": null,
+        "usd_per_pc": 0.95,
+        "cbm_per_pc_raw": 0.00198,
+        "cbm_per_pc_packed": 0.00257,
+        "pcs_per_40hc": 13608,
+        "moq_pcs": 200,
+        "moq_m": null,
+        "full_container": {
+          "cbm": 35.03,
+          "kg": 3810.2,
+          "goods_usd": 12927.6
+        },
+        "source": "DIY catalog p4 (PP tile)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 585283.69,
+          "per_m_thb": 143.37,
+          "per_pc_thb": 43.01,
+          "shipping_cost_thb": 163624.16,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 38.8
+        },
+        "fcl_40": {
+          "total_landed_thb": 588529.32,
+          "per_m_thb": 144.16,
+          "per_pc_thb": 43.25,
+          "shipping_cost_thb": 166869.8,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 39.57
+        },
+        "lcl": {
+          "total_landed_thb": 609159.74,
+          "per_m_thb": 149.22,
+          "per_pc_thb": 44.76,
+          "shipping_cost_thb": 187500.22,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 44.47
+        },
+        "air": {
+          "total_landed_thb": 895648.26,
+          "per_m_thb": 219.39,
+          "per_pc_thb": 65.82,
+          "shipping_cost_thb": 473988.74,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 112.41
+        }
+      }
+    },
+    {
+      "sku": "LKD-AG-300",
+      "name": "Artificial Grass Tile",
+      "category": "diy-tiles",
+      "sub": "grass",
+      "vendor_code": "JY-AGT-A/S",
+      "dimensions_mm": {
+        "w": 300,
+        "t": 32,
+        "len": 300
+      },
+      "packaging": {
+        "kg_per_m": null,
+        "kg_per_pc": 0.35,
+        "usd_per_m": null,
+        "usd_per_pc": 1.2,
+        "cbm_per_pc_raw": 0.00198,
+        "cbm_per_pc_packed": 0.00257,
+        "pcs_per_40hc": 11680,
+        "moq_pcs": 200,
+        "moq_m": null,
+        "full_container": {
+          "cbm": 30.06,
+          "kg": 4088.0,
+          "goods_usd": 14016.0
+        },
+        "source": "DIY catalog p5 (grass tile)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 602739.87,
+          "per_m_thb": 172.01,
+          "per_pc_thb": 51.6,
+          "shipping_cost_thb": 145580.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 31.84
+        },
+        "fcl_40": {
+          "total_landed_thb": 628812.81,
+          "per_m_thb": 179.46,
+          "per_pc_thb": 53.84,
+          "shipping_cost_thb": 171652.94,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 37.55
+        },
+        "lcl": {
+          "total_landed_thb": 640298.4,
+          "per_m_thb": 182.73,
+          "per_pc_thb": 54.82,
+          "shipping_cost_thb": 183138.53,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 40.06
+        },
+        "air": {
+          "total_landed_thb": 965577.77,
+          "per_m_thb": 275.56,
+          "per_pc_thb": 82.67,
+          "shipping_cost_thb": 508417.9,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 111.21
+        }
+      }
+    },
+    {
+      "sku": "LKD-ST-300",
+      "name": "Stone / Cobble Tile",
+      "category": "diy-tiles",
+      "sub": "stone",
+      "vendor_code": "JY-S-S/C",
+      "dimensions_mm": {
+        "w": 300,
+        "t": 32,
+        "len": 300
+      },
+      "packaging": {
+        "kg_per_m": null,
+        "kg_per_pc": 0.65,
+        "usd_per_m": null,
+        "usd_per_pc": 1.6,
+        "cbm_per_pc_raw": 0.00198,
+        "cbm_per_pc_packed": 0.00257,
+        "pcs_per_40hc": 8640,
+        "moq_pcs": 200,
+        "moq_m": null,
+        "full_container": {
+          "cbm": 22.24,
+          "kg": 5616.0,
+          "goods_usd": 13824.0
+        },
+        "source": "DIY catalog p5 (stone tile)",
+        "estimated": false
+      },
+      "landed_cost_per_container_40hc": {
+        "china_thai_sea": {
+          "total_landed_thb": 649957.41,
+          "per_m_thb": 250.76,
+          "per_pc_thb": 75.23,
+          "shipping_cost_thb": 199060.0,
+          "transit_days": "15-25",
+          "ratio_to_goods_pct": 44.15
+        },
+        "fcl_40": {
+          "total_landed_thb": 621706.57,
+          "per_m_thb": 239.86,
+          "per_pc_thb": 71.96,
+          "shipping_cost_thb": 170809.16,
+          "transit_days": "9-22",
+          "ratio_to_goods_pct": 37.88
+        },
+        "lcl": {
+          "total_landed_thb": 670959.74,
+          "per_m_thb": 258.86,
+          "per_pc_thb": 77.66,
+          "shipping_cost_thb": 220062.33,
+          "transit_days": "18-30",
+          "ratio_to_goods_pct": 48.81
+        },
+        "air": {
+          "total_landed_thb": 1121558.79,
+          "per_m_thb": 432.7,
+          "per_pc_thb": 129.81,
+          "shipping_cost_thb": 670661.38,
+          "transit_days": "3-7",
+          "ratio_to_goods_pct": 148.74
+        }
+      }
+    }
+  ]
+}
