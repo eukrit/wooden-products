@@ -1,0 +1,254 @@
+{
+  "_meta": {
+    "description": "INTERNAL ONLY — Leka SKU → Anhui Aolo factory code mapping. Never expose publicly.",
+    "generated": "2026-04-19",
+    "vendor_id": "anhui-aolo",
+    "vendor_name_internal": "Anhui Aolo New Materials Technology Co., Ltd.",
+    "sku_scheme": "LK[SERIES]-[TYPE]-[WIDTH]-[THICKNESS][-VARIANT]",
+    "series": {
+      "P": "Premium (Co-Extrusion / ASA-capped)",
+      "H": "Heritage (First Generation solid WPC)"
+    },
+    "types": {
+      "DK": "Decking",
+      "CL": "Cladding (narrow wall board)",
+      "PN": "Panel (wide wall panel ≥200mm)",
+      "FN": "Fence Board",
+      "CM": "Column / Guardrail",
+      "BN": "Bench Strip",
+      "JS": "Joist / Sub-structure",
+      "BM": "Beam / Structural Post",
+      "TL": "DIY Interlocking Tile"
+    },
+    "variants": {
+      "2D": "2D wood-grain surface",
+      "3D": "3D embossed surface",
+      "HC": "Half-covered (open-back) profile",
+      "6H": "6-hole hollow structure"
+    }
+  },
+  "products": [
+    {
+      "leka_sku": "LKP-PN-219-26",
+      "vendor_code": "AL-GK219/26A",
+      "series": "Premium",
+      "category": "Panel",
+      "name": "Signature Co-Ex Wall Panel 219×26",
+      "dimensions_mm": { "width": 219, "thickness": 26, "length": 2900 },
+      "line_m_price_usd": 2.91,
+      "pc_price_usd": 8.44,
+      "container_qty": 3240,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKP-PN-219-26-HC",
+      "vendor_code": "AL-GK219/26D",
+      "series": "Premium",
+      "category": "Panel",
+      "name": "Signature Co-Ex Half-Covered Panel 219×26",
+      "dimensions_mm": { "width": 219, "thickness": 26, "length": 2900 },
+      "line_m_price_usd": 2.70,
+      "pc_price_usd": 7.83,
+      "container_qty": 3240,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKP-DK-140-23",
+      "vendor_code": "AL-GK140/23C",
+      "series": "Premium",
+      "category": "Decking",
+      "name": "Signature Co-Ex Deck Board 140×23",
+      "dimensions_mm": { "width": 140, "thickness": 23, "length": 2900 },
+      "line_m_price_usd": 2.55,
+      "pc_price_usd": 7.40,
+      "container_qty": 3400,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKP-DK-148-22",
+      "vendor_code": "AL-GK148/22A",
+      "series": "Premium",
+      "category": "Decking",
+      "name": "Signature Co-Ex Deck Board 148×22",
+      "dimensions_mm": { "width": 148, "thickness": 22, "length": 2900 },
+      "line_m_price_usd": 2.58,
+      "pc_price_usd": 7.48,
+      "container_qty": 3400,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKP-CL-156-21",
+      "vendor_code": "AL-GS156/21C",
+      "series": "Premium",
+      "category": "Cladding",
+      "name": "Signature Co-Ex Cladding Board 156×21",
+      "dimensions_mm": { "width": 156, "thickness": 21, "length": 2900 },
+      "line_m_price_usd": 1.56,
+      "pc_price_usd": 4.52,
+      "container_qty": 5600,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKP-FN-161-20",
+      "vendor_code": "GK161.5/20C",
+      "series": "Premium",
+      "category": "Fence",
+      "name": "Signature Co-Ex Fence Board 161.5×20",
+      "dimensions_mm": { "width": 161.5, "thickness": 20, "length": 2025 },
+      "line_m_price_usd": 2.20,
+      "pc_price_usd": 4.46,
+      "container_qty": null,
+      "source_pi": "GK20260410LJ",
+      "notes": "Used in Leka WPC Fence Collection. See /wpc-fence/"
+    },
+    {
+      "leka_sku": "LKH-PN-219-26",
+      "vendor_code": "AL-K219/26B",
+      "series": "Heritage",
+      "category": "Panel",
+      "name": "Heritage Wall Panel 219×26",
+      "dimensions_mm": { "width": 219, "thickness": 26, "length": 2900 },
+      "line_m_price_usd": 2.05,
+      "pc_price_usd": 5.95,
+      "container_qty": 3240,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-140-25-2D",
+      "vendor_code": "AL-K140/25L (2D)",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 140×25 — Wood-Grain",
+      "dimensions_mm": { "width": 140, "thickness": 25, "length": 2900 },
+      "line_m_price_usd": 1.75,
+      "pc_price_usd": 5.10,
+      "container_qty": 3800,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-140-25-3D",
+      "vendor_code": "AL-K140/25L (3D)",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 140×25 — Embossed",
+      "dimensions_mm": { "width": 140, "thickness": 25, "length": 2900 },
+      "line_m_price_usd": 1.85,
+      "pc_price_usd": 5.37,
+      "container_qty": 3800,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-140-20-2D",
+      "vendor_code": "AL-K140/20A (2D)",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 140×20 — Wood-Grain",
+      "dimensions_mm": { "width": 140, "thickness": 20, "length": 2900 },
+      "line_m_price_usd": 1.39,
+      "pc_price_usd": 4.03,
+      "container_qty": 4600,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-140-20-3D",
+      "vendor_code": "AL-K140/20A (3D)",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 140×20 — Embossed",
+      "dimensions_mm": { "width": 140, "thickness": 20, "length": 2900 },
+      "line_m_price_usd": 1.49,
+      "pc_price_usd": 4.32,
+      "container_qty": 4600,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-CL-148-21-2D",
+      "vendor_code": "AL-S148/21/A (2D)",
+      "series": "Heritage",
+      "category": "Cladding",
+      "name": "Heritage Cladding Board 148×21 — Wood-Grain",
+      "dimensions_mm": { "width": 148, "thickness": 21, "length": 2900 },
+      "line_m_price_usd": 1.18,
+      "pc_price_usd": 3.42,
+      "container_qty": 6000,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-CL-148-21-3D",
+      "vendor_code": "AL-S148/21/A (3D)",
+      "series": "Heritage",
+      "category": "Cladding",
+      "name": "Heritage Cladding Board 148×21 — Embossed",
+      "dimensions_mm": { "width": 148, "thickness": 21, "length": 2900 },
+      "line_m_price_usd": 1.20,
+      "pc_price_usd": 3.48,
+      "container_qty": 6000,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-145-21-6H",
+      "vendor_code": "AL-K145/21A",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 145×21 — 6-Hole Grooved",
+      "dimensions_mm": { "width": 145, "thickness": 21, "length": 2900 },
+      "line_m_price_usd": 1.98,
+      "pc_price_usd": 5.74,
+      "container_qty": 3500,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-140-24-6H",
+      "vendor_code": "AL-K140/23.5K",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 140×23.5 — 6-Hole Wood-Grain",
+      "dimensions_mm": { "width": 140, "thickness": 23.5, "length": 2900 },
+      "line_m_price_usd": 2.08,
+      "pc_price_usd": 6.03,
+      "container_qty": 3200,
+      "source_pi": "NS20240516LJ"
+    },
+    {
+      "leka_sku": "LKH-DK-148-23-3D",
+      "vendor_code": "AL-K148/23B",
+      "series": "Heritage",
+      "category": "Decking",
+      "name": "Heritage Deck Board 148×23 — Embossed",
+      "dimensions_mm": { "width": 148, "thickness": 23, "length": 2900 },
+      "line_m_price_usd": 1.98,
+      "pc_price_usd": 5.74,
+      "container_qty": 3500,
+      "source_pi": "NS20240516LJ"
+    }
+  ],
+  "extended_catalog_unpriced": {
+    "description": "Additional profiles available from vendor on MOQ request — no priced PI on file yet.",
+    "heritage": {
+      "hollow_decking_profiles": 53,
+      "solid_decking_profiles": 25,
+      "wall_panel_profiles": 21,
+      "column_guardrail_profiles": 34,
+      "fence_board_profiles": 20,
+      "bench_strip_profiles": 24,
+      "joist_profiles": 7
+    },
+    "premium_coex": {
+      "decking_profiles": 16,
+      "wall_panel_profiles": 14,
+      "structural_post_beam_profiles": 7
+    },
+    "asa_capped_line": "Separate ASA-surfaced catalog (see AOLO ASA.pdf)",
+    "diy_interlocking_tiles": "See DIY CATALOG(1).pdf"
+  },
+  "colors": [
+    { "code": "LK-01", "name": "Charcoal Black", "hex": "#2B2B2B" },
+    { "code": "LK-02", "name": "Ancient Wood",   "hex": "#3F3F44" },
+    { "code": "LK-03", "name": "Light Grey",     "hex": "#8C8C90" },
+    { "code": "LK-04", "name": "Sand White",     "hex": "#E8DDC5" },
+    { "code": "LK-05", "name": "Teak",           "hex": "#A06A3A" },
+    { "code": "LK-06", "name": "Mahogany",       "hex": "#6B4226" },
+    { "code": "LK-07", "name": "Rosewood",       "hex": "#4A2820" },
+    { "code": "LK-08", "name": "Maple",          "hex": "#8B5A2B" }
+  ]
+}
