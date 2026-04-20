@@ -91,16 +91,65 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.8.0 — All 6 phases of the Leka Order Portal shipped. Live on <a href="https://salesheet.leka.studio">salesheet.leka.studio</a>: auth → catalog → builder → submit → admin. Legacy public pages untouched.</p>
+  <p style="color: var(--muted); margin: 0;">v0.8.1 — fuzzy-matcher aliases (8→14 SKUs auto-price) + quotation pricing importer for non-Aolo vendors.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.8.0</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.8.1</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">6 of 6 — complete</div></div>
+    <div class="meta-card"><div class="lbl">Coverage</div><div class="val">14 of 49 taxonomy SKUs priced</div></div>
   </div>
+
+  <h2>What shipped in 0.8.1 — Extra catalog coverage</h2>
+
+  <div class="callout">
+    Two small wins on top of the 6-phase delivery. <strong>Fuzzy-matcher</strong> now aliases
+    <code>WG↔2D</code>/<code>EM↔3D</code> so Heritage taxonomy SKUs resolve to the
+    SKU-map's older 2D/3D naming (8 → 14 SKUs auto-price). <strong>Quotation importer</strong>
+    reads <code>data/parsed/quotations.json</code>, converts 10 priced line items (leo-nature,
+    qihome, chinese-teak-vendor, sentai) to THB via live frankfurter + 3% buffer,
+    and upserts to Firestore <code>catalog_pricing/{sku}</code> as admin overrides.
+  </div>
+
+  <h3>Fuzzy-matcher coverage lift</h3>
+  <table>
+    <thead><tr><th>Taxonomy SKU</th><th>Resolves to</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>LKH-DK-H-140-25-WG</code></td><td><code>LKH-DK-140-25-2D</code></td><td>new (WG→2D alias)</td></tr>
+      <tr><td><code>LKH-DK-H-140-25-EM</code></td><td><code>LKH-DK-140-25-3D</code></td><td>new (EM→3D alias)</td></tr>
+      <tr><td><code>LKH-DK-H-140-20-WG</code></td><td><code>LKH-DK-140-20-2D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-DK-H-140-20-EM</code></td><td><code>LKH-DK-140-20-3D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-CL-F-148-21-WG</code></td><td><code>LKH-CL-148-21-2D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-CL-F-148-21-EM</code></td><td><code>LKH-CL-148-21-3D</code></td><td>new</td></tr>
+    </tbody>
+  </table>
+
+  <h3><code>scripts/import_quotation_pricing.py</code> (new, dry-run by default)</h3>
+  <ul class="changes">
+    <li>Reads <code>data/parsed/quotations.json</code> → extracts 10 priced lines across 5 non-Aolo vendors.</li>
+    <li>Converts USD/CNY → THB via <code>order-portal-config.json</code>'s frankfurter source + 3% buffer.</li>
+    <li>Writes to <code>catalog_pricing/{sku}</code> with full traceability: <code>source: "quotation:QC…"</code>, <code>source_currency</code>, <code>source_unit_price</code>, <code>fx_rate_used</code>, <code>fx_source</code>.</li>
+    <li>Usage: <code>python scripts/import_quotation_pricing.py</code> (dry-run), <code>--write</code> to push, <code>--skus</code> for whitelist.</li>
+    <li><strong>Known gap</strong>: these SKUs aren't in <code>leka-taxonomy.json</code> yet. Running <code>--write</code> prepopulates overrides but the order-portal catalog endpoint won't surface them until taxonomy entries are added — separate follow-up.</li>
+  </ul>
+
+  <h3>Dry-run output (live FX 2026-04-20)</h3>
+  <pre style="background:var(--card);padding:12px;border-radius:8px;font-size:12px;overflow:auto">FX: 1 USD = 33.04 THB   1 CNY = 4.85 THB   (frankfurter, +3% buffer)
+
+leo-nature-teak              leo-nature             27.00 USD    892.01 THB
+leo-nature-oak-natural       leo-nature             33.00 USD   1090.23 THB
+leo-nature-oak-glacial       leo-nature             36.00 USD   1189.34 THB
+qihome-cherry                qihome                295.00 CNY   1429.48 THB
+cn-burmese-teak-a            chinese-teak-vendor   328.00 CNY   1589.39 THB
+cn-3layer-teak-locking       chinese-teak-vendor   328.00 CNY   1589.39 THB
+cn-multilayer-teak-birch     chinese-teak-vendor   268.00 CNY   1298.65 THB
+cn-multilayer-teak-snaplock  chinese-teak-vendor   280.00 CNY   1356.80 THB
+cn-new-3layer-teak           chinese-teak-vendor   272.00 CNY   1318.03 THB
+sentai-stgj68                sentai                  1.74 USD     57.48 THB</pre>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.8.0 (Production deploy wiring, Phase 6)</summary>
 
   <h2>What shipped in 0.8.0 — Production deploy wiring (Phase 6)</h2>
 
@@ -148,6 +197,8 @@
       <tr><td>6 — Deploy</td><td><strong>0.8.0 (this)</strong></td><td>Setup + verify scripts, cloudbuild secrets wired</td></tr>
     </tbody>
   </table>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.5 (Admin dashboard, Phase 5)</summary>
 

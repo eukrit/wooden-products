@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.1] - 2026-04-20
+
+### Added — Extra catalog coverage (fuzzy-matcher aliases + quotation importer)
+
+Two small wins on top of the 6-phase delivery to lift catalog coverage.
+
+- **`order_portal/pricing.py::lookup_sku_entry`** — adds `WG ↔ 2D` and
+  `EM ↔ 3D` finish-suffix aliasing. Heritage taxonomy SKUs use `WG`/`EM`;
+  the SKU-map uses `2D`/`3D` (two generations of the same vendor
+  data). Matcher now handles both.
+  - **Coverage: 8 → 14 taxonomy SKUs auto-price from the SKU-map.** New
+    matches: Heritage Deck 140×25 WG/EM, 140×20 WG/EM, Heritage Cladding
+    148×21 WG/EM.
+  - Anhui pricing update (handled offline) will cover the remaining ~35.
+
+- **`scripts/import_quotation_pricing.py` (new)** — one-shot utility to
+  import priced line items from `data/parsed/quotations.json` into
+  Firestore `catalog_pricing/{sku}` as admin pricing overrides.
+  - Reads 10 priced quote lines across 5 non-Aolo vendors (leo-nature,
+    qihome, chinese-teak-vendor, sentai, ks-wood).
+  - Converts each source currency (USD, CNY) to THB via live frankfurter
+    + `fx_buffer_pct` from the config — same FX source the order portal uses.
+  - Default dry-run; `--write` flag pushes to Firestore. `--skus a,b,c`
+    for selective import. `--actor` to customise the updated_by field.
+  - Stores `unit_price_thb` (full retail from the quote) + traceability
+    fields: `source: "quotation:<quote_id>"`, `source_currency`,
+    `source_unit_price`, `fx_rate_used`, `fx_source`, `vendor_id`,
+    `quote_date`.
+  - **Caveat noted in the script header**: these SKUs (e.g.,
+    `leo-nature-teak`, `qihome-cherry`) are not in the Leka taxonomy yet.
+    Importing to `catalog_pricing` prepopulates the override store but
+    the order portal's `/api/order/catalog` won't surface them until
+    they're added to `leka-taxonomy.json` (separate follow-up).
+
+### Dry-run results (live FX captured 2026-04-20)
+
+```
+FX: 1 USD = 33.04 THB   1 CNY = 4.85 THB   (frankfurter, +3% buffer)
+
+SKU                         Vendor                  Source        THB
+leo-nature-teak             leo-nature              27.00 USD     892.01
+leo-nature-oak-natural      leo-nature              33.00 USD    1090.23
+leo-nature-oak-glacial      leo-nature              36.00 USD    1189.34
+qihome-cherry               qihome                 295.00 CNY    1429.48
+cn-burmese-teak-a           chinese-teak-vendor    328.00 CNY    1589.39
+cn-3layer-teak-locking      chinese-teak-vendor    328.00 CNY    1589.39
+cn-multilayer-teak-birch    chinese-teak-vendor    268.00 CNY    1298.65
+cn-multilayer-teak-snaplock chinese-teak-vendor    280.00 CNY    1356.80
+cn-new-3layer-teak          chinese-teak-vendor    272.00 CNY    1318.03
+sentai-stgj68               sentai                   1.74 USD      57.48
+```
+
 ## [0.8.0] - 2026-04-20
 
 ### Added — Production deploy: secrets, IAM, verify script (Phase 6)

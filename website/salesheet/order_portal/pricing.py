@@ -78,7 +78,21 @@ def lookup_sku_entry(sku: str) -> dict[str, Any] | None:
     # Strip trailing -WG / -EM / -KC / -ST finish suffix
     # e.g. LKH-CL-F-148-21-WG -> LKH-CL-F-148-21
     if len(parts) >= 4 and parts[-1] in {"WG", "EM", "KC", "ST", "2D", "3D"}:
-        return lookup_sku_entry("-".join(parts[:-1]))
+        stripped = lookup_sku_entry("-".join(parts[:-1]))
+        if stripped:
+            return stripped
+        # Heritage SKU-map uses 2D/3D while taxonomy uses WG/EM. Try aliases.
+        finish_alias = {"WG": "2D", "EM": "3D", "2D": "WG", "3D": "EM"}
+        aliased_finish = finish_alias.get(parts[-1])
+        if aliased_finish:
+            alt = "-".join(parts[:-1] + [aliased_finish])
+            if alt in m:
+                return m[alt]
+            # Also try stripping sub-type then applying the finish alias
+            if len(parts) >= 5 and len(parts[2]) == 1:
+                alt2 = "-".join([parts[0], parts[1]] + parts[3:-1] + [aliased_finish])
+                if alt2 in m:
+                    return m[alt2]
 
     return None
 
