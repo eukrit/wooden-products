@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.5] - 2026-04-20
+
+### Added — Admin dashboard (Phase 5)
+
+Full admin UI over submitted + draft orders. List view with filters, detail
+view with audit log + action bar, end-to-end state transitions wired to Xero
++ Slack.
+
+- `website/salesheet/order_portal/admin.py` — new routes:
+  - `GET  /admin/orders` — filtered list (status, user, date range). Replaces
+    the Phase-1 placeholder. Up to 200 most-recent orders.
+  - `GET  /admin/orders/<id>` — detail with customer, line items, totals,
+    Xero/Slack IDs, and the full `order_events` audit log.
+  - `POST /admin/orders/<id>/confirm` — `submitted` → `confirmed`. Updates
+    Xero invoice to AUTHORISED. Posts threaded Slack reply "✅ Confirmed by <admin>".
+  - `POST /admin/orders/<id>/cancel` — `*` → `cancelled`. Voids Xero invoice.
+    Posts threaded Slack reply "❌ Cancelled by <admin>" with optional reason.
+  - `POST /admin/orders/<id>/retry-submit` — re-runs the Phase-4 submit for
+    orders still in draft with recorded `xero_error` or `slack_error`.
+  - `POST /admin/orders/<id>/act-as` — sets `session.impersonating_uid` to
+    the order's creator. Subsequent mutations are logged with both
+    `actor_uid` (real admin) and `acted_as_uid` in `order_events`.
+  - `POST /admin/end-act-as` — clears the impersonation.
+- `website/salesheet/order_portal/placeholders.py` — stripped down to a
+  single `/admin/` → `/admin/orders` redirect. Admin stubs are gone;
+  the real routes take over.
+- Templates (reuse `leka.css` tokens):
+  - `templates/admin/orders_list.html` — sticky filter bar, pill-status
+    column, clickable order numbers, 7-column table.
+  - `templates/admin/order_detail.html` — two-column layout: left has
+    customer / line items / totals cards, right has audit log.
+    Action bar at the top auto-hides buttons that don't apply to the
+    current status. Inline JS for `doAction()` that POSTs + reloads.
+
+### Audit trail
+Every admin mutation writes an `order_events` doc with `event_type` ∈
+{`confirmed`, `cancelled`, `admin_impersonated`, `submit_degraded`, `retry_*`}
+plus `actor_uid` (from `g.user`) and `acted_as_uid` (from session). Detail
+pages render these in reverse chronological order with pretty-printed JSON.
+
+### Xero error handling
+Confirm / cancel wrap the Xero state-change in try/except. On failure, the
+Firestore order doc gets `xero_confirm_error` or `xero_cancel_error` fields
+written alongside the new status, and the Slack threaded reply includes the
+error message. The local status transition still completes so admin isn't
+blocked by Xero outages.
+
 ## [0.7.4] - 2026-04-20
 
 ### Added — Submit flow: Firestore + Xero + Slack (Phase 4)

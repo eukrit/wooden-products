@@ -91,16 +91,54 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.7.4 — Submit flow (Phase 4). POST /order/&lt;id&gt;/submit allocates SO-WD-{year}-{NNNN}, creates Xero DRAFT invoice, posts Block Kit to #orders-wood-products, FX snapshot onto every line.</p>
+  <p style="color: var(--muted); margin: 0;">v0.7.5 — Admin dashboard (Phase 5). List + detail + confirm/cancel/retry/act-as with full audit log and Xero AUTHORISED/VOIDED transitions.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.4</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.5</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Syntax-clean, awaits Xero + Slack secrets</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Syntax-clean, ready for Phase 6 deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">4 of 6</div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">5 of 6</div></div>
   </div>
+
+  <h2>What shipped in 0.7.5 — Admin dashboard (Phase 5)</h2>
+
+  <div class="callout">
+    Full admin surface at <code>/admin/orders</code> with filters + detail view + action bar.
+    Every button is live-wired: confirm flips Xero to AUTHORISED and posts a threaded Slack reply;
+    cancel voids the invoice; retry-submit re-runs the degraded-path flow; act-as starts a dual-uid
+    impersonation that every audit event records. No secrets needed for the UI to render — Xero
+    calls gate on <code>xero_client.is_configured()</code>.
+  </div>
+
+  <h3>New admin routes</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Verb</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>/admin/orders</code></td><td>GET</td><td>Filtered list (status, user, date range) — up to 200 most recent</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;</code></td><td>GET</td><td>Detail + full audit log + action bar</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/confirm</code></td><td>POST</td><td>submitted → confirmed · Xero → AUTHORISED · Slack thread ✅</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/cancel</code></td><td>POST</td><td>any → cancelled · Xero → VOIDED · Slack thread ❌</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/retry-submit</code></td><td>POST</td><td>Re-run Phase-4 submit for degraded drafts</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/act-as</code></td><td>POST</td><td>Start impersonating the order creator</td></tr>
+      <tr><td><code>/admin/end-act-as</code></td><td>POST</td><td>Clear impersonation</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Templates (reuse leka.css tokens)</h3>
+  <ul class="changes">
+    <li><code>templates/admin/orders_list.html</code> — sticky filter bar + pill status column + 7-column table.</li>
+    <li><code>templates/admin/order_detail.html</code> — two-column detail with customer / lines / totals / Xero / Slack IDs on left, reverse-chronological audit log on right. Action bar at the top auto-hides buttons that don't apply to the current status.</li>
+  </ul>
+
+  <h3>Audit invariant</h3>
+  <p>Every admin mutation writes an <code>order_events</code> sub-doc with <code>actor_uid</code> (real admin from <code>g.user</code>) and <code>acted_as_uid</code> (from session if impersonating). The <code>base.html</code> impersonation banner from Phase 1 now becomes active as soon as <code>/act-as</code> is called.</p>
+
+  <h3>Xero resilience</h3>
+  <p>Confirm and cancel wrap the Xero state-change in try/except. On failure, <code>xero_confirm_error</code> / <code>xero_cancel_error</code> are persisted, the Slack threaded reply includes the error, and the local status transition still completes so admin isn't blocked by Xero outages.</p>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.4 (Submit flow, Phase 4)</summary>
 
   <h2>What shipped in 0.7.4 — Submit flow (Phase 4)</h2>
 
@@ -143,6 +181,8 @@ Year rollover resets seq to 1 automatically.</pre>
     <li>Invite bot to channel: <code>/invite @ai_agents</code> in <code>#orders-wood-products</code>.</li>
     <li>Phase 5 adds admin-side confirm (DRAFT → AUTHORISED) and cancel (→ VOIDED) with threaded Slack replies.</li>
   </ol>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.3 (Order builder UI, Phase 3)</summary>
 

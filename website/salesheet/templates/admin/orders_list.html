@@ -1,0 +1,137 @@
+{% extends "layout/base.html" %}
+{% block title %}Admin — orders — Leka{% endblock %}
+
+{% block head_extra %}
+<style>
+  body { background: var(--lk-navy-06); }
+  .admin-wrap { max-width: 1400px; margin: 0 auto; padding: 24px; }
+  .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
+  .admin-header h1 { font-size: 32px; margin: 0; }
+  .admin-filters {
+    background: var(--lk-white); padding: 16px 20px; border-radius: 14px;
+    display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .admin-filters label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--lk-navy-60); margin-bottom: 4px; }
+  .admin-filters input, .admin-filters select {
+    padding: 8px 12px; border: 1px solid var(--lk-navy-12); border-radius: 8px;
+    font: inherit; font-size: 13px;
+  }
+  .admin-filters .btn {
+    padding: 9px 16px; background: var(--lk-purple); color: var(--lk-white);
+    border: none; border-radius: 8px; font: inherit; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .08em; cursor: pointer;
+  }
+  .admin-filters .btn:hover { background: var(--lk-magenta); }
+  .admin-filters .clear { background: var(--lk-navy-06); color: var(--lk-navy); }
+  .admin-filters .clear:hover { background: var(--lk-navy-12); }
+
+  .orders-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--lk-white); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 6px rgba(24,37,87,.04);
+  }
+  .orders-table th, .orders-table td {
+    text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--lk-navy-06);
+    font-size: 13px; vertical-align: middle;
+  }
+  .orders-table th {
+    background: var(--lk-navy-06); color: var(--lk-navy-60);
+    font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+    font-weight: 700;
+  }
+  .orders-table tr:last-child td { border-bottom: none; }
+  .orders-table tr:hover td { background: rgba(128,3,255,.04); }
+  .orders-table a { color: var(--lk-purple); font-weight: 700; }
+  .orders-table .num { font-variant-numeric: tabular-nums; text-align: right; }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em;
+  }
+  .pill.draft { background: var(--lk-navy-06); color: var(--lk-navy-60); }
+  .pill.submitted { background: rgba(255,169,0,.18); color: #a86b00; }
+  .pill.confirmed { background: rgba(16,185,129,.18); color: #0a6e52; }
+  .pill.cancelled { background: rgba(229,72,34,.15); color: var(--lk-red-orange); }
+
+  .empty { text-align: center; padding: 60px; color: var(--lk-navy-60); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-wrap">
+
+  <div class="admin-header">
+    <div>
+      <span class="eyebrow">Admin</span>
+      <h1>Orders</h1>
+    </div>
+    <a href="/order/new" class="nav-cta" style="background:var(--lk-purple);color:var(--lk-white);padding:10px 20px;border-radius:999px;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none">+ New order</a>
+  </div>
+
+  <form class="admin-filters" method="GET">
+    <div>
+      <label>Status</label>
+      <select name="status">
+        <option value="">All</option>
+        <option value="draft" {% if filters.status == 'draft' %}selected{% endif %}>Draft</option>
+        <option value="submitted" {% if filters.status == 'submitted' %}selected{% endif %}>Submitted</option>
+        <option value="confirmed" {% if filters.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+        <option value="cancelled" {% if filters.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+      </select>
+    </div>
+    <div>
+      <label>Created by</label>
+      <select name="uid">
+        <option value="">Any user</option>
+        {% for uid, u in users %}
+        <option value="{{ uid }}" {% if filters.uid == uid %}selected{% endif %}>{{ u.email }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>From</label>
+      <input type="date" name="from" value="{{ filters.from }}">
+    </div>
+    <div>
+      <label>To</label>
+      <input type="date" name="to" value="{{ filters.to }}">
+    </div>
+    <button class="btn" type="submit">Apply</button>
+    <a href="/admin/orders" class="btn clear" style="text-decoration:none">Clear</a>
+  </form>
+
+  {% if rows %}
+  <table class="orders-table">
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Status</th>
+        <th>Customer</th>
+        <th>Company</th>
+        <th class="num">Grand total</th>
+        <th>Created by</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in rows %}
+      <tr>
+        <td><a href="/admin/orders/{{ o._id }}">{{ o.order_number or o._id }}</a></td>
+        <td><span class="pill {{ o.status }}">{{ o.status }}</span></td>
+        <td>{{ o.customer.name or '—' }}</td>
+        <td>{{ o.customer.company or '—' }}</td>
+        <td class="num">{{ "{:,}".format((o.totals.grand_total_thb or 0) | round | int) }} THB</td>
+        <td>{{ o._creator_email or '—' }}</td>
+        <td>{{ o.updated_at.strftime("%Y-%m-%d %H:%M") if o.updated_at else "—" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="orders-table empty">
+    No orders match the filters. <a href="/order/new" style="color:var(--lk-purple);font-weight:700">Create one?</a>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}
