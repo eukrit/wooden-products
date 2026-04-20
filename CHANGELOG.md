@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.1] - 2026-04-20
+
+### Added — Order Portal auth (Phase 1)
+
+Firebase Authentication (Email/Password + Google) wired into the Flask app.
+Authenticated routes `/auth/login`, `/auth/session`, `/auth/logout`,
+`/auth/me`, plus Phase-1 placeholders for `/order/new` + `/admin/orders`
+so the auth flow has working redirect targets. **Microsoft OIDC deferred**
+to a later PR once the Azure AD app is provisioned.
+
+- `website/salesheet/order_portal/` — new Flask Blueprint package:
+  - `config.py` reads `data/catalog/order-portal-config.json` once at startup
+    (lazy-loaded, `lru_cache`); exposes `auth()`, `pricing()`, `slack()`, etc.
+  - `firestore_client.py` — singleton for the `products-wood` database using ADC.
+  - `auth.py` — Firebase Admin token verify, `@require_auth`, `@require_role`,
+    users-collection seeding (`@goco.bz` → admin, else `external_sales`).
+  - `placeholders.py` — Phase-1-only stubs for `/order/new` + `/admin/orders`.
+- `website/salesheet/templates/` — Jinja2 templates sharing `wpc-profile/css/leka.css`:
+  - `layout/base.html` — shared shell with portal nav + user chip + impersonation banner.
+  - `auth/login.html` — three providers (Google, Email/Password, Microsoft-disabled);
+    uses Firebase JS SDK v10 modular; graceful "config pending" banner when
+    `FIREBASE_WEB_API_KEY` secret isn't set yet.
+  - `auth/forbidden.html` — 403 page for role mismatch.
+- `website/salesheet/server.py` — imports & registers the blueprint **before**
+  the static catch-all so `/auth/*`, `/order/*`, `/admin/*` match first.
+  Adds `SECRET_KEY` with `os.urandom` fallback + secure cookie config.
+- `website/salesheet/requirements.txt` — adds `firebase-admin`,
+  `google-cloud-firestore`, `google-cloud-secret-manager`, `requests`.
+- `website/salesheet/Dockerfile` — copies `order_portal/`, `templates/`, and
+  `data/catalog/` into the image. The latter is staged by a new cloudbuild
+  pre-step that copies the repo-root config into the build context.
+- `website/salesheet/cloudbuild.yaml` — new `stage-config` step; adds
+  `FIREBASE_PROJECT_ID` + `GCP_PROJECT_ID` + `SLACK_ORDER_CHANNEL` env vars.
+  **No new secrets referenced yet** — `salesheet-flask-session-key` +
+  `firebase-web-api-key` come in Phase 6 to avoid breaking the deploy
+  before those secrets exist.
+
+### Graceful degradation
+- Login page renders with a yellow banner when `FIREBASE_WEB_API_KEY` is unset.
+- Session cookie uses `os.urandom` fallback when `FLASK_SECRET_KEY` missing
+  (ephemeral — changes every pod start, but the public site still works).
+- Legacy routes (`/wpc-fence/`, `/wpc-profile/`, `/catalog/`, `/api/quote`,
+  `/api/render-scene`, `/_healthz`) completely unchanged.
+
+### Manual setup required (before Phase 6 merge)
+1. Firebase console → link to project `ai-agents-go` → enable Email/Password + Google providers.
+2. Auth → Authorized domains → add `salesheet.leka.studio`.
+3. IAM grant on `claude@ai-agents-go.iam.gserviceaccount.com`:
+   - `roles/firebase.sdkAdminServiceAgent`
+   - `roles/datastore.user` on Firestore `products-wood`.
+
 ## [0.7.0] - 2026-04-20
 
 ### Added — Order Portal config (Phase 0)

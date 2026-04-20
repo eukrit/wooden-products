@@ -13,6 +13,19 @@ options:
   machineType: E2_MEDIUM
 
 steps:
+  # Stage the frozen order-portal config into the Docker build context.
+  # Dockerfile uses `dir: website/salesheet` so files outside that folder
+  # (like data/catalog/) aren't visible unless we copy them in first.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: stage-config
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        mkdir -p website/salesheet/data/catalog
+        cp data/catalog/order-portal-config.json website/salesheet/data/catalog/
+        echo "Staged:" && ls -la website/salesheet/data/catalog/
+
   - name: 'gcr.io/cloud-builders/docker'
     id: build-image
     dir: website/salesheet
@@ -45,7 +58,12 @@ steps:
       - '--max-instances=5'
       - '--port=8080'
       - '--service-account=claude@ai-agents-go.iam.gserviceaccount.com'
-      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image,RENDER_DAILY_BUDGET=200'
+      # Phase 1 adds FIREBASE_PROJECT_ID + GCP_PROJECT_ID plain env vars. The
+      # FLASK_SECRET_KEY + FIREBASE_WEB_API_KEY + BOT_API_CLIENT_ID + Xero
+      # secrets are provisioned in Phase 6 before being referenced here; until
+      # then the order portal runs in "config pending" mode (login page shows
+      # a banner, authenticated routes return 503 with a clear message).
+      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K,SLACK_ORDER_CHANNEL=C0AUABRBK41,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image,RENDER_DAILY_BUDGET=200,FIREBASE_PROJECT_ID=ai-agents-go,GCP_PROJECT_ID=ai-agents-go'
       - '--set-secrets=SLACK_BOT_TOKEN=slack-bot-token:latest,GEMINI_API_KEY=gemini-api-key:latest'
       - '--quiet'
 

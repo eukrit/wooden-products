@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+{% block title %}Access denied — Leka Order Portal{% endblock %}
+{% block content %}
+<div style="max-width: 640px; margin: 80px auto; padding: 0 24px; text-align: center;">
+  <h1 style="font-size: 48px;">Access denied</h1>
+  <p style="color: var(--lk-navy-60); font-size: 18px; margin: 16px 0 32px;">
+    Your account has the <strong>{{ user.role }}</strong> role, but this page requires
+    {% for r in required %}<strong>{{ r }}</strong>{% if not loop.last %} or {% endif %}{% endfor %}.
+  </p>
+  <a href="/order/new" class="nav-cta">Go to order builder →</a>
+</div>
+{% endblock %}

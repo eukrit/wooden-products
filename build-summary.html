@@ -91,16 +91,63 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.7.0 — Order Portal config frozen (Phase 0). No runtime changes yet — locks single source of truth for the upcoming internal order portal.</p>
+  <p style="color: var(--muted); margin: 0;">v0.7.1 — Order Portal Firebase auth (Phase 1). Email + Google sign-in, role seeding, authenticated placeholders for /order/new + /admin/orders. Graceful degradation when secrets unset.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.0</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.1</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Config-only, safe to merge</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Safe to merge — degrades gracefully</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">0 of 6</div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">1 of 6</div></div>
   </div>
+
+  <h2>What shipped in 0.7.1 — Firebase auth (Phase 1)</h2>
+
+  <div class="callout">
+    Email/Password + Google sign-in via Firebase Auth. <code>@goco.bz</code> → <code>admin</code>, other domains → <code>external_sales</code>.
+    Login page renders a yellow "config pending" banner if <code>FIREBASE_WEB_API_KEY</code> secret isn't provisioned — so this PR is safe to merge
+    ahead of the Firebase console setup. Phase 6 adds the secret + flips the banner off.
+  </div>
+
+  <h3><code>website/salesheet/order_portal/</code> — new Flask Blueprint</h3>
+  <table>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>__init__.py</code></td><td>Blueprint registration + module imports</td></tr>
+      <tr><td><code>config.py</code></td><td>Reads <code>order-portal-config.json</code> once at startup; <code>auth()</code>, <code>pricing()</code> accessors</td></tr>
+      <tr><td><code>firestore_client.py</code></td><td>Singleton Firestore client for <code>products-wood</code> db (ADC)</td></tr>
+      <tr><td><code>auth.py</code></td><td>Firebase Admin token verify, <code>@require_auth</code>, <code>@require_role</code>, <code>users/{uid}</code> seeding</td></tr>
+      <tr><td><code>placeholders.py</code></td><td>Phase-1 stubs for <code>/order/new</code> + <code>/admin/orders</code> (replaced in Phase 3 + 5)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Templates — share <code>/wpc-profile/css/leka.css</code> tokens</h3>
+  <ul class="changes">
+    <li><code>templates/layout/base.html</code> — shared shell with portal nav + user chip + impersonation banner.</li>
+    <li><code>templates/auth/login.html</code> — Google button + Email/Password form + disabled Microsoft tile. Firebase JS SDK v10 modular.</li>
+    <li><code>templates/auth/forbidden.html</code> — 403 page for role mismatch.</li>
+  </ul>
+
+  <h3>Server + build</h3>
+  <ul class="changes">
+    <li><code>server.py</code> — registers the blueprint <strong>before</strong> the static catch-all so <code>/auth/*</code>, <code>/order/*</code>, <code>/admin/*</code> match first. Secure cookies, 12h session lifetime.</li>
+    <li><code>requirements.txt</code> — adds <code>firebase-admin</code>, <code>google-cloud-firestore</code>, <code>google-cloud-secret-manager</code>, <code>requests</code>.</li>
+    <li><code>Dockerfile</code> — copies <code>order_portal/</code>, <code>templates/</code>, and <code>data/catalog/</code> into the image.</li>
+    <li><code>cloudbuild.yaml</code> — new <code>stage-config</code> step copies repo-root <code>data/catalog/</code> into the Docker build context. New env vars <code>FIREBASE_PROJECT_ID</code>, <code>GCP_PROJECT_ID</code>, <code>SLACK_ORDER_CHANNEL</code>. No new secrets referenced yet (Phase 6).</li>
+  </ul>
+
+  <h3>Manual setup needed before this ships production-ready</h3>
+  <ol class="changes">
+    <li>Firebase console → link project <code>ai-agents-go</code> → enable Email/Password + Google providers.</li>
+    <li>Authorized domains → add <code>salesheet.leka.studio</code>.</li>
+    <li>IAM on <code>claude@ai-agents-go.iam.gserviceaccount.com</code>:<br>
+      • <code>roles/firebase.sdkAdminServiceAgent</code> (project scope)<br>
+      • <code>roles/datastore.user</code> on Firestore <code>products-wood</code></li>
+    <li>(Phase 6) Create secrets <code>salesheet-flask-session-key</code> + <code>firebase-web-api-key</code> and add to <code>--set-secrets</code>.</li>
+  </ol>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.0 (Order Portal config frozen, Phase 0)</summary>
 
   <h2>What shipped in 0.7.0 — Order Portal config (Phase 0)</h2>
 
@@ -139,6 +186,8 @@
     <li>New secrets: <code>salesheet-flask-session-key</code>, <code>firebase-web-api-key</code>, <code>bot-api-client-id</code>. Xero secrets (<code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code>) reuse the accounting-automation values.</li>
     <li>BoT API portal registration at <a href="https://apiportal.bot.or.th">apiportal.bot.or.th</a>.</li>
   </ul>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.6.1 (Gemini 3 Pro image cleanup)</summary>
 
