@@ -91,16 +91,69 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.7.2 — Order Portal catalog API with live FX (Phase 2). <code>GET /api/order/catalog</code> with live frankfurter.app FX + 3% bank buffer. Admin variant exposes vendor_code + USD.</p>
+  <p style="color: var(--muted); margin: 0;">v0.7.3 — Order builder UI (Phase 3). Two-column Alpine.js cart on top of the Phase-2 catalog API. Debounced Firestore autosave + per-line GM slider.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.2</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.3</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Smoke-tested — 8/49 SKUs priced</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Syntax-clean, ready for post-deploy E2E</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">2 of 6</div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">3 of 6</div></div>
   </div>
+
+  <h2>What shipped in 0.7.3 — Order builder UI (Phase 3)</h2>
+
+  <div class="callout">
+    Two-column <code>/order/&lt;id&gt;</code> page powered by Alpine.js v3. Left: accordion catalog
+    (decking expanded by default). Right sticky: customer form + cart with <code>−/qty/+</code>
+    steppers, per-line GM slider (refuses below 25% for sales, 0% for admin), subtotal/VAT/grand total.
+    Debounced 500 ms PATCH autosave. Submit button disabled until all validation passes.
+  </div>
+
+  <h3>New routes</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Verb</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>/order/new</code></td><td>GET/POST</td><td>Create draft in Firestore, redirect to <code>/order/&lt;id&gt;</code></td></tr>
+      <tr><td><code>/order/&lt;id&gt;</code></td><td>GET</td><td>Render the Jinja + Alpine builder</td></tr>
+      <tr><td><code>/order/&lt;id&gt;.json</code></td><td>GET</td><td>Current draft state for client re-hydration</td></tr>
+      <tr><td><code>/order/&lt;id&gt;</code></td><td>PATCH</td><td>Debounced autosave — allow-lists customer fields, replaces line_items + totals</td></tr>
+      <tr><td><code>/order/&lt;id&gt;/validate</code></td><td>POST</td><td>Returns <code>{ok, errors[]}</code> for the submit-button gate</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Validation rules</h3>
+  <ul class="changes">
+    <li>Customer: name, email (regex), phone, company, billing_address, project_type all required.</li>
+    <li><code>project_type</code> ∈ {residential, hospitality, commercial, institutional, other}.</li>
+    <li>≥ 1 line item, each with qty &gt; 0 and unit_price &gt; 0.</li>
+    <li>Per-line GM ≥ role floor (25% for <code>external_sales</code>, 0% for <code>admin</code>).</li>
+    <li>Lines without a resolved landed cost block submission with a clear message.</li>
+  </ul>
+
+  <h3>New files</h3>
+  <table>
+    <thead><tr><th>File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>order_portal/orders.py</code></td><td>5 new routes + Firestore CRUD + <code>_validate_submit()</code></td></tr>
+      <tr><td><code>templates/order/detail.html</code></td><td>Jinja + Alpine shell (two-column grid, sticky cart, add-to-cart modal)</td></tr>
+      <tr><td><code>static/order/app.js</code></td><td><code>orderBuilder()</code> Alpine component (242 lines)</td></tr>
+      <tr><td><code>static/order/order.css</code></td><td>Order-specific layout; reuses <code>leka.css</code> tokens</td></tr>
+      <tr><td><code>Dockerfile</code></td><td>+ <code>COPY static/order static/order</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>UX details</h3>
+  <ul class="changes">
+    <li><strong>FX chip</strong> in the header: live THB/USD rate + source badge (frankfurter / cache / fallback).</li>
+    <li><strong>Save indicator</strong> next to draft title: "Draft" → "Saving…" → "Saved ✓".</li>
+    <li><strong>Unpriced SKUs</strong> show "Price on request" instead of a number; cart line shows a red banner.</li>
+    <li><strong>Add-to-cart modal</strong>: colour picker (8 swatches), finish chips, qty stepper with live m conversion.</li>
+    <li><strong>Admin-only route</strong> <code>POST /admin/api/fx/refresh</code> force-refreshes the FX cache (useful pre-submission).</li>
+  </ul>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.2 (Catalog API + FX, Phase 2)</summary>
 
   <h2>What shipped in 0.7.2 — Catalog API + FX (Phase 2)</h2>
 
@@ -146,6 +199,8 @@
     <li>Removed <code>fx_rate_type</code>, <code>fx_lookback_days</code> (irrelevant for frankfurter).</li>
     <li>Fallback 36.5 THB/USD unchanged.</li>
   </ul>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.1 (Firebase auth, Phase 1)</summary>
 

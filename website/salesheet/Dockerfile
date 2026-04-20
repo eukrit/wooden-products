@@ -23,6 +23,9 @@ COPY wpc-profile           static/wpc-profile
 COPY catalog               static/catalog
 COPY quote                 static/quote
 
+# order_portal/ already COPY'd above — it includes its own static/ subfolder
+# which Flask serves at /static/order/* via the Blueprint's static_folder.
+
 # Frozen order-portal config (staged into website/salesheet/data/catalog/
 # by the cloudbuild.yaml pre-docker step so it's in the build context).
 RUN mkdir -p data/catalog

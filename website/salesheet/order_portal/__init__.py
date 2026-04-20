@@ -17,7 +17,7 @@ bp = Blueprint(
     "order_portal",
     __name__,
     template_folder="../templates",
-    static_folder="../static/order",
+    static_folder="static",          # <pkg>/static/ — tracked in git
     static_url_path="/static/order",
 )
 
@@ -25,4 +25,5 @@ bp = Blueprint(
 # avoid circular imports with this module.
 from . import auth  # noqa: E402, F401
 from . import catalog_api  # noqa: E402, F401
+from . import orders  # noqa: E402, F401
 from . import placeholders  # noqa: E402, F401

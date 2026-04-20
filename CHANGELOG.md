@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.3] - 2026-04-20
+
+### Added — Order builder UI (Phase 3)
+
+Two-column order builder at `/order/<id>` with live catalog on the left and
+sticky cart + customer form on the right. Powered by Alpine.js v3, debounced
+Firestore autosave (500 ms), and the `/api/order/catalog` endpoint from Phase 2.
+
+- `website/salesheet/order_portal/orders.py` — draft CRUD:
+  - `POST /order/new` — creates a `draft-<12-hex>` doc in Firestore `orders/`
+    collection, writes `created` audit event, redirects to `/order/<id>`.
+  - `GET  /order/<id>` — renders the builder (Jinja).
+  - `GET  /order/<id>.json` — JSON payload for client re-hydration on load.
+  - `PATCH /order/<id>` — merges partial state; allow-lists customer fields,
+    replaces line_items + totals wholesale. Writes `lines_updated` audit event.
+  - `POST /order/<id>/validate` — returns `{ok, errors[]}` for the submit gate.
+    Validates: customer required fields + email regex + project_type enum,
+    at least one line, each line qty > 0 and unit_price > 0 and landed present
+    and GM ≥ role floor (25% sales / 0% admin).
+  - Access control: admin sees any order, else only own (`created_by_uid` match).
+- `website/salesheet/templates/order/detail.html` — two-column Jinja shell
+  with Alpine.js `x-data="orderBuilder()"`. Left 60% is an accordion catalog
+  (decking open by default, others collapsed). Right 40% sticky column holds
+  the customer form, per-line qty steppers, unit-price input + GM slider,
+  subtotal/VAT/grand-total, and the submit button gated on `validationErrors`.
+- `website/salesheet/static/order/app.js` — `orderBuilder()` Alpine component
+  (242 lines). Loads order + catalog + FX in parallel on mount. Debounced
+  PATCH autosave. Per-line GM slider refuses below role floor. Add-to-cart
+  modal with colour + finish + qty.
+- `website/salesheet/static/order/order.css` — order-specific layout; reuses
+  all `leka.css` tokens.
+- `website/salesheet/order_portal/placeholders.py` — now only holds the
+  `/admin/orders` stub; the `/order/new` placeholder is replaced by the real
+  route in `orders.py`.
+- `website/salesheet/Dockerfile` — `COPY static/order static/order`.
+
+### UX notes
+- FX chip in the header shows the live rate + source (frankfurter / cache / fallback).
+- Save state indicator next to the draft title: "Draft" → "Saving…" → "Saved ✓".
+- SKUs without a resolved landed cost show "Price on request" and a red
+  "No landed cost for this SKU yet — ask admin to populate catalog_pricing" line.
+- Submit button shows validation errors as a bullet list until everything passes.
+
 ## [0.7.2] - 2026-04-20
 
 ### Added — Order Portal catalog API with live FX (Phase 2)
