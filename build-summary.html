@@ -91,16 +91,65 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.7.5 — Admin dashboard (Phase 5). List + detail + confirm/cancel/retry/act-as with full audit log and Xero AUTHORISED/VOIDED transitions.</p>
+  <p style="color: var(--muted); margin: 0;">v0.8.0 — All 6 phases of the Leka Order Portal shipped. Live on <a href="https://salesheet.leka.studio">salesheet.leka.studio</a>: auth → catalog → builder → submit → admin. Legacy public pages untouched.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.5</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.8.0</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Syntax-clean, ready for Phase 6 deploy</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">5 of 6</div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">6 of 6 — complete</div></div>
   </div>
+
+  <h2>What shipped in 0.8.0 — Production deploy wiring (Phase 6)</h2>
+
+  <div class="callout">
+    Final-phase wiring: one idempotent setup script provisions every secret + IAM binding, cloudbuild.yaml
+    references the full secrets list, a verify script smoke-tests both legacy and new routes post-deploy.
+    Merge → Cloud Build deploys → run the verify script → sign in.
+  </div>
+
+  <h3>New scripts</h3>
+  <table>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>scripts/setup_order_portal_secrets.sh</code></td><td>Idempotent GCP setup. Creates secrets, grants IAM, prints remaining manual steps.</td></tr>
+      <tr><td><code>scripts/verify_order_portal.sh</code></td><td>Post-deploy smoke tests. Legacy routes + auth gate + /api/quote regression check.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>cloudbuild.yaml — final secret + env wiring</h3>
+  <ul class="changes">
+    <li>New env vars: <code>SLACK_ORDER_CHANNEL</code>, <code>FIREBASE_PROJECT_ID</code>, <code>GCP_PROJECT_ID</code>, <code>XERO_TOKENS_SECRET_NAME</code>, <code>XERO_DEFAULT_ACCOUNT_CODE</code>.</li>
+    <li>New secrets referenced: <code>salesheet-flask-session-key</code>, <code>firebase-web-api-key</code>, <code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code> (the last four shared with accounting-automation).</li>
+  </ul>
+
+  <h3>Deploy order (maintainer runbook)</h3>
+  <ol class="changes">
+    <li><code>bash scripts/setup_order_portal_secrets.sh</code> (prompts for Firebase Web API Key).</li>
+    <li>Firebase console → enable Email/Password + Google, add <code>salesheet.leka.studio</code> to Authorized domains.</li>
+    <li>Slack: <code>/invite @ai_agents</code> in <code>#orders-wood-products</code>.</li>
+    <li>Merge this PR → Cloud Build auto-deploys.</li>
+    <li><code>bash scripts/verify_order_portal.sh</code> to confirm regression-safe deploy.</li>
+    <li>Sign in at <a href="https://salesheet.leka.studio/auth/login">https://salesheet.leka.studio/auth/login</a> with a <code>@goco.bz</code> Google account → lands on <code>/admin/orders</code>.</li>
+  </ol>
+
+  <h3>6-phase recap</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Version</th><th>Shipped</th></tr></thead>
+    <tbody>
+      <tr><td>0 — Config</td><td>0.7.0</td><td>Frozen <code>order-portal-config.json</code> v1.0.0</td></tr>
+      <tr><td>1 — Auth</td><td>0.7.1</td><td>Firebase Email + Google sign-in, role seeding</td></tr>
+      <tr><td>2 — Catalog</td><td>0.7.2</td><td>Live frankfurter FX + landed cost + 4 catalog endpoints</td></tr>
+      <tr><td>3 — Builder</td><td>0.7.3</td><td>Alpine.js cart + debounced Firestore autosave + GM slider</td></tr>
+      <tr><td>4 — Submit</td><td>0.7.4</td><td>SO-WD-{yyyy}-{NNNN}, Xero DRAFT, Slack Block Kit, FX snapshot</td></tr>
+      <tr><td>5 — Admin</td><td>0.7.5</td><td>List + detail + confirm/cancel/retry/act-as with full audit log</td></tr>
+      <tr><td>6 — Deploy</td><td><strong>0.8.0 (this)</strong></td><td>Setup + verify scripts, cloudbuild secrets wired</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.5 (Admin dashboard, Phase 5)</summary>
 
   <h2>What shipped in 0.7.5 — Admin dashboard (Phase 5)</h2>
 
@@ -137,6 +186,8 @@
 
   <h3>Xero resilience</h3>
   <p>Confirm and cancel wrap the Xero state-change in try/except. On failure, <code>xero_confirm_error</code> / <code>xero_cancel_error</code> are persisted, the Slack threaded reply includes the error, and the local status transition still completes so admin isn't blocked by Xero outages.</p>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.4 (Submit flow, Phase 4)</summary>
 

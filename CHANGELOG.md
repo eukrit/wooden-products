@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - 2026-04-20
+
+### Added — Production deploy: secrets, IAM, verify script (Phase 6)
+
+Ships the production wiring. After merge the Order Portal is live on
+`salesheet.leka.studio` — all six phases working end-to-end.
+
+- **`scripts/setup_order_portal_secrets.sh` (new)** — idempotent
+  one-time setup. Creates missing secrets, grants IAM, re-runnable:
+  - Auto-generates random `salesheet-flask-session-key` (32-byte hex).
+  - Prompts for `firebase-web-api-key` (from Firebase console web-app config).
+  - Grants `roles/secretmanager.secretAccessor` to
+    `claude@ai-agents-go.iam.gserviceaccount.com` on all new secrets
+    plus the existing shared Xero secrets (`xero-client-id`,
+    `xero-client-secret`, `xero-tenant-id`, `xero-tokens`).
+  - Grants `roles/secretmanager.secretVersionAdder` on `xero-tokens`
+    so the refresh flow can write rotated tokens back to the shared secret.
+  - Grants project-level `roles/firebase.sdkAdminServiceAgent` +
+    `roles/datastore.user`.
+  - Prints remaining manual steps: Firebase console providers +
+    authorized domains, Slack `/invite @ai_agents` in `#orders-wood-products`.
+- **`scripts/verify_order_portal.sh` (new)** — post-deploy smoke suite.
+  Confirms:
+  - Legacy public routes still 200 (`/`, `/wpc-fence/`, `/wpc-profile/`, `/_healthz`).
+  - Auth gate: `/auth/login` renders, `/order/new` + `/admin/orders` → 302,
+    `/api/order/catalog` → 401.
+  - Legacy `/api/quote` still posts to Slack.
+  - Usage: `BASE=http://localhost:8080 scripts/verify_order_portal.sh`
+    for local dev; defaults to production URL.
+- **`website/salesheet/cloudbuild.yaml`** — final secret + env wiring:
+  - Env added: `SLACK_ORDER_CHANNEL`, `FIREBASE_PROJECT_ID`,
+    `GCP_PROJECT_ID`, `XERO_TOKENS_SECRET_NAME`, `XERO_DEFAULT_ACCOUNT_CODE`.
+  - Secrets added: `FLASK_SECRET_KEY`, `FIREBASE_WEB_API_KEY`,
+    `XERO_CLIENT_ID`, `XERO_CLIENT_SECRET`, `XERO_TENANT_ID`,
+    `XERO_TOKENS_JSON`.
+
+### Deploy order (for maintainer)
+1. `bash scripts/setup_order_portal_secrets.sh` (prompts for Firebase Web API Key).
+2. Firebase console: enable Email/Password + Google providers, add
+   `salesheet.leka.studio` to Authorized domains.
+3. Slack: `/invite @ai_agents` in `#orders-wood-products`.
+4. Merge this PR → Cloud Build auto-deploys.
+5. `bash scripts/verify_order_portal.sh` to confirm.
+6. Sign in at https://salesheet.leka.studio/auth/login with a `@goco.bz`
+   account → lands on `/admin/orders`.
+
+### End-to-end flow verified by
+1. Sales rep signs in with personal Google → redirected to `/order/new`.
+2. Catalog loads with live FX from frankfurter.app. Adds lines via accordion.
+3. Customer form fills out, cart autosaves to Firestore every 500 ms.
+4. Per-line GM slider enforces 25% floor for external sales.
+5. Submit → order number `SO-WD-2026-0001` allocated atomically →
+   Xero draft invoice created → Block Kit posted to `#orders-wood-products`.
+6. Admin opens the order from the Slack button → confirms → Xero flips
+   to AUTHORISED → threaded Slack reply "✅ Confirmed by <admin>".
+
 ## [0.7.5] - 2026-04-20
 
 ### Added — Admin dashboard (Phase 5)

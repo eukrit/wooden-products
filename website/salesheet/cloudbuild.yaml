@@ -58,13 +58,12 @@ steps:
       - '--max-instances=5'
       - '--port=8080'
       - '--service-account=claude@ai-agents-go.iam.gserviceaccount.com'
-      # Phase 1 adds FIREBASE_PROJECT_ID + GCP_PROJECT_ID plain env vars. The
-      # FLASK_SECRET_KEY + FIREBASE_WEB_API_KEY + BOT_API_CLIENT_ID + Xero
-      # secrets are provisioned in Phase 6 before being referenced here; until
-      # then the order portal runs in "config pending" mode (login page shows
-      # a banner, authenticated routes return 503 with a clear message).
-      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K,SLACK_ORDER_CHANNEL=C0AUABRBK41,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image,RENDER_DAILY_BUDGET=200,FIREBASE_PROJECT_ID=ai-agents-go,GCP_PROJECT_ID=ai-agents-go'
-      - '--set-secrets=SLACK_BOT_TOKEN=slack-bot-token:latest,GEMINI_API_KEY=gemini-api-key:latest'
+      # Phase 6 wires the full set of Order Portal secrets. Run
+      # `scripts/setup_order_portal_secrets.sh` ONCE before deploying to
+      # create the new secrets + grant IAM. If any secret referenced below
+      # doesn't exist, the deploy step will fail with a clear error.
+      - '--set-env-vars=SLACK_LEAD_CHANNEL=C07EF698Q1K,SLACK_ORDER_CHANNEL=C0AUABRBK41,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image,RENDER_DAILY_BUDGET=200,FIREBASE_PROJECT_ID=ai-agents-go,GCP_PROJECT_ID=ai-agents-go,XERO_TOKENS_SECRET_NAME=xero-tokens,XERO_DEFAULT_ACCOUNT_CODE=200'
+      - '--set-secrets=SLACK_BOT_TOKEN=slack-bot-token:latest,GEMINI_API_KEY=gemini-api-key:latest,FLASK_SECRET_KEY=salesheet-flask-session-key:latest,FIREBASE_WEB_API_KEY=firebase-web-api-key:latest,XERO_CLIENT_ID=xero-client-id:latest,XERO_CLIENT_SECRET=xero-client-secret:latest,XERO_TENANT_ID=xero-tenant-id:latest,XERO_TOKENS_JSON=xero-tokens:latest'
       - '--quiet'
 
 images:
