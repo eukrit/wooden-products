@@ -24,4 +24,5 @@ bp = Blueprint(
 # Route module imports register handlers onto `bp`. Keep imports at bottom to
 # avoid circular imports with this module.
 from . import auth  # noqa: E402, F401
+from . import catalog_api  # noqa: E402, F401
 from . import placeholders  # noqa: E402, F401

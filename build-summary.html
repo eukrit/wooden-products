@@ -91,16 +91,63 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.7.1 — Order Portal Firebase auth (Phase 1). Email + Google sign-in, role seeding, authenticated placeholders for /order/new + /admin/orders. Graceful degradation when secrets unset.</p>
+  <p style="color: var(--muted); margin: 0;">v0.7.2 — Order Portal catalog API with live FX (Phase 2). <code>GET /api/order/catalog</code> with live frankfurter.app FX + 3% bank buffer. Admin variant exposes vendor_code + USD.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.1</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.2</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Safe to merge — degrades gracefully</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Smoke-tested — 8/49 SKUs priced</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Phase</div><div class="val">1 of 6</div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">2 of 6</div></div>
   </div>
+
+  <h2>What shipped in 0.7.2 — Catalog API + FX (Phase 2)</h2>
+
+  <div class="callout">
+    Live FX from <strong>frankfurter.app</strong> (ECB mid-market, free, no API key) + 3% buffer for Thai bank spread.
+    Sample: <code>LKP-DK-H-140-23</code> — USD 2.55/m × live 33.04 THB/USD × 1.35 landed multiplier
+    = <strong>113.73 THB/m landed</strong> → default unit 164.91 → <strong>31% GM</strong>. 8 of 49 SKUs auto-price
+    from the SKU-map; the rest await admin overrides in <code>catalog_pricing/{sku}</code> (Phase 5).
+  </div>
+
+  <h3>New endpoints</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Auth</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>GET /api/order/catalog</code></td><td>any authed</td><td>Category-grouped catalog, <strong>no vendor_code</strong></td></tr>
+      <tr><td><code>GET /admin/api/catalog</code></td><td>admin only</td><td>Same + <code>vendor_code</code>, USD cost, sku_map match info</td></tr>
+      <tr><td><code>GET /api/order/fx</code></td><td>any authed</td><td>Current FX snapshot (rate, source, ecb_mid, buffer)</td></tr>
+      <tr><td><code>POST /admin/api/fx/refresh</code></td><td>admin only</td><td>Force-refresh the 60-min FX cache</td></tr>
+    </tbody>
+  </table>
+
+  <h3>New modules under <code>website/salesheet/order_portal/</code></h3>
+  <table>
+    <thead><tr><th>File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>fx.py</code></td><td>Live frankfurter.app → 60min cache → apply buffer → fallback on API error</td></tr>
+      <tr><td><code>pricing.py</code></td><td><code>landed_cost</code>, <code>default_unit_price</code>, <code>gm_percent</code>, <code>validate_line_gm</code> + SKU fuzzy-match</td></tr>
+      <tr><td><code>catalog_api.py</code></td><td>4 new routes above</td></tr>
+    </tbody>
+  </table>
+
+  <h3>SKU fuzzy-match</h3>
+  <ul class="changes">
+    <li>Taxonomy uses <code>LKP-DK-H-140-23</code> (with H/S/G sub-type). SKU-map uses <code>LKP-DK-140-23</code> (no sub-type).</li>
+    <li><code>lookup_sku_entry()</code> strips the single-letter sub-type segment, handles wall-panel <code>V</code> → <code>-HC</code>, and trailing finish suffixes (<code>-WG</code>/<code>-EM</code>/<code>-KC</code>/<code>-ST</code>/<code>-2D</code>/<code>-3D</code>).</li>
+    <li>Result: 8/49 taxonomy SKUs resolve automatically — all Premium Co-Ex. Heritage, Shield, Structure, DIY wait for admin overrides.</li>
+  </ul>
+
+  <h3>Config drift (frozen v1.0.0 amended)</h3>
+  <ul class="changes">
+    <li>FX provider swapped from <strong>Bank of Thailand</strong> to <strong>frankfurter.app</strong> — no API key, no GCP secret, simpler ops.</li>
+    <li>Added <code>fx_buffer_pct = 3.0</code> to approximate the Thai bank spread over ECB mid.</li>
+    <li>Removed <code>fx_rate_type</code>, <code>fx_lookback_days</code> (irrelevant for frankfurter).</li>
+    <li>Fallback 36.5 THB/USD unchanged.</li>
+  </ul>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.1 (Firebase auth, Phase 1)</summary>
 
   <h2>What shipped in 0.7.1 — Firebase auth (Phase 1)</h2>
 
@@ -146,6 +193,8 @@
       • <code>roles/datastore.user</code> on Firestore <code>products-wood</code></li>
     <li>(Phase 6) Create secrets <code>salesheet-flask-session-key</code> + <code>firebase-web-api-key</code> and add to <code>--set-secrets</code>.</li>
   </ol>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.0 (Order Portal config frozen, Phase 0)</summary>
 

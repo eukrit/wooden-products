@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.2] - 2026-04-20
+
+### Added — Order Portal catalog API with live FX (Phase 2)
+
+Live catalog endpoint for the order builder. Admin-only variant includes
+vendor SKU + USD cost; external sales role never sees vendor_code.
+
+- `website/salesheet/order_portal/fx.py` — live FX via **frankfurter.app**
+  (ECB mid-market, free, no API key). `fx_buffer_pct` (default 3%) is
+  added to approximate a Thai bank's TT Selling spread. 60-min in-memory
+  cache. Fallback to `fx_thb_per_usd_fallback` on API error.
+- `website/salesheet/order_portal/pricing.py`:
+  - `taxonomy()` + `sku_map()` — loaded once, cached via `lru_cache`.
+  - `lookup_sku_entry(sku)` — fuzzy match between taxonomy SKUs (e.g.
+    `LKP-DK-H-140-23`) and sku-map SKUs (e.g. `LKP-DK-140-23`); strips
+    sub-type segment (H/S/G), handles wall-panel `V`→`-HC`, and trailing
+    finish suffixes (`-WG`/`-EM`/etc.).
+  - `landed_cost_thb_per_m(sku, fx, overrides)` — USD × FX × `landed_multiplier`
+    with Firestore `catalog_pricing/{sku}` override precedence.
+  - `default_unit_price_thb(sku, landed, overrides)` — landed × `default_markup`.
+  - `gm_percent` + `gm_floor_for_role` + `validate_line_gm` — 25% sales floor,
+    0% admin floor (admin can override).
+- `website/salesheet/order_portal/catalog_api.py`:
+  - `GET  /api/order/catalog`     (any authed user) — no vendor_code
+  - `GET  /admin/api/catalog`     (admin only)       — includes vendor_code + USD
+  - `GET  /api/order/fx`          (any authed user) — current FX snapshot
+  - `POST /admin/api/fx/refresh`  (admin only)       — force-refresh FX cache
+- Payload is category-grouped (decking, cladding, panels, fence, structure,
+  diy-tiles) with per-SKU resolved `colours` (8 palette entries w/ hex +
+  grain image), `finishes`, `landed_cost_thb_per_m`, `default_unit_price_thb`.
+- DIY-tiles categories expose `diy_palettes` (per-family) instead of the
+  full 8-colour palette.
+
+### Changed — Config drift
+- `data/catalog/order-portal-config.json` — swapped FX provider from
+  Bank of Thailand to **frankfurter.app** + 3% buffer. No API key needed,
+  no GCP secret. `fx_rate_type` + `fx_lookback_days` removed; `fx_api_url`
+  + `fx_buffer_pct` added. Fallback value unchanged (36.5 THB/USD).
+  Decision recorded in the PR description.
+
+### Catalog coverage
+Out of 49 taxonomy SKUs, **8 resolve to a USD cost** automatically (all
+Premium Co-Ex from PI NS20240516LJ). The remaining 41 (Heritage, Shield,
+Structure, DIY) show `landed_cost_thb_per_m: null` until admin populates
+`catalog_pricing/{sku}` overrides — implemented in Phase 5.
+
+### Smoke test (live)
+Sample: `LKP-DK-H-140-23` — USD 2.55/m × live 33.04 THB/USD × 1.35
+= 113.73 THB/m landed → default unit 164.91 THB/m → 31% GM.
+
 ## [0.7.1] - 2026-04-20
 
 ### Added — Order Portal auth (Phase 1)

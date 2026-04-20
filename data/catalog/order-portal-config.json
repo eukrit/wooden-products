@@ -40,12 +40,12 @@
   },
 
   "pricing": {
-    "fx_provider": "bot",
-    "fx_rate_type": "TT_Selling",
+    "fx_provider": "frankfurter",
+    "fx_api_url": "https://api.frankfurter.app/latest",
     "fx_cache_ttl_s": 3600,
-    "fx_lookback_days": 5,
+    "fx_buffer_pct": 3.0,
     "fx_thb_per_usd_fallback": 36.5,
-    "_fx_note": "Bank of Thailand publishes M-F only. Lookback picks the most recent business-day rate. Falls back to fx_thb_per_usd_fallback if BOT_API_CLIENT_ID is unset or API errors.",
+    "_fx_note": "Frankfurter.app publishes ECB mid-market rates — free, no API key, JSON. The 3% buffer approximates the spread between ECB mid and what a Thai bank would charge on a TT Selling transaction (covers bank margin + swift/wire fees). Final FX = api_rate * (1 + fx_buffer_pct/100). Falls back to fx_thb_per_usd_fallback when the API is unreachable.",
     "landed_multiplier": 1.35,
     "_landed_note": "Covers ocean freight FCL-40, import duty, VAT on import, local handling. landed_cost_thb_per_m = sku_map.line_m_price_usd * fx * landed_multiplier.",
     "default_markup": 1.45,
