@@ -26,4 +26,5 @@ bp = Blueprint(
 from . import auth  # noqa: E402, F401
 from . import catalog_api  # noqa: E402, F401
 from . import orders  # noqa: E402, F401
+from . import order_submit  # noqa: E402, F401
 from . import placeholders  # noqa: E402, F401

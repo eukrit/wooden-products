@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.4] - 2026-04-20
+
+### Added — Submit flow: Firestore + Xero + Slack (Phase 4)
+
+End-to-end submission for draft orders. `POST /order/<id>/submit` allocates
+an order number atomically, creates a Xero draft invoice, posts a Block Kit
+card to `#orders-wood-products`, and marks the order submitted. Partial
+failures leave the order draft and return HTTP 202 with a degraded flag so
+admin can retry.
+
+- `website/salesheet/order_portal/xero_client.py` — lean vendored copy of
+  `accounting-automation/integrations/xero/client.py`. Keeps the salesheet
+  service independent while sharing the `xero-tokens` Secret Manager secret
+  with accounting-automation. Exposes:
+  - `is_configured()` — short-circuit check (returns False if client creds missing).
+  - `upsert_contact(email, name, company, phone)` — find by email or create.
+  - `ensure_item(sku, name)` — auto-create Xero Item if missing.
+  - `create_invoice(contact_id, reference, items, tracking_*, status, currency)` —
+    ACCREC invoice, 30-day due, optional tracking category.
+  - `update_invoice_status(invoice_id, status)` — DRAFT → AUTHORISED / VOIDED.
+- `website/salesheet/order_portal/slack_orders.py`:
+  - `post_new_order(order, submitter_email, portal_base_url, xero_draft_id)` —
+    Block Kit with header, customer/company/email/phone/project fields,
+    line count, grand total, context bar showing Xero link, "View order" button.
+  - `post_threaded_reply(ts, text)` — plain-text reply for confirm/cancel audits.
+  - Channel from `SLACK_ORDER_CHANNEL` env (preferred) or config (`C0AUABRBK41`).
+- `website/salesheet/order_portal/order_submit.py` — `POST /order/<id>/submit`:
+  1. Re-validates (server-side; never trusts client).
+  2. Atomic Firestore transaction on `counters/order_number` →
+     `SO-WD-{year}-{seq:04d}` (first order `SO-WD-2026-0001`).
+  3. Snapshots `fx_snapshot` ({rate, source, ecb_mid, buffer_pct, fetched_at})
+     onto every line item so the order is reconstructable later.
+  4. Xero: looks up Contact by email, falls back to the cached
+     "Wood Product Customer" id at `counters/xero_fallback_contact_id` if
+     the lookup fails; ensure_item for each SKU; create DRAFT invoice
+     with tracking category "Leka-Wood-Products".
+  5. Slack: posts Block Kit card to `#orders-wood-products`; stores `ts`
+     on the order for threaded replies.
+  6. Writes `orders/{id}.status = 'submitted'`, `submitted_at`,
+     `xero_draft_id`, `slack_message_ts`, `fallback_contact_used`.
+  7. Audit event `submitted` (or `submit_degraded` on partial failure).
+
+### Degraded path
+If Xero fails, Slack still posts (with "Xero draft pending" in the context).
+If Slack fails, the Xero invoice still exists. Either failure keeps the order
+in `status=draft` and returns HTTP 202. Admin retry endpoint lands in Phase 5.
+
+### Not yet wired
+- Xero secrets (`xero-client-id`, `xero-client-secret`, `xero-tenant-id`,
+  `xero-tokens`) come in Phase 6.
+- Slack bot must be invited to `#orders-wood-products` via `/invite @ai_agents`.
+- Admin confirm (DRAFT → AUTHORISED) and cancel (→ VOIDED) land in Phase 5.
+
 ## [0.7.3] - 2026-04-20
 
 ### Added — Order builder UI (Phase 3)
