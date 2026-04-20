@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "description": "FROZEN config for the Leka Wood-Products internal order portal. Single source of truth for order number format, Slack channel, Xero fallback, auth rules, and pricing formula. Do not duplicate these values in code — read from this file.",
+    "version": "1.0.0",
+    "frozen_at": "2026-04-20",
+    "owner_email": "eukrit@gmail.com"
+  },
+
+  "order_number": {
+    "prefix": "SO-WD-",
+    "year": 2026,
+    "seq_width": 4,
+    "format": "{prefix}{year}-{seq:04d}",
+    "_example": "SO-WD-2026-0001"
+  },
+
+  "slack": {
+    "channel_id": "C0AUABRBK41",
+    "channel_name": "#orders-wood-products",
+    "_note": "Bot @ai_agents (U0ALU8DG6AW) must be invited via /invite @ai_agents."
+  },
+
+  "xero": {
+    "fallback_contact_name": "Wood Product Customer",
+    "fallback_contact_email": "wood-product-customer@leka.studio",
+    "tracking_category": "Leka-Wood-Products",
+    "draft_status": "DRAFT",
+    "confirmed_status": "AUTHORISED",
+    "cancelled_status": "VOIDED",
+    "default_account_code": "200"
+  },
+
+  "auth": {
+    "providers": ["password", "google.com"],
+    "_deferred_providers": ["microsoft.com"],
+    "admin_email_domain": "goco.bz",
+    "default_role_admin": "admin",
+    "default_role_external": "external_sales",
+    "session_cookie_max_age_s": 43200
+  },
+
+  "pricing": {
+    "fx_provider": "bot",
+    "fx_rate_type": "TT_Selling",
+    "fx_cache_ttl_s": 3600,
+    "fx_lookback_days": 5,
+    "fx_thb_per_usd_fallback": 36.5,
+    "_fx_note": "Bank of Thailand publishes M-F only. Lookback picks the most recent business-day rate. Falls back to fx_thb_per_usd_fallback if BOT_API_CLIENT_ID is unset or API errors.",
+    "landed_multiplier": 1.35,
+    "_landed_note": "Covers ocean freight FCL-40, import duty, VAT on import, local handling. landed_cost_thb_per_m = sku_map.line_m_price_usd * fx * landed_multiplier.",
+    "default_markup": 1.45,
+    "_markup_note": "default_unit_price_thb = landed_cost_thb_per_m * default_markup. Sales adjusts via per-line GM slider.",
+    "gm_floor_sales_pct": 25,
+    "gm_floor_admin_pct": 0,
+    "vat_pct": 7
+  },
+
+  "firestore": {
+    "database_id": "products-wood",
+    "collections": {
+      "users": "users",
+      "orders": "orders",
+      "order_events_subcoll": "order_events",
+      "counters": "counters",
+      "catalog_pricing": "catalog_pricing"
+    }
+  },
+
+  "cloud_run": {
+    "service_name": "salesheet-leka",
+    "region": "asia-southeast1",
+    "project_id": "ai-agents-go"
+  },
+
+  "legacy_public_routes": {
+    "_note": "These routes must remain untouched by the order portal.",
+    "routes": ["/", "/wpc-fence/", "/wpc-profile/", "/catalog/", "/quote/", "/api/quote", "/api/render-scene", "/_healthz"]
+  }
+}

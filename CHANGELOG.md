@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2026-04-20
+
+### Added — Order Portal config (Phase 0)
+
+Frozen single source of truth for the upcoming internal order portal (routes `/auth/*`, `/order/*`, `/admin/*`). No code changes yet — this PR only locks the config so subsequent phases can't drift.
+
+- **`data/catalog/order-portal-config.json` (new, v1.0.0)** — canonical values for:
+  - Order-number format `SO-WD-{year}-{seq:04d}` (first order: `SO-WD-2026-0001`).
+  - Slack channel `#orders-wood-products` (`C0AUABRBK41`).
+  - Xero fallback contact "Wood Product Customer", tracking category "Leka-Wood-Products", DRAFT → AUTHORISED → VOIDED flow.
+  - Auth: Email/Password + Google only for Phase 1 (Microsoft OIDC deferred). `@goco.bz` → admin; others → external_sales.
+  - Pricing formula: `landed_cost_thb_per_m = sku_map.line_m_price_usd × BoT_FX × 1.35`, default unit price = landed × 1.45, GM floor 25% for sales / 0% for admin, VAT 7%.
+  - FX provider: Bank of Thailand TT Selling rate, 60 min cache, 5-day lookback for weekends/holidays, fallback 36.5 THB/USD if `BOT_API_CLIENT_ID` secret is unset or the API errors.
+  - Firestore database `products-wood`, Cloud Run service `salesheet-leka` in `asia-southeast1`.
+- **No runtime dependency on the file yet.** Phase 2 (`/api/order/catalog`) will be the first consumer.
+- Legacy routes (`/wpc-fence/`, `/wpc-profile/`, `/catalog/`, `/api/quote`, `/api/render-scene`) explicitly listed as untouchable.
+
 ## [0.6.1] - 2026-04-19
 
 ### Changed — Gemini 3 Pro Image Preview cleanup pass

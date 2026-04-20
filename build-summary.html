@@ -91,16 +91,56 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">Multi-page WPC Profiles Library — v0.6.1 with Gemini-cleaned studio photos + inline SVG cross-sections</p>
+  <p style="color: var(--muted); margin: 0;">v0.7.0 — Order Portal config frozen (Phase 0). No runtime changes yet — locks single source of truth for the upcoming internal order portal.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.6.1</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-19</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.7.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Config-only, safe to merge</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-profile/">salesheet.leka.studio/wpc-profile/</a></div></div>
+    <div class="meta-card"><div class="lbl">Phase</div><div class="val">0 of 6</div></div>
   </div>
+
+  <h2>What shipped in 0.7.0 — Order Portal config (Phase 0)</h2>
+
+  <div class="callout">
+    Frozen single source of truth. No runtime code touches this yet — Phase 2 (<code>/api/order/catalog</code>) will be the first consumer. Legacy routes (<code>/wpc-fence/</code>, <code>/wpc-profile/</code>, <code>/catalog/</code>, <code>/api/quote</code>, <code>/api/render-scene</code>) are unaffected.
+  </div>
+
+  <h3><code>data/catalog/order-portal-config.json</code> — frozen v1.0.0</h3>
+  <ul class="changes">
+    <li><strong>Order numbers</strong>: <code>SO-WD-{year}-{seq:04d}</code> — first order <code>SO-WD-2026-0001</code>.</li>
+    <li><strong>Slack</strong>: <code>#orders-wood-products</code> (<code>C0AUABRBK41</code>). Bot must be invited via <code>/invite @ai_agents</code>.</li>
+    <li><strong>Xero</strong>: fallback contact <em>"Wood Product Customer"</em>, tracking category <em>Leka-Wood-Products</em>, DRAFT → AUTHORISED → VOIDED.</li>
+    <li><strong>Auth</strong>: Email/Password + Google only for Phase 1 (Microsoft OIDC deferred until Azure AD app is provisioned). <code>@goco.bz</code> → admin; all other domains → external_sales.</li>
+    <li><strong>Pricing</strong>: <code>landed_cost_thb_per_m = sku_map.line_m_price_usd × BoT_FX × 1.35</code>. Default unit price = landed × 1.45. GM floor 25% sales / 0% admin. VAT 7%.</li>
+    <li><strong>FX</strong>: Bank of Thailand TT Selling rate, 60 min in-memory cache, 5-day lookback for weekends/holidays, fallback <code>36.5 THB/USD</code> if <code>BOT_API_CLIENT_ID</code> secret is unset or the API errors.</li>
+  </ul>
+
+  <h3>Plan — remaining phases</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Scope</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>Freeze <code>order-portal-config.json</code></td><td><span class="status ok">this PR</span></td></tr>
+      <tr><td>1</td><td>Firebase Email + Google auth, <code>/auth/login</code>, role seeding</td><td><span class="status warn">next</span></td></tr>
+      <tr><td>2</td><td><code>/api/order/catalog</code> with live BoT FX + landed cost</td><td>pending</td></tr>
+      <tr><td>3</td><td>Cart builder UI, Alpine.js, debounced Firestore autosave</td><td>pending</td></tr>
+      <tr><td>4</td><td>Submit flow — order number, Xero draft invoice, Slack post</td><td>pending</td></tr>
+      <tr><td>5</td><td>Admin dashboard, act-as, confirm/cancel with audit trail</td><td>pending</td></tr>
+      <tr><td>6</td><td>Cloud Build secrets + IAM + production deploy</td><td>pending</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pre-reqs for later phases (no action needed for this PR)</h3>
+  <ul class="changes">
+    <li>Firebase Auth enabled on GCP project <code>ai-agents-go</code> with Email/Password + Google providers. Authorized domain: <code>salesheet.leka.studio</code>.</li>
+    <li>IAM on <code>claude@ai-agents-go.iam.gserviceaccount.com</code>: <code>roles/firebase.sdkAdminServiceAgent</code>, <code>roles/datastore.user</code>, <code>roles/secretmanager.secretAccessor</code> on new secrets.</li>
+    <li>New secrets: <code>salesheet-flask-session-key</code>, <code>firebase-web-api-key</code>, <code>bot-api-client-id</code>. Xero secrets (<code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code>) reuse the accounting-automation values.</li>
+    <li>BoT API portal registration at <a href="https://apiportal.bot.or.th">apiportal.bot.or.th</a>.</li>
+  </ul>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.6.1 (Gemini 3 Pro image cleanup)</summary>
 
   <h2>What shipped in 0.6.1</h2>
 
@@ -126,6 +166,8 @@
     <li>PDFs re-extracted at 220 DPI for higher source resolution.</li>
     <li>Co-Ex, Heritage, ASA crop coordinates recalibrated per-category to exclude row numbers, vendor codes, Chinese titles, cross-section drawings, and adjacent-row bleed.</li>
   </ul>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.5.0 (Multi-page library launch)</summary>
 
