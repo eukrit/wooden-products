@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.1] - 2026-04-21
+
+### Fixed — WPC Fence sales page — palette + configurator polish
+
+- **Colour palette** (`website/salesheet/wpc-fence/index.html`) — moved
+  `background-size: cover`, `background-position: center`, and
+  `background-repeat: no-repeat` onto the `.swatch-chip` class and split each
+  chip's inline style into explicit `background-color` + `background-image`
+  declarations. The prior `background:#HEX url(...) center/cover` shorthand
+  silently swallowed the image on some browsers / at some cache states, so
+  the palette was rendering as flat colour blocks instead of manufacturer
+  woodgrain crops.
+- **Hero image preload** — added `<link rel="preload" as="image" href="images/141.jpg">`
+  so the hero background paints in the first frame instead of popping in
+  after layout.
+
+### Added — Configurator (`website/salesheet/wpc-fence/configurator/`)
+
+- **Random plank pattern per board** — each plank renders the manufacturer
+  swatch through a nested `<svg>` viewport with a seeded random offset
+  (1.6× wider / 1.4× taller than the plank), so each board reads as a
+  distinct extruded length instead of one repeating tile. Seed is derived
+  from the current spec so the pattern is stable across idle re-renders.
+- **Trim plank at top** — the leftover space above the last full plank is
+  now filled with a trim plank (field-cut on site). Drawn as a full 148 mm
+  plank extending above the infill top; the top rail is painted AFTER the
+  planks so the overhang is naturally clipped. A dashed amber cut-line and a
+  `✂ Trim plank — N mm visible · cut on site` badge mark the trim position.
+- **Bay-width and fence-height dimension lines** — architectural-style
+  dimensions outside the posts (horizontal above for bay width, vertical on
+  the right for height) with extension lines, arrowheads, and boxed labels.
+- **Board count update** — `boardsPerBay` now rounds up to include the trim
+  plank. The totals strip shows an additional line "Includes N trim plank(s)
+  — field-cut on site" when a trim is present. The Request-a-Quote spec
+  preview also surfaces `Boards / bay` and `Total boards` with a trim
+  breakdown.
+- **SVG layer order** — rails are now drawn in the correct paint order
+  (bottom rail before planks, top rail after planks) so the trim plank's
+  overhang is covered cleanly.
+
+### Removed
+
+- `Powered by Gemini` eyebrow tag next to the "Render in a scene" heading
+  in the configurator — the render is still Gemini-backed, the tag just
+  wasn't earning its pixels.
+
 ## [0.9.0] - 2026-04-21
 
 ### Added — WPC Deck Collection sales sheet (/wpc-deck/)

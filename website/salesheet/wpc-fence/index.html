@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/141.jpg">
 
 <style>
 /* ==========================================================================
@@ -549,7 +550,12 @@ section + section { padding-top: 0; }
   transition: transform 0.2s ease;
 }
 .swatch:hover { transform: translateY(-3px); }
-.swatch-chip { height: 140px; }
+.swatch-chip {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .swatch-body { padding: var(--space-md); }
 .swatch-body h6 { font-size: var(--fs-body-sm); font-weight: 700; }
 .swatch-body .code {
@@ -1515,14 +1521,14 @@ section + section { padding-top: 0; }
       <p>The standard Leka WPC palette covers the modern outdoor-living spectrum. Custom RAL or Pantone matches are supported subject to minimum order quantity. Physical sample boards available on request.</p>
     </div>
     <div class="palette">
-      <div class="swatch"><div class="swatch-chip" style="background:#2B2B2B url(images/swatches/lk-01.jpg) center/cover"></div><div class="swatch-body"><h6>Charcoal Black</h6><div class="code">LK-01</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#3F3F44 url(images/swatches/lk-02.jpg) center/cover"></div><div class="swatch-body"><h6>Ancient Wood</h6><div class="code">LK-02</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#8C8C90 url(images/swatches/lk-03.jpg) center/cover"></div><div class="swatch-body"><h6>Light Grey</h6><div class="code">LK-03</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#E8DDC5 url(images/swatches/lk-04.jpg) center/cover"></div><div class="swatch-body"><h6>Sand White</h6><div class="code">LK-04</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#A06A3A url(images/swatches/lk-05.jpg) center/cover"></div><div class="swatch-body"><h6>Teak</h6><div class="code">LK-05</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#6B4226 url(images/swatches/lk-06.jpg) center/cover"></div><div class="swatch-body"><h6>Mahogany</h6><div class="code">LK-06</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#4A2820 url(images/swatches/lk-07.jpg) center/cover"></div><div class="swatch-body"><h6>Rosewood</h6><div class="code">LK-07</div></div></div>
-      <div class="swatch"><div class="swatch-chip" style="background:#8B5A2B url(images/swatches/lk-08.jpg) center/cover"></div><div class="swatch-body"><h6>Maple</h6><div class="code">LK-08</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#2B2B2B; background-image:url('images/swatches/lk-01.jpg')"></div><div class="swatch-body"><h6>Charcoal Black</h6><div class="code">LK-01</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#3F3F44; background-image:url('images/swatches/lk-02.jpg')"></div><div class="swatch-body"><h6>Ancient Wood</h6><div class="code">LK-02</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#8C8C90; background-image:url('images/swatches/lk-03.jpg')"></div><div class="swatch-body"><h6>Light Grey</h6><div class="code">LK-03</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#E8DDC5; background-image:url('images/swatches/lk-04.jpg')"></div><div class="swatch-body"><h6>Sand White</h6><div class="code">LK-04</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#A06A3A; background-image:url('images/swatches/lk-05.jpg')"></div><div class="swatch-body"><h6>Teak</h6><div class="code">LK-05</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#6B4226; background-image:url('images/swatches/lk-06.jpg')"></div><div class="swatch-body"><h6>Mahogany</h6><div class="code">LK-06</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#4A2820; background-image:url('images/swatches/lk-07.jpg')"></div><div class="swatch-body"><h6>Rosewood</h6><div class="code">LK-07</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background-color:#8B5A2B; background-image:url('images/swatches/lk-08.jpg')"></div><div class="swatch-body"><h6>Maple</h6><div class="code">LK-08</div></div></div>
     </div>
   </div>
 </section>
