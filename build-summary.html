@@ -91,16 +91,47 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.9.1 — WPC Fence palette + configurator polish (per-plank random grain, trim plank calc, dimension lines). Rebased on top of v0.9.0 (/wpc-deck/ launch).</p>
+  <p style="color: var(--muted); margin: 0;">v0.9.2 — WPC Fence configurator layout polish (trim plank clipped inside frame, render header compacted, mobile order fixed).</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.9.1</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-21</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.9.2</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-22</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-fence/">salesheet.leka.studio/wpc-fence/</a></div></div>
+    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-fence/configurator/">salesheet.leka.studio/wpc-fence/configurator/</a></div></div>
   </div>
+
+  <h2>What shipped in 0.9.2 — WPC Fence Configurator layout polish</h2>
+
+  <h3>Trim plank fits inside the aluminium frame</h3>
+  <ul class="changes">
+    <li>Trim plank is now drawn at exactly its <code>trimVisibleMm</code> height (flush with the bottom of the top rail) instead of the full 148 mm leaning on the rail to clip. Fixes the visible overhang that appeared at small trim heights (e.g. 20 mm at 4 cm gap).</li>
+    <li>The dashed amber cut-line still marks the on-site trim edge.</li>
+    <li>Removed the redundant "✂ Trim plank — N mm visible" SVG badge — the cut-line + the totals-strip "Includes N trim plank(s)" line carry the message without cluttering the drawing.</li>
+  </ul>
+
+  <h3>Render card header compacted</h3>
+  <ul class="changes">
+    <li>"Render scene" button + helper text moved into the <code>.render-head</code> (flex, space-between) so the whole top row of the render card fits on one line, freeing vertical space above the scene picker and the result area.</li>
+  </ul>
+
+  <h3>Mobile order fix</h3>
+  <ul class="changes">
+    <li>On ≤ 860 px viewports the cards now stack <strong>live preview → configure panel → render-in-a-scene</strong>. Implemented via <code>display: contents</code> on <code>.config-main</code> and CSS <code>order</code> on the three flattened children — the desktop two-column grid is untouched.</li>
+  </ul>
+
+  <h3>Files touched (0.9.2)</h3>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>website/salesheet/wpc-fence/configurator/index.html</code></td><td>Trim-plank clip fix, <code>.render-head</code> flex header, mobile order rules, <code>.preview-live</code> / <code>.preview-render</code> marker classes</td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.9.2] entry</td></tr>
+      <tr><td><code>build-summary.html</code></td><td>Updated for 0.9.2</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.9.1 (WPC Fence palette fix + configurator polish)</summary>
 
   <h2>What shipped in 0.9.1 — WPC Fence palette fix + configurator polish</h2>
 
@@ -130,6 +161,8 @@
       <tr><td><code>build-summary.html</code></td><td>Updated for 0.9.1</td></tr>
     </tbody>
   </table>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.9.0 (WPC Deck Collection sales sheet)</summary>
 
