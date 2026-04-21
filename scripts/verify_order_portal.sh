@@ -29,10 +29,13 @@ check "Health"              "curl -s ${BASE}/_healthz"          "ok"
 
 echo ""
 echo "==> Auth gate"
-check "/auth/login renders"           "curl -sI ${BASE}/auth/login"            "200"
-check "/order/new → redirect"         "curl -sI ${BASE}/order/new"             "302"
-check "/admin/orders → redirect"      "curl -sI ${BASE}/admin/orders"          "302"
-check "/api/order/catalog → 401"      "curl -sI ${BASE}/api/order/catalog"     "401"
+# Use real GET for auth-gated routes (HEAD triggers the JSON-401 branch).
+status_head() { curl -sI "$1" | head -1; }
+status_get()  { curl -s -o /dev/null -w "HTTP %{http_code}\n" -H "Accept: text/html" "$1"; }
+check "/auth/login renders"           "status_head ${BASE}/auth/login"         "200"
+check "/order/new → redirect"         "status_get ${BASE}/order/new"           "302"
+check "/admin/orders → redirect"      "status_get ${BASE}/admin/orders"        "302"
+check "/api/order/catalog → 401"      "status_head ${BASE}/api/order/catalog"  "401"
 
 echo ""
 echo "==> Legacy /api/quote still works"
