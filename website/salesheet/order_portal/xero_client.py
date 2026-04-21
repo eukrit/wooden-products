@@ -265,32 +265,28 @@ def create_invoice(
 
     items: [{sku, name, quantity, unit_price_thb, tax_type?}]
 
-    Resilience:
-      - If Xero rejects an ItemCode (not found / wrong Item config), retries
-        once with ItemCode stripped — the invoice still creates cleanly using
-        Description + AccountCode only. The SKU is preserved in the
-        Description like "[LKP-DK-H-148-22] Signature Deck Board ..." for
-        traceability.
-      - If Xero rejects the currency (e.g. org isn't subscribed to THB),
-        retries once without CurrencyCode so Xero uses the org default.
-      - If both, strips both.
+    Design: the portal does NOT maintain a per-SKU Item in Xero. Every
+    line goes in with the default AccountCode (env XERO_DEFAULT_ACCOUNT_CODE,
+    default "200") and the SKU prefixed on the Description like
+    "[LKP-DK-H-148-22] Signature Deck Board 148 x 22". This avoids the
+    'Item code not valid' validation error and keeps Xero setup simple.
+
+    Safety net: if Xero rejects the CurrencyCode (org not subscribed),
+    retries once without CurrencyCode so Xero uses the org default.
     """
     account_code = os.environ.get("XERO_DEFAULT_ACCOUNT_CODE", "200")
 
-    def _build_lines(include_item_code: bool) -> list[dict[str, Any]]:
+    def _build_lines() -> list[dict[str, Any]]:
         out: list[dict[str, Any]] = []
         for it in items:
-            desc = it["name"]
-            if not include_item_code:
-                desc = f"[{it['sku']}] {desc}"
+            sku = it.get("sku", "")
+            desc = f"[{sku}] {it['name']}" if sku else it["name"]
             line: dict[str, Any] = {
                 "Description": desc,
                 "Quantity": float(it["quantity"]),
                 "UnitAmount": float(it["unit_price_thb"]),
                 "AccountCode": account_code,
             }
-            if include_item_code:
-                line["ItemCode"] = it["sku"]
             if tracking_category and tracking_option:
                 line["Tracking"] = [{"Name": tracking_category, "Option": tracking_option}]
             if it.get("tax_type"):
@@ -298,13 +294,13 @@ def create_invoice(
             out.append(line)
         return out
 
-    def _build_payload(line_items: list[dict[str, Any]], include_currency: bool) -> dict[str, Any]:
+    def _build_payload(include_currency: bool) -> dict[str, Any]:
         invoice: dict[str, Any] = {
             "Type": "ACCREC",
             "Contact": {"ContactID": contact_id},
             "Date": datetime.now(timezone.utc).date().isoformat(),
             "DueDate": (datetime.now(timezone.utc).date() + timedelta(days=30)).isoformat(),
-            "LineItems": line_items,
+            "LineItems": _build_lines(),
             "Status": status.upper(),
             "Reference": reference,
         }
@@ -312,34 +308,21 @@ def create_invoice(
             invoice["CurrencyCode"] = currency_code.upper()
         return {"Invoices": [invoice]}
 
-    # Try 1: full invoice with ItemCode + currency
     try:
-        created = _request("POST", "/Invoices", json_body=_build_payload(_build_lines(True), True))
+        created = _request("POST", "/Invoices", json_body=_build_payload(True))
         invoice_id = created["Invoices"][0]["InvoiceID"]
-        log.info("Created Xero Invoice %s ref=%s (full)", invoice_id, reference)
+        log.info("Created Xero Invoice %s ref=%s", invoice_id, reference)
         return invoice_id
     except XeroError as exc:
         err_text = str(exc)
-        log.warning("Xero invoice first attempt failed: %.300s", err_text)
-
-    strip_item_code = "Item code" in err_text and "not valid" in err_text
-    drop_currency = "is not subscribed to currency" in err_text or "CurrencyCode" in err_text
-    if not (strip_item_code or drop_currency):
-        # Not a pattern we can recover from — surface the original error.
-        raise XeroError(err_text)
-
-    log.info("Retrying Xero invoice %s without %s",
-             reference,
-             ", ".join(x for x, flag in [("ItemCode", strip_item_code),
-                                          ("CurrencyCode", drop_currency)] if flag))
-    created = _request(
-        "POST",
-        "/Invoices",
-        json_body=_build_payload(_build_lines(not strip_item_code), not drop_currency),
-    )
-    invoice_id = created["Invoices"][0]["InvoiceID"]
-    log.info("Created Xero Invoice %s ref=%s (fallback)", invoice_id, reference)
-    return invoice_id
+        if "is not subscribed to currency" in err_text or "CurrencyCode" in err_text:
+            log.warning("Currency %s not subscribed; retrying without CurrencyCode",
+                        currency_code)
+            created = _request("POST", "/Invoices", json_body=_build_payload(False))
+            invoice_id = created["Invoices"][0]["InvoiceID"]
+            log.info("Created Xero Invoice %s ref=%s (org default currency)", invoice_id, reference)
+            return invoice_id
+        raise
 
 
 def update_invoice_status(invoice_id: str, status: str) -> None:
