@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.2] - 2026-04-22
+
+### Fixed — WPC Fence Configurator — layout polish
+
+- **Trim plank no longer overflows the aluminium top rail.** Previously
+  the trim plank was drawn at full 148 mm height above `infillTop`,
+  relying on the top rail to clip the overhang — which meant the plank
+  visibly extended above the frame whenever the trim visible height was
+  small (e.g. 20 mm at a 4 cm board gap). Now the trim plank is drawn
+  at exactly `trimVisibleMm` tall, flush with the bottom of the top
+  rail, so it always stays inside the frame. The amber dashed cut-line
+  still marks the installer's on-site trim.
+- **Render card header.** The "Render scene" button and its helper text
+  moved into the `<h5>` header as a flex row (`.render-head`), freeing
+  a whole row of vertical space above the scene picker and the render
+  result.
+- **Removed the busy "✂ Trim plank — N mm visible" SVG callout.** The
+  dashed cut-line on the plank itself + the "Includes N trim plank(s)"
+  line in the totals strip carry the message without crowding the
+  drawing, especially at small trim heights.
+
+### Changed — Mobile configurator order
+
+- On ≤ 860 px viewports the configurator now stacks **live preview →
+  configure panel → render-in-a-scene**, instead of preview → render →
+  configure. Implemented via `display: contents` on `.config-main` + CSS
+  `order` on the flattened children, so the desktop two-column grid is
+  untouched.
+
 ## [0.9.1] - 2026-04-21
 
 ### Fixed — WPC Fence sales page — palette + configurator polish
