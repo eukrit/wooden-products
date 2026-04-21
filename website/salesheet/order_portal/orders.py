@@ -146,7 +146,9 @@ def order_new():
     _ref(order_id).set(draft)
     _write_event(order_id, "created", {})
     log.info("Created draft %s by %s", order_id, g.user.get("email"))
-    if request.method == "POST" or request.accept_mimetypes.best != "text/html":
+    # POST = JS client (Alpine.js fetch), expects JSON. GET = browser navigation
+    # (e.g. window.location.href after login), expects a 302 to the detail page.
+    if request.method == "POST":
         return jsonify({"ok": True, "order_id": order_id, "redirect_to": f"/order/{order_id}"})
     return redirect(f"/order/{order_id}")
 
