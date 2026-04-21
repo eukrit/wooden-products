@@ -91,16 +91,397 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">Multi-page WPC Profiles Library — v0.6.1 with Gemini-cleaned studio photos + inline SVG cross-sections</p>
+  <p style="color: var(--muted); margin: 0;">v0.8.1 — fuzzy-matcher aliases (8→14 SKUs auto-price) + quotation pricing importer for non-Aolo vendors.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.6.1</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-19</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.8.1</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-profile/">salesheet.leka.studio/wpc-profile/</a></div></div>
+    <div class="meta-card"><div class="lbl">Coverage</div><div class="val">14 of 49 taxonomy SKUs priced</div></div>
   </div>
+
+  <h2>What shipped in 0.8.1 — Extra catalog coverage</h2>
+
+  <div class="callout">
+    Two small wins on top of the 6-phase delivery. <strong>Fuzzy-matcher</strong> now aliases
+    <code>WG↔2D</code>/<code>EM↔3D</code> so Heritage taxonomy SKUs resolve to the
+    SKU-map's older 2D/3D naming (8 → 14 SKUs auto-price). <strong>Quotation importer</strong>
+    reads <code>data/parsed/quotations.json</code>, converts 10 priced line items (leo-nature,
+    qihome, chinese-teak-vendor, sentai) to THB via live frankfurter + 3% buffer,
+    and upserts to Firestore <code>catalog_pricing/{sku}</code> as admin overrides.
+  </div>
+
+  <h3>Fuzzy-matcher coverage lift</h3>
+  <table>
+    <thead><tr><th>Taxonomy SKU</th><th>Resolves to</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>LKH-DK-H-140-25-WG</code></td><td><code>LKH-DK-140-25-2D</code></td><td>new (WG→2D alias)</td></tr>
+      <tr><td><code>LKH-DK-H-140-25-EM</code></td><td><code>LKH-DK-140-25-3D</code></td><td>new (EM→3D alias)</td></tr>
+      <tr><td><code>LKH-DK-H-140-20-WG</code></td><td><code>LKH-DK-140-20-2D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-DK-H-140-20-EM</code></td><td><code>LKH-DK-140-20-3D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-CL-F-148-21-WG</code></td><td><code>LKH-CL-148-21-2D</code></td><td>new</td></tr>
+      <tr><td><code>LKH-CL-F-148-21-EM</code></td><td><code>LKH-CL-148-21-3D</code></td><td>new</td></tr>
+    </tbody>
+  </table>
+
+  <h3><code>scripts/import_quotation_pricing.py</code> (new, dry-run by default)</h3>
+  <ul class="changes">
+    <li>Reads <code>data/parsed/quotations.json</code> → extracts 10 priced lines across 5 non-Aolo vendors.</li>
+    <li>Converts USD/CNY → THB via <code>order-portal-config.json</code>'s frankfurter source + 3% buffer.</li>
+    <li>Writes to <code>catalog_pricing/{sku}</code> with full traceability: <code>source: "quotation:QC…"</code>, <code>source_currency</code>, <code>source_unit_price</code>, <code>fx_rate_used</code>, <code>fx_source</code>.</li>
+    <li>Usage: <code>python scripts/import_quotation_pricing.py</code> (dry-run), <code>--write</code> to push, <code>--skus</code> for whitelist.</li>
+    <li><strong>Known gap</strong>: these SKUs aren't in <code>leka-taxonomy.json</code> yet. Running <code>--write</code> prepopulates overrides but the order-portal catalog endpoint won't surface them until taxonomy entries are added — separate follow-up.</li>
+  </ul>
+
+  <h3>Dry-run output (live FX 2026-04-20)</h3>
+  <pre style="background:var(--card);padding:12px;border-radius:8px;font-size:12px;overflow:auto">FX: 1 USD = 33.04 THB   1 CNY = 4.85 THB   (frankfurter, +3% buffer)
+
+leo-nature-teak              leo-nature             27.00 USD    892.01 THB
+leo-nature-oak-natural       leo-nature             33.00 USD   1090.23 THB
+leo-nature-oak-glacial       leo-nature             36.00 USD   1189.34 THB
+qihome-cherry                qihome                295.00 CNY   1429.48 THB
+cn-burmese-teak-a            chinese-teak-vendor   328.00 CNY   1589.39 THB
+cn-3layer-teak-locking       chinese-teak-vendor   328.00 CNY   1589.39 THB
+cn-multilayer-teak-birch     chinese-teak-vendor   268.00 CNY   1298.65 THB
+cn-multilayer-teak-snaplock  chinese-teak-vendor   280.00 CNY   1356.80 THB
+cn-new-3layer-teak           chinese-teak-vendor   272.00 CNY   1318.03 THB
+sentai-stgj68                sentai                  1.74 USD     57.48 THB</pre>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.8.0 (Production deploy wiring, Phase 6)</summary>
+
+  <h2>What shipped in 0.8.0 — Production deploy wiring (Phase 6)</h2>
+
+  <div class="callout">
+    Final-phase wiring: one idempotent setup script provisions every secret + IAM binding, cloudbuild.yaml
+    references the full secrets list, a verify script smoke-tests both legacy and new routes post-deploy.
+    Merge → Cloud Build deploys → run the verify script → sign in.
+  </div>
+
+  <h3>New scripts</h3>
+  <table>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>scripts/setup_order_portal_secrets.sh</code></td><td>Idempotent GCP setup. Creates secrets, grants IAM, prints remaining manual steps.</td></tr>
+      <tr><td><code>scripts/verify_order_portal.sh</code></td><td>Post-deploy smoke tests. Legacy routes + auth gate + /api/quote regression check.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>cloudbuild.yaml — final secret + env wiring</h3>
+  <ul class="changes">
+    <li>New env vars: <code>SLACK_ORDER_CHANNEL</code>, <code>FIREBASE_PROJECT_ID</code>, <code>GCP_PROJECT_ID</code>, <code>XERO_TOKENS_SECRET_NAME</code>, <code>XERO_DEFAULT_ACCOUNT_CODE</code>.</li>
+    <li>New secrets referenced: <code>salesheet-flask-session-key</code>, <code>firebase-web-api-key</code>, <code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code> (the last four shared with accounting-automation).</li>
+  </ul>
+
+  <h3>Deploy order (maintainer runbook)</h3>
+  <ol class="changes">
+    <li><code>bash scripts/setup_order_portal_secrets.sh</code> (prompts for Firebase Web API Key).</li>
+    <li>Firebase console → enable Email/Password + Google, add <code>salesheet.leka.studio</code> to Authorized domains.</li>
+    <li>Slack: <code>/invite @ai_agents</code> in <code>#orders-wood-products</code>.</li>
+    <li>Merge this PR → Cloud Build auto-deploys.</li>
+    <li><code>bash scripts/verify_order_portal.sh</code> to confirm regression-safe deploy.</li>
+    <li>Sign in at <a href="https://salesheet.leka.studio/auth/login">https://salesheet.leka.studio/auth/login</a> with a <code>@goco.bz</code> Google account → lands on <code>/admin/orders</code>.</li>
+  </ol>
+
+  <h3>6-phase recap</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Version</th><th>Shipped</th></tr></thead>
+    <tbody>
+      <tr><td>0 — Config</td><td>0.7.0</td><td>Frozen <code>order-portal-config.json</code> v1.0.0</td></tr>
+      <tr><td>1 — Auth</td><td>0.7.1</td><td>Firebase Email + Google sign-in, role seeding</td></tr>
+      <tr><td>2 — Catalog</td><td>0.7.2</td><td>Live frankfurter FX + landed cost + 4 catalog endpoints</td></tr>
+      <tr><td>3 — Builder</td><td>0.7.3</td><td>Alpine.js cart + debounced Firestore autosave + GM slider</td></tr>
+      <tr><td>4 — Submit</td><td>0.7.4</td><td>SO-WD-{yyyy}-{NNNN}, Xero DRAFT, Slack Block Kit, FX snapshot</td></tr>
+      <tr><td>5 — Admin</td><td>0.7.5</td><td>List + detail + confirm/cancel/retry/act-as with full audit log</td></tr>
+      <tr><td>6 — Deploy</td><td><strong>0.8.0 (this)</strong></td><td>Setup + verify scripts, cloudbuild secrets wired</td></tr>
+    </tbody>
+  </table>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.5 (Admin dashboard, Phase 5)</summary>
+
+  <h2>What shipped in 0.7.5 — Admin dashboard (Phase 5)</h2>
+
+  <div class="callout">
+    Full admin surface at <code>/admin/orders</code> with filters + detail view + action bar.
+    Every button is live-wired: confirm flips Xero to AUTHORISED and posts a threaded Slack reply;
+    cancel voids the invoice; retry-submit re-runs the degraded-path flow; act-as starts a dual-uid
+    impersonation that every audit event records. No secrets needed for the UI to render — Xero
+    calls gate on <code>xero_client.is_configured()</code>.
+  </div>
+
+  <h3>New admin routes</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Verb</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>/admin/orders</code></td><td>GET</td><td>Filtered list (status, user, date range) — up to 200 most recent</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;</code></td><td>GET</td><td>Detail + full audit log + action bar</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/confirm</code></td><td>POST</td><td>submitted → confirmed · Xero → AUTHORISED · Slack thread ✅</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/cancel</code></td><td>POST</td><td>any → cancelled · Xero → VOIDED · Slack thread ❌</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/retry-submit</code></td><td>POST</td><td>Re-run Phase-4 submit for degraded drafts</td></tr>
+      <tr><td><code>/admin/orders/&lt;id&gt;/act-as</code></td><td>POST</td><td>Start impersonating the order creator</td></tr>
+      <tr><td><code>/admin/end-act-as</code></td><td>POST</td><td>Clear impersonation</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Templates (reuse leka.css tokens)</h3>
+  <ul class="changes">
+    <li><code>templates/admin/orders_list.html</code> — sticky filter bar + pill status column + 7-column table.</li>
+    <li><code>templates/admin/order_detail.html</code> — two-column detail with customer / lines / totals / Xero / Slack IDs on left, reverse-chronological audit log on right. Action bar at the top auto-hides buttons that don't apply to the current status.</li>
+  </ul>
+
+  <h3>Audit invariant</h3>
+  <p>Every admin mutation writes an <code>order_events</code> sub-doc with <code>actor_uid</code> (real admin from <code>g.user</code>) and <code>acted_as_uid</code> (from session if impersonating). The <code>base.html</code> impersonation banner from Phase 1 now becomes active as soon as <code>/act-as</code> is called.</p>
+
+  <h3>Xero resilience</h3>
+  <p>Confirm and cancel wrap the Xero state-change in try/except. On failure, <code>xero_confirm_error</code> / <code>xero_cancel_error</code> are persisted, the Slack threaded reply includes the error, and the local status transition still completes so admin isn't blocked by Xero outages.</p>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.4 (Submit flow, Phase 4)</summary>
+
+  <h2>What shipped in 0.7.4 — Submit flow (Phase 4)</h2>
+
+  <div class="callout">
+    <code>POST /order/&lt;id&gt;/submit</code> runs a 6-step flow: validate → allocate SO-WD-2026-NNNN via atomic
+    Firestore transaction → snapshot live FX onto every line → create Xero DRAFT invoice (with auto-created
+    Items + customer fallback) → post Block Kit to <code>#orders-wood-products</code> → mark submitted.
+    Partial failures return HTTP 202 with <code>{degraded:true}</code>; order stays draft for admin retry.
+  </div>
+
+  <h3>New modules</h3>
+  <table>
+    <thead><tr><th>File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>order_portal/xero_client.py</code></td><td>Lean vendored copy of accounting-automation's Xero client. Shared <code>xero-tokens</code> secret. <code>upsert_contact</code>, <code>ensure_item</code>, <code>create_invoice</code>, <code>update_invoice_status</code>.</td></tr>
+      <tr><td><code>order_portal/slack_orders.py</code></td><td>Block Kit composer. <code>post_new_order()</code> + <code>post_threaded_reply()</code>. Channel from <code>SLACK_ORDER_CHANNEL</code> env or config.</td></tr>
+      <tr><td><code>order_portal/order_submit.py</code></td><td>The 6-step submit handler. Transactional order number counter. FX snapshot per line.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Order-number counter (atomic)</h3>
+  <pre style="background:var(--card);padding:10px 14px;border-radius:6px;overflow:auto;font-size:12px">
+counters/order_number  →  { year: 2026, next: 1 }
+First order:  SO-WD-2026-0001
+Format:       {prefix}{year}-{seq:04d}   (from order-portal-config.json)
+Year rollover resets seq to 1 automatically.</pre>
+
+  <h3>Degraded-path logic</h3>
+  <ul class="changes">
+    <li>Xero creds missing → skip invoice, still post Slack (with "Xero draft pending" in context).</li>
+    <li>Xero call fails → order stays draft; response is HTTP 202 + <code>{xero_error: "..."}</code>.</li>
+    <li>Xero customer lookup 404 → auto-fallback to cached "Wood Product Customer" contact (cached once in <code>counters/xero_fallback_contact_id</code>).</li>
+    <li>Slack call fails → order stays draft; response is HTTP 202 + <code>{slack_error: "..."}</code>.</li>
+    <li>Both fail → order stays draft with both errors persisted on the doc for retry.</li>
+  </ul>
+
+  <h3>Still manual before live</h3>
+  <ol class="changes">
+    <li>Phase 6 wires Xero secrets (<code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code>) — reuse accounting-automation values; grant salesheet-leka SA accessor role.</li>
+    <li>Invite bot to channel: <code>/invite @ai_agents</code> in <code>#orders-wood-products</code>.</li>
+    <li>Phase 5 adds admin-side confirm (DRAFT → AUTHORISED) and cancel (→ VOIDED) with threaded Slack replies.</li>
+  </ol>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.3 (Order builder UI, Phase 3)</summary>
+
+  <h2>What shipped in 0.7.3 — Order builder UI (Phase 3)</h2>
+
+  <div class="callout">
+    Two-column <code>/order/&lt;id&gt;</code> page powered by Alpine.js v3. Left: accordion catalog
+    (decking expanded by default). Right sticky: customer form + cart with <code>−/qty/+</code>
+    steppers, per-line GM slider (refuses below 25% for sales, 0% for admin), subtotal/VAT/grand total.
+    Debounced 500 ms PATCH autosave. Submit button disabled until all validation passes.
+  </div>
+
+  <h3>New routes</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Verb</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>/order/new</code></td><td>GET/POST</td><td>Create draft in Firestore, redirect to <code>/order/&lt;id&gt;</code></td></tr>
+      <tr><td><code>/order/&lt;id&gt;</code></td><td>GET</td><td>Render the Jinja + Alpine builder</td></tr>
+      <tr><td><code>/order/&lt;id&gt;.json</code></td><td>GET</td><td>Current draft state for client re-hydration</td></tr>
+      <tr><td><code>/order/&lt;id&gt;</code></td><td>PATCH</td><td>Debounced autosave — allow-lists customer fields, replaces line_items + totals</td></tr>
+      <tr><td><code>/order/&lt;id&gt;/validate</code></td><td>POST</td><td>Returns <code>{ok, errors[]}</code> for the submit-button gate</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Validation rules</h3>
+  <ul class="changes">
+    <li>Customer: name, email (regex), phone, company, billing_address, project_type all required.</li>
+    <li><code>project_type</code> ∈ {residential, hospitality, commercial, institutional, other}.</li>
+    <li>≥ 1 line item, each with qty &gt; 0 and unit_price &gt; 0.</li>
+    <li>Per-line GM ≥ role floor (25% for <code>external_sales</code>, 0% for <code>admin</code>).</li>
+    <li>Lines without a resolved landed cost block submission with a clear message.</li>
+  </ul>
+
+  <h3>New files</h3>
+  <table>
+    <thead><tr><th>File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>order_portal/orders.py</code></td><td>5 new routes + Firestore CRUD + <code>_validate_submit()</code></td></tr>
+      <tr><td><code>templates/order/detail.html</code></td><td>Jinja + Alpine shell (two-column grid, sticky cart, add-to-cart modal)</td></tr>
+      <tr><td><code>static/order/app.js</code></td><td><code>orderBuilder()</code> Alpine component (242 lines)</td></tr>
+      <tr><td><code>static/order/order.css</code></td><td>Order-specific layout; reuses <code>leka.css</code> tokens</td></tr>
+      <tr><td><code>Dockerfile</code></td><td>+ <code>COPY static/order static/order</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>UX details</h3>
+  <ul class="changes">
+    <li><strong>FX chip</strong> in the header: live THB/USD rate + source badge (frankfurter / cache / fallback).</li>
+    <li><strong>Save indicator</strong> next to draft title: "Draft" → "Saving…" → "Saved ✓".</li>
+    <li><strong>Unpriced SKUs</strong> show "Price on request" instead of a number; cart line shows a red banner.</li>
+    <li><strong>Add-to-cart modal</strong>: colour picker (8 swatches), finish chips, qty stepper with live m conversion.</li>
+    <li><strong>Admin-only route</strong> <code>POST /admin/api/fx/refresh</code> force-refreshes the FX cache (useful pre-submission).</li>
+  </ul>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.2 (Catalog API + FX, Phase 2)</summary>
+
+  <h2>What shipped in 0.7.2 — Catalog API + FX (Phase 2)</h2>
+
+  <div class="callout">
+    Live FX from <strong>frankfurter.app</strong> (ECB mid-market, free, no API key) + 3% buffer for Thai bank spread.
+    Sample: <code>LKP-DK-H-140-23</code> — USD 2.55/m × live 33.04 THB/USD × 1.35 landed multiplier
+    = <strong>113.73 THB/m landed</strong> → default unit 164.91 → <strong>31% GM</strong>. 8 of 49 SKUs auto-price
+    from the SKU-map; the rest await admin overrides in <code>catalog_pricing/{sku}</code> (Phase 5).
+  </div>
+
+  <h3>New endpoints</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Auth</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>GET /api/order/catalog</code></td><td>any authed</td><td>Category-grouped catalog, <strong>no vendor_code</strong></td></tr>
+      <tr><td><code>GET /admin/api/catalog</code></td><td>admin only</td><td>Same + <code>vendor_code</code>, USD cost, sku_map match info</td></tr>
+      <tr><td><code>GET /api/order/fx</code></td><td>any authed</td><td>Current FX snapshot (rate, source, ecb_mid, buffer)</td></tr>
+      <tr><td><code>POST /admin/api/fx/refresh</code></td><td>admin only</td><td>Force-refresh the 60-min FX cache</td></tr>
+    </tbody>
+  </table>
+
+  <h3>New modules under <code>website/salesheet/order_portal/</code></h3>
+  <table>
+    <thead><tr><th>File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>fx.py</code></td><td>Live frankfurter.app → 60min cache → apply buffer → fallback on API error</td></tr>
+      <tr><td><code>pricing.py</code></td><td><code>landed_cost</code>, <code>default_unit_price</code>, <code>gm_percent</code>, <code>validate_line_gm</code> + SKU fuzzy-match</td></tr>
+      <tr><td><code>catalog_api.py</code></td><td>4 new routes above</td></tr>
+    </tbody>
+  </table>
+
+  <h3>SKU fuzzy-match</h3>
+  <ul class="changes">
+    <li>Taxonomy uses <code>LKP-DK-H-140-23</code> (with H/S/G sub-type). SKU-map uses <code>LKP-DK-140-23</code> (no sub-type).</li>
+    <li><code>lookup_sku_entry()</code> strips the single-letter sub-type segment, handles wall-panel <code>V</code> → <code>-HC</code>, and trailing finish suffixes (<code>-WG</code>/<code>-EM</code>/<code>-KC</code>/<code>-ST</code>/<code>-2D</code>/<code>-3D</code>).</li>
+    <li>Result: 8/49 taxonomy SKUs resolve automatically — all Premium Co-Ex. Heritage, Shield, Structure, DIY wait for admin overrides.</li>
+  </ul>
+
+  <h3>Config drift (frozen v1.0.0 amended)</h3>
+  <ul class="changes">
+    <li>FX provider swapped from <strong>Bank of Thailand</strong> to <strong>frankfurter.app</strong> — no API key, no GCP secret, simpler ops.</li>
+    <li>Added <code>fx_buffer_pct = 3.0</code> to approximate the Thai bank spread over ECB mid.</li>
+    <li>Removed <code>fx_rate_type</code>, <code>fx_lookback_days</code> (irrelevant for frankfurter).</li>
+    <li>Fallback 36.5 THB/USD unchanged.</li>
+  </ul>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.1 (Firebase auth, Phase 1)</summary>
+
+  <h2>What shipped in 0.7.1 — Firebase auth (Phase 1)</h2>
+
+  <div class="callout">
+    Email/Password + Google sign-in via Firebase Auth. <code>@goco.bz</code> → <code>admin</code>, other domains → <code>external_sales</code>.
+    Login page renders a yellow "config pending" banner if <code>FIREBASE_WEB_API_KEY</code> secret isn't provisioned — so this PR is safe to merge
+    ahead of the Firebase console setup. Phase 6 adds the secret + flips the banner off.
+  </div>
+
+  <h3><code>website/salesheet/order_portal/</code> — new Flask Blueprint</h3>
+  <table>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>__init__.py</code></td><td>Blueprint registration + module imports</td></tr>
+      <tr><td><code>config.py</code></td><td>Reads <code>order-portal-config.json</code> once at startup; <code>auth()</code>, <code>pricing()</code> accessors</td></tr>
+      <tr><td><code>firestore_client.py</code></td><td>Singleton Firestore client for <code>products-wood</code> db (ADC)</td></tr>
+      <tr><td><code>auth.py</code></td><td>Firebase Admin token verify, <code>@require_auth</code>, <code>@require_role</code>, <code>users/{uid}</code> seeding</td></tr>
+      <tr><td><code>placeholders.py</code></td><td>Phase-1 stubs for <code>/order/new</code> + <code>/admin/orders</code> (replaced in Phase 3 + 5)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Templates — share <code>/wpc-profile/css/leka.css</code> tokens</h3>
+  <ul class="changes">
+    <li><code>templates/layout/base.html</code> — shared shell with portal nav + user chip + impersonation banner.</li>
+    <li><code>templates/auth/login.html</code> — Google button + Email/Password form + disabled Microsoft tile. Firebase JS SDK v10 modular.</li>
+    <li><code>templates/auth/forbidden.html</code> — 403 page for role mismatch.</li>
+  </ul>
+
+  <h3>Server + build</h3>
+  <ul class="changes">
+    <li><code>server.py</code> — registers the blueprint <strong>before</strong> the static catch-all so <code>/auth/*</code>, <code>/order/*</code>, <code>/admin/*</code> match first. Secure cookies, 12h session lifetime.</li>
+    <li><code>requirements.txt</code> — adds <code>firebase-admin</code>, <code>google-cloud-firestore</code>, <code>google-cloud-secret-manager</code>, <code>requests</code>.</li>
+    <li><code>Dockerfile</code> — copies <code>order_portal/</code>, <code>templates/</code>, and <code>data/catalog/</code> into the image.</li>
+    <li><code>cloudbuild.yaml</code> — new <code>stage-config</code> step copies repo-root <code>data/catalog/</code> into the Docker build context. New env vars <code>FIREBASE_PROJECT_ID</code>, <code>GCP_PROJECT_ID</code>, <code>SLACK_ORDER_CHANNEL</code>. No new secrets referenced yet (Phase 6).</li>
+  </ul>
+
+  <h3>Manual setup needed before this ships production-ready</h3>
+  <ol class="changes">
+    <li>Firebase console → link project <code>ai-agents-go</code> → enable Email/Password + Google providers.</li>
+    <li>Authorized domains → add <code>salesheet.leka.studio</code>.</li>
+    <li>IAM on <code>claude@ai-agents-go.iam.gserviceaccount.com</code>:<br>
+      • <code>roles/firebase.sdkAdminServiceAgent</code> (project scope)<br>
+      • <code>roles/datastore.user</code> on Firestore <code>products-wood</code></li>
+    <li>(Phase 6) Create secrets <code>salesheet-flask-session-key</code> + <code>firebase-web-api-key</code> and add to <code>--set-secrets</code>.</li>
+  </ol>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.7.0 (Order Portal config frozen, Phase 0)</summary>
+
+  <h2>What shipped in 0.7.0 — Order Portal config (Phase 0)</h2>
+
+  <div class="callout">
+    Frozen single source of truth. No runtime code touches this yet — Phase 2 (<code>/api/order/catalog</code>) will be the first consumer. Legacy routes (<code>/wpc-fence/</code>, <code>/wpc-profile/</code>, <code>/catalog/</code>, <code>/api/quote</code>, <code>/api/render-scene</code>) are unaffected.
+  </div>
+
+  <h3><code>data/catalog/order-portal-config.json</code> — frozen v1.0.0</h3>
+  <ul class="changes">
+    <li><strong>Order numbers</strong>: <code>SO-WD-{year}-{seq:04d}</code> — first order <code>SO-WD-2026-0001</code>.</li>
+    <li><strong>Slack</strong>: <code>#orders-wood-products</code> (<code>C0AUABRBK41</code>). Bot must be invited via <code>/invite @ai_agents</code>.</li>
+    <li><strong>Xero</strong>: fallback contact <em>"Wood Product Customer"</em>, tracking category <em>Leka-Wood-Products</em>, DRAFT → AUTHORISED → VOIDED.</li>
+    <li><strong>Auth</strong>: Email/Password + Google only for Phase 1 (Microsoft OIDC deferred until Azure AD app is provisioned). <code>@goco.bz</code> → admin; all other domains → external_sales.</li>
+    <li><strong>Pricing</strong>: <code>landed_cost_thb_per_m = sku_map.line_m_price_usd × BoT_FX × 1.35</code>. Default unit price = landed × 1.45. GM floor 25% sales / 0% admin. VAT 7%.</li>
+    <li><strong>FX</strong>: Bank of Thailand TT Selling rate, 60 min in-memory cache, 5-day lookback for weekends/holidays, fallback <code>36.5 THB/USD</code> if <code>BOT_API_CLIENT_ID</code> secret is unset or the API errors.</li>
+  </ul>
+
+  <h3>Plan — remaining phases</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Scope</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>Freeze <code>order-portal-config.json</code></td><td><span class="status ok">this PR</span></td></tr>
+      <tr><td>1</td><td>Firebase Email + Google auth, <code>/auth/login</code>, role seeding</td><td><span class="status warn">next</span></td></tr>
+      <tr><td>2</td><td><code>/api/order/catalog</code> with live BoT FX + landed cost</td><td>pending</td></tr>
+      <tr><td>3</td><td>Cart builder UI, Alpine.js, debounced Firestore autosave</td><td>pending</td></tr>
+      <tr><td>4</td><td>Submit flow — order number, Xero draft invoice, Slack post</td><td>pending</td></tr>
+      <tr><td>5</td><td>Admin dashboard, act-as, confirm/cancel with audit trail</td><td>pending</td></tr>
+      <tr><td>6</td><td>Cloud Build secrets + IAM + production deploy</td><td>pending</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pre-reqs for later phases (no action needed for this PR)</h3>
+  <ul class="changes">
+    <li>Firebase Auth enabled on GCP project <code>ai-agents-go</code> with Email/Password + Google providers. Authorized domain: <code>salesheet.leka.studio</code>.</li>
+    <li>IAM on <code>claude@ai-agents-go.iam.gserviceaccount.com</code>: <code>roles/firebase.sdkAdminServiceAgent</code>, <code>roles/datastore.user</code>, <code>roles/secretmanager.secretAccessor</code> on new secrets.</li>
+    <li>New secrets: <code>salesheet-flask-session-key</code>, <code>firebase-web-api-key</code>, <code>bot-api-client-id</code>. Xero secrets (<code>xero-client-id</code>, <code>xero-client-secret</code>, <code>xero-tenant-id</code>, <code>xero-tokens</code>) reuse the accounting-automation values.</li>
+    <li>BoT API portal registration at <a href="https://apiportal.bot.or.th">apiportal.bot.or.th</a>.</li>
+  </ul>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.6.1 (Gemini 3 Pro image cleanup)</summary>
 
   <h2>What shipped in 0.6.1</h2>
 
@@ -126,6 +507,8 @@
     <li>PDFs re-extracted at 220 DPI for higher source resolution.</li>
     <li>Co-Ex, Heritage, ASA crop coordinates recalibrated per-category to exclude row numbers, vendor codes, Chinese titles, cross-section drawings, and adjacent-row bleed.</li>
   </ul>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.5.0 (Multi-page library launch)</summary>
 

@@ -27,6 +27,8 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+from datetime import timedelta
+
 from flask import Flask, Response, abort, jsonify, request, send_from_directory
 
 logging.basicConfig(
@@ -42,10 +44,35 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 GEMINI_IMAGE_MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image").strip()
 RENDER_DAILY_BUDGET = int(os.environ.get("RENDER_DAILY_BUDGET", "200"))
 RENDER_RATE_LIMIT_S = int(os.environ.get("RENDER_RATE_LIMIT_S", "20"))
+FLASK_SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "").strip()
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 app = Flask(__name__, static_folder=None)
+
+# ---------- Session config (used by /auth/*, /order/*, /admin/*) ----------
+# A random fallback keeps the public site working if the secret isn't set yet
+# during first deploy. Authenticated routes still require a real secret —
+# the fallback is ephemeral (changes on every pod start).
+app.secret_key = FLASK_SECRET_KEY or os.urandom(32)
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    PERMANENT_SESSION_LIFETIME=timedelta(hours=12),
+)
+
+# ---------- Order Portal Blueprint (Phase 1+) ----------
+# Registered BEFORE the static catch-all so /auth/*, /order/*, /admin/*
+# match first. The order portal only loads if its deps are installed;
+# on a fresh pod without Firestore IAM the import itself still succeeds —
+# failures happen at request time with a clear 5xx.
+try:
+    from order_portal import bp as order_portal_bp  # noqa: E402
+    app.register_blueprint(order_portal_bp)
+    log.info("Order portal blueprint registered")
+except Exception as exc:  # pragma: no cover — module import failure is fatal but logged
+    log.exception("Failed to register order portal blueprint: %s", exc)
 
 
 # ---------- Static serving ----------

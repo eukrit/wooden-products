@@ -2,6 +2,375 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.1] - 2026-04-20
+
+### Added — Extra catalog coverage (fuzzy-matcher aliases + quotation importer)
+
+Two small wins on top of the 6-phase delivery to lift catalog coverage.
+
+- **`order_portal/pricing.py::lookup_sku_entry`** — adds `WG ↔ 2D` and
+  `EM ↔ 3D` finish-suffix aliasing. Heritage taxonomy SKUs use `WG`/`EM`;
+  the SKU-map uses `2D`/`3D` (two generations of the same vendor
+  data). Matcher now handles both.
+  - **Coverage: 8 → 14 taxonomy SKUs auto-price from the SKU-map.** New
+    matches: Heritage Deck 140×25 WG/EM, 140×20 WG/EM, Heritage Cladding
+    148×21 WG/EM.
+  - Anhui pricing update (handled offline) will cover the remaining ~35.
+
+- **`scripts/import_quotation_pricing.py` (new)** — one-shot utility to
+  import priced line items from `data/parsed/quotations.json` into
+  Firestore `catalog_pricing/{sku}` as admin pricing overrides.
+  - Reads 10 priced quote lines across 5 non-Aolo vendors (leo-nature,
+    qihome, chinese-teak-vendor, sentai, ks-wood).
+  - Converts each source currency (USD, CNY) to THB via live frankfurter
+    + `fx_buffer_pct` from the config — same FX source the order portal uses.
+  - Default dry-run; `--write` flag pushes to Firestore. `--skus a,b,c`
+    for selective import. `--actor` to customise the updated_by field.
+  - Stores `unit_price_thb` (full retail from the quote) + traceability
+    fields: `source: "quotation:<quote_id>"`, `source_currency`,
+    `source_unit_price`, `fx_rate_used`, `fx_source`, `vendor_id`,
+    `quote_date`.
+  - **Caveat noted in the script header**: these SKUs (e.g.,
+    `leo-nature-teak`, `qihome-cherry`) are not in the Leka taxonomy yet.
+    Importing to `catalog_pricing` prepopulates the override store but
+    the order portal's `/api/order/catalog` won't surface them until
+    they're added to `leka-taxonomy.json` (separate follow-up).
+
+### Dry-run results (live FX captured 2026-04-20)
+
+```
+FX: 1 USD = 33.04 THB   1 CNY = 4.85 THB   (frankfurter, +3% buffer)
+
+SKU                         Vendor                  Source        THB
+leo-nature-teak             leo-nature              27.00 USD     892.01
+leo-nature-oak-natural      leo-nature              33.00 USD    1090.23
+leo-nature-oak-glacial      leo-nature              36.00 USD    1189.34
+qihome-cherry               qihome                 295.00 CNY    1429.48
+cn-burmese-teak-a           chinese-teak-vendor    328.00 CNY    1589.39
+cn-3layer-teak-locking      chinese-teak-vendor    328.00 CNY    1589.39
+cn-multilayer-teak-birch    chinese-teak-vendor    268.00 CNY    1298.65
+cn-multilayer-teak-snaplock chinese-teak-vendor    280.00 CNY    1356.80
+cn-new-3layer-teak          chinese-teak-vendor    272.00 CNY    1318.03
+sentai-stgj68               sentai                   1.74 USD      57.48
+```
+
+## [0.8.0] - 2026-04-20
+
+### Added — Production deploy: secrets, IAM, verify script (Phase 6)
+
+Ships the production wiring. After merge the Order Portal is live on
+`salesheet.leka.studio` — all six phases working end-to-end.
+
+- **`scripts/setup_order_portal_secrets.sh` (new)** — idempotent
+  one-time setup. Creates missing secrets, grants IAM, re-runnable:
+  - Auto-generates random `salesheet-flask-session-key` (32-byte hex).
+  - Prompts for `firebase-web-api-key` (from Firebase console web-app config).
+  - Grants `roles/secretmanager.secretAccessor` to
+    `claude@ai-agents-go.iam.gserviceaccount.com` on all new secrets
+    plus the existing shared Xero secrets (`xero-client-id`,
+    `xero-client-secret`, `xero-tenant-id`, `xero-tokens`).
+  - Grants `roles/secretmanager.secretVersionAdder` on `xero-tokens`
+    so the refresh flow can write rotated tokens back to the shared secret.
+  - Grants project-level `roles/firebase.sdkAdminServiceAgent` +
+    `roles/datastore.user`.
+  - Prints remaining manual steps: Firebase console providers +
+    authorized domains, Slack `/invite @ai_agents` in `#orders-wood-products`.
+- **`scripts/verify_order_portal.sh` (new)** — post-deploy smoke suite.
+  Confirms:
+  - Legacy public routes still 200 (`/`, `/wpc-fence/`, `/wpc-profile/`, `/_healthz`).
+  - Auth gate: `/auth/login` renders, `/order/new` + `/admin/orders` → 302,
+    `/api/order/catalog` → 401.
+  - Legacy `/api/quote` still posts to Slack.
+  - Usage: `BASE=http://localhost:8080 scripts/verify_order_portal.sh`
+    for local dev; defaults to production URL.
+- **`website/salesheet/cloudbuild.yaml`** — final secret + env wiring:
+  - Env added: `SLACK_ORDER_CHANNEL`, `FIREBASE_PROJECT_ID`,
+    `GCP_PROJECT_ID`, `XERO_TOKENS_SECRET_NAME`, `XERO_DEFAULT_ACCOUNT_CODE`.
+  - Secrets added: `FLASK_SECRET_KEY`, `FIREBASE_WEB_API_KEY`,
+    `XERO_CLIENT_ID`, `XERO_CLIENT_SECRET`, `XERO_TENANT_ID`,
+    `XERO_TOKENS_JSON`.
+
+### Deploy order (for maintainer)
+1. `bash scripts/setup_order_portal_secrets.sh` (prompts for Firebase Web API Key).
+2. Firebase console: enable Email/Password + Google providers, add
+   `salesheet.leka.studio` to Authorized domains.
+3. Slack: `/invite @ai_agents` in `#orders-wood-products`.
+4. Merge this PR → Cloud Build auto-deploys.
+5. `bash scripts/verify_order_portal.sh` to confirm.
+6. Sign in at https://salesheet.leka.studio/auth/login with a `@goco.bz`
+   account → lands on `/admin/orders`.
+
+### End-to-end flow verified by
+1. Sales rep signs in with personal Google → redirected to `/order/new`.
+2. Catalog loads with live FX from frankfurter.app. Adds lines via accordion.
+3. Customer form fills out, cart autosaves to Firestore every 500 ms.
+4. Per-line GM slider enforces 25% floor for external sales.
+5. Submit → order number `SO-WD-2026-0001` allocated atomically →
+   Xero draft invoice created → Block Kit posted to `#orders-wood-products`.
+6. Admin opens the order from the Slack button → confirms → Xero flips
+   to AUTHORISED → threaded Slack reply "✅ Confirmed by <admin>".
+
+## [0.7.5] - 2026-04-20
+
+### Added — Admin dashboard (Phase 5)
+
+Full admin UI over submitted + draft orders. List view with filters, detail
+view with audit log + action bar, end-to-end state transitions wired to Xero
++ Slack.
+
+- `website/salesheet/order_portal/admin.py` — new routes:
+  - `GET  /admin/orders` — filtered list (status, user, date range). Replaces
+    the Phase-1 placeholder. Up to 200 most-recent orders.
+  - `GET  /admin/orders/<id>` — detail with customer, line items, totals,
+    Xero/Slack IDs, and the full `order_events` audit log.
+  - `POST /admin/orders/<id>/confirm` — `submitted` → `confirmed`. Updates
+    Xero invoice to AUTHORISED. Posts threaded Slack reply "✅ Confirmed by <admin>".
+  - `POST /admin/orders/<id>/cancel` — `*` → `cancelled`. Voids Xero invoice.
+    Posts threaded Slack reply "❌ Cancelled by <admin>" with optional reason.
+  - `POST /admin/orders/<id>/retry-submit` — re-runs the Phase-4 submit for
+    orders still in draft with recorded `xero_error` or `slack_error`.
+  - `POST /admin/orders/<id>/act-as` — sets `session.impersonating_uid` to
+    the order's creator. Subsequent mutations are logged with both
+    `actor_uid` (real admin) and `acted_as_uid` in `order_events`.
+  - `POST /admin/end-act-as` — clears the impersonation.
+- `website/salesheet/order_portal/placeholders.py` — stripped down to a
+  single `/admin/` → `/admin/orders` redirect. Admin stubs are gone;
+  the real routes take over.
+- Templates (reuse `leka.css` tokens):
+  - `templates/admin/orders_list.html` — sticky filter bar, pill-status
+    column, clickable order numbers, 7-column table.
+  - `templates/admin/order_detail.html` — two-column layout: left has
+    customer / line items / totals cards, right has audit log.
+    Action bar at the top auto-hides buttons that don't apply to the
+    current status. Inline JS for `doAction()` that POSTs + reloads.
+
+### Audit trail
+Every admin mutation writes an `order_events` doc with `event_type` ∈
+{`confirmed`, `cancelled`, `admin_impersonated`, `submit_degraded`, `retry_*`}
+plus `actor_uid` (from `g.user`) and `acted_as_uid` (from session). Detail
+pages render these in reverse chronological order with pretty-printed JSON.
+
+### Xero error handling
+Confirm / cancel wrap the Xero state-change in try/except. On failure, the
+Firestore order doc gets `xero_confirm_error` or `xero_cancel_error` fields
+written alongside the new status, and the Slack threaded reply includes the
+error message. The local status transition still completes so admin isn't
+blocked by Xero outages.
+
+## [0.7.4] - 2026-04-20
+
+### Added — Submit flow: Firestore + Xero + Slack (Phase 4)
+
+End-to-end submission for draft orders. `POST /order/<id>/submit` allocates
+an order number atomically, creates a Xero draft invoice, posts a Block Kit
+card to `#orders-wood-products`, and marks the order submitted. Partial
+failures leave the order draft and return HTTP 202 with a degraded flag so
+admin can retry.
+
+- `website/salesheet/order_portal/xero_client.py` — lean vendored copy of
+  `accounting-automation/integrations/xero/client.py`. Keeps the salesheet
+  service independent while sharing the `xero-tokens` Secret Manager secret
+  with accounting-automation. Exposes:
+  - `is_configured()` — short-circuit check (returns False if client creds missing).
+  - `upsert_contact(email, name, company, phone)` — find by email or create.
+  - `ensure_item(sku, name)` — auto-create Xero Item if missing.
+  - `create_invoice(contact_id, reference, items, tracking_*, status, currency)` —
+    ACCREC invoice, 30-day due, optional tracking category.
+  - `update_invoice_status(invoice_id, status)` — DRAFT → AUTHORISED / VOIDED.
+- `website/salesheet/order_portal/slack_orders.py`:
+  - `post_new_order(order, submitter_email, portal_base_url, xero_draft_id)` —
+    Block Kit with header, customer/company/email/phone/project fields,
+    line count, grand total, context bar showing Xero link, "View order" button.
+  - `post_threaded_reply(ts, text)` — plain-text reply for confirm/cancel audits.
+  - Channel from `SLACK_ORDER_CHANNEL` env (preferred) or config (`C0AUABRBK41`).
+- `website/salesheet/order_portal/order_submit.py` — `POST /order/<id>/submit`:
+  1. Re-validates (server-side; never trusts client).
+  2. Atomic Firestore transaction on `counters/order_number` →
+     `SO-WD-{year}-{seq:04d}` (first order `SO-WD-2026-0001`).
+  3. Snapshots `fx_snapshot` ({rate, source, ecb_mid, buffer_pct, fetched_at})
+     onto every line item so the order is reconstructable later.
+  4. Xero: looks up Contact by email, falls back to the cached
+     "Wood Product Customer" id at `counters/xero_fallback_contact_id` if
+     the lookup fails; ensure_item for each SKU; create DRAFT invoice
+     with tracking category "Leka-Wood-Products".
+  5. Slack: posts Block Kit card to `#orders-wood-products`; stores `ts`
+     on the order for threaded replies.
+  6. Writes `orders/{id}.status = 'submitted'`, `submitted_at`,
+     `xero_draft_id`, `slack_message_ts`, `fallback_contact_used`.
+  7. Audit event `submitted` (or `submit_degraded` on partial failure).
+
+### Degraded path
+If Xero fails, Slack still posts (with "Xero draft pending" in the context).
+If Slack fails, the Xero invoice still exists. Either failure keeps the order
+in `status=draft` and returns HTTP 202. Admin retry endpoint lands in Phase 5.
+
+### Not yet wired
+- Xero secrets (`xero-client-id`, `xero-client-secret`, `xero-tenant-id`,
+  `xero-tokens`) come in Phase 6.
+- Slack bot must be invited to `#orders-wood-products` via `/invite @ai_agents`.
+- Admin confirm (DRAFT → AUTHORISED) and cancel (→ VOIDED) land in Phase 5.
+
+## [0.7.3] - 2026-04-20
+
+### Added — Order builder UI (Phase 3)
+
+Two-column order builder at `/order/<id>` with live catalog on the left and
+sticky cart + customer form on the right. Powered by Alpine.js v3, debounced
+Firestore autosave (500 ms), and the `/api/order/catalog` endpoint from Phase 2.
+
+- `website/salesheet/order_portal/orders.py` — draft CRUD:
+  - `POST /order/new` — creates a `draft-<12-hex>` doc in Firestore `orders/`
+    collection, writes `created` audit event, redirects to `/order/<id>`.
+  - `GET  /order/<id>` — renders the builder (Jinja).
+  - `GET  /order/<id>.json` — JSON payload for client re-hydration on load.
+  - `PATCH /order/<id>` — merges partial state; allow-lists customer fields,
+    replaces line_items + totals wholesale. Writes `lines_updated` audit event.
+  - `POST /order/<id>/validate` — returns `{ok, errors[]}` for the submit gate.
+    Validates: customer required fields + email regex + project_type enum,
+    at least one line, each line qty > 0 and unit_price > 0 and landed present
+    and GM ≥ role floor (25% sales / 0% admin).
+  - Access control: admin sees any order, else only own (`created_by_uid` match).
+- `website/salesheet/templates/order/detail.html` — two-column Jinja shell
+  with Alpine.js `x-data="orderBuilder()"`. Left 60% is an accordion catalog
+  (decking open by default, others collapsed). Right 40% sticky column holds
+  the customer form, per-line qty steppers, unit-price input + GM slider,
+  subtotal/VAT/grand-total, and the submit button gated on `validationErrors`.
+- `website/salesheet/static/order/app.js` — `orderBuilder()` Alpine component
+  (242 lines). Loads order + catalog + FX in parallel on mount. Debounced
+  PATCH autosave. Per-line GM slider refuses below role floor. Add-to-cart
+  modal with colour + finish + qty.
+- `website/salesheet/static/order/order.css` — order-specific layout; reuses
+  all `leka.css` tokens.
+- `website/salesheet/order_portal/placeholders.py` — now only holds the
+  `/admin/orders` stub; the `/order/new` placeholder is replaced by the real
+  route in `orders.py`.
+- `website/salesheet/Dockerfile` — `COPY static/order static/order`.
+
+### UX notes
+- FX chip in the header shows the live rate + source (frankfurter / cache / fallback).
+- Save state indicator next to the draft title: "Draft" → "Saving…" → "Saved ✓".
+- SKUs without a resolved landed cost show "Price on request" and a red
+  "No landed cost for this SKU yet — ask admin to populate catalog_pricing" line.
+- Submit button shows validation errors as a bullet list until everything passes.
+
+## [0.7.2] - 2026-04-20
+
+### Added — Order Portal catalog API with live FX (Phase 2)
+
+Live catalog endpoint for the order builder. Admin-only variant includes
+vendor SKU + USD cost; external sales role never sees vendor_code.
+
+- `website/salesheet/order_portal/fx.py` — live FX via **frankfurter.app**
+  (ECB mid-market, free, no API key). `fx_buffer_pct` (default 3%) is
+  added to approximate a Thai bank's TT Selling spread. 60-min in-memory
+  cache. Fallback to `fx_thb_per_usd_fallback` on API error.
+- `website/salesheet/order_portal/pricing.py`:
+  - `taxonomy()` + `sku_map()` — loaded once, cached via `lru_cache`.
+  - `lookup_sku_entry(sku)` — fuzzy match between taxonomy SKUs (e.g.
+    `LKP-DK-H-140-23`) and sku-map SKUs (e.g. `LKP-DK-140-23`); strips
+    sub-type segment (H/S/G), handles wall-panel `V`→`-HC`, and trailing
+    finish suffixes (`-WG`/`-EM`/etc.).
+  - `landed_cost_thb_per_m(sku, fx, overrides)` — USD × FX × `landed_multiplier`
+    with Firestore `catalog_pricing/{sku}` override precedence.
+  - `default_unit_price_thb(sku, landed, overrides)` — landed × `default_markup`.
+  - `gm_percent` + `gm_floor_for_role` + `validate_line_gm` — 25% sales floor,
+    0% admin floor (admin can override).
+- `website/salesheet/order_portal/catalog_api.py`:
+  - `GET  /api/order/catalog`     (any authed user) — no vendor_code
+  - `GET  /admin/api/catalog`     (admin only)       — includes vendor_code + USD
+  - `GET  /api/order/fx`          (any authed user) — current FX snapshot
+  - `POST /admin/api/fx/refresh`  (admin only)       — force-refresh FX cache
+- Payload is category-grouped (decking, cladding, panels, fence, structure,
+  diy-tiles) with per-SKU resolved `colours` (8 palette entries w/ hex +
+  grain image), `finishes`, `landed_cost_thb_per_m`, `default_unit_price_thb`.
+- DIY-tiles categories expose `diy_palettes` (per-family) instead of the
+  full 8-colour palette.
+
+### Changed — Config drift
+- `data/catalog/order-portal-config.json` — swapped FX provider from
+  Bank of Thailand to **frankfurter.app** + 3% buffer. No API key needed,
+  no GCP secret. `fx_rate_type` + `fx_lookback_days` removed; `fx_api_url`
+  + `fx_buffer_pct` added. Fallback value unchanged (36.5 THB/USD).
+  Decision recorded in the PR description.
+
+### Catalog coverage
+Out of 49 taxonomy SKUs, **8 resolve to a USD cost** automatically (all
+Premium Co-Ex from PI NS20240516LJ). The remaining 41 (Heritage, Shield,
+Structure, DIY) show `landed_cost_thb_per_m: null` until admin populates
+`catalog_pricing/{sku}` overrides — implemented in Phase 5.
+
+### Smoke test (live)
+Sample: `LKP-DK-H-140-23` — USD 2.55/m × live 33.04 THB/USD × 1.35
+= 113.73 THB/m landed → default unit 164.91 THB/m → 31% GM.
+
+## [0.7.1] - 2026-04-20
+
+### Added — Order Portal auth (Phase 1)
+
+Firebase Authentication (Email/Password + Google) wired into the Flask app.
+Authenticated routes `/auth/login`, `/auth/session`, `/auth/logout`,
+`/auth/me`, plus Phase-1 placeholders for `/order/new` + `/admin/orders`
+so the auth flow has working redirect targets. **Microsoft OIDC deferred**
+to a later PR once the Azure AD app is provisioned.
+
+- `website/salesheet/order_portal/` — new Flask Blueprint package:
+  - `config.py` reads `data/catalog/order-portal-config.json` once at startup
+    (lazy-loaded, `lru_cache`); exposes `auth()`, `pricing()`, `slack()`, etc.
+  - `firestore_client.py` — singleton for the `products-wood` database using ADC.
+  - `auth.py` — Firebase Admin token verify, `@require_auth`, `@require_role`,
+    users-collection seeding (`@goco.bz` → admin, else `external_sales`).
+  - `placeholders.py` — Phase-1-only stubs for `/order/new` + `/admin/orders`.
+- `website/salesheet/templates/` — Jinja2 templates sharing `wpc-profile/css/leka.css`:
+  - `layout/base.html` — shared shell with portal nav + user chip + impersonation banner.
+  - `auth/login.html` — three providers (Google, Email/Password, Microsoft-disabled);
+    uses Firebase JS SDK v10 modular; graceful "config pending" banner when
+    `FIREBASE_WEB_API_KEY` secret isn't set yet.
+  - `auth/forbidden.html` — 403 page for role mismatch.
+- `website/salesheet/server.py` — imports & registers the blueprint **before**
+  the static catch-all so `/auth/*`, `/order/*`, `/admin/*` match first.
+  Adds `SECRET_KEY` with `os.urandom` fallback + secure cookie config.
+- `website/salesheet/requirements.txt` — adds `firebase-admin`,
+  `google-cloud-firestore`, `google-cloud-secret-manager`, `requests`.
+- `website/salesheet/Dockerfile` — copies `order_portal/`, `templates/`, and
+  `data/catalog/` into the image. The latter is staged by a new cloudbuild
+  pre-step that copies the repo-root config into the build context.
+- `website/salesheet/cloudbuild.yaml` — new `stage-config` step; adds
+  `FIREBASE_PROJECT_ID` + `GCP_PROJECT_ID` + `SLACK_ORDER_CHANNEL` env vars.
+  **No new secrets referenced yet** — `salesheet-flask-session-key` +
+  `firebase-web-api-key` come in Phase 6 to avoid breaking the deploy
+  before those secrets exist.
+
+### Graceful degradation
+- Login page renders with a yellow banner when `FIREBASE_WEB_API_KEY` is unset.
+- Session cookie uses `os.urandom` fallback when `FLASK_SECRET_KEY` missing
+  (ephemeral — changes every pod start, but the public site still works).
+- Legacy routes (`/wpc-fence/`, `/wpc-profile/`, `/catalog/`, `/api/quote`,
+  `/api/render-scene`, `/_healthz`) completely unchanged.
+
+### Manual setup required (before Phase 6 merge)
+1. Firebase console → link to project `ai-agents-go` → enable Email/Password + Google providers.
+2. Auth → Authorized domains → add `salesheet.leka.studio`.
+3. IAM grant on `claude@ai-agents-go.iam.gserviceaccount.com`:
+   - `roles/firebase.sdkAdminServiceAgent`
+   - `roles/datastore.user` on Firestore `products-wood`.
+
+## [0.7.0] - 2026-04-20
+
+### Added — Order Portal config (Phase 0)
+
+Frozen single source of truth for the upcoming internal order portal (routes `/auth/*`, `/order/*`, `/admin/*`). No code changes yet — this PR only locks the config so subsequent phases can't drift.
+
+- **`data/catalog/order-portal-config.json` (new, v1.0.0)** — canonical values for:
+  - Order-number format `SO-WD-{year}-{seq:04d}` (first order: `SO-WD-2026-0001`).
+  - Slack channel `#orders-wood-products` (`C0AUABRBK41`).
+  - Xero fallback contact "Wood Product Customer", tracking category "Leka-Wood-Products", DRAFT → AUTHORISED → VOIDED flow.
+  - Auth: Email/Password + Google only for Phase 1 (Microsoft OIDC deferred). `@goco.bz` → admin; others → external_sales.
+  - Pricing formula: `landed_cost_thb_per_m = sku_map.line_m_price_usd × BoT_FX × 1.35`, default unit price = landed × 1.45, GM floor 25% for sales / 0% for admin, VAT 7%.
+  - FX provider: Bank of Thailand TT Selling rate, 60 min cache, 5-day lookback for weekends/holidays, fallback 36.5 THB/USD if `BOT_API_CLIENT_ID` secret is unset or the API errors.
+  - Firestore database `products-wood`, Cloud Run service `salesheet-leka` in `asia-southeast1`.
+- **No runtime dependency on the file yet.** Phase 2 (`/api/order/catalog`) will be the first consumer.
+- Legacy routes (`/wpc-fence/`, `/wpc-profile/`, `/catalog/`, `/api/quote`, `/api/render-scene`) explicitly listed as untouchable.
+
 ## [0.6.1] - 2026-04-19
 
 ### Changed — Gemini 3 Pro Image Preview cleanup pass

@@ -1,2 +1,7 @@
 flask==3.0.3
 gunicorn==22.0.0
+# Order Portal deps (Phase 1+)
+firebase-admin==6.5.0
+google-cloud-firestore==2.16.1
+google-cloud-secret-manager==2.20.2
+requests==2.32.3

@@ -1,0 +1,168 @@
+{% extends "layout/base.html" %}
+{% block title %}Sign in — Leka Order Portal{% endblock %}
+
+{% block nav %}{# No nav on login page #}{% endblock %}
+
+{% block head_extra %}
+<style>
+  body { background: var(--lk-navy); color: var(--lk-cream); }
+  .login-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 20% 20%, rgba(128,3,255,.25), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(151,2,96,.2), transparent 50%),
+                var(--lk-navy);
+  }
+  .login-card {
+    max-width: 440px; width: 100%;
+    background: var(--lk-cream);
+    color: var(--lk-navy);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  }
+  .login-card .brand { font-size: 22px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--lk-navy); }
+  .login-card .brand .dot { color: var(--lk-purple); }
+  .login-card h1 { font-size: 28px; font-weight: 700; margin: 16px 0 8px; }
+  .login-card .sub { color: var(--lk-navy-60); font-size: 15px; margin-bottom: 32px; }
+  .provider-btn {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 20px;
+    border: 1px solid var(--lk-navy-12);
+    border-radius: 999px;
+    background: var(--lk-white);
+    color: var(--lk-navy);
+    font: inherit; font-weight: 700; font-size: 14px;
+    cursor: pointer;
+    transition: all .15s ease;
+    margin-bottom: 12px;
+  }
+  .provider-btn:hover:not(:disabled) { border-color: var(--lk-purple); box-shadow: 0 4px 12px rgba(128,3,255,.12); }
+  .provider-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .provider-btn.primary { background: var(--lk-purple); color: var(--lk-white); border-color: var(--lk-purple); }
+  .provider-btn.primary:hover:not(:disabled) { background: var(--lk-magenta); border-color: var(--lk-magenta); }
+  .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--lk-navy-60); font-size: 11px; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--lk-navy-12); }
+  .form-field { margin-bottom: 14px; }
+  .form-field label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--lk-navy-60); margin-bottom: 6px; }
+  .form-field input {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--lk-navy-12); border-radius: 12px;
+    font: inherit; font-size: 15px; color: var(--lk-navy); background: var(--lk-white);
+  }
+  .form-field input:focus { outline: none; border-color: var(--lk-purple); box-shadow: 0 0 0 3px rgba(128,3,255,.15); }
+  .form-error { color: var(--lk-red-orange); font-size: 13px; margin-top: 12px; font-weight: 600; min-height: 18px; }
+  .config-banner { background: var(--lk-amber); color: var(--lk-navy); padding: 12px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  .footer-note { margin-top: 28px; text-align: center; font-size: 12px; color: var(--lk-navy-60); }
+  .g-icon { width: 18px; height: 18px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="brand">LEKA<span class="dot">.</span>ORDERS</div>
+    <h1>Internal order portal</h1>
+    <p class="sub">Sign in with your work account to access the catalog and submit orders.</p>
+
+    {% if not config_ready %}
+    <div class="config-banner">
+      ⚠️ Sign-in is temporarily unavailable — Firebase config is being provisioned. Contact eukrit@gmail.com.
+    </div>
+    {% endif %}
+
+    <button id="btn-google" class="provider-btn primary" {% if not config_ready %}disabled{% endif %}>
+      <svg class="g-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+      Continue with Google
+    </button>
+
+    <div class="divider">or</div>
+
+    <form id="form-email" autocomplete="on">
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="username">
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="provider-btn" {% if not config_ready %}disabled{% endif %}>Sign in with email</button>
+    </form>
+
+    <div class="form-error" id="err"></div>
+
+    <div class="footer-note">
+      @{{ admin_email_domain }} accounts land on the admin dashboard.<br>
+      All other domains become external_sales users.
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if config_ready %}
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+  import {
+    getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
+    setPersistence, browserLocalPersistence
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "{{ firebase_api_key }}",
+    authDomain: "{{ firebase_auth_domain }}",
+    projectId: "{{ firebase_project_id }}"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  await setPersistence(auth, browserLocalPersistence);
+
+  const nextUrl = {{ next_url|tojson }};
+  const errEl = document.getElementById("err");
+
+  async function exchangeAndRedirect(user) {
+    errEl.textContent = "";
+    const idToken = await user.getIdToken(true);
+    const res = await fetch("/auth/session", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ idToken, next: nextUrl })
+    });
+    const body = await res.json();
+    if (!res.ok || !body.ok) {
+      errEl.textContent = body.error || "Sign-in failed";
+      return;
+    }
+    window.location.href = body.redirect_to;
+  }
+
+  document.getElementById("btn-google").addEventListener("click", async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      await exchangeAndRedirect(result.user);
+    } catch (e) {
+      errEl.textContent = (e.code || "") + " " + (e.message || "Sign-in failed");
+    }
+  });
+
+  document.getElementById("form-email").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      await exchangeAndRedirect(result.user);
+    } catch (e) {
+      errEl.textContent = e.code === "auth/invalid-credential"
+        ? "Invalid email or password"
+        : (e.code || "") + " " + (e.message || "Sign-in failed");
+    }
+  });
+</script>
+{% endif %}
+{% endblock %}

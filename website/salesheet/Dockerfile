@@ -10,8 +10,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy server
+# Copy server + order portal package
 COPY server.py .
+COPY order_portal          order_portal
+COPY templates             templates
 
 # Copy static content (everything else) into ./static
 RUN mkdir -p static
@@ -20,6 +22,14 @@ COPY wpc-fence             static/wpc-fence
 COPY wpc-profile           static/wpc-profile
 COPY catalog               static/catalog
 COPY quote                 static/quote
+
+# order_portal/ already COPY'd above — it includes its own static/ subfolder
+# which Flask serves at /static/order/* via the Blueprint's static_folder.
+
+# Frozen order-portal config (staged into website/salesheet/data/catalog/
+# by the cloudbuild.yaml pre-docker step so it's in the build context).
+RUN mkdir -p data/catalog
+COPY data/catalog          data/catalog
 
 ENV PORT=8080
 EXPOSE 8080

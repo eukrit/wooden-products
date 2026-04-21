@@ -1,0 +1,258 @@
+{% extends "layout/base.html" %}
+{% block title %}Order {{ order.order_number or order_id }} — Leka Orders{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/static/order/order.css">
+<script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div x-data="orderBuilder()" x-init="init()" class="order-wrap" data-order-id="{{ order_id }}" data-role="{{ g.user.role }}" data-gm-floor="{{ gm_floor }}" data-vat-pct="{{ vat_pct }}">
+
+  <div class="order-header">
+    <div class="container">
+      <div class="order-header-inner">
+        <div>
+          <span class="eyebrow">Draft order</span>
+          <h1 x-text="order.order_number || 'New order'"></h1>
+          <p class="order-meta">
+            <span x-text="'ID: ' + orderId"></span>
+            <span class="sep">·</span>
+            <span x-text="'Status: ' + order.status"></span>
+            <span class="sep">·</span>
+            <span :class="saveState === 'saved' ? 'save-ok' : (saveState === 'saving' ? 'save-pending' : 'save-err')"
+                  x-text="saveStateLabel()"></span>
+          </p>
+        </div>
+        <div class="order-header-fx">
+          <div class="fx-chip" x-show="fx">
+            <span class="fx-lbl">FX</span>
+            <strong x-text="fx ? fx.rate.toFixed(2) : '—'"></strong>
+            <small>THB / USD (<span x-text="fx ? fx.source : ''"></span>)</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-cols container">
+
+    <!-- ======= LEFT: CATALOG ACCORDION ======= -->
+    <div class="order-catalog">
+      <template x-for="cat in catalogEntries" :key="cat.slug">
+        <section class="cat-block">
+          <button type="button" class="cat-toggle" :class="{'open': openCats[cat.slug]}" @click="toggleCat(cat.slug)">
+            <span x-text="cat.name"></span>
+            <small x-text="cat.products.length + ' products'"></small>
+            <span class="chev">▸</span>
+          </button>
+          <div class="cat-products" x-show="openCats[cat.slug]" x-collapse>
+            <template x-for="p in cat.products" :key="p.sku">
+              <article class="prod-card">
+                <div class="prod-thumb">
+                  <img :src="p.image" :alt="p.name" loading="lazy">
+                </div>
+                <div class="prod-body">
+                  <div class="prod-sku" x-text="p.sku"></div>
+                  <h3 x-text="p.name"></h3>
+                  <div class="prod-dims">
+                    <span x-text="p.w + ' × ' + p.t + ' × ' + p.len + ' mm'"></span>
+                  </div>
+                  <div class="prod-price">
+                    <template x-if="p.default_unit_price_thb">
+                      <span><strong x-text="Math.round(p.default_unit_price_thb).toLocaleString()"></strong> THB/m</span>
+                    </template>
+                    <template x-if="!p.default_unit_price_thb">
+                      <span class="no-price">Price on request</span>
+                    </template>
+                  </div>
+                  <button class="btn-add" @click="openAddDialog(p)">Add to order</button>
+                </div>
+              </article>
+            </template>
+          </div>
+        </section>
+      </template>
+
+      <div x-show="loading" class="catalog-loading">Loading catalog…</div>
+    </div>
+
+    <!-- ======= RIGHT: CUSTOMER + CART ======= -->
+    <aside class="order-cart">
+
+      <!-- Customer block -->
+      <section class="cart-block">
+        <h2>Customer</h2>
+        <div class="field">
+          <label>Name <span class="req">*</span></label>
+          <input type="text" x-model.debounce.400ms="order.customer.name" @input="dirty()">
+        </div>
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" x-model.debounce.400ms="order.customer.email" @input="dirty()">
+        </div>
+        <div class="field field-row">
+          <div>
+            <label>Phone <span class="req">*</span></label>
+            <input type="tel" x-model.debounce.400ms="order.customer.phone" @input="dirty()">
+          </div>
+          <div>
+            <label>Company <span class="req">*</span></label>
+            <input type="text" x-model.debounce.400ms="order.customer.company" @input="dirty()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Billing address <span class="req">*</span></label>
+          <textarea rows="2" x-model.debounce.400ms="order.customer.billing_address" @input="dirty()"></textarea>
+        </div>
+        <div class="field">
+          <label>Project type <span class="req">*</span></label>
+          <select x-model="order.customer.project_type" @change="dirty()">
+            <option value="">Select…</option>
+            <option value="residential">Residential</option>
+            <option value="hospitality">Hospitality</option>
+            <option value="commercial">Commercial</option>
+            <option value="institutional">Institutional</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Notes</label>
+          <textarea rows="2" x-model.debounce.400ms="order.customer.notes" @input="dirty()"></textarea>
+        </div>
+      </section>
+
+      <!-- Line items -->
+      <section class="cart-block">
+        <h2>
+          Line items
+          <small class="cart-lines-count" x-text="order.line_items.length + ' line' + (order.line_items.length === 1 ? '' : 's')"></small>
+        </h2>
+        <div x-show="order.line_items.length === 0" class="cart-empty">
+          No lines yet. Click "Add to order" on a product on the left.
+        </div>
+        <template x-for="(ln, idx) in order.line_items" :key="idx">
+          <div class="cart-line">
+            <div class="cart-line-top">
+              <div>
+                <strong x-text="ln.name"></strong>
+                <div class="cart-line-sku" x-text="ln.sku"></div>
+              </div>
+              <button class="btn-remove" @click="removeLine(idx)" title="Remove">×</button>
+            </div>
+            <div class="cart-line-meta">
+              <span>Colour: <strong x-text="ln.colour || '—'"></strong></span>
+              <span>Finish: <strong x-text="ln.finish || '—'"></strong></span>
+            </div>
+            <div class="cart-line-qty">
+              <button type="button" @click="changeQty(idx, -1)">−</button>
+              <input type="number" min="1" step="1" x-model.number="ln.quantity_pcs" @input="recalcLine(idx)">
+              <button type="button" @click="changeQty(idx, 1)">+</button>
+              <span class="qty-m" x-text="ln.quantity_m ? ln.quantity_m.toFixed(2) + ' m' : ''"></span>
+            </div>
+
+            <template x-if="ln.landed_cost_thb_per_m">
+              <div class="cart-line-gm">
+                <div class="gm-row">
+                  <label>Unit price (THB/m)</label>
+                  <input type="number" min="0" step="0.01" x-model.number="ln.unit_price_thb" @input="recalcLine(idx)">
+                </div>
+                <div class="gm-slider-row">
+                  <label>GM <strong x-text="(ln.gm_percent ?? 0).toFixed(1) + '%'" :class="ln.gm_percent < gmFloor ? 'gm-bad' : 'gm-ok'"></strong></label>
+                  <input type="range" :min="role === 'admin' ? 0 : gmFloor" max="70" step="0.5" :value="ln.gm_percent || 0" @input="setLineGm(idx, $event.target.value)">
+                  <small>floor <span x-text="gmFloor + '%'"></span></small>
+                </div>
+                <div class="gm-line-total">
+                  Line total <strong x-text="Math.round(ln.line_total_thb || 0).toLocaleString() + ' THB'"></strong>
+                </div>
+              </div>
+            </template>
+            <template x-if="!ln.landed_cost_thb_per_m">
+              <div class="cart-line-noprice">
+                No landed cost for this SKU yet — ask admin to populate <code>catalog_pricing</code>.
+              </div>
+            </template>
+          </div>
+        </template>
+      </section>
+
+      <!-- Totals -->
+      <section class="cart-block cart-totals">
+        <div><span>Subtotal</span><strong x-text="Math.round(order.totals.subtotal_thb).toLocaleString() + ' THB'"></strong></div>
+        <div><span>VAT (<span x-text="vatPct"></span>%)</span><strong x-text="Math.round(order.totals.vat_thb).toLocaleString() + ' THB'"></strong></div>
+        <div class="grand"><span>Grand total</span><strong x-text="Math.round(order.totals.grand_total_thb).toLocaleString() + ' THB'"></strong></div>
+      </section>
+
+      <!-- Submit gate -->
+      <section class="cart-block submit-gate">
+        <button class="btn-submit" :disabled="!canSubmit" @click="submitOrder()">
+          <span x-show="!submitting">Submit to Leka</span>
+          <span x-show="submitting">Submitting…</span>
+        </button>
+        <ul class="submit-errors" x-show="validationErrors.length">
+          <template x-for="e in validationErrors" :key="e">
+            <li x-text="e"></li>
+          </template>
+        </ul>
+      </section>
+
+    </aside>
+  </div>
+
+  <!-- ======= ADD-TO-CART MODAL ======= -->
+  <div class="add-modal" x-show="addDialog.product" x-transition.opacity>
+    <div class="add-modal-overlay" @click="closeAddDialog()"></div>
+    <div class="add-modal-card" x-show="addDialog.product">
+      <template x-if="addDialog.product">
+        <div>
+          <button class="add-modal-close" @click="closeAddDialog()">×</button>
+          <h2 x-text="addDialog.product.name"></h2>
+          <div class="add-modal-dims" x-text="addDialog.product.w + ' × ' + addDialog.product.t + ' × ' + addDialog.product.len + ' mm'"></div>
+
+          <template x-if="(addDialog.product.colours || []).length">
+            <div class="add-modal-section">
+              <label>Colour</label>
+              <div class="colour-grid">
+                <template x-for="c in addDialog.product.colours" :key="c.code">
+                  <button type="button" class="colour-chip" :class="{'sel': addDialog.colour_code === c.code}"
+                          :style="'background:' + c.hex" :title="c.name + ' (' + c.code + ')'"
+                          @click="addDialog.colour_code = c.code; addDialog.colour_name = c.name; addDialog.colour_hex = c.hex"></button>
+                </template>
+              </div>
+              <small x-text="addDialog.colour_name || 'Pick a colour'"></small>
+            </div>
+          </template>
+
+          <template x-if="(addDialog.product.finishes || []).length">
+            <div class="add-modal-section">
+              <label>Finish</label>
+              <div class="finish-grid">
+                <template x-for="f in addDialog.product.finishes" :key="f">
+                  <button type="button" class="finish-chip" :class="{'sel': addDialog.finish === f}"
+                          @click="addDialog.finish = f" x-text="f"></button>
+                </template>
+              </div>
+            </div>
+          </template>
+
+          <div class="add-modal-section">
+            <label>Quantity (pieces)</label>
+            <input type="number" min="1" step="1" x-model.number="addDialog.qty">
+            <small x-text="addDialog.product.len ? ((addDialog.qty * addDialog.product.len / 1000).toFixed(2) + ' m total') : ''"></small>
+          </div>
+
+          <div class="add-modal-actions">
+            <button type="button" class="btn-cancel" @click="closeAddDialog()">Cancel</button>
+            <button type="button" class="btn-add-confirm" @click="confirmAdd()" :disabled="!canConfirmAdd()">Add to order</button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/order/app.js"></script>
+{% endblock %}

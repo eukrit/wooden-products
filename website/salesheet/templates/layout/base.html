@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Leka Order Portal{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/wpc-profile/css/leka.css">
+<style>
+  /* Order-portal extensions atop leka.css */
+  .portal-nav { background: var(--lk-navy); color: var(--lk-cream); border-bottom: 3px solid var(--lk-purple); }
+  .portal-nav .nav-inner { max-width: 1400px; }
+  .portal-nav .brand { color: var(--lk-cream); }
+  .portal-nav .brand .dot { color: var(--lk-amber); }
+  .portal-nav .nav-links a { color: var(--lk-cream); opacity: 0.75; }
+  .portal-nav .nav-links a:hover,
+  .portal-nav .nav-links a.active { color: var(--lk-amber); opacity: 1; }
+  .portal-nav .user-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 14px; background: rgba(255,249,230,.08);
+    border: 1px solid var(--lk-cream-60);
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    color: var(--lk-cream);
+  }
+  .portal-nav .user-chip .role {
+    padding: 2px 8px; background: var(--lk-purple); border-radius: 999px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .portal-nav .user-chip .role.admin { background: var(--lk-amber); color: var(--lk-navy); }
+  .banner { padding: 12px 24px; font-size: 14px; font-weight: 600; }
+  .banner.warn { background: var(--lk-amber); color: var(--lk-navy); }
+  .banner.info { background: var(--lk-navy-06); color: var(--lk-navy); }
+  .banner.error { background: var(--lk-red-orange); color: var(--lk-white); }
+  main { min-height: calc(100vh - var(--nav-h)); }
+</style>
+{% block head_extra %}{% endblock %}
+</head>
+<body>
+{% block nav %}
+<nav class="nav portal-nav">
+  <div class="nav-inner">
+    <a href="/order/new" class="brand">LEKA<span class="dot">.</span>ORDERS</a>
+    <div class="nav-links">
+      {% if g.user and g.user.role == 'admin' %}
+        <a href="/admin/orders">Admin</a>
+        <a href="/order/new">New order</a>
+      {% elif g.user %}
+        <a href="/order/new">New order</a>
+      {% endif %}
+    </div>
+    <div class="nav-cta-wrap">
+      {% if g.user %}
+        <span class="user-chip">
+          {{ g.user.display_name or g.user.email }}
+          <span class="role {{ g.user.role }}">{{ g.user.role }}</span>
+        </span>
+        <form method="POST" action="/auth/logout" style="display:inline;margin-left:8px">
+          <button type="submit" style="background:none;border:none;color:var(--lk-cream-80);font:inherit;cursor:pointer;text-decoration:underline">Sign out</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% if g.impersonating_uid %}
+<div class="banner warn">
+  Acting as another user — audit log records both your identity and theirs.
+  <form method="POST" action="/admin/end-act-as" style="display:inline;margin-left:12px">
+    <button type="submit" style="background:none;border:1px solid var(--lk-navy);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">End impersonation</button>
+  </form>
+</div>
+{% endif %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>
