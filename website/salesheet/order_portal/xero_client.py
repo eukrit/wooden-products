@@ -198,7 +198,9 @@ def _request(method: str, path: str, *, json_body: dict[str, Any] | None = None,
         timeout=30,
     )
     if not res.ok:
-        raise XeroError(f"Xero {method} {path} → {res.status_code}: {res.text[:400]}")
+        # Keep the full validation response — the useful 'ValidationErrors'
+        # array is often past the first 400 chars.
+        raise XeroError(f"Xero {method} {path} → {res.status_code}: {res.text[:2500]}")
     return res.json()
 
 
@@ -262,41 +264,81 @@ def create_invoice(
     """Create a Xero Invoice. Returns InvoiceID.
 
     items: [{sku, name, quantity, unit_price_thb, tax_type?}]
+
+    Resilience:
+      - If Xero rejects an ItemCode (not found / wrong Item config), retries
+        once with ItemCode stripped — the invoice still creates cleanly using
+        Description + AccountCode only. The SKU is preserved in the
+        Description like "[LKP-DK-H-148-22] Signature Deck Board ..." for
+        traceability.
+      - If Xero rejects the currency (e.g. org isn't subscribed to THB),
+        retries once without CurrencyCode so Xero uses the org default.
+      - If both, strips both.
     """
     account_code = os.environ.get("XERO_DEFAULT_ACCOUNT_CODE", "200")
 
-    line_items = []
-    for it in items:
-        line: dict[str, Any] = {
-            "ItemCode": it["sku"],
-            "Description": it["name"],
-            "Quantity": float(it["quantity"]),
-            "UnitAmount": float(it["unit_price_thb"]),
-            "AccountCode": account_code,
-        }
-        if tracking_category and tracking_option:
-            line["Tracking"] = [{"Name": tracking_category, "Option": tracking_option}]
-        if it.get("tax_type"):
-            line["TaxType"] = it["tax_type"]
-        line_items.append(line)
-
-    payload = {
-        "Invoices": [
-            {
-                "Type": "ACCREC",  # Accounts Receivable = outgoing invoice to customer
-                "Contact": {"ContactID": contact_id},
-                "Date": datetime.now(timezone.utc).date().isoformat(),
-                "DueDate": (datetime.now(timezone.utc).date() + timedelta(days=30)).isoformat(),
-                "LineItems": line_items,
-                "CurrencyCode": currency_code.upper(),
-                "Status": status.upper(),
-                "Reference": reference,
+    def _build_lines(include_item_code: bool) -> list[dict[str, Any]]:
+        out: list[dict[str, Any]] = []
+        for it in items:
+            desc = it["name"]
+            if not include_item_code:
+                desc = f"[{it['sku']}] {desc}"
+            line: dict[str, Any] = {
+                "Description": desc,
+                "Quantity": float(it["quantity"]),
+                "UnitAmount": float(it["unit_price_thb"]),
+                "AccountCode": account_code,
             }
-        ]
-    }
-    created = _request("POST", "/Invoices", json_body=payload)
+            if include_item_code:
+                line["ItemCode"] = it["sku"]
+            if tracking_category and tracking_option:
+                line["Tracking"] = [{"Name": tracking_category, "Option": tracking_option}]
+            if it.get("tax_type"):
+                line["TaxType"] = it["tax_type"]
+            out.append(line)
+        return out
+
+    def _build_payload(line_items: list[dict[str, Any]], include_currency: bool) -> dict[str, Any]:
+        invoice: dict[str, Any] = {
+            "Type": "ACCREC",
+            "Contact": {"ContactID": contact_id},
+            "Date": datetime.now(timezone.utc).date().isoformat(),
+            "DueDate": (datetime.now(timezone.utc).date() + timedelta(days=30)).isoformat(),
+            "LineItems": line_items,
+            "Status": status.upper(),
+            "Reference": reference,
+        }
+        if include_currency:
+            invoice["CurrencyCode"] = currency_code.upper()
+        return {"Invoices": [invoice]}
+
+    # Try 1: full invoice with ItemCode + currency
+    try:
+        created = _request("POST", "/Invoices", json_body=_build_payload(_build_lines(True), True))
+        invoice_id = created["Invoices"][0]["InvoiceID"]
+        log.info("Created Xero Invoice %s ref=%s (full)", invoice_id, reference)
+        return invoice_id
+    except XeroError as exc:
+        err_text = str(exc)
+        log.warning("Xero invoice first attempt failed: %.300s", err_text)
+
+    strip_item_code = "Item code" in err_text and "not valid" in err_text
+    drop_currency = "is not subscribed to currency" in err_text or "CurrencyCode" in err_text
+    if not (strip_item_code or drop_currency):
+        # Not a pattern we can recover from — surface the original error.
+        raise XeroError(err_text)
+
+    log.info("Retrying Xero invoice %s without %s",
+             reference,
+             ", ".join(x for x, flag in [("ItemCode", strip_item_code),
+                                          ("CurrencyCode", drop_currency)] if flag))
+    created = _request(
+        "POST",
+        "/Invoices",
+        json_body=_build_payload(_build_lines(not strip_item_code), not drop_currency),
+    )
     invoice_id = created["Invoices"][0]["InvoiceID"]
-    log.info("Created Xero Invoice %s ref=%s", invoice_id, reference)
+    log.info("Created Xero Invoice %s ref=%s (fallback)", invoice_id, reference)
     return invoice_id
 
 

@@ -124,14 +124,17 @@ def _validate_submit(order: dict[str, Any], role: str) -> tuple[bool, list[str]]
             errors.append(f"line[{i}].sku required")
         if not qty or qty <= 0:
             errors.append(f"line[{i}].quantity_pcs must be > 0")
-        if unit is None or unit <= 0:
-            errors.append(f"line[{i}].unit_price_thb must be > 0")
-        if landed is None:
-            errors.append(f"line[{i}] has no landed_cost_thb_per_m — pricing missing")
-            continue
-        ok, msg = pricing.validate_line_gm(float(unit), float(landed), role)
-        if not ok:
-            errors.append(f"line[{i}] {msg}")
+        # Allow unit_price_thb == 0 for unpriced / to-be-quoted items.
+        # Negative prices are never valid.
+        if unit is None or unit < 0:
+            errors.append(f"line[{i}].unit_price_thb must be >= 0")
+        # GM floor only applies when both landed and unit are positive.
+        # Unpriced lines (no landed cost or zero unit price) skip the GM check
+        # — sales team quotes them offline.
+        if landed is not None and unit is not None and float(unit) > 0:
+            ok, msg = pricing.validate_line_gm(float(unit), float(landed), role)
+            if not ok:
+                errors.append(f"line[{i}] {msg}")
     return len(errors) == 0, errors
 
 
