@@ -13,9 +13,11 @@ options:
   machineType: E2_MEDIUM
 
 steps:
-  # Stage the frozen order-portal config into the Docker build context.
+  # Stage all data/catalog/*.json into the Docker build context.
   # Dockerfile uses `dir: website/salesheet` so files outside that folder
-  # (like data/catalog/) aren't visible unless we copy them in first.
+  # aren't visible unless we copy them in first. order_portal/pricing.py
+  # reads leka-taxonomy.json + leka-sku-map.json; order_portal/config.py
+  # reads order-portal-config.json.
   - name: 'gcr.io/cloud-builders/gcloud'
     id: stage-config
     entrypoint: bash
@@ -23,7 +25,7 @@ steps:
       - '-c'
       - |
         mkdir -p website/salesheet/data/catalog
-        cp data/catalog/order-portal-config.json website/salesheet/data/catalog/
+        cp data/catalog/*.json website/salesheet/data/catalog/
         echo "Staged:" && ls -la website/salesheet/data/catalog/
 
   - name: 'gcr.io/cloud-builders/docker'
