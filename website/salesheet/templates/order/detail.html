@@ -151,27 +151,27 @@
               <span class="qty-m" x-text="ln.quantity_m ? ln.quantity_m.toFixed(2) + ' m' : ''"></span>
             </div>
 
-            <template x-if="ln.landed_cost_thb_per_m">
-              <div class="cart-line-gm">
-                <div class="gm-row">
-                  <label>Unit price (THB/m)</label>
-                  <input type="number" min="0" step="0.01" x-model.number="ln.unit_price_thb" @input="recalcLine(idx)">
-                </div>
+            <div class="cart-line-gm">
+              <div class="gm-row">
+                <label>Unit price (THB/m)</label>
+                <input type="number" min="0" step="0.01" x-model.number="ln.unit_price_thb" @input="recalcLine(idx)" placeholder="0">
+              </div>
+              <template x-if="ln.landed_cost_thb_per_m">
                 <div class="gm-slider-row">
                   <label>GM <strong x-text="(ln.gm_percent ?? 0).toFixed(1) + '%'" :class="ln.gm_percent < gmFloor ? 'gm-bad' : 'gm-ok'"></strong></label>
                   <input type="range" :min="role === 'admin' ? 0 : gmFloor" max="70" step="0.5" :value="ln.gm_percent || 0" @input="setLineGm(idx, $event.target.value)">
                   <small>floor <span x-text="gmFloor + '%'"></span></small>
                 </div>
-                <div class="gm-line-total">
-                  Line total <strong x-text="Math.round(ln.line_total_thb || 0).toLocaleString() + ' THB'"></strong>
+              </template>
+              <template x-if="!ln.landed_cost_thb_per_m">
+                <div class="cart-line-noprice" style="margin:6px 0 8px">
+                  No landed cost yet — set unit price manually or leave 0 (quote later).
                 </div>
+              </template>
+              <div class="gm-line-total">
+                Line total <strong x-text="Math.round(ln.line_total_thb || 0).toLocaleString() + ' THB'"></strong>
               </div>
-            </template>
-            <template x-if="!ln.landed_cost_thb_per_m">
-              <div class="cart-line-noprice">
-                No landed cost for this SKU yet — ask admin to populate <code>catalog_pricing</code>.
-              </div>
-            </template>
+            </div>
           </div>
         </template>
       </section>
