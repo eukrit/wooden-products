@@ -33,6 +33,7 @@ steps:
     dir: website/salesheet
     args:
       - 'build'
+      - '--no-cache'
       - '-t'
       - '$_REPO/$_SERVICE:$SHORT_SHA'
       - '-t'
