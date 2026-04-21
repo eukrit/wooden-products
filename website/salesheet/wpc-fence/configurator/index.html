@@ -818,7 +818,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 
       <!-- Scene render -->
       <div class="preview-card">
-        <h5>Render in a scene <span style="font-size:10px; font-weight:600; color:var(--lk-navy-60); letter-spacing:0.1em; text-transform:uppercase;">Powered by Gemini</span></h5>
+        <h5>Render in a scene</h5>
         <div class="scene-picker" role="group" aria-label="Scene">
           <button type="button" class="scene-btn" data-scene="residential" aria-pressed="true">Residential</button>
           <button type="button" class="scene-btn" data-scene="hospitality" aria-pressed="false">Hospitality</button>
@@ -947,6 +947,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
           <div class="stat-box"><span class="num" id="s-bays">24</span><span class="lbl">Bays</span></div>
           <div class="stat-box"><span class="num" id="s-posts">25</span><span class="lbl">Posts</span></div>
           <div class="stat-box"><span class="num" id="s-boards">312</span><span class="lbl">Boards</span></div>
+        </div>
+        <div style="font-size:11px; color:var(--lk-cream-60); margin-top:-2px;" id="s-board-breakdown">
+          Includes <span id="s-trim">0</span> trim plank(s) — field-cut on site.
         </div>
         <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
       </div>
@@ -1202,20 +1205,34 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     var bottomRail = 60;  // mm
     var usableMm   = Math.max(0, state.height * 1000 - topRail - bottomRail);
     var pitchMm    = boardMm + (gapMm > 0 ? gapMm : 0);
-    var boardsPerBay = Math.max(1, Math.floor((usableMm + gapMm) / pitchMm));
+    // Full planks that fit with gaps between them only (no gap above the last full plank).
+    var fullPlanks = Math.max(1, Math.floor((usableMm + gapMm) / pitchMm));
+    var usedByFull = fullPlanks * boardMm + Math.max(0, fullPlanks - 1) * gapMm;
+    var remainingMm = Math.max(0, usableMm - usedByFull);
+    // A trim plank is added on top if any visible board space remains after a gap.
+    var trimVisibleMm = Math.max(0, remainingMm - (fullPlanks >= 1 ? gapMm : 0));
+    var hasTrim = trimVisibleMm > 0.5;
+    var boardsPerBay = fullPlanks + (hasTrim ? 1 : 0);
     var totalBoards  = bays * boardsPerBay;
+    var trimBoards   = hasTrim ? bays : 0;
     var style      = state.gap === 0 ? 'Privacy' : 'Slatted';
     return { c: c, fenceRun: fenceRun, sgM: sgM, dgM: dgM, total: total,
-             bays: bays, posts: posts, boardsPerBay: boardsPerBay,
-             totalBoards: totalBoards, style: style, gapMm: gapMm };
+             bays: bays, posts: posts,
+             fullPlanks: fullPlanks, hasTrim: hasTrim, trimVisibleMm: trimVisibleMm,
+             boardsPerBay: boardsPerBay, totalBoards: totalBoards, trimBoards: trimBoards,
+             style: style, gapMm: gapMm, boardMm: boardMm };
   }
 
   // ===== Render SVG preview =====
   // Drawing happens in REAL-WORLD mm coordinates. The viewBox is set to match the
   // fence's natural dimensions so the SVG scales responsively via CSS (no
-  // pixel-per-mm "scale" multiplier anywhere). Margins are tight so the fence
-  // fills the preview ("zoomed in"). Boards stack from the BOTTOM up, with the
-  // first board sitting flush against the bottom rail.
+  // pixel-per-mm "scale" multiplier anywhere). Margins leave room for dimension
+  // lines on the right (height) and above (bay width). Boards stack from the
+  // BOTTOM up; if a partial-height gap is left at the top it is filled with a
+  // trim plank (installer-trimmed on site) — counted as a full plank in the BOM.
+  //
+  // Each plank shows a unique random crop of the manufacturer swatch so the
+  // grain reads as individually extruded lengths instead of one repeating tile.
   function renderSvg() {
     var r = computed();
     var svg = document.getElementById('fence-svg');
@@ -1229,25 +1246,36 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     var boardH    = 148;
     var gapMm     = r.gapMm;
 
-    // Tight margins — "zoomed in" fence
-    var marginSide = 100;    // breathing room left/right
-    var marginTop  = 180;    // post cap + bay label
-    var marginBot  = 320;    // ground strip + 1 m scale bar + label
+    // Margins — dimension lines need extra breathing room above (bay width)
+    // and to the right (height).
+    var marginSide  = 120;     // left: post + small padding
+    var marginRight = 420;     // right: dimension arrow + label
+    var marginTop   = 340;     // space for bay-width dimension line + label + post cap
+    var marginBot   = 340;     // ground strip + 1 m scale bar
 
     var assemblyW = bayWmm + 2 * postW;
-    var viewW = assemblyW + 2 * marginSide;
+    var viewW = assemblyW + marginSide + marginRight;
     var viewH = heightMm + marginTop + marginBot;
     svg.setAttribute('viewBox', '0 0 ' + viewW + ' ' + viewH);
 
-    var left    = marginSide;             // x of left post
-    var top     = marginTop;               // y of post top
-    var ground  = top + heightMm;          // y of ground line
-    var boardX  = left + postW;            // x of board infill
+    var left    = marginSide;              // x of left post
+    var top     = marginTop;                // y of post top
+    var ground  = top + heightMm;           // y of ground line
+    var boardX  = left + postW;             // x of board infill
+    var boardXEnd = boardX + bayWmm;        // x of right edge of infill
     var infillTop = top + topRailH;
     var infillBot = ground - botRailH;
 
     var color     = r.c.hex;
     var swatchUrl = '../images/swatches/' + r.c.code.toLowerCase() + '.jpg';
+
+    // Seeded pseudo-random so the pattern is stable across re-renders for the
+    // same spec (looks less jittery when you change an unrelated control).
+    var seed = ((state.colorIdx + 1) * 131) ^ Math.round(state.bay * 10) ^ Math.round(state.height * 10) ^ (state.gap * 7);
+    function rand() {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+    }
 
     var parts = [];
     parts.push(
@@ -1276,38 +1304,126 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     parts.push('<rect x="' + (left - capExt) + '" y="' + (top - capH) + '" width="' + (postW + 2 * capExt) + '" height="' + capH + '" fill="#0a0a0a" rx="4"/>');
     parts.push('<rect x="' + (left + postW + bayWmm - capExt) + '" y="' + (top - capH) + '" width="' + (postW + 2 * capExt) + '" height="' + capH + '" fill="#0a0a0a" rx="4"/>');
 
-    // Rails
+    // Bottom rail only — top rail drawn AFTER planks so the trim plank's
+    // overhang is naturally covered.
     var railColor = '#2a2a2a';
-    parts.push('<rect x="' + boardX + '" y="' + top + '" width="' + bayWmm + '" height="' + topRailH + '" fill="' + railColor + '"/>');
     parts.push('<rect x="' + boardX + '" y="' + (ground - botRailH) + '" width="' + bayWmm + '" height="' + botRailH + '" fill="' + railColor + '"/>');
 
-    // Boards — stack from the BOTTOM up. First board sits flush against the bottom
-    // rail with no gap beneath it. Partial space (if any) ends up at the top, below
-    // the top rail, as expected for a real field-installed fence.
-    var y = infillBot - boardH;
-    var boardsDrawn = 0;
-    while (y >= infillTop - 0.5 && boardsDrawn < 200) {
+    // ---- Plank drawer (with randomized swatch crop) ----
+    // Each plank renders the swatch via a nested <svg> viewport so the outer
+    // box clips the larger image to the plank rectangle — giving us a free
+    // random crop per plank without needing a <clipPath> per board.
+    function drawPlank(py, ph, visibleH) {
+      // visibleH < ph means this is a trim plank — draw the plank at its full
+      // height (py..py+ph) but only the portion below infillTop is visible
+      // because the top rail (drawn later) covers any overhang.
+      // Solid colour base (shows if image fails)
       parts.push(
-        '<rect x="' + boardX + '" y="' + y + '" width="' + bayWmm + '" height="' + boardH +
+        '<rect x="' + boardX + '" y="' + py + '" width="' + bayWmm + '" height="' + ph +
         '" fill="' + color + '"/>'
       );
+      // Randomized wood-grain crop — image is 1.6× wider and 1.4× taller than
+      // the plank; offset within that slack by a random amount so every plank
+      // reads as a distinct extruded length.
+      var imgW = bayWmm * 1.6;
+      var imgH = ph * 1.4;
+      var ox = -rand() * (imgW - bayWmm);
+      var oy = -rand() * (imgH - ph);
       parts.push(
-        '<image href="' + swatchUrl + '" x="' + boardX + '" y="' + y +
-        '" width="' + bayWmm + '" height="' + boardH +
-        '" preserveAspectRatio="xMidYMid slice"/>'
+        '<svg x="' + boardX + '" y="' + py + '" width="' + bayWmm + '" height="' + ph +
+        '" viewBox="0 0 ' + bayWmm + ' ' + ph + '" preserveAspectRatio="none" overflow="hidden">' +
+          '<image href="' + swatchUrl + '" x="' + ox + '" y="' + oy +
+          '" width="' + imgW + '" height="' + imgH + '" preserveAspectRatio="xMidYMid slice"/>' +
+        '</svg>'
       );
-      // Hairline on the top edge of each plank to read as distinct boards
+      // Hairline at the top edge of each plank (bottom of the gap above).
       parts.push(
-        '<line x1="' + boardX + '" y1="' + y + '" x2="' + (boardX + bayWmm) + '" y2="' + y +
+        '<line x1="' + boardX + '" y1="' + py + '" x2="' + boardXEnd + '" y2="' + py +
         '" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>'
       );
+    }
+
+    // Full planks — stack from BOTTOM up, flush with bottom rail, gaps above.
+    var y = infillBot - boardH;
+    for (var i = 0; i < r.fullPlanks && y >= infillTop - 0.5; i++) {
+      drawPlank(y, boardH, boardH);
       y -= (boardH + gapMm);
-      boardsDrawn++;
+    }
+
+    // Trim plank — fills the remaining space at the top. Drawn as a full
+    // plank extending above infillTop; the top rail (drawn next) clips it.
+    if (r.hasTrim && r.trimVisibleMm > 0.5) {
+      var trimTop = infillTop - (boardH - r.trimVisibleMm);
+      drawPlank(trimTop, boardH, r.trimVisibleMm);
+      // Cut-line hint across the plank at infillTop — reads as the site trim.
+      parts.push(
+        '<line x1="' + boardX + '" y1="' + infillTop + '" x2="' + boardXEnd + '" y2="' + infillTop +
+        '" stroke="#ffa900" stroke-width="4" stroke-dasharray="18,10"/>'
+      );
+    }
+
+    // Top rail — painted ON TOP of the planks so it covers the trim overhang.
+    parts.push('<rect x="' + boardX + '" y="' + top + '" width="' + bayWmm + '" height="' + topRailH + '" fill="' + railColor + '"/>');
+
+    // ---- Dimension lines (architectural-style) ----
+    // Bay WIDTH — horizontal dimension above the fence, outside the outer
+    // post faces (post-to-post).
+    var dimStroke = '#182557';
+    var dimFs     = 74;
+    var widthY    = top - capH - 160;
+    var wx1 = left;                            // outer face of left post
+    var wx2 = left + postW + bayWmm + postW;   // outer face of right post
+    // Extension lines dropping to posts
+    parts.push('<line x1="' + wx1 + '" y1="' + (top - capH - 12) + '" x2="' + wx1 + '" y2="' + (widthY + 24) + '" stroke="' + dimStroke + '" stroke-width="3"/>');
+    parts.push('<line x1="' + wx2 + '" y1="' + (top - capH - 12) + '" x2="' + wx2 + '" y2="' + (widthY + 24) + '" stroke="' + dimStroke + '" stroke-width="3"/>');
+    // Horizontal dim line + arrow ticks
+    parts.push('<line x1="' + wx1 + '" y1="' + widthY + '" x2="' + wx2 + '" y2="' + widthY + '" stroke="' + dimStroke + '" stroke-width="5"/>');
+    parts.push('<path d="M ' + (wx1 + 36) + ' ' + (widthY - 18) + ' L ' + wx1 + ' ' + widthY + ' L ' + (wx1 + 36) + ' ' + (widthY + 18) + '" fill="none" stroke="' + dimStroke + '" stroke-width="5" stroke-linejoin="round"/>');
+    parts.push('<path d="M ' + (wx2 - 36) + ' ' + (widthY - 18) + ' L ' + wx2 + ' ' + widthY + ' L ' + (wx2 - 36) + ' ' + (widthY + 18) + '" fill="none" stroke="' + dimStroke + '" stroke-width="5" stroke-linejoin="round"/>');
+    // Width label — boxed so it sits clean over the dim line
+    var widthLabel = state.bay.toFixed(2).replace(/\.?0+$/, '') + ' m bay';
+    parts.push(
+      '<g font-family="Manrope, sans-serif" font-size="' + dimFs + '" font-weight="800" fill="' + dimStroke + '">' +
+        '<rect x="' + ((wx1 + wx2) / 2 - 300) + '" y="' + (widthY - 60) + '" width="600" height="110" fill="#FFF9E6" stroke="' + dimStroke + '" stroke-width="3" rx="10"/>' +
+        '<text x="' + ((wx1 + wx2) / 2) + '" y="' + (widthY + 22) + '" text-anchor="middle">' + widthLabel + '</text>' +
+      '</g>'
+    );
+
+    // Fence HEIGHT — vertical dimension to the RIGHT of the fence, from
+    // ground line to post top.
+    var hxBase = wx2 + 60;                   // extension line root
+    var hx = wx2 + 240;                      // dim line x
+    parts.push('<line x1="' + hxBase + '" y1="' + top + '" x2="' + (hx + 24) + '" y2="' + top + '" stroke="' + dimStroke + '" stroke-width="3"/>');
+    parts.push('<line x1="' + hxBase + '" y1="' + ground + '" x2="' + (hx + 24) + '" y2="' + ground + '" stroke="' + dimStroke + '" stroke-width="3"/>');
+    parts.push('<line x1="' + hx + '" y1="' + top + '" x2="' + hx + '" y2="' + ground + '" stroke="' + dimStroke + '" stroke-width="5"/>');
+    parts.push('<path d="M ' + (hx - 18) + ' ' + (top + 36) + ' L ' + hx + ' ' + top + ' L ' + (hx + 18) + ' ' + (top + 36) + '" fill="none" stroke="' + dimStroke + '" stroke-width="5" stroke-linejoin="round"/>');
+    parts.push('<path d="M ' + (hx - 18) + ' ' + (ground - 36) + ' L ' + hx + ' ' + ground + ' L ' + (hx + 18) + ' ' + (ground - 36) + '" fill="none" stroke="' + dimStroke + '" stroke-width="5" stroke-linejoin="round"/>');
+    // Rotated label
+    var hLabel = state.height.toFixed(2).replace(/\.?0+$/, '') + ' m high';
+    parts.push(
+      '<g font-family="Manrope, sans-serif" font-size="' + dimFs + '" font-weight="800" fill="' + dimStroke + '" transform="translate(' + (hx + 90) + ' ' + ((top + ground) / 2) + ') rotate(90)">' +
+        '<rect x="-300" y="-55" width="600" height="110" fill="#FFF9E6" stroke="' + dimStroke + '" stroke-width="3" rx="10"/>' +
+        '<text x="0" y="24" text-anchor="middle">' + hLabel + '</text>' +
+      '</g>'
+    );
+
+    // Trim callout — small badge inside the bay, anchored on the dashed
+    // cut-line so the annotation sits where the plank is actually trimmed.
+    // Kept narrow so it can't overlap the right-side height dimension.
+    if (r.hasTrim) {
+      var calloutY = infillTop - 42;               // just above the dashed line
+      var calloutX = boardX + 40;                  // anchored to left edge of bay
+      parts.push(
+        '<g font-family="Manrope, sans-serif" font-size="44" font-weight="700" fill="#8a5a00">' +
+          '<rect x="' + calloutX + '" y="' + (calloutY - 38) + '" width="560" height="70" fill="#FFF3C4" stroke="#FFA900" stroke-width="3" rx="8"/>' +
+          '<text x="' + (calloutX + 20) + '" y="' + (calloutY + 10) + '">✂ Trim plank — ' + Math.round(r.trimVisibleMm) + ' mm visible · cut on site</text>' +
+        '</g>'
+      );
     }
 
     // 1 m scale bar — below ground line
-    var barY = ground + 170;
-    var barLen = 1000;     // 1 m in mm
+    var barY = ground + 180;
+    var barLen = 1000;
     var barX0 = marginSide;
     parts.push(
       '<g font-family="Manrope, sans-serif" font-size="72" fill="#182557">' +
@@ -1318,11 +1434,13 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
       '</g>'
     );
 
-    // Bay / height / board-count label, above posts
+    // Board-count tagline — below the scale bar
+    var tagline = r.boardsPerBay + ' boards / bay';
+    if (r.hasTrim) tagline += ' (incl. 1 trim)';
     parts.push(
-      '<text x="' + (boardX + bayWmm / 2) + '" y="' + (top - capH - 30) + '" ' +
-      'font-family="Manrope, sans-serif" font-size="78" font-weight="700" fill="#182557" text-anchor="middle">' +
-        state.bay + ' m bay · ' + state.height + ' m high · ' + r.boardsPerBay + ' boards' +
+      '<text x="' + (barX0 + barLen + 320) + '" y="' + (barY + 24) + '" ' +
+      'font-family="Manrope, sans-serif" font-size="64" font-weight="600" fill="#182557">' +
+        tagline +
       '</text>'
     );
 
@@ -1352,6 +1470,8 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     document.getElementById('s-bays').textContent   = r.bays;
     document.getElementById('s-posts').textContent  = r.posts;
     document.getElementById('s-boards').textContent = r.totalBoards;
+    document.getElementById('s-trim').textContent   = r.trimBoards;
+    document.getElementById('s-board-breakdown').style.display = r.trimBoards > 0 ? '' : 'none';
 
     // Keep the gap stepper input in sync when state.gap is changed from elsewhere
     var gapInput = document.getElementById('gap-input');
@@ -1460,7 +1580,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
       ['Fence run', r.fenceRun.toFixed(1) + ' m'],
       ['Single gates', state.singleGates + ' × 1.2 m'],
       ['Double gates', state.doubleGates + ' × 2.4 m'],
-      ['Total length', r.total.toFixed(1) + ' m']
+      ['Total length', r.total.toFixed(1) + ' m'],
+      ['Boards / bay', r.boardsPerBay + (r.hasTrim ? ' (incl. 1 trim)' : '')],
+      ['Total boards', r.totalBoards + (r.trimBoards ? ' (incl. ' + r.trimBoards + ' trim)' : '')]
     ];
     dl.innerHTML = rows.map(function(kv) {
       return '<div><dt>' + kv[0] + '</dt><dd>' + kv[1] + '</dd></div>';

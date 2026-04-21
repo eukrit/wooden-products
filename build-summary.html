@@ -91,16 +91,60 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.8.1 — fuzzy-matcher aliases (8→14 SKUs auto-price) + quotation pricing importer for non-Aolo vendors.</p>
+  <p style="color: var(--muted); margin: 0;">v0.9.1 — WPC Fence palette + configurator polish (per-plank random grain, trim plank calc, dimension lines). Rebased on top of v0.9.0 (/wpc-deck/ launch).</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.8.1</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-20</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.9.1</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-21</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
     <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Coverage</div><div class="val">14 of 49 taxonomy SKUs priced</div></div>
+    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salesheet.leka.studio/wpc-fence/">salesheet.leka.studio/wpc-fence/</a></div></div>
   </div>
+
+  <h2>What shipped in 0.9.1 — WPC Fence palette fix + configurator polish</h2>
+
+  <h3>WPC Fence — palette + hero</h3>
+  <ul class="changes">
+    <li><code>.swatch-chip</code> now sets <code>background-size: cover</code>, <code>background-position: center</code>, <code>background-repeat: no-repeat</code> on the class; each inline swatch uses explicit <code>background-color</code> + <code>background-image</code> instead of the <code>background</code> shorthand. Fixes reports of "palette doesn't show wood grains" on some browsers.</li>
+    <li>Added <code>&lt;link rel="preload" as="image" href="images/141.jpg"&gt;</code> so the hero paints on the first frame.</li>
+  </ul>
+
+  <h3>Configurator — randomised grain, trim plank, dimensions</h3>
+  <ul class="changes">
+    <li><strong>Per-plank random grain crop</strong> — each plank renders the manufacturer swatch through a nested <code>&lt;svg&gt;</code> viewport with a seeded random x/y offset against an oversized image (1.6× wider / 1.4× taller). Each board reads as a distinct extruded length instead of one repeating tile. Seed is derived from the current spec so the pattern is stable when you change unrelated fields.</li>
+    <li><strong>Trim plank at top</strong> — leftover space above the last full plank is now filled with a trim plank (field-cut on site). Drawn as a full 148 mm plank extending above the infill top; the top rail is painted <em>after</em> the planks so the overhang clips naturally. A dashed amber cut-line + <code>✂ Trim plank — N mm visible · cut on site</code> badge mark the trim.</li>
+    <li><strong>Bay width + fence height dimension lines</strong> — architectural-style dimensions outside the posts (horizontal above for bay width, vertical on the right for height) with extension lines, arrowheads, and boxed labels.</li>
+    <li><strong>Board count update</strong> — <code>boardsPerBay</code> rounds up to include the trim. Totals strip shows "Includes N trim plank(s) — field-cut on site". Request-a-Quote spec preview adds <code>Boards / bay</code> and <code>Total boards</code> with a trim breakdown so the procurement team orders the right count.</li>
+    <li><strong>SVG layer order</strong> — bottom rail before planks, top rail after planks. Trim overhang is clipped cleanly.</li>
+    <li>Removed the <code>Powered by Gemini</code> eyebrow next to "Render in a scene" — the render is still Gemini-backed, the tag wasn't earning its pixels.</li>
+  </ul>
+
+  <h3>Files touched (0.9.1)</h3>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>website/salesheet/wpc-fence/index.html</code></td><td>Explicit swatch CSS, hero image preload, split inline swatch styles</td></tr>
+      <tr><td><code>website/salesheet/wpc-fence/configurator/index.html</code></td><td>Rewrote <code>computed()</code> + <code>renderSvg()</code>: random grain per plank, trim plank calc, dim lines, reordered rails, trim stats in totals strip + quote spec</td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.9.1] entry</td></tr>
+      <tr><td><code>build-summary.html</code></td><td>Updated for 0.9.1</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.9.0 (WPC Deck Collection sales sheet)</summary>
+
+  <h2>What shipped in 0.9.0 — /wpc-deck/ launch</h2>
+  <ul class="changes">
+    <li>New full-stack Leka Design System sales sheet at <code>website/salesheet/wpc-deck/index.html</code> mirroring the /wpc-fence/ template (hero, stats, range, spec table, material science, substructure, 3 configs, 4-step install, gallery, 8-colour palette, 5 applications, 9-row comparison vs timber/porcelain/painted concrete, warranty, CTA, quote modal).</li>
+    <li>Leka product codes: <code>LKD-P-140</code> Premium Deck 140×20 mm, <code>LKD-C-097</code> Classic Deck 97×20 mm (reversible).</li>
+    <li>9 hero/range/config/gallery images enriched in place via <code>scripts/enrich_wpc_deck_images.py</code> (Gemini 3 Pro Image Preview — "product card" and "context scene" variants).</li>
+    <li>New Maxis Wood competitor scrape (<code>scripts/scrapers/maxiswood_scrape.js</code> + <code>_extract.py</code>) → 11 categories, 27 SKU-level rows, 123 image URLs saved under <code>data/parsed/maxiswood/</code>.</li>
+    <li><code>wpc-deck/SOURCE_MAPPING.md</code> internal SKU-to-vendor mapping, excluded from the Docker build via <code>.dockerignore</code>.</li>
+  </ul>
+
+  </details>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.8.1 (fuzzy-matcher aliases + quotation pricing importer)</summary>
 
   <h2>What shipped in 0.8.1 — Extra catalog coverage</h2>
 
@@ -565,9 +609,11 @@ Year rollover resets seq to 1 automatically.</pre>
 
   </details>
 
+  </details>
+
   <h2>Verification</h2>
   <div class="callout">
-    All 7 pages return 200. All 64 referenced images + CSS resolve. v0.6.1 image quality spot-checked after Gemini run (clean 1024×1024 studio outputs). Live on both <code>salesheet.leka.studio/wpc-profile/</code> and <code>salessheet.leka.studio/wpc-profile/</code> (double-s alias) via Cloud Run.
+    Local Chrome headless snapshot (<code>localhost:8092/wpc-fence/</code>) confirms all 8 palette swatches render with their woodgrain image and that the configurator preview shows: bay-width dim line above, height dim line right, per-plank randomised grain, and a 13th trim plank with "✂ Trim plank — 124 mm visible · cut on site" callout + orange dashed cut line (for 2.0 m height × 2.0 m bay × 0 cm gap). Spec preview in the Quote modal now surfaces "Boards / bay: 13 (incl. 1 trim)" and "Total boards: N (incl. M trim)". All v0.6.1 pages still return 200.
   </div>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.4.0 (single-page /catalog/ — superseded by /wpc-profile/)</summary>
