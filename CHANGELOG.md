@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.0] - 2026-04-21
+
+### Added — WPC Deck Collection sales sheet (/wpc-deck/)
+
+- `website/salesheet/wpc-deck/index.html` — full Leka Design System
+  sales sheet mirroring the `/wpc-fence/` template. Manrope type scale,
+  navy/cream/purple/magenta/amber tokens, full-scroll section order: nav,
+  hero, stats, manifesto, range (2 up), spec table (13 rows), material
+  science, substructure (joist + clip), 3 configurations, 4-step install
+  (with inline SVG assembly diagram), gallery, 8 colour palette, 5
+  applications, 9-row comparison vs timber / porcelain / painted concrete,
+  warranty (15 yr / 10 yr structural + ΔE retention), CTA, footer, quote
+  modal.
+- Leka-branded product codes:
+  - **LKD-P-140** Premium Deck Board — 140 × 20 mm reversible
+  - **LKD-C-097** Classic Deck Board — 97 × 20 mm reversible
+- Leka 8-colour standard palette reused from `/wpc-fence/`; swatch
+  images copied to `wpc-deck/images/swatches/`.
+- Hero / range / config / gallery imagery sourced from the existing
+  Leka `wpc-profile` co-extrusion photo library, then enriched in place
+  by `scripts/enrich_wpc_deck_images.py` (Gemini 3 Pro Image Preview)
+  with two prompt variants: "product card" (seamless pale background,
+  centred product, soft shadow, 1024×1024) for the 2 range cards, and
+  "context scene" (preserve setting, tighten composition, recentre,
+  clean artefacts) for the 7 hero / config / gallery shots. No vendor
+  imagery on the public page.
+- `wpc-deck/SOURCE_MAPPING.md` — **internal-only** mapping of Leka SKUs
+  to upstream vendor codes (DECK-140, Deck-002), MOQs, lead times, and
+  warranty pass-through rules. Excluded from the Docker build via an
+  updated `website/salesheet/.dockerignore` pattern so it never ships
+  to the static container.
+- `website/salesheet/Dockerfile` — new `COPY wpc-deck static/wpc-deck`
+  layer. `website/salesheet/index.html` landing page now lists three
+  collections (profiles, deck, fence). `.claude/launch.json` gains a
+  `wpc-deck-site` entry for local preview on port 8086.
+
+### Added — Maxis Wood competitor catalog scrape (internal)
+
+- `scripts/scrapers/maxiswood_scrape.js` — Node + playwright-core
+  scraper that drives the system Google Chrome (Playwright's bundled
+  Chromium lacks a VC++ runtime on this host). Renders each iTopPlus
+  AngularJS-rendered category page, saves the post-render HTML and a
+  full-page PNG, and writes a per-category JSON so the run survives
+  Windows libuv `new_time >= loop->time` crashes mid-batch.
+- `scripts/scrapers/maxiswood_extract.py` — BeautifulSoup pass over the
+  rendered HTML that pulls structured fields per category: description,
+  properties, advantages, specifications table (product_code, dimension,
+  profile, color, price), remarks, colors note, warranty note, brochure
+  PDF, and product gallery images (site-chrome filtered out).
+- Outputs under `data/parsed/maxiswood/`:
+  `maxiswood_catalog.json` (11 categories, nested),
+  `maxiswood_catalog.csv` (27 flat SKU-level rows),
+  `maxiswood_images.csv` (123 image URLs), `README.md` (per-category
+  summary). Raw rendered HTML + full-page screenshots in
+  `data/raw/maxiswood/`.
+
+### Copy / warranty guardrails
+
+- Warranty copy follows `website/salesheet/README.md §8`:
+  structural-vs-surface split (never bundled), measurable ΔE fade
+  thresholds, explicit exclusions list, 60-day written-notice claim
+  process, pass-through disclaimer. Structural years (15 / 10) are
+  Leka's underwritten figures; surface years (5 / 3) match the upstream
+  manufacturer's published limited warranty and require the anti-UV top
+  coat at install for the Premium 5-yr figure.
+- No vendor names, no vendor SKUs, no non-English characters on the
+  public page. Verified via `grep -i fence wpc-deck/index.html` (empty).
+
 ## [0.8.1] - 2026-04-20
 
 ### Added — Extra catalog coverage (fuzzy-matcher aliases + quotation importer)
