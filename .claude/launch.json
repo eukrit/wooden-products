@@ -16,6 +16,13 @@
       "autoPort": true
     },
     {
+      "name": "wpc-deck-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8086", "--directory", "./website/salesheet"],
+      "port": 8086,
+      "autoPort": true
+    },
+    {
       "name": "panpruksa",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["http-server", "./website/panpruksa", "-p", "8090", "-c-1"],

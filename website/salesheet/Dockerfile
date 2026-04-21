@@ -19,6 +19,7 @@ COPY templates             templates
 RUN mkdir -p static
 COPY index.html            static/index.html
 COPY wpc-fence             static/wpc-fence
+COPY wpc-deck              static/wpc-deck
 COPY wpc-profile           static/wpc-profile
 COPY catalog               static/catalog
 COPY quote                 static/quote

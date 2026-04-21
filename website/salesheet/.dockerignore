@@ -7,3 +7,7 @@ README.md
 __pycache__
 *.pyc
 .venv
+
+# Internal-only docs — never ship to the static container
+**/SOURCE_MAPPING.md
+**/INTERNAL_*.md
