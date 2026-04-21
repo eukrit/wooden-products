@@ -160,16 +160,8 @@ def order_submit(order_id: str):
     if xero_client.is_configured():
         try:
             contact_id, used_fallback = _resolve_xero_contact(order.get("customer", {}) or {})
-            # Ensure every Item exists (auto-create any missing ones)
-            for ln in lines:
-                sku = ln.get("sku")
-                name = ln.get("name") or sku
-                if sku:
-                    try:
-                        xero_client.ensure_item(sku, name)
-                    except Exception as exc:
-                        log.warning("ensure_item(%s) failed (%s) — proceeding; Xero may still accept", sku, exc)
-            # Build invoice line items
+            # We don't maintain Xero Items — SKU is baked into the line description
+            # and every line uses XERO_DEFAULT_ACCOUNT_CODE (see xero_client.create_invoice).
             xero_items = [
                 {
                     "sku": ln["sku"],
