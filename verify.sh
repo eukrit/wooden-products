@@ -113,7 +113,7 @@ echo "--- 1. Environment Checks ---"
 echo ""
 echo "--- 2. Peak API Connectivity ---"
 
-PEAK_BASE="${PEAK_API_URL:-http://peakengineapidev.azurewebsites.net}"
+PEAK_BASE="${PEAK_API_URL:-https://peakengineapi.azurewebsites.net}"
 PEAK_TOKEN="${PEAK_USER_TOKEN:-}"
 
 if [ -n "$PEAK_TOKEN" ]; then

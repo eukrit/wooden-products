@@ -98,7 +98,7 @@ echo "--- Copying credential files ---"
 mkdir -p credentials
 
 if [ -d "$CREDENTIALS_SOURCE" ]; then
-  for FILE in "ai-agents-go-4c81b70995db.json" \
+  for FILE in "ai-agents-go-9b4219be8c01.json" \
               "client_secret_538978391890-2ol1mrglnelng580ldvj5fi4tkrliqhf.apps.googleusercontent.com.json" \
               "xero_tokens.json" \
               "token_oauth.json" \

@@ -46,7 +46,7 @@ PROJECT_ID = "ai-agents-go"
 CRED_PATH = os.path.join(
     "C:\\Users\\eukri\\OneDrive\\Documents\\Claude Code",
     "Credentials Claude Code",
-    "ai-agents-go-4c81b70995db.json",
+    "ai-agents-go-9b4219be8c01.json",
 )
 
 # Target extensions

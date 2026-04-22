@@ -17,7 +17,7 @@
     "region": "asia-southeast1",
     "service_name": "[SERVICE_NAME]",
     "service_account": "claude@ai-agents-go.iam.gserviceaccount.com",
-    "service_account_key": "file:credentials/ai-agents-go-4c81b70995db.json",
+    "service_account_key": "file:credentials/ai-agents-go-9b4219be8c01.json",
     "oauth_client": "file:credentials/client_secret_538978391890-2ol1mrglnelng580ldvj5fi4tkrliqhf.apps.googleusercontent.com.json",
     "secret_manager": {
       "peak-api-token": "projects/ai-agents-go/secrets/peak-api-token/versions/latest",
@@ -31,7 +31,7 @@
 
   "apis": {
     "peak": {
-      "base_url": "http://peakengineapidev.azurewebsites.net",
+      "base_url": "https://peakengineapi.azurewebsites.net",
       "connect_id": "ENV:PEAK_CONNECT_ID",
       "connect_key": "ENV:PEAK_CONNECT_KEY",
       "application_code": "ENV:PEAK_APP_CODE",
@@ -73,7 +73,7 @@
     },
     "google_sheets": {
       "auth_method": "service_account OR oauth",
-      "service_account_key": "file:credentials/ai-agents-go-4c81b70995db.json",
+      "service_account_key": "file:credentials/ai-agents-go-9b4219be8c01.json",
       "oauth_token": "file:credentials/token_oauth.json",
       "scope": "https://www.googleapis.com/auth/script.projects"
     },
