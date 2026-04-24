@@ -1816,7 +1816,8 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     });
     try {
       var resp = await fetch('/api/configurator/price?' + params.toString(), {
-        credentials: 'same-origin'
+        credentials: 'same-origin',
+        headers: { 'Accept': 'application/json' }
       });
       if (resp.status === 401 || resp.status === 403) {
         // Session expired or approval revoked — re-check status
@@ -1854,7 +1855,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 
   async function checkAuthStatus() {
     try {
-      var resp = await fetch('/auth/status', { credentials: 'same-origin' });
+      var resp = await fetch('/auth/status', { credentials: 'same-origin', headers: { 'Accept': 'application/json' } });
       var body = await resp.json().catch(function(){ return {}; });
       authState.authenticated = !!body.authenticated;
       authState.status = body.status || null;
