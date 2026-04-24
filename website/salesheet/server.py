@@ -29,7 +29,7 @@ from typing import Any
 
 from datetime import timedelta
 
-from flask import Flask, Response, abort, jsonify, request, send_from_directory
+from flask import Flask, Response, abort, jsonify, redirect, request, send_from_directory
 
 logging.basicConfig(
     level=logging.INFO,
@@ -91,6 +91,15 @@ def serve_static(path: str):
     if os.path.isdir(full):
         idx = os.path.join(full, "index.html")
         if os.path.isfile(idx):
+            # Relative asset URLs (e.g. <img src="images/141.jpg">) resolve
+            # against the parent path when the URL lacks a trailing slash,
+            # producing 404s. Redirect to the canonical slashed form so they
+            # resolve under the directory.
+            if not request.path.endswith("/"):
+                target = request.path + "/"
+                if request.query_string:
+                    target += "?" + request.query_string.decode("latin-1")
+                return redirect(target, code=301)
             return send_from_directory(full, "index.html")
         abort(404)
 
