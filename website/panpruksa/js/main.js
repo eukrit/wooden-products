@@ -113,7 +113,7 @@ if (contactForm) {
 
     } catch (error) {
       formStatus.className = 'form-status error';
-      formStatus.textContent = 'Something went wrong. Please email us at contact@nubo.asia';
+      formStatus.textContent = 'Something went wrong. Please email us at contact@panpruksa.com';
     }
 
     submitBtn.textContent = originalText;
