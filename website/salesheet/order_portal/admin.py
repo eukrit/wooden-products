@@ -240,3 +240,70 @@ def admin_act_as(order_id: str):
 def admin_end_act_as():
     session.pop("impersonating_uid", None)
     return jsonify({"ok": True})
+
+
+# ---------- Architect approval ----------
+
+def _architect_decision(uid: str, decision: str) -> tuple[dict, int]:
+    """Shared helper for approve/reject. Returns (json_body, http_code)."""
+    from . import slack_leads  # lazy
+
+    db = fs.get_db()
+    ref = db.collection("users").document(uid)
+    snap = ref.get()
+    if not snap.exists:
+        return {"ok": False, "error": "user_not_found"}, 404
+
+    user = snap.to_dict() or {}
+    now = datetime.now(timezone.utc)
+    reason = ""
+    if request.is_json:
+        reason = str((request.get_json(silent=True) or {}).get("reason", "")).strip()
+    else:
+        reason = str(request.form.get("reason", "")).strip()
+
+    if decision == "approved":
+        ref.update({
+            "status": "approved",
+            "approved_by_uid": g.user["uid"],
+            "approved_at": now,
+            "rejected_reason": None,
+            "updated_at": now,
+        })
+    else:
+        ref.update({
+            "status": "rejected",
+            "rejected_by_uid": g.user["uid"],
+            "rejected_at": now,
+            "rejected_reason": reason or None,
+            "updated_at": now,
+        })
+
+    try:
+        slack_leads.post_architect_decision(
+            uid=uid,
+            email=user.get("email", ""),
+            display_name=user.get("display_name", user.get("email", "")),
+            decision=decision,
+            actor_email=g.user.get("email", "admin"),
+            reason=reason,
+        )
+    except Exception as exc:
+        log.warning("Slack post for architect decision failed: %s", exc)
+
+    log.info("Architect %s → %s by %s", uid, decision, g.user.get("email"))
+    return {"ok": True, "uid": uid, "status": decision}, 200
+
+
+@bp.route("/admin/architects/<uid>/approve", methods=["POST"], endpoint="admin_architect_approve")
+@require_role("admin")
+def admin_architect_approve(uid: str):
+    body, code = _architect_decision(uid, "approved")
+    return jsonify(body), code
+
+
+@bp.route("/admin/architects/<uid>/reject", methods=["POST"], endpoint="admin_architect_reject")
+@require_role("admin")
+def admin_architect_reject(uid: str):
+    body, code = _architect_decision(uid, "rejected")
+    return jsonify(body), code

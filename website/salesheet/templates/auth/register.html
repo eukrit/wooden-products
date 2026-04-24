@@ -1,0 +1,183 @@
+{% extends "layout/base.html" %}
+{% block title %}Architect registration — Leka{% endblock %}
+{% block nav %}{# No nav on registration page #}{% endblock %}
+
+{% block head_extra %}
+<style>
+  body { background: var(--lk-navy); color: var(--lk-cream); }
+  .reg-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+    background: radial-gradient(circle at 20% 20%, rgba(128,3,255,.25), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(151,2,96,.2), transparent 50%),
+                var(--lk-navy);
+  }
+  .reg-card {
+    max-width: 540px; width: 100%;
+    background: var(--lk-cream);
+    color: var(--lk-navy);
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  }
+  .reg-card .brand { font-size: 22px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--lk-navy); }
+  .reg-card .brand .dot { color: var(--lk-purple); }
+  .reg-card h1 { font-size: 28px; font-weight: 700; margin: 16px 0 8px; }
+  .reg-card .sub { color: var(--lk-navy-60); font-size: 15px; margin-bottom: 28px; }
+  .form-field { margin-bottom: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-field label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--lk-navy-60); margin-bottom: 6px; }
+  .form-field label .req { color: var(--lk-red-orange); }
+  .form-field input, .form-field textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--lk-navy-12); border-radius: 12px;
+    font: inherit; font-size: 15px; color: var(--lk-navy); background: var(--lk-white);
+  }
+  .form-field textarea { resize: vertical; min-height: 90px; }
+  .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--lk-purple); box-shadow: 0 0 0 3px rgba(128,3,255,.15); }
+  .btn-primary {
+    width: 100%; padding: 14px 20px; border: 1px solid var(--lk-purple);
+    border-radius: 999px; background: var(--lk-purple); color: var(--lk-white);
+    font: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+    transition: background .15s ease;
+  }
+  .btn-primary:hover:not(:disabled) { background: var(--lk-magenta); border-color: var(--lk-magenta); }
+  .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+  .form-error { color: var(--lk-red-orange); font-size: 13px; margin-top: 12px; font-weight: 600; min-height: 18px; }
+  .config-banner { background: var(--lk-amber); color: var(--lk-navy); padding: 12px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  .footer-note { margin-top: 24px; text-align: center; font-size: 12px; color: var(--lk-navy-60); }
+  .footer-note a { color: var(--lk-purple); font-weight: 700; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="reg-wrap">
+  <div class="reg-card">
+    <div class="brand">LEKA<span class="dot">.</span>ARCHITECTS</div>
+    <h1>Register for pricing access</h1>
+    <p class="sub">Architects, designers and specifiers — register to unlock indicative retail pricing on the WPC Fence configurator. Our team reviews each registration within one business day.</p>
+
+    {% if not config_ready %}
+    <div class="config-banner">
+      ⚠️ Registration is temporarily unavailable — Firebase config is being provisioned. Email eukrit@gmail.com for access.
+    </div>
+    {% endif %}
+
+    <form id="reg-form" autocomplete="on">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Full name <span class="req">*</span></label>
+          <input type="text" id="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="company">Company / Practice <span class="req">*</span></label>
+          <input type="text" id="company" required autocomplete="organization">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" required autocomplete="username">
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" autocomplete="tel" placeholder="+66 81 234 5678">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="title">Role / Title</label>
+        <input type="text" id="title" placeholder="e.g. Principal Architect, Project Designer">
+      </div>
+      <div class="form-field">
+        <label for="password">Create a password <span class="req">*</span></label>
+        <input type="password" id="password" required minlength="8" autocomplete="new-password">
+      </div>
+      <div class="form-field">
+        <label for="project_context">Project context (optional)</label>
+        <textarea id="project_context" placeholder="Tell us what you're working on — location, typology, scale. Helps us review faster."></textarea>
+      </div>
+      <button type="submit" id="submit-btn" class="btn-primary" {% if not config_ready %}disabled{% endif %}>Create account & request access</button>
+    </form>
+
+    <div class="form-error" id="err"></div>
+
+    <div class="footer-note">
+      Already registered? <a href="/auth/login">Sign in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if config_ready %}
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+  import {
+    getAuth, createUserWithEmailAndPassword, updateProfile,
+    setPersistence, browserLocalPersistence
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "{{ firebase_api_key }}",
+    authDomain: "{{ firebase_auth_domain }}",
+    projectId: "{{ firebase_project_id }}"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  await setPersistence(auth, browserLocalPersistence);
+
+  const errEl = document.getElementById("err");
+  const btn = document.getElementById("submit-btn");
+
+  document.getElementById("reg-form").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    errEl.textContent = "";
+    btn.disabled = true;
+    btn.textContent = "Creating account…";
+
+    const name = document.getElementById("name").value.trim();
+    const company = document.getElementById("company").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const title = document.getElementById("title").value.trim();
+    const password = document.getElementById("password").value;
+    const project_context = document.getElementById("project_context").value.trim();
+
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      if (name) {
+        try { await updateProfile(result.user, { displayName: name }); } catch (_) {}
+      }
+      const idToken = await result.user.getIdToken(true);
+      const res = await fetch("/auth/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          idToken,
+          profile: { name, company, phone, title, project_context }
+        })
+      });
+      const body = await res.json();
+      if (!res.ok || !body.ok) {
+        errEl.textContent = body.error || "Registration failed";
+        btn.disabled = false;
+        btn.textContent = "Create account & request access";
+        return;
+      }
+      window.location.href = body.redirect_to || "/auth/pending";
+    } catch (e) {
+      const code = e.code || "";
+      let msg = e.message || "Registration failed";
+      if (code === "auth/email-already-in-use") msg = "An account with that email already exists — sign in instead.";
+      else if (code === "auth/weak-password") msg = "Password is too weak — use at least 8 characters.";
+      else if (code === "auth/invalid-email") msg = "That email address looks invalid.";
+      errEl.textContent = msg;
+      btn.disabled = false;
+      btn.textContent = "Create account & request access";
+    }
+  });
+</script>
+{% endif %}
+{% endblock %}

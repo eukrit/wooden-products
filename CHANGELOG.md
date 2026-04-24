@@ -2,6 +2,71 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.1] - 2026-04-24
+
+### Added — Architect portal follow-ons
+
+- Slack `#new-leads-wood-products` channel id wired
+  (`C0B0JTXMRK2`).
+- Premium vs Classic series pricing now differs: Premium uses
+  `LKP-FN-161-20` at full rate, Classic uses the same SKU ×
+  `fence_classic_price_ratio` (0.75) until a Heritage fence SKU lands
+  in the vendor map. `breakdown.series` and `breakdown.price_ratio`
+  are surfaced in the `/api/configurator/price` response.
+- `/auth/register` IP rate-limit: 3 attempts per 60 s → 429.
+
+## [0.10.0] - 2026-04-24
+
+### Added — Firebase Auth on WPC Fence Configurator
+
+- **Architect self-registration** (`GET/POST /auth/register`). Firebase
+  Email/Password account creation with a profile capture form (name,
+  company, phone, title, project context). The server seeds
+  `users/{uid}` with `status=pending` and role `architect`, then posts
+  a structured notification to Slack `#new-leads-wood-products` (new
+  channel; id populated in `order-portal-config.json`) for manual
+  review.
+- **Admin approve/reject routes.** `POST /admin/architects/<uid>/approve`
+  and `/reject` flip the architect's status and post a follow-up in the
+  leads channel. Full Slack interactivity (one-click buttons) is
+  deferred; admins approve via curl or the Firestore console for now.
+- **Live retail pricing in the configurator.** New endpoint
+  `GET /api/configurator/price` (behind a new `require_approved`
+  decorator in `order_portal/auth.py`) computes indicative retail
+  THB from the fence-board SKU (`LKP-FN-161-20`), structural uplift,
+  and gate hardware. The configurator fetches `/auth/status` on load,
+  renders one of four states in the totals panel (guest / pending /
+  rejected / approved), and debounces a pricing refresh at 300 ms on
+  every input change.
+- **Status field on users.** `users/{uid}.status ∈
+  {pending, approved, rejected}`. Legacy staff docs without a status
+  are treated as approved at runtime; a backfill script
+  (`scripts/firestore/backfill_user_status.py`, dry-run flag) writes
+  the field explicitly.
+- **Pending holding page.** `/auth/pending` shows a status-aware card;
+  `require_approved` redirects HTML GETs there automatically.
+
+### Files changed
+
+- `website/salesheet/order_portal/auth.py`,
+  `configurator_api.py` (new), `slack_leads.py` (new),
+  `pricing.py`, `admin.py`, `__init__.py`
+- `website/salesheet/templates/auth/register.html` (new),
+  `templates/auth/pending.html` (new)
+- `website/salesheet/wpc-fence/configurator/index.html`
+- `data/catalog/order-portal-config.json` (v1.1.0)
+- `scripts/firestore/backfill_user_status.py` (new)
+
+### Pre-prod TODO
+
+- Create Slack channel `#new-leads-wood-products`, invite `@ai_agents`,
+  paste channel id into
+  `data/catalog/order-portal-config.json.slack.architect_leads_channel_id`
+  (or set `SLACK_ARCHITECT_LEADS_CHANNEL`).
+- Run `python scripts/firestore/backfill_user_status.py` in each env.
+- Verify Firebase Email/Password provider is enabled in the
+  `ai-agents-go` project.
+
 ## [0.9.2] - 2026-04-22
 
 ### Fixed — WPC Fence Configurator — layout polish

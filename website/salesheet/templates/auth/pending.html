@@ -1,0 +1,87 @@
+{% extends "layout/base.html" %}
+{% block title %}Account under review — Leka{% endblock %}
+{% block nav %}{# No nav on pending page #}{% endblock %}
+
+{% block head_extra %}
+<style>
+  body { background: var(--lk-navy); color: var(--lk-cream); }
+  .pend-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+    background: radial-gradient(circle at 20% 20%, rgba(128,3,255,.25), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(151,2,96,.2), transparent 50%),
+                var(--lk-navy);
+  }
+  .pend-card {
+    max-width: 520px; width: 100%;
+    background: var(--lk-cream);
+    color: var(--lk-navy);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  }
+  .pend-card .brand { font-size: 22px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--lk-navy); }
+  .pend-card .brand .dot { color: var(--lk-purple); }
+  .pend-card .status-pill {
+    display: inline-block; margin-top: 20px;
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  }
+  .pend-card .status-pill.pending  { background: var(--lk-amber);       color: var(--lk-navy); }
+  .pend-card .status-pill.rejected { background: var(--lk-red-orange); color: var(--lk-white); }
+  .pend-card .status-pill.approved { background: var(--lk-purple);     color: var(--lk-white); }
+  .pend-card h1 { font-size: 26px; font-weight: 700; margin: 10px 0 12px; }
+  .pend-card p { color: var(--lk-navy-80); font-size: 15px; margin-bottom: 14px; line-height: 1.55; }
+  .pend-card .cta-row { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .pend-card a.btn, .pend-card form button {
+    display: inline-block; padding: 12px 22px; border-radius: 999px;
+    font: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+    text-decoration: none;
+  }
+  .pend-card a.btn.primary  { background: var(--lk-purple); color: var(--lk-white); border: 1px solid var(--lk-purple); }
+  .pend-card a.btn.primary:hover { background: var(--lk-magenta); border-color: var(--lk-magenta); }
+  .pend-card a.btn.ghost    { background: transparent; color: var(--lk-navy); border: 1px solid var(--lk-navy-12); }
+  .pend-card form button    { background: transparent; color: var(--lk-navy-60); border: 1px solid var(--lk-navy-12); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="pend-wrap">
+  <div class="pend-card">
+    <div class="brand">LEKA<span class="dot">.</span>ARCHITECTS</div>
+
+    {% if user_status == 'approved' %}
+      <span class="status-pill approved">Approved</span>
+      <h1>You're all set</h1>
+      <p>Welcome, {{ display_name }}. You can view indicative retail pricing on the WPC Fence configurator now.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/wpc-fence/configurator/">Open the configurator →</a>
+      </div>
+    {% elif user_status == 'rejected' %}
+      <span class="status-pill rejected">Access declined</span>
+      <h1>We couldn't approve your account</h1>
+      <p>Our team reviewed your registration and decided not to grant pricing access at this time. If you think this is a mistake, please email <a href="mailto:eukrit@gmail.com">eukrit@gmail.com</a> and we'll take another look.</p>
+    {% elif is_signed_in %}
+      <span class="status-pill pending">Under review</span>
+      <h1>Thanks for registering</h1>
+      <p>Your account ({{ email }}) is being reviewed by our team. We aim to respond within one business day — you'll receive an email once your access is approved.</p>
+      <p>In the meantime you can still browse the WPC Fence configurator and request a written quote from Sales.</p>
+      <div class="cta-row">
+        <a class="btn ghost" href="/wpc-fence/configurator/">Browse the configurator</a>
+        <form method="POST" action="/auth/logout" style="display:inline">
+          <button type="submit">Sign out</button>
+        </form>
+      </div>
+    {% else %}
+      <span class="status-pill pending">Not signed in</span>
+      <h1>Please sign in</h1>
+      <p>Sign in or register to see the status of your pricing-access request.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/auth/login">Sign in</a>
+        <a class="btn ghost" href="/auth/register">Register</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
