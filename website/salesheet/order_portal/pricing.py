@@ -173,3 +173,115 @@ def validate_line_gm(unit_price: float, landed: float, role: str) -> tuple[bool,
     if gm + 0.01 < floor:  # small tolerance for rounding
         return False, f"GM {gm:.1f}% below floor {floor:.1f}% for role '{role}'"
     return True, ""
+
+
+# ---------- Fence configurator pricing ----------
+
+def _compute_boards_per_bay(height_m: float, gap_cm: float) -> int:
+    """Mirror the configurator's JS math so client UI + server agree."""
+    board_mm = 148
+    gap_mm = max(0.0, float(gap_cm)) * 10
+    top_rail = 40
+    bottom_rail = 60
+    usable_mm = max(0.0, float(height_m) * 1000 - top_rail - bottom_rail)
+    pitch_mm = board_mm + (gap_mm if gap_mm > 0 else 0)
+    if pitch_mm <= 0:
+        return 0
+    full_planks = max(1, int((usable_mm + gap_mm) // pitch_mm))
+    used = full_planks * board_mm + max(0, full_planks - 1) * gap_mm
+    remaining = max(0.0, usable_mm - used)
+    trim_visible = max(0.0, remaining - (gap_mm if full_planks >= 1 else 0))
+    has_trim = trim_visible > 0.5
+    return full_planks + (1 if has_trim else 0)
+
+
+def fence_retail_thb(spec: dict[str, Any], fx_rate: float) -> dict[str, Any]:
+    """Compute the indicative retail price for a WPC fence configuration.
+
+    Returns a dict with { retail_thb, breakdown, warnings }. None-safe:
+    missing SKU prices degrade to 0 rather than raising, so the UI can
+    render a "pricing unavailable" message without a 500.
+
+    spec keys (all floats/ints unless noted):
+      - series: "premium" | "classic"  (currently both priced off fence_sku)
+      - height_m, bay_m, gap_cm, fence_run_m
+      - single_gates, double_gates
+    """
+    pricing_cfg = cfg.pricing()
+    series = str(spec.get("series", "premium")).lower()
+    # Classic (Heritage solid WPC) is cheaper than Premium (co-ex). If ops
+    # hasn't given us a separate Heritage fence SKU yet, both keys point to
+    # the same LKP-FN board and we discount Classic via price_ratio.
+    if series == "classic":
+        sku = pricing_cfg.get("fence_sku_classic", pricing_cfg.get("fence_sku_premium", "LKP-FN-161-20"))
+        price_ratio = float(pricing_cfg.get("fence_classic_price_ratio", 1.0))
+    else:
+        # Premium or "undecided" → price at Premium (gives the honest upper bound)
+        sku = pricing_cfg.get("fence_sku_premium", "LKP-FN-161-20")
+        price_ratio = 1.0
+
+    overrides = load_pricing_overrides()
+    landed = landed_cost_thb_per_m(sku, fx_rate=fx_rate, overrides=overrides)
+    unit_price_per_m = default_unit_price_thb(sku, landed, overrides=overrides)
+
+    warnings: list[str] = []
+    if unit_price_per_m is None:
+        warnings.append(f"No unit price for SKU {sku}; returning zero fence-board cost")
+        unit_price_per_m = 0.0
+    # Apply Classic discount after override lookup so Firestore per-SKU
+    # admin overrides still respect the series relationship.
+    if price_ratio != 1.0:
+        unit_price_per_m = round(unit_price_per_m * price_ratio, 2)
+
+    fence_run_m = float(spec.get("fence_run_m", 0) or 0)
+    height_m = float(spec.get("height_m", 2.0) or 2.0)
+    gap_cm = float(spec.get("gap_cm", 0) or 0)
+    bay_m = float(spec.get("bay_m", 2.0) or 2.0)
+
+    boards_per_bay = _compute_boards_per_bay(height_m, gap_cm)
+    # Total linear metres of fence-board stock needed:
+    #   bays_in_run * bay_width * boards_per_bay
+    # Each bay is a rectangle with bay_m horizontal run × boards_per_bay rows.
+    # Round bays up (partial bays still need a full bay's worth of boards).
+    import math
+    bays = max(1, math.ceil(fence_run_m / bay_m)) if bay_m > 0 else 0
+    board_linear_m = bays * bay_m * boards_per_bay
+    board_cost_thb = round(board_linear_m * unit_price_per_m)
+
+    # Post + sub-frame + install allowance is not priced off the SKU map.
+    # We roll it into a simple per-metre uplift to keep the indicative
+    # number honest without modelling every hardware line.
+    structural_uplift_per_m = float(pricing_cfg.get("fence_structural_uplift_thb_per_m", 900))
+    structural_cost = round(fence_run_m * structural_uplift_per_m)
+
+    gate_cfg = pricing_cfg.get("fence_gate_hardware_thb", {"single": 0, "double": 0})
+    single_gates = int(spec.get("single_gates", 0) or 0)
+    double_gates = int(spec.get("double_gates", 0) or 0)
+    gate_cost = round(
+        single_gates * float(gate_cfg.get("single", 0))
+        + double_gates * float(gate_cfg.get("double", 0))
+    )
+
+    precision = max(1, int(cfg.load().get("architect_portal", {}).get("price_precision_thb", 100)))
+    subtotal = board_cost_thb + structural_cost + gate_cost
+    rounded = int(round(subtotal / precision) * precision)
+
+    return {
+        "retail_thb": rounded,
+        "breakdown": {
+            "series": series,
+            "sku": sku,
+            "price_ratio": price_ratio,
+            "unit_price_thb_per_m": unit_price_per_m,
+            "board_linear_m": round(board_linear_m, 2),
+            "board_cost_thb": board_cost_thb,
+            "structural_cost_thb": structural_cost,
+            "structural_uplift_thb_per_m": structural_uplift_per_m,
+            "gate_cost_thb": gate_cost,
+            "single_gates": single_gates,
+            "double_gates": double_gates,
+            "precision_thb": precision,
+            "subtotal_thb": subtotal,
+        },
+        "warnings": warnings,
+    }

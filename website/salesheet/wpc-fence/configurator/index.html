@@ -826,6 +826,10 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
       <li><a href="/wpc-fence/#range">Range</a></li>
       <li><a href="/wpc-fence/#specs">Specifications</a></li>
       <li><a href="/wpc-fence/#palette">Colours</a></li>
+      <li id="nav-auth-signin" hidden><a href="/auth/login">Sign in</a></li>
+      <li id="nav-auth-register" hidden><a href="/auth/register">Register</a></li>
+      <li id="nav-auth-user" hidden><span id="nav-auth-user-label" style="font-size:13px;color:var(--lk-navy-60);font-weight:600;"></span></li>
+      <li id="nav-auth-signout" hidden><a href="#" id="nav-signout-link">Sign out</a></li>
       <li><a href="#quote" class="btn btn-primary" data-quote-open>Request Quote</a></li>
     </ul>
   </div>
@@ -1001,6 +1005,36 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
         </div>
         <div style="font-size:11px; color:var(--lk-cream-60); margin-top:-2px;" id="s-board-breakdown">
           Includes <span id="s-trim">0</span> trim plank(s) — field-cut on site.
+        </div>
+        <!-- Architect pricing block — visibility driven by /auth/status -->
+        <div class="pricing-block" id="pricing-block" data-state="guest"
+             style="margin:14px 0 4px; padding:14px 16px; border-radius:12px; background:rgba(255,249,230,.08); border:1px solid rgba(255,249,230,.16);">
+          <div id="pricing-guest" style="font-size:12.5px; line-height:1.45;">
+            <strong style="display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--lk-amber); margin-bottom:4px;">Architects</strong>
+            <span style="color:var(--lk-cream-80);">
+              <a href="/auth/register" style="color:var(--lk-amber); font-weight:700; border-bottom:1px dotted var(--lk-amber);">Register</a>
+              or <a href="/auth/login" style="color:var(--lk-amber); font-weight:700; border-bottom:1px dotted var(--lk-amber);">sign in</a>
+              to see indicative retail pricing live.
+            </span>
+          </div>
+          <div id="pricing-pending" hidden style="font-size:12.5px; line-height:1.45;">
+            <strong style="display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--lk-amber); margin-bottom:4px;">Account under review</strong>
+            <span style="color:var(--lk-cream-80);">Pricing unlocks once our team approves your account. We reply within one business day.</span>
+          </div>
+          <div id="pricing-rejected" hidden style="font-size:12.5px; line-height:1.45;">
+            <strong style="display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--lk-red-orange); margin-bottom:4px;">Access not granted</strong>
+            <span style="color:var(--lk-cream-80);">Email eukrit@gmail.com if you believe this is a mistake.</span>
+          </div>
+          <div id="pricing-approved" hidden>
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div>
+                <div style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--lk-amber);">Indicative retail</div>
+                <div style="font-size:10px; color:var(--lk-cream-60); margin-top:2px;">Excl. VAT · final pricing from Sales</div>
+              </div>
+              <div style="font-size:22px; font-weight:800; color:var(--lk-cream);" id="pricing-amount">—</div>
+            </div>
+            <div id="pricing-breakdown" style="font-size:10.5px; color:var(--lk-cream-60); margin-top:8px; display:flex; gap:10px; flex-wrap:wrap;"></div>
+          </div>
         </div>
         <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
       </div>
@@ -1530,6 +1564,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
 
     // Redraw svg
     renderSvg();
+
+    // Trigger debounced pricing refresh (no-op unless user is approved)
+    schedulePricingRefresh();
   }
 
   // ===== Scene render =====
@@ -1731,6 +1768,124 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     });
   }
 
+  // ===== Auth + pricing (architect retail) =====
+  var authState = { authenticated: false, status: null, role: null, email: null };
+  var pricingTimer = null;
+
+  function setPricingState(s) {
+    var block = document.getElementById('pricing-block');
+    if (!block) return;
+    block.setAttribute('data-state', s);
+    ['guest','pending','rejected','approved'].forEach(function(key) {
+      var el = document.getElementById('pricing-' + key);
+      if (el) el.hidden = (key !== s);
+    });
+  }
+
+  function fmtTHB(n) {
+    if (typeof n !== 'number' || !isFinite(n)) return '—';
+    return '฿ ' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function renderPricingResult(body) {
+    var amt = document.getElementById('pricing-amount');
+    var bd  = document.getElementById('pricing-breakdown');
+    if (!amt || !bd) return;
+    amt.textContent = fmtTHB(body.retail_thb);
+    var b = body.breakdown || {};
+    var parts = [];
+    if (b.board_linear_m)     parts.push(b.board_linear_m.toFixed(1) + ' lin-m board');
+    if (b.board_cost_thb)     parts.push('board ' + fmtTHB(b.board_cost_thb));
+    if (b.structural_cost_thb) parts.push('posts/rails ' + fmtTHB(b.structural_cost_thb));
+    if (b.gate_cost_thb)      parts.push('gates ' + fmtTHB(b.gate_cost_thb));
+    bd.innerHTML = parts.map(function(p){ return '<span>• ' + p + '</span>'; }).join('');
+  }
+
+  async function refreshPricing() {
+    if (!authState.authenticated || authState.status !== 'approved') return;
+    var r = computed();
+    var params = new URLSearchParams({
+      series:      state.series,
+      bayWidth:    String(state.bay),
+      boardGap:    String(state.gap),
+      height:      String(state.height),
+      colorCode:   r.c.code,
+      fenceRun:    String(state.length),
+      singleGates: String(state.singleGates),
+      doubleGates: String(state.doubleGates)
+    });
+    try {
+      var resp = await fetch('/api/configurator/price?' + params.toString(), {
+        credentials: 'same-origin'
+      });
+      if (resp.status === 401 || resp.status === 403) {
+        // Session expired or approval revoked — re-check status
+        checkAuthStatus();
+        return;
+      }
+      var body = await resp.json().catch(function(){ return {}; });
+      if (body && body.ok) renderPricingResult(body);
+    } catch (_) { /* silent — next update() retries */ }
+  }
+
+  function schedulePricingRefresh() {
+    if (!authState.authenticated || authState.status !== 'approved') return;
+    if (pricingTimer) clearTimeout(pricingTimer);
+    pricingTimer = setTimeout(refreshPricing, 300);
+  }
+
+  function applyAuthToNav() {
+    var signIn     = document.getElementById('nav-auth-signin');
+    var register   = document.getElementById('nav-auth-register');
+    var userLi     = document.getElementById('nav-auth-user');
+    var userLabel  = document.getElementById('nav-auth-user-label');
+    var signOutLi  = document.getElementById('nav-auth-signout');
+    var isIn = !!authState.authenticated;
+    if (signIn)   signIn.hidden   =  isIn;
+    if (register) register.hidden =  isIn;
+    if (userLi)   userLi.hidden   = !isIn;
+    if (signOutLi) signOutLi.hidden = !isIn;
+    if (userLabel && isIn) {
+      var statusTag = authState.status === 'approved' ? '' :
+                      ' · ' + (authState.status || 'pending');
+      userLabel.textContent = (authState.email || '') + statusTag;
+    }
+  }
+
+  async function checkAuthStatus() {
+    try {
+      var resp = await fetch('/auth/status', { credentials: 'same-origin' });
+      var body = await resp.json().catch(function(){ return {}; });
+      authState.authenticated = !!body.authenticated;
+      authState.status = body.status || null;
+      authState.role   = body.role   || null;
+      authState.email  = body.email  || null;
+    } catch (_) {
+      authState = { authenticated: false, status: null, role: null, email: null };
+    }
+    applyAuthToNav();
+    if (!authState.authenticated) {
+      setPricingState('guest');
+    } else if (authState.status === 'approved') {
+      setPricingState('approved');
+      refreshPricing();
+    } else if (authState.status === 'rejected') {
+      setPricingState('rejected');
+    } else {
+      setPricingState('pending');
+    }
+  }
+
+  function wireSignOut() {
+    var link = document.getElementById('nav-signout-link');
+    if (!link) return;
+    link.addEventListener('click', async function(ev) {
+      ev.preventDefault();
+      try { await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' }); } catch (_) {}
+      window.location.reload();
+    });
+  }
+
   // ===== Init =====
   renderSwatches();
   wireSegmented();
@@ -1741,7 +1896,9 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
   wireScene();
   wireRender();
   wireModal();
+  wireSignOut();
   update();
+  checkAuthStatus();
 })();
 </script>
 

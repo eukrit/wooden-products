@@ -1,8 +1,8 @@
 {
   "_meta": {
     "description": "FROZEN config for the Leka Wood-Products internal order portal. Single source of truth for order number format, Slack channel, Xero fallback, auth rules, and pricing formula. Do not duplicate these values in code — read from this file.",
-    "version": "1.0.0",
-    "frozen_at": "2026-04-20",
+    "version": "1.1.0",
+    "frozen_at": "2026-04-24",
     "owner_email": "eukrit@gmail.com"
   },
 
@@ -17,7 +17,10 @@
   "slack": {
     "channel_id": "C0AUABRBK41",
     "channel_name": "#orders-wood-products",
-    "_note": "Bot @ai_agents (U0ALU8DG6AW) must be invited via /invite @ai_agents."
+    "_note": "Bot @ai_agents (U0ALU8DG6AW) must be invited via /invite @ai_agents.",
+    "architect_leads_channel_id": "C0B0JTXMRK2",
+    "architect_leads_channel_name": "#new-leads-wood-products",
+    "_architect_leads_note": "New architect registrations land here for manual approval. Bot @ai_agents has been invited."
   },
 
   "xero": {
@@ -36,6 +39,8 @@
     "admin_email_domain": "goco.bz",
     "default_role_admin": "admin",
     "default_role_external": "external_sales",
+    "default_role_architect": "architect",
+    "architect_initial_status": "pending",
     "session_cookie_max_age_s": 43200
   },
 
@@ -52,7 +57,18 @@
     "_markup_note": "default_unit_price_thb = landed_cost_thb_per_m * default_markup. Sales adjusts via per-line GM slider.",
     "gm_floor_sales_pct": 25,
     "gm_floor_admin_pct": 0,
-    "vat_pct": 7
+    "vat_pct": 7,
+    "fence_sku_premium": "LKP-FN-161-20",
+    "fence_sku_classic": "LKP-FN-161-20",
+    "fence_classic_price_ratio": 0.75,
+    "_fence_sku_note": "Premium uses LKP-FN-161-20 (Anhui Aolo 161.5×20 co-ex). Classic currently has no Heritage fence SKU in the vendor map, so we price it off the same board with a fence_classic_price_ratio discount that reflects the solid-WPC vs co-ex cost gap. Replace fence_sku_classic with a real LKH-FN-... SKU once it lands and set the ratio to 1.0.",
+    "fence_structural_uplift_thb_per_m": 900,
+    "_fence_structural_uplift_note": "Per-metre uplift covering aluminium posts, rails, concrete footings, fasteners and install allowance not priced off the board SKU. Rolled into indicative retail.",
+    "fence_gate_hardware_thb": {
+      "single": 12000,
+      "double": 22000
+    },
+    "_fence_gate_hardware_note": "Flat retail add-on per gate (hardware + frame + install allowance). Single = 1.2 m leaf, Double = 2.4 m pair. Indicative only; Sales finalises."
   },
 
   "firestore": {
@@ -75,5 +91,13 @@
   "legacy_public_routes": {
     "_note": "These routes must remain untouched by the order portal.",
     "routes": ["/", "/wpc-fence/", "/wpc-profile/", "/catalog/", "/quote/", "/api/quote", "/api/render-scene", "/_healthz"]
+  },
+
+  "architect_portal": {
+    "_note": "Flags for the architect-facing extension to Firebase Auth.",
+    "enabled": true,
+    "requires_approval": true,
+    "price_precision_thb": 100,
+    "_price_precision_note": "Round displayed retail figure to nearest N THB so indicative pricing doesn't imply false precision."
   }
 }

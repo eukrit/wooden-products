@@ -28,4 +28,5 @@ from . import catalog_api  # noqa: E402, F401
 from . import orders  # noqa: E402, F401
 from . import order_submit  # noqa: E402, F401
 from . import admin  # noqa: E402, F401
+from . import configurator_api  # noqa: E402, F401
 from . import placeholders  # noqa: E402, F401
