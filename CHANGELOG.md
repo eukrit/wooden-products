@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.2] - 2026-04-25
+
+### Changed — canonical hostname is now `salessheet.leka.studio`
+
+- All forward-looking references in code, docs, scripts, and OG meta
+  tags now use `salessheet.leka.studio` (double-s). The single-s
+  `salesheet.leka.studio` alias remains live in DNS so existing
+  bookmarks, Slack post links, and emails keep working.
+- Files updated: `server.py` (Slack quote source field),
+  `order_portal/slack_leads.py` (registration footer + admin deep
+  link), `quote/index.html` (form payload source), `wpc-fence/index.html`
+  + `wpc-deck/index.html` (OG canonical URL + image), `README.md`,
+  `CLAUDE.md`, `build-summary.html`,
+  `scripts/verify_order_portal.sh`, `scripts/setup_order_portal_secrets.sh`.
+- **Add `salessheet.leka.studio` to Firebase Authorized Domains** if
+  not already done — required for any Google sign-in popup or
+  password reset email magic link to work.
+- CHANGELOG history entries below are left as-is — they are a
+  historical snapshot of what was true at the time.
+
 ## [0.10.1] - 2026-04-24
 
 ### Added — Architect portal follow-ons

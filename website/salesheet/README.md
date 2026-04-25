@@ -2,10 +2,10 @@
 
 Reproducible recipe for building Leka Studio product sales microsites.
 Uses the Leka Design System from Figma (`ER6pbDqrJ4Uo9FuldnYBfm`) and ships to
-`salesheet.leka.studio/<product-slug>/` via Cloud Run.
+`salessheet.leka.studio/<product-slug>/` via Cloud Run.
 
 **Reference implementation:** `wpc-fence/` (this repo).
-**Live URL:** <https://salesheet.leka.studio/wpc-fence/>
+**Live URL:** <https://salessheet.leka.studio/wpc-fence/>
 
 ---
 
@@ -15,7 +15,7 @@ Uses the Leka Design System from Figma (`ER6pbDqrJ4Uo9FuldnYBfm`) and ships to
  Customer browser
         │
         ▼
- salesheet.leka.studio  ──CNAME──▶  ghs.googlehosted.com
+ salessheet.leka.studio  ──CNAME──▶  ghs.googlehosted.com
         │                             (Google Cloud Run Frontend)
         ▼
  Cloud Run: salesheet-leka (asia-southeast1)
@@ -45,7 +45,7 @@ website/salesheet/
 ├── .dockerignore
 ├── requirements.txt        # flask, gunicorn
 ├── server.py               # Flask app — static + /api/quote
-├── index.html              # salesheet.leka.studio/ landing (lists products)
+├── index.html              # salessheet.leka.studio/ landing (lists products)
 ├── README.md               # this playbook
 └── <product-slug>/         # one folder per product
     ├── index.html          # the sales sheet (long-scroll web page)

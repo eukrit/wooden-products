@@ -98,7 +98,7 @@ def post_architect_registration(
     blocks.append({
         "type": "context",
         "elements": [
-            {"type": "mrkdwn", "text": f"Firebase uid `{uid}` · submitted from `salesheet.leka.studio/auth/register` · IP `{ip}`"},
+            {"type": "mrkdwn", "text": f"Firebase uid `{uid}` · submitted from `salessheet.leka.studio/auth/register` · IP `{ip}`"},
         ],
     })
     blocks.append({
@@ -106,7 +106,7 @@ def post_architect_registration(
         "elements": [
             {"type": "mrkdwn", "text":
                 "Review in the admin dashboard: "
-                "<https://salesheet.leka.studio/admin/orders|/admin/orders> · "
+                "<https://salessheet.leka.studio/admin/orders|/admin/orders> · "
                 "Approve: `POST /admin/architects/" + uid + "/approve` · "
                 "Reject: `POST /admin/architects/" + uid + "/reject`"},
         ],

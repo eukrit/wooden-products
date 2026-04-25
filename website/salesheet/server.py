@@ -321,7 +321,7 @@ def _post_to_slack(data: dict[str, Any], ip: str, length_m: float) -> tuple[bool
     blocks.append({
         "type": "context",
         "elements": [
-            {"type": "mrkdwn", "text": f"Submitted from `{fv('source', 'salesheet.leka.studio')}` · IP `{ip}`"},
+            {"type": "mrkdwn", "text": f"Submitted from `{fv('source', 'salessheet.leka.studio')}` · IP `{ip}`"},
         ],
     })
 
@@ -403,7 +403,7 @@ def _post_generic_to_slack(data: dict[str, Any], ip: str) -> tuple[bool, str]:
         {"type": "section", "text": {"type": "mrkdwn",
             "text": f"*Message*\n>{fv('message')[:2500].replace(chr(10), chr(10)+'>')}"}},
         {"type": "context", "elements": [
-            {"type": "mrkdwn", "text": f"Submitted from `{fv('source', 'salesheet.leka.studio/quote/')}` · Product `{fv('product', 'general')}` · IP `{ip}`"},
+            {"type": "mrkdwn", "text": f"Submitted from `{fv('source', 'salessheet.leka.studio/quote/')}` · Product `{fv('product', 'general')}` · IP `{ip}`"},
         ]},
         {"type": "actions", "elements": [{
             "type": "button",

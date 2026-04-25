@@ -92,7 +92,7 @@ Minimum pass rate: 100% on critical path, 80% overall.
 ## Project-Specific Notes
 
 ### Sales Sheet Microsite Platform
-- **Live URL:** https://salesheet.leka.studio/wpc-fence/
+- **Live URL:** https://salessheet.leka.studio/wpc-fence/
 - **Code:** `website/salesheet/` (Flask + gunicorn on Cloud Run)
 - **Cloud Run service:** `salesheet-leka` (asia-southeast1)
 - **Lead routing:** `POST /api/quote` → Slack `#bd-new-leads` (`C07EF698Q1K`)
