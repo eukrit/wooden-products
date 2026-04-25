@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2026-04-25
+
+### Added — Slack interactive Approve / Reject buttons
+
+- Architect registration messages in `#new-leads-wood-products` now
+  carry two buttons: ✅ Approve and ❌ Reject (with a confirm dialog).
+  One click flips `users/{uid}.status` and replaces the message body
+  with the decision summary.
+- New endpoint `POST /slack/interactive` verifies the Slack request
+  signature (`SLACK_SIGNING_SECRET`, mounted from GSM secret
+  `slack-signing-secret`), enforces a 5-minute replay window, and
+  authorises clicks against a config allowlist
+  (`slack.architect_admin_user_ids: ["U07F297K8UQ"]`).
+- Refactored `admin._architect_decision` into a Flask-`g`-independent
+  `architect_decision_core(uid, decision, *, actor_uid, actor_label,
+  reason, post_followup_to_slack)` so both the HTTP admin route and
+  the Slack handler share one source of truth.
+
+### Pre-prod TODO before this works end-to-end
+
+1. Create GSM secret `slack-signing-secret` (Slack app → Basic Info →
+   App Credentials → Signing Secret).
+2. Grant
+   `roles/secretmanager.secretAccessor` on it to
+   `claude@ai-agents-go.iam.gserviceaccount.com`.
+3. In the Slack app config:
+   - Enable **Interactivity & Shortcuts**
+   - Request URL: `https://salessheet.leka.studio/slack/interactive`
+
 ## [0.10.2] - 2026-04-25
 
 ### Changed — canonical hostname is now `salessheet.leka.studio`
