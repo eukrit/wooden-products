@@ -5,7 +5,7 @@
 #   BASE=http://localhost:8080 scripts/verify_order_portal.sh    # local
 
 set -u
-BASE="${BASE:-https://salesheet.leka.studio}"
+BASE="${BASE:-https://salessheet.leka.studio}"
 PASS=0; FAIL=0
 
 check() {
