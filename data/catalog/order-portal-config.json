@@ -20,7 +20,9 @@
     "_note": "Bot @ai_agents (U0ALU8DG6AW) must be invited via /invite @ai_agents.",
     "architect_leads_channel_id": "C0B0JTXMRK2",
     "architect_leads_channel_name": "#new-leads-wood-products",
-    "_architect_leads_note": "New architect registrations land here for manual approval. Bot @ai_agents has been invited."
+    "_architect_leads_note": "New architect registrations land here for manual approval. Bot @ai_agents has been invited.",
+    "architect_admin_user_ids": ["U07F297K8UQ"],
+    "_architect_admin_user_ids_note": "Slack member IDs allowed to click the Approve / Reject buttons in the leads channel. Anyone else's click is rejected with 403."
   },
 
   "xero": {
