@@ -54,7 +54,7 @@ steps:
       - '--image=$_REPO/$_SERVICE:$SHORT_SHA'
       - '--region=$_REGION'
       - '--platform=managed'
-      - '--allow-unauthenticated'
+      - '--no-allow-unauthenticated'
       - '--memory=512Mi'
       - '--cpu=1'
       - '--min-instances=0'
