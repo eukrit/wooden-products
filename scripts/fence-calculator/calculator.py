@@ -64,23 +64,75 @@ class LineItem:
 
 
 @dataclass(frozen=True)
+class ShippingEstimate:
+    """Estimated weight and bounding-box CBM. NOT vendor-confirmed."""
+    weight_kg: float
+    cbm_m3: float
+    notes: list[str]
+
+
+@dataclass(frozen=True)
 class Quote:
     config: FenceConfig
     items: list[LineItem]
     subtotal_usd: float
     shipping_usd: float
     total_usd: float
+    shipping_estimate: ShippingEstimate | None = None
 
     def boards_per_bay(self) -> int:
         params = load_params()
         return math.floor(self.config.bay_height_mm / params["board"]["effective_face_mm"])
 
 
+def estimate_shipping(cfg: FenceConfig) -> ShippingEstimate:
+    """Compute weight+CBM from board (published spec), post (physics), and a
+    5% buffer for accessories. Returns explicit ShippingEstimate so callers
+    can show users the assumptions, not just a number."""
+    p = load_params()
+    wcm = p["weight_cbm_model"]
+    boards_per_bay = math.floor(cfg.bay_height_mm / p["board"]["effective_face_mm"])
+    posts = cfg.bays + 1
+    boards = cfg.bays * boards_per_bay
+
+    bw_key = f"{cfg.bay_width_m:.3f}"
+    pl_key = f"{cfg.post_length_m:.1f}".rstrip("0").rstrip(".")
+    if cfg.post_length_m == 2.0:
+        pl_key = "2.0"
+    elif cfg.post_length_m == 3.0:
+        pl_key = "3.0"
+
+    board_kg = boards * wcm["board"]["kg_per_m"] * cfg.bay_width_m
+    post_kg = posts * wcm["post"]["kg_per_m"] * cfg.post_length_m
+    base_kg = board_kg + post_kg
+    buffer_kg = base_kg * (wcm["accessories_buffer_pct"] / 100.0)
+    gate_kg = cfg.gates * p["gate"]["_weight_kg_estimate"]
+    total_kg = base_kg + buffer_kg + gate_kg
+
+    board_cbm = boards * wcm["board"][f"cbm_per_board_{bw_key}"]
+    post_cbm = posts * wcm["post"][f"cbm_per_post_{pl_key}"]
+    gate_cbm = cfg.gates * p["gate"]["_cbm_estimate"]
+    total_cbm = board_cbm + post_cbm + gate_cbm
+
+    notes = [
+        "Board weight: published spec 2.2 kg/m (manufacturer)",
+        "Post weight: computed from 80x80x2mm alu hollow @ 2700 kg/m^3 (1.685 kg/m)",
+        f"Accessories: bundled as +{wcm['accessories_buffer_pct']:.1f}% buffer over board+post weight",
+        "CBM: bounding-box per item (board: 0.1615 x 0.020 x len; post: 0.080 x 0.080 x len)",
+        "NOT vendor-confirmed — request actual packing list before booking freight.",
+    ]
+    return ShippingEstimate(
+        weight_kg=round(total_kg, 1),
+        cbm_m3=round(total_cbm, 3),
+        notes=notes,
+    )
+
+
 def _key(width: float) -> BoardLength:
     return "2.000" if width == 2.0 else "2.025"
 
 
-def calculate(cfg: FenceConfig, include_shipping: bool = True) -> Quote:
+def calculate(cfg: FenceConfig, include_shipping: bool = True, include_shipping_estimate: bool = False) -> Quote:
     p = load_params()
     bw_key = _key(cfg.bay_width_m)
     pl_key = f"{cfg.post_length_m:.1f}".rstrip("0").rstrip(".")
@@ -150,10 +202,12 @@ def calculate(cfg: FenceConfig, include_shipping: bool = True) -> Quote:
 
     subtotal = round(sum(i.total_usd for i in items), 2)
     shipping = p["shipping_local_to_guangzhou_usd"] if include_shipping else 0.0
+    est = estimate_shipping(cfg) if include_shipping_estimate else None
     return Quote(
         config=cfg,
         items=items,
         subtotal_usd=subtotal,
         shipping_usd=shipping,
         total_usd=round(subtotal + shipping, 2),
+        shipping_estimate=est,
     )

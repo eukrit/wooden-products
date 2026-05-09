@@ -33,7 +33,30 @@
   },
   "gate": {
     "sku": "WPC Gate 1.2m x 2.0m",
-    "unit_price_usd": 285.00
+    "unit_price_usd": 285.00,
+    "_weight_kg_estimate": 35.0,
+    "_weight_source": "estimate: ~2.4 m^2 panel @ 2.2 kg/m board * 2.0m * 6 boards + aluminium frame ~5 kg",
+    "_cbm_estimate": 0.060,
+    "_cbm_source": "1.2 x 2.0 x 0.025 (bounding box, packed flat)"
   },
-  "shipping_local_to_guangzhou_usd": 515.00
+  "shipping_local_to_guangzhou_usd": 515.00,
+  "weight_cbm_model": {
+    "_status": "ESTIMATE — not vendor-confirmed. Boards use published spec; posts are computed from physics; accessories are bundled.",
+    "board": {
+      "kg_per_m": 2.2,
+      "_kg_source": "website/PROMPT.md (Co-Extrusion: ~2.2 kg/m) and website/products.html spec block",
+      "cbm_per_board_2.000": 0.00646,
+      "cbm_per_board_2.025": 0.00654,
+      "_cbm_source": "bounding box: 0.1615 x 0.020 x length_m"
+    },
+    "post": {
+      "kg_per_m": 1.685,
+      "_kg_source": "computed: 80mm x 80mm hollow alu, 2mm wall -> X-section 624 mm^2; aluminium density 2700 kg/m^3; 0.000624 * 2700 = 1.685 kg/m. Wall thickness 2mm is the conservative-moderate spec for fencing posts.",
+      "cbm_per_post_2.0": 0.0128,
+      "cbm_per_post_3.0": 0.0192,
+      "_cbm_source": "bounding box: 0.080 x 0.080 x length_m"
+    },
+    "accessories_buffer_pct": 5.0,
+    "_buffer_source": "clamps + covers + connectors + screws + caps + pedestals + expansion screws collectively contribute <5% of fence kit weight; bundled as a flat buffer rather than fabricating individual densities for every SKU."
+  }
 }

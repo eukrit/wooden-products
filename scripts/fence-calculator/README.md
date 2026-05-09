@@ -49,13 +49,43 @@ cd scripts/fence-calculator && python -m unittest tests.test_calculator -v
 
 13 tests, all pinned to actual PI line-item values.
 
+## Weight & CBM (estimate, opt-in)
+
+Pass `--ship-est` to the CLI (or `include_shipping_estimate=True` to
+`calculate()`) to also get an estimated total weight and bounding-box CBM.
+
+Inputs:
+- **Board weight** = `2.2 kg/m` — manufacturer's published spec, sourced
+  from `website/PROMPT.md` and `website/products.html`.
+- **Post weight** = `1.685 kg/m` — computed from physics, not pulled from
+  a quote: `(80² − 76²) mm² × 2700 kg/m³ = 1.685 kg/m` (80×80mm hollow
+  aluminium with assumed 2 mm wall thickness).
+- **Accessories** = `+5%` flat buffer over board+post weight. Clamps,
+  covers, connectors, screws, caps, pedestals, expansion screws each
+  contribute well under 1% of the kit weight; we don't fabricate per-SKU
+  densities for them.
+- **CBM** = bounding box per item (board: 0.1615 × 0.020 × length_m;
+  post: 0.080 × 0.080 × length_m). Real packed CBM will be lower since
+  boards bundle tightly.
+
+The CLI always prints "NOT vendor-confirmed — request actual packing
+list before booking freight." Don't quote sea freight off this output;
+it's for sanity-checking truck loads and order-size feasibility.
+
+For PI GK20260402LJ Type-2 (32 bays × 3.0m):
+```
+Weight:    3132.0 kg
+CBM:          4.768 m^3
+```
+Comfortably fits in a 40HQ (~76 m³ / ~26 t), consistent with the PI
+shipping local-to-Guangzhou rather than containerized.
+
 ## What this does NOT do
 
-- **Weight / CBM / container-loadability**: vendor density data is not in the
-  repo. The calculator deliberately refuses to compute these so we never
-  quote shipping weight from fabricated numbers.
-- **Custom fence types** (heights other than 2000 / 3000 mm, widths other
-  than 2.0 / 2.025 m): rejected at validation. Add to `fence_params.json`
-  with a real quote reference before extending.
-- **Retail/markup pricing**: outputs FOB Guangzhou cost only. Apply markup
-  in the configurator UI or quoting layer.
+- **Container counts** (20'/40'/40HQ): out of scope. Ask the freight
+  forwarder once you have the real packing list.
+- **Custom fence types** (heights other than 2000 / 3000 mm, widths
+  other than 2.0 / 2.025 m): rejected at validation. Add to
+  `fence_params.json` with a real quote reference before extending.
+- **Retail/markup pricing**: outputs FOB Guangzhou cost only. Apply
+  markup in the configurator UI or quoting layer.

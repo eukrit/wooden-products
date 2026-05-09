@@ -20,7 +20,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from calculator import FenceConfig, calculate
+from calculator import FenceConfig, calculate, estimate_shipping
 
 
 class Type2_32Sets_2m(unittest.TestCase):
@@ -115,6 +115,51 @@ class InputValidation(unittest.TestCase):
     def test_rejects_unsupported_width(self):
         with self.assertRaises(ValueError):
             FenceConfig(bays=1, bay_width_m=1.8, bay_height_mm=3000, post_length_m=3.0)
+
+
+class ShippingEstimate_Type2(unittest.TestCase):
+    """Sanity-check shipping estimates for the 32-bay Type 2 PI scenario.
+
+    Boards: 640 * 2.0m * 2.2 kg/m = 2816 kg
+    Posts:  33 * 3.0m * 1.685 kg/m = 166.8 kg
+    Subtotal: 2982.8 kg + 5% buffer = 3131.9 kg
+
+    Board CBM: 640 * (0.1615 * 0.020 * 2.0) = 640 * 0.00646 = 4.134 m^3
+    Post CBM:  33 * (0.080 * 0.080 * 3.0)  = 33 * 0.0192   = 0.634 m^3
+    Total CBM: 4.768 m^3
+
+    These are the values a 1x40HQ container (~76 m^3, ~26t payload) needs
+    to fit; the order is well under both -- consistent with the fact that
+    the real PI shipped on local-to-Guangzhou trucking, not a container.
+    """
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.cfg = FenceConfig(bays=32, bay_width_m=2.0, bay_height_mm=3000, post_length_m=3.0)
+        cls.est = estimate_shipping(cls.cfg)
+
+    def test_weight_in_expected_range(self):
+        # Board-dominated: 640 boards x 2m x 2.2 = 2816 kg + posts ~167 kg + 5% buffer
+        # Expect 3100-3200 kg
+        self.assertGreater(self.est.weight_kg, 3000)
+        self.assertLess(self.est.weight_kg, 3300)
+
+    def test_cbm_in_expected_range(self):
+        # Boards 4.13 + posts 0.63 ~= 4.77 m^3
+        self.assertGreater(self.est.cbm_m3, 4.5)
+        self.assertLess(self.est.cbm_m3, 5.0)
+
+    def test_estimate_carries_caveat(self):
+        # Caller must always see the "NOT vendor-confirmed" note.
+        joined = " | ".join(self.est.notes).lower()
+        self.assertIn("not vendor-confirmed", joined)
+
+    def test_estimate_is_opt_in(self):
+        # Default calculate() must not silently produce a shipping estimate.
+        q = calculate(self.cfg, include_shipping=False)
+        self.assertIsNone(q.shipping_estimate)
+        q2 = calculate(self.cfg, include_shipping=False, include_shipping_estimate=True)
+        self.assertIsNotNone(q2.shipping_estimate)
 
 
 if __name__ == "__main__":

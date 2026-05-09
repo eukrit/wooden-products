@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.1] - 2026-05-10
+
+### Added — opt-in shipping weight & CBM estimate
+
+- `calculate(..., include_shipping_estimate=True)` and `cli.py --ship-est`
+  now return a `ShippingEstimate(weight_kg, cbm_m3, notes)`.
+- Inputs documented in `fence_params.json.weight_cbm_model`:
+  board 2.2 kg/m (manufacturer's published spec, sourced to
+  `website/PROMPT.md` + `website/products.html`); post 1.685 kg/m
+  (computed: 80x80x2mm alu hollow @ 2700 kg/m^3); accessories +5% buffer.
+- CBM is bounding-box per item; output always includes a "NOT
+  vendor-confirmed" caveat so it can't be mistaken for a packing list.
+- 4 new tests (17 total) sanity-check weight + CBM ranges and confirm
+  the estimate is opt-in.
+
 ## [0.11.0] - 2026-05-10
 
 ### Added — WPC fence BOM + FOB-Guangzhou costing calculator
