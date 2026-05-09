@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2026-05-10
+
+### Added — Anhui Aolo WPC fence shipping calculator
+
+- New tool `scripts/fence-calculator/` computes BOM, weight, and CBM
+  from `{height_m, width_m, gap_cm, bay_count, layout}` for the
+  `GK161.50-20C` co-extrusion profile.
+- Effective plank-face derivation (150 mm = 161.5 mm − 11.5 mm
+  tongue overlap) verified against three Anhui Aolo Proforma
+  Invoices (32-set Type 2, 6-set Type 3, 41-set 1.5 m). All three
+  pinned by regression tests.
+- Layout shapes I / L / U / detached drive post-count rule via the
+  `corner_extra_posts` and `runs` parameters.
+- Material unit weights are placeholders in `fence_params.json`,
+  guarded by a CLI check that refuses to print weights/CBM until
+  vendor-confirmed densities replace the `_*_note` markers.
+- Files added: `fence_shipping_calculator.py`, `fence_params.json`,
+  `README.md`, `summary.html`, `sample_matrix.csv` (64-case sweep),
+  `tests/test_calculator.py`, three fixture JSONs.
+- 8/8 regression tests passing; sweep monotonicity assertions pass
+  (more height → more planks; more gap → fewer planks).
+
 ## [0.10.2] - 2026-04-25
 
 ### Changed — canonical hostname is now `salessheet.leka.studio`
