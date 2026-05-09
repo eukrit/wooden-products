@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2026-05-10
+
+### Added — WPC fence BOM + FOB-Guangzhou costing calculator
+
+- New: `scripts/fence-calculator/` — pure-Python module + CLI that
+  computes BOM and FOB Guangzhou cost for the Anhui Aolo
+  `GK161.5/20C` board + `AL-80/80A` post system.
+- All formulas, SKUs, and unit prices derive from the real Aolo PIs
+  already loaded by `scripts/firestore/upload_aolo_fence.py`
+  (`GK20260402LJ`, `GK20260410LJ`). 13 regression tests pin every
+  per-bay/per-post line item to the PI line totals.
+- Out of scope by design: weight, CBM, container-loadability, retail
+  markup. Vendor density data is not in the repo and the calculator
+  refuses to fabricate it.
+- Files added: `scripts/fence-calculator/{calculator.py, cli.py,
+  fence_params.json, README.md, tests/test_calculator.py}`.
+
 ## [0.10.2] - 2026-04-25
 
 ### Changed — canonical hostname is now `salessheet.leka.studio`

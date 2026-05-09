@@ -1,0 +1,39 @@
+{
+  "_source": "Anhui Aolo PI GK20260402LJ + GK20260410LJ (data/parsed/quotations via scripts/firestore/upload_aolo_fence.py)",
+  "_currency": "USD",
+  "_delivery_terms": "FOB Guangzhou",
+  "board": {
+    "sku": "GK161.5/20C",
+    "width_mm": 161.5,
+    "thickness_mm": 20,
+    "effective_face_mm": 148,
+    "lengths": {
+      "2.000": { "unit_price_usd": 4.40, "quote": "GK20260402LJ" },
+      "2.025": { "unit_price_usd": 4.455, "quote": "GK20260410LJ" }
+    }
+  },
+  "post": {
+    "sku": "AL-80/80A",
+    "section_mm": "80x80",
+    "lengths": {
+      "2.0": { "unit_price_usd": 23.60 },
+      "3.0": { "unit_price_usd": 35.40 }
+    }
+  },
+  "accessories_per_bay": {
+    "upper_clamp_strip": { "qty": 1, "unit_price_usd_2.000": 3.80, "unit_price_usd_2.025": 3.85 },
+    "lower_cover":       { "qty": 1, "unit_price_usd_2.000": 4.00, "unit_price_usd_2.025": 4.05 },
+    "l_connector":       { "qty": 4, "unit_price_usd": 0.15 },
+    "steel_screw":       { "qty": 8, "unit_price_usd": 0.05 }
+  },
+  "accessories_per_post": {
+    "post_cap":         { "qty": 1, "unit_price_usd": 1.20 },
+    "iron_pedestal":    { "qty": 1, "unit_price_usd": 7.80, "spec": "35x35x500mm" },
+    "expansion_screw":  { "qty": 4, "unit_price_usd": 0.35 }
+  },
+  "gate": {
+    "sku": "WPC Gate 1.2m x 2.0m",
+    "unit_price_usd": 285.00
+  },
+  "shipping_local_to_guangzhou_usd": 515.00
+}
