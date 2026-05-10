@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$comment": "Per-project Hub Page config — Rule 13.",
+
+  "GATEWAY_URL": "https://gateway.goco.bz",
+
+  "gateway": {
+    "project_id": "wooden-products"
+  },
+
+  "LIVE_URL_BASE": "https://gateway.goco.bz/wooden-products",
+
+  "hub": {
+    "live": {
+      "enabled": true
+    },
+
+    "exclude": [
+      "website/static/**",
+      "**/_next/**",
+      "node_modules/**"
+    ],
+
+    "extra_links": [
+      {
+        "section": "essentials",
+        "title": "WPC Fence Configurator (live)",
+        "url": "https://gateway.goco.bz/wooden-products/wpc-fence/configurator/",
+        "description": "Interactive fence configurator with FOB cost + weight + CBM (auth-gated)."
+      },
+      {
+        "section": "essentials",
+        "title": "Salesheet — WPC Fence landing",
+        "url": "https://gateway.goco.bz/wooden-products/wpc-fence/",
+        "description": "Public WPC fence sales sheet."
+      },
+      {
+        "section": "essentials",
+        "title": "API: cost-quote (auth)",
+        "url": "https://gateway.goco.bz/wooden-products/api/configurator/cost-quote",
+        "description": "GET ?bayWidth=2.0&height=2.0&fenceRun=48 — returns FOB USD + weight + CBM. Requires approved Firebase session."
+      }
+    ],
+
+    "section_order": ["essentials","dashboards","reports","forms","summaries","documents","catalogs","other","live_urls","related"]
+  }
+}
