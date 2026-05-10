@@ -136,3 +136,18 @@ Full reference: `Credentials Claude Code/Instructions/Claude Process Standards.m
 3. **Plan in batches; run them as one chained autonomous pass** — group todos into batches, surface the plan once, then execute every batch back-to-back in a single run. No turn-taking between todos or batches. Run long work with `run_in_background: true`; parallelize independent tool calls. Only stop for true blockers: destructive/unauthorized actions, missing credentials, genuine ambiguity, unrecoverable external errors, or explicit user confirmation request.
 4. **Always update `build-summary.html` at THIS project's root** for every build/version (template: `Credentials Claude Code/Instructions/build-summary.template.html`). Per-project — DO NOT write into `business-automation/`. Touch the workspace dashboard at `business-automation/docs/index.html` only for cross-project / architecture changes.
 5. **Always commit and push — verify repo mapping first** — run `git remote -v` and confirm the remote repo name matches the local folder name (per the Code Sync Rules in the root `CLAUDE.md`). If mismatch (especially `goco-project-template`), STOP and ask the user. Never push to the wrong repo.
+
+## Page Hosting
+
+Per Rule 14, this project's generated HTML is served exclusively at `https://gateway.goco.bz/wooden-products/`. The project's Cloud Run service (if any) is `--no-allow-unauthenticated` and grants `roles/run.invoker` to `claude@ai-agents-go.iam.gserviceaccount.com`.
+
+Canonical paths:
+- `https://gateway.goco.bz/wooden-products/` → `docs/hub.html`
+- `https://gateway.goco.bz/wooden-products/docs/build-summary.html`
+- `https://gateway.goco.bz/wooden-products/docs/architecture.html`
+
+To register / update registration with the gateway:
+```bash
+cd "$(realpath ../go-access-gateway)"
+./scripts/register-with-gateway.sh "/c/Users/Eukrit/OneDrive/Documents/Claude Code/2026 Wood Products Claude/.claude/worktrees/wooden-products"
+```
