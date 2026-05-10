@@ -60,6 +60,10 @@ website/salesheet/static/
 # Canonical source is scripts/fence-calculator/.
 website/salesheet/order_portal/_fence_calc_bundled/
 
+# docs/ staged into the salesheet Docker context by cloudbuild.yaml.
+# Canonical source is docs/ at the repo root.
+website/salesheet/_docs_staged/
+
 # Claude Code local artifacts
 .claude/pdf-pages/
 .claude/render-test-*.png

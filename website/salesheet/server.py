@@ -75,6 +75,46 @@ except Exception as exc:  # pragma: no cover — module import failure is fatal 
     log.exception("Failed to register order portal blueprint: %s", exc)
 
 
+# ---------- Hub Page + project docs (Rule 13/14) ----------
+DOCS_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
+
+
+@app.route("/hub")
+def serve_hub():
+    """Project Hub Page — gateway-link version (docs/hub.live.html).
+
+    Per Rule 13, this surfaces every generated artifact (build summary,
+    architecture, dashboards, reports, etc.) behind the gateway. Anyone
+    reaching this route is already past gateway auth.
+    """
+    target = "hub.live.html" if os.path.isfile(os.path.join(DOCS_ROOT, "hub.live.html")) else "hub.html"
+    if not os.path.isfile(os.path.join(DOCS_ROOT, target)):
+        abort(404)
+    return send_from_directory(DOCS_ROOT, target)
+
+
+@app.route("/docs/")
+@app.route("/docs/<path:subpath>")
+def serve_docs(subpath: str = ""):
+    """Serve files under docs/. Falls back to <dir>/index.html for dirs."""
+    safe = subpath.lstrip("/")
+    if not safe:
+        # Bare /docs/ → hub
+        return redirect("/hub", code=302)
+    full = os.path.normpath(os.path.join(DOCS_ROOT, safe))
+    if not full.startswith(DOCS_ROOT):
+        abort(403)
+    if os.path.isdir(full):
+        idx = os.path.join(full, "index.html")
+        if os.path.isfile(idx):
+            return send_from_directory(full, "index.html")
+        abort(404)
+    if os.path.isfile(full):
+        rel = os.path.relpath(full, DOCS_ROOT)
+        return send_from_directory(DOCS_ROOT, rel)
+    abort(404)
+
+
 # ---------- Static serving ----------
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")

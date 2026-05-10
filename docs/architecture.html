@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>wooden-products — Architecture Summary</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:1080px;margin:2rem auto;padding:0 1.25rem;color:#1a1a1a;line-height:1.55}
+  h1{margin-bottom:.25rem}
+  h2{margin-top:2rem;border-bottom:1px solid #eee;padding-bottom:4px}
+  h3{margin-top:1.5rem;color:#374151}
+  .meta{color:#666;font-size:.9rem;margin-bottom:1.25rem}
+  table{width:100%;border-collapse:collapse;margin-top:.5rem}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{background:#fafafa;font-weight:600}
+  code{background:#f4f4f5;padding:1px 6px;border-radius:4px;font-size:.92em}
+  a{color:#2563eb;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .ascii{background:#0f172a;color:#e2e8f0;border-radius:8px;padding:1rem;font-family:Consolas,Menlo,monospace;font-size:.82rem;overflow-x:auto;line-height:1.4;white-space:pre}
+</style>
+</head><body>
+<p class="meta">Updated 2026-05-10 · <a href="hub.html">← back to Hub</a> · <a href="https://gateway.goco.bz/wooden-products/hub">live hub</a></p>
+<h1>wooden-products <span style="font-weight:400;color:#666">— Architecture Summary</span></h1>
+<p>Wood-product database, salesheet Cloud Run service, and the WPC fence configurator behind go-access-gateway. All HTML served via <code>gateway.goco.bz/wooden-products/</code> per Rule 14.</p>
+
+<h2>System overview</h2>
+
+<div class="ascii">
+                          +----------------------------------+
+                          |  Browser (architect, signed in) |
+                          +----------------+-----------------+
+                                           | HTTPS
+                                           v
+            +----------------------------------------------------+
+            |  go-access-gateway  (gateway.goco.bz)              |
+            |  - Firestore: gateway-access/projects/             |
+            |      wooden-products  kind=cloud_run               |
+            |  - Reverse-proxies /wooden-products/* to backend   |
+            |  - RBAC: default_visibility=admin                  |
+            +-----------------+----------------------------------+
+                              | ID-token (run.invoker)
+                              v
+       +----------------------------------------------------------+
+       |  Cloud Run: salesheet-leka  (asia-southeast1)            |
+       |  - Flask + gunicorn (Dockerfile)                         |
+       |  - --no-allow-unauthenticated                            |
+       |  - Routes:                                               |
+       |     /wpc-fence/                  static landing          |
+       |     /wpc-fence/configurator/     interactive UI          |
+       |     /api/configurator/price      retail THB (auth)       |
+       |     /api/configurator/cost-quote FOB USD + wt + CBM      |
+       |     /hub  /docs/&lt;file&gt;          Rule 13 hub + reports    |
+       |     /auth/login /auth/register   Firebase Auth flow      |
+       |     /api/quote                   public lead endpoint    |
+       +-------+-----------------+------------------+-------------+
+               |                 |                  |
+               v                 v                  v
+       +----------------+ +----------------+ +--------------------+
+       | Firestore      | | Cloud Storage  | | Slack              |
+       | products-wood  | | products-wood- | | #bd-new-leads      |
+       | - vendors      | | assets         | | #new-leads-wood-.. |
+       | - products     | | (vendor PDFs,  | | + admin            |
+       | - quotations   | |  catalogs,     | | approve/reject     |
+       | - product_imgs | |  product imgs) | |                    |
+       | - categories   | +----------------+ +--------------------+
+       +----------------+
+</div>
+
+<h2>Cloud Run services</h2>
+<table>
+<tr><th>Service</th><th>Region</th><th>Ingress</th><th>Notes</th></tr>
+<tr><td><code>salesheet-leka</code></td><td>asia-southeast1</td><td>--no-allow-unauthenticated</td><td>Flask salesheet + WPC fence configurator. Reverse-proxied via <code>gateway.goco.bz/wooden-products</code>.</td></tr>
+</table>
+
+<h2>Data plane</h2>
+<table>
+<tr><th>Store</th><th>Identifier</th><th>Purpose</th></tr>
+<tr><td>Firestore</td><td><code>products-wood</code> (asia-southeast1)</td><td>Vendor / product / quotation / image-metadata / category collections.</td></tr>
+<tr><td>GCS</td><td><code>gs://products-wood-assets</code></td><td>Vendor folders (ks-wood, pinecross, sci-wood, feiyou, china-flooring, anhui-aolo). UBLA, private.</td></tr>
+<tr><td>Firestore (gateway)</td><td><code>gateway-access/projects/wooden-products</code></td><td>Gateway project record (kind=cloud_run, backend_url, default_visibility).</td></tr>
+</table>
+
+<h2>External integrations</h2>
+<table>
+<tr><th>Integration</th><th>Direction</th><th>Auth</th></tr>
+<tr><td>Firebase Auth (Email/Password + Google)</td><td>browser → Flask</td><td>Firebase ID token → server-side session cookie</td></tr>
+<tr><td>Slack <code>#bd-new-leads</code> (C07EF698Q1K)</td><td>Flask → Slack</td><td>SLACK_BOT_TOKEN (GSM)</td></tr>
+<tr><td>Slack <code>#new-leads-wood-products</code></td><td>Flask → Slack</td><td>same</td></tr>
+<tr><td>Xero</td><td>Flask → Xero</td><td>refresh-token rotation, secrets in GSM</td></tr>
+<tr><td>Gemini (image generation)</td><td>Flask → Vertex/Gemini</td><td>GEMINI_API_KEY (GSM)</td></tr>
+</table>
+
+<h2>Fence calculator</h2>
+<p>Canonical at <code>scripts/fence-calculator/</code>. Bridged into the Flask app at build time by <code>cloudbuild.yaml</code> (<code>stage-fence-calc</code> step) into <code>website/salesheet/order_portal/_fence_calc_bundled/</code>. The Flask endpoint <code>/api/configurator/cost-quote</code> imports it via <code>order_portal/fence_calc.py</code>.</p>
+<table>
+<tr><th>Input</th><th>Source</th></tr>
+<tr><td>Board <code>$2.20/m</code> + per-length entries (2.0, 2.025 m)</td><td>Anhui Aolo PI <code>GK20260402LJ</code> + <code>GK20260410LJ</code></td></tr>
+<tr><td>Post <code>$11.80/m</code> + per-length entries (2.0, 3.0 m)</td><td>same</td></tr>
+<tr><td>Board weight <code>2.2 kg/m</code></td><td>manufacturer published spec (<code>website/PROMPT.md</code>, <code>website/products.html</code>)</td></tr>
+<tr><td>Post weight <code>1.685 kg/m</code></td><td>computed: 80×80×2 mm Al hollow @ 2700 kg/m³</td></tr>
+<tr><td>Accessory weight</td><td>+5% buffer over board+post (no per-SKU densities)</td></tr>
+<tr><td>CBM</td><td>bounding-box per item</td></tr>
+</table>
+
+<h2>CI/CD</h2>
+<table>
+<tr><th>Trigger</th><th>Watches</th><th>Effect</th></tr>
+<tr><td><code>deploy-salesheet-leka</code></td><td><code>website/salesheet/**</code></td><td>Stage data/catalog + fence calculator + docs → <code>docker build</code> → <code>gcloud run deploy</code></td></tr>
+</table>
+
+<h2>Security posture</h2>
+<ul>
+<li>Cloud Run: <code>--no-allow-unauthenticated</code>; only <code>claude@ai-agents-go</code> (gateway runtime SA) has <code>roles/run.invoker</code>.</li>
+<li>Public surface: <em>nothing</em>. The previously-public <code>salessheet.leka.studio</code> domain has been re-purposed for a separate Next.js paddle-court site; the WPC fence platform is gateway-only.</li>
+<li>Cost-quote endpoint sits behind <code>require_approved</code> (Firebase session + status=approved). Guests get 401/403; rejected/pending get 302 → <code>/auth/pending</code>.</li>
+<li>Secrets: GSM (peak-api-token, xero-*, slack-bot-token, firebase-web-api-key, flask-session-key, gemini-api-key). No hardcoded credentials.</li>
+<li>GCS: UBLA + <code>publicAccessPrevention=enforced</code> on <code>products-wood-assets</code>.</li>
+</ul>
+
+</body></html>
