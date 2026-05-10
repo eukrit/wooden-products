@@ -2,27 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.1] - 2026-05-10
+
+### Added — opt-in shipping weight & CBM estimate
+
+- `calculate(..., include_shipping_estimate=True)` and `cli.py --ship-est`
+  now return a `ShippingEstimate(weight_kg, cbm_m3, notes)`.
+- Inputs documented in `fence_params.json.weight_cbm_model`:
+  board 2.2 kg/m (manufacturer's published spec, sourced to
+  `website/PROMPT.md` + `website/products.html`); post 1.685 kg/m
+  (computed: 80x80x2mm alu hollow @ 2700 kg/m^3); accessories +5% buffer.
+- CBM is bounding-box per item; output always includes a "NOT
+  vendor-confirmed" caveat so it can't be mistaken for a packing list.
+- 4 new tests (17 total) sanity-check weight + CBM ranges and confirm
+  the estimate is opt-in.
+
 ## [0.11.0] - 2026-05-10
 
-### Added — Anhui Aolo WPC fence shipping calculator
+### Added — WPC fence BOM + FOB-Guangzhou costing calculator
 
-- New tool `scripts/fence-calculator/` computes BOM, weight, and CBM
-  from `{height_m, width_m, gap_cm, bay_count, layout}` for the
-  `GK161.50-20C` co-extrusion profile.
-- Effective plank-face derivation (150 mm = 161.5 mm − 11.5 mm
-  tongue overlap) verified against three Anhui Aolo Proforma
-  Invoices (32-set Type 2, 6-set Type 3, 41-set 1.5 m). All three
-  pinned by regression tests.
-- Layout shapes I / L / U / detached drive post-count rule via the
-  `corner_extra_posts` and `runs` parameters.
-- Material unit weights are placeholders in `fence_params.json`,
-  guarded by a CLI check that refuses to print weights/CBM until
-  vendor-confirmed densities replace the `_*_note` markers.
-- Files added: `fence_shipping_calculator.py`, `fence_params.json`,
-  `README.md`, `summary.html`, `sample_matrix.csv` (64-case sweep),
-  `tests/test_calculator.py`, three fixture JSONs.
-- 8/8 regression tests passing; sweep monotonicity assertions pass
-  (more height → more planks; more gap → fewer planks).
+- New: `scripts/fence-calculator/` — pure-Python module + CLI that
+  computes BOM and FOB Guangzhou cost for the Anhui Aolo
+  `GK161.5/20C` board + `AL-80/80A` post system.
+- All formulas, SKUs, and unit prices derive from the real Aolo PIs
+  already loaded by `scripts/firestore/upload_aolo_fence.py`
+  (`GK20260402LJ`, `GK20260410LJ`). 13 regression tests pin every
+  per-bay/per-post line item to the PI line totals.
+- Out of scope by design: weight, CBM, container-loadability, retail
+  markup. Vendor density data is not in the repo and the calculator
+  refuses to fabricate it.
+- Files added: `scripts/fence-calculator/{calculator.py, cli.py,
+  fence_params.json, README.md, tests/test_calculator.py}`.
 
 ## [0.10.2] - 2026-04-25
 

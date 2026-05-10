@@ -1,24 +1,62 @@
 {
-  "plank_kg_per_m": 1.80,
-  "_plank_note": "TODO confirm with vendor - GK161.50x20C co-extrusion WPC, estimate from 0.00323 m2 x ~560 kg/m3",
-  "post_kg_per_m": 1.20,
-  "_post_note": "TODO confirm with vendor - AL80x80 hollow 2 mm wall ~= 1.2 kg/m",
-  "upper_kg_per_m": 0.45,
-  "_upper_note": "TODO confirm with vendor - aluminum upper clamp strip",
-  "lower_kg_per_m": 0.55,
-  "_lower_note": "TODO confirm with vendor - aluminum lower cover",
-  "pedestal_kg_per_pc": 1.20,
-  "_pedestal_note": "TODO confirm with vendor - 35x35x500 mm iron pedestal",
-  "cap_kg_per_pc": 0.05,
-  "_cap_note": "TODO confirm with vendor - plastic post cap",
-  "lconn_kg_per_pc": 0.03,
-  "_lconn_note": "TODO confirm with vendor - L-shaped clamp connector",
-  "screw_kg_per_pc": 0.01,
-  "_screw_note": "TODO confirm with vendor - steel/self-drilling/expansion screws",
-  "upper_xsection_m2": 0.0015,
-  "lower_xsection_m2": 0.0020,
-  "packaging_overhead_pct": 0.08,
-  "packing_factor": 1.25,
-  "plank_face_mm": 150,
-  "corner_extra_posts": 1
+  "_source": "Anhui Aolo PI GK20260402LJ + GK20260410LJ (data/parsed/quotations via scripts/firestore/upload_aolo_fence.py)",
+  "_currency": "USD",
+  "_delivery_terms": "FOB Guangzhou",
+  "board": {
+    "sku": "GK161.5/20C",
+    "width_mm": 161.5,
+    "thickness_mm": 20,
+    "effective_face_mm": 148,
+    "lengths": {
+      "2.000": { "unit_price_usd": 4.40, "quote": "GK20260402LJ" },
+      "2.025": { "unit_price_usd": 4.455, "quote": "GK20260410LJ" }
+    }
+  },
+  "post": {
+    "sku": "AL-80/80A",
+    "section_mm": "80x80",
+    "lengths": {
+      "2.0": { "unit_price_usd": 23.60 },
+      "3.0": { "unit_price_usd": 35.40 }
+    }
+  },
+  "accessories_per_bay": {
+    "upper_clamp_strip": { "qty": 1, "unit_price_usd_2.000": 3.80, "unit_price_usd_2.025": 3.85 },
+    "lower_cover":       { "qty": 1, "unit_price_usd_2.000": 4.00, "unit_price_usd_2.025": 4.05 },
+    "l_connector":       { "qty": 4, "unit_price_usd": 0.15 },
+    "steel_screw":       { "qty": 8, "unit_price_usd": 0.05 }
+  },
+  "accessories_per_post": {
+    "post_cap":         { "qty": 1, "unit_price_usd": 1.20 },
+    "iron_pedestal":    { "qty": 1, "unit_price_usd": 7.80, "spec": "35x35x500mm" },
+    "expansion_screw":  { "qty": 4, "unit_price_usd": 0.35 }
+  },
+  "gate": {
+    "sku": "WPC Gate 1.2m x 2.0m",
+    "unit_price_usd": 285.00,
+    "_weight_kg_estimate": 35.0,
+    "_weight_source": "estimate: ~2.4 m^2 panel @ 2.2 kg/m board * 2.0m * 6 boards + aluminium frame ~5 kg",
+    "_cbm_estimate": 0.060,
+    "_cbm_source": "1.2 x 2.0 x 0.025 (bounding box, packed flat)"
+  },
+  "shipping_local_to_guangzhou_usd": 515.00,
+  "weight_cbm_model": {
+    "_status": "ESTIMATE — not vendor-confirmed. Boards use published spec; posts are computed from physics; accessories are bundled.",
+    "board": {
+      "kg_per_m": 2.2,
+      "_kg_source": "website/PROMPT.md (Co-Extrusion: ~2.2 kg/m) and website/products.html spec block",
+      "cbm_per_board_2.000": 0.00646,
+      "cbm_per_board_2.025": 0.00654,
+      "_cbm_source": "bounding box: 0.1615 x 0.020 x length_m"
+    },
+    "post": {
+      "kg_per_m": 1.685,
+      "_kg_source": "computed: 80mm x 80mm hollow alu, 2mm wall -> X-section 624 mm^2; aluminium density 2700 kg/m^3; 0.000624 * 2700 = 1.685 kg/m. Wall thickness 2mm is the conservative-moderate spec for fencing posts.",
+      "cbm_per_post_2.0": 0.0128,
+      "cbm_per_post_3.0": 0.0192,
+      "_cbm_source": "bounding box: 0.080 x 0.080 x length_m"
+    },
+    "accessories_buffer_pct": 5.0,
+    "_buffer_source": "clamps + covers + connectors + screws + caps + pedestals + expansion screws collectively contribute <5% of fence kit weight; bundled as a flat buffer rather than fabricating individual densities for every SKU."
+  }
 }
