@@ -32,6 +32,11 @@ COPY quote                 static/quote
 RUN mkdir -p data/catalog
 COPY data/catalog          data/catalog
 
+# Hub Page + first-class artifacts (Rule 13). Staged from repo root by
+# cloudbuild.yaml. Served at /hub and /docs/<file> (see server.py).
+RUN mkdir -p docs
+COPY _docs_staged          docs
+
 ENV PORT=8080
 EXPOSE 8080
 

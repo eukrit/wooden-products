@@ -45,6 +45,22 @@ steps:
         cp scripts/fence-calculator/fence_params.json "$$BUNDLED/"
         echo "Staged:" && ls -la "$$BUNDLED"
 
+  # Stage the project's docs/ folder into the salesheet build context so
+  # the Flask app can serve /hub (docs/hub.live.html) and /docs/<file>.
+  # docs/ is at the repo root (Rule 13); cloudbuild's `dir: website/salesheet`
+  # otherwise hides it from the Docker context.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: stage-docs
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        STAGED=website/salesheet/_docs_staged
+        rm -rf "$$STAGED"
+        mkdir -p "$$STAGED"
+        cp -r docs/. "$$STAGED/"
+        echo "Staged docs:" && find "$$STAGED" -maxdepth 2 -type f | head -30
+
   - name: 'gcr.io/cloud-builders/docker'
     id: build-image
     dir: website/salesheet

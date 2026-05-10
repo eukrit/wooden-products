@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.1] - 2026-05-10
+
+### Added — Hub Page (Rule 13) served at /hub via gateway
+
+- `docs/hub.html` (local) + `docs/hub.live.html` (gateway-link) generated
+  via `scripts/generate-hub-page.sh`. Indexes every artifact under
+  `docs/` and links the configurator + cost-quote API.
+- `docs/architecture.html` — hand-written system overview (Cloud Run +
+  gateway + Flask + Firestore + GCS + Slack + fence-calculator bridge).
+  Replaces the placeholder the bootstrap script emitted.
+- `docs/build-summary.html` moved under `docs/` per Rule 13.
+- New Flask routes: `/hub` (serves hub.live.html) and
+  `/docs/<path>` (static under docs/). `/docs/` redirects to `/hub`.
+- `cloudbuild.yaml` adds a `stage-docs` step that copies `docs/` into
+  the Docker context. `Dockerfile` COPYs the staged dir into the image.
+- Live URL: https://gateway.goco.bz/wooden-products/hub
+  (gateway-authenticated, default visibility=admin).
+
 ## [0.12.0] - 2026-05-10
 
 ### Added — Wholesale FOB cost + shipping estimate live in the configurator
@@ -74,7 +92,7 @@ All notable changes to this project will be documented in this file.
   `order_portal/slack_leads.py` (registration footer + admin deep
   link), `quote/index.html` (form payload source), `wpc-fence/index.html`
   + `wpc-deck/index.html` (OG canonical URL + image), `README.md`,
-  `CLAUDE.md`, `build-summary.html`,
+  `CLAUDE.md`, `docs/build-summary.html`,
   `scripts/verify_order_portal.sh`, `scripts/setup_order_portal_secrets.sh`.
 - **Add `salessheet.leka.studio` to Firebase Authorized Domains** if
   not already done — required for any Google sign-in popup or
