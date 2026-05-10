@@ -56,6 +56,10 @@ Thumbs.db
 # Salesheet local dev mirror (Docker creates at build time)
 website/salesheet/static/
 
+# Fence calculator bundled into order_portal at build time by cloudbuild.yaml.
+# Canonical source is scripts/fence-calculator/.
+website/salesheet/order_portal/_fence_calc_bundled/
+
 # Claude Code local artifacts
 .claude/pdf-pages/
 .claude/render-test-*.png
