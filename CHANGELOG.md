@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - 2026-05-10
+
+### Added — Wholesale FOB cost + shipping estimate live in the configurator
+
+- New endpoint `GET /api/configurator/cost-quote` (behind `require_approved`)
+  returns FOB Guangzhou USD subtotal, estimated weight (kg), CBM (m³),
+  and the BOM line items powered by the canonical fence calculator at
+  `scripts/fence-calculator/`.
+- Calculator relaxed to accept any height in [600, 3000] mm and any
+  bay width in [0.5, 4.0] m. PI-exact widths/lengths still use the
+  exact PI prices; non-PI widths/lengths fall back to per-meter rates
+  ($2.20/m board, $11.80/m post — both consistent across the two
+  PI samples). Substitutions emit explicit `warnings` in the response.
+- Auto-pick post length (2.0m if H ≤ 2000 mm else 3.0m) so the
+  configurator only has to pass `height`.
+- Configurator UI: new sub-block under the indicative-retail line
+  shows wholesale total, bays/boards/posts, weight, CBM, and any
+  warnings — refreshed alongside `/api/configurator/price` on every
+  debounced input change.
+- `order_portal/fence_calc.py` bridge module: imports from
+  `_fence_calc_bundled/` in production (staged by cloudbuild.yaml)
+  or falls back to `scripts/fence-calculator/` for local dev.
+- Cloud Build adds a `stage-fence-calc` step that copies the
+  calculator into the Docker context.
+- 4 new tests (21 total) cover the relaxed sizing + per-meter
+  fallback + substitution warnings. PI-exact line items still
+  match the original PIs to the cent.
+
 ## [0.11.1] - 2026-05-10
 
 ### Added — opt-in shipping weight & CBM estimate

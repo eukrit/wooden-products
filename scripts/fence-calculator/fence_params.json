@@ -10,7 +10,9 @@
     "lengths": {
       "2.000": { "unit_price_usd": 4.40, "quote": "GK20260402LJ" },
       "2.025": { "unit_price_usd": 4.455, "quote": "GK20260410LJ" }
-    }
+    },
+    "unit_price_usd_per_m": 2.20,
+    "_per_m_source": "Both PI samples consistent: $4.40/2.0m=$2.20/m, $4.455/2.025m=$2.20/m. Used for non-standard widths."
   },
   "post": {
     "sku": "AL-80/80A",
@@ -18,7 +20,9 @@
     "lengths": {
       "2.0": { "unit_price_usd": 23.60 },
       "3.0": { "unit_price_usd": 35.40 }
-    }
+    },
+    "unit_price_usd_per_m": 11.80,
+    "_per_m_source": "Both PI samples consistent: $23.60/2.0m=$11.80/m, $35.40/3.0m=$11.80/m."
   },
   "accessories_per_bay": {
     "upper_clamp_strip": { "qty": 1, "unit_price_usd_2.000": 3.80, "unit_price_usd_2.025": 3.85 },

@@ -108,13 +108,43 @@ class InputValidation(unittest.TestCase):
         with self.assertRaises(ValueError):
             FenceConfig(bays=0, bay_width_m=2.0, bay_height_mm=3000, post_length_m=3.0)
 
-    def test_rejects_unsupported_height(self):
+    def test_rejects_height_below_minimum(self):
         with self.assertRaises(ValueError):
-            FenceConfig(bays=1, bay_width_m=2.0, bay_height_mm=1500, post_length_m=2.0)
+            FenceConfig(bays=1, bay_width_m=2.0, bay_height_mm=500, post_length_m=2.0)
 
-    def test_rejects_unsupported_width(self):
+    def test_rejects_width_above_maximum(self):
         with self.assertRaises(ValueError):
-            FenceConfig(bays=1, bay_width_m=1.8, bay_height_mm=3000, post_length_m=3.0)
+            FenceConfig(bays=1, bay_width_m=5.0, bay_height_mm=3000, post_length_m=3.0)
+
+    def test_rejects_post_shorter_than_height(self):
+        with self.assertRaises(ValueError):
+            FenceConfig(bays=1, bay_width_m=2.0, bay_height_mm=3000, post_length_m=2.0)
+
+
+class FlexibleSizing(unittest.TestCase):
+    """Configurator-friendly sizing: arbitrary heights / widths."""
+
+    def test_height_1500_with_auto_post(self):
+        cfg = FenceConfig(bays=10, bay_width_m=1.8, bay_height_mm=1500)
+        self.assertEqual(cfg.post_length_m, 2.0)
+        q = calculate(cfg, include_shipping=False)
+        boards = next(it for it in q.items if "Fence Board" in it.name)
+        # boards_per_bay = floor(1500/148) = 10; 10 bays * 10 = 100 boards
+        self.assertEqual(boards.qty, 100)
+        # priced at $2.20/m * 1.8m = $3.96/pc
+        self.assertAlmostEqual(boards.unit_price_usd, 3.96, places=2)
+        self.assertTrue(any("interpolated" in w for w in q.warnings))
+
+    def test_width_1800_falls_back_to_2000_for_clamp(self):
+        cfg = FenceConfig(bays=1, bay_width_m=1.8, bay_height_mm=2000)
+        q = calculate(cfg, include_shipping=False)
+        clamp = next(it for it in q.items if "Upper Clamp" in it.name)
+        self.assertAlmostEqual(clamp.unit_price_usd, 3.80, places=2)
+        self.assertTrue(any("Upper clamp" in w and "nearest" in w for w in q.warnings))
+
+    def test_height_3000_auto_picks_3m_post(self):
+        cfg = FenceConfig(bays=1, bay_width_m=2.0, bay_height_mm=3000)
+        self.assertEqual(cfg.post_length_m, 3.0)
 
 
 class ShippingEstimate_Type2(unittest.TestCase):

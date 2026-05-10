@@ -10,20 +10,32 @@ GK20260402LJ and GK20260410LJ). Formulas derived from those PIs:
   Each bay : 1 upper clamp, 1 lower cover, 4 L-connectors, 8 screws
   Each post: 1 cap, 1 iron pedestal, 4 expansion screws
 
-No weight/CBM output: vendor density data is not in the repo and the
-calculator refuses to fabricate it.
+Pricing model:
+  - Boards/posts at the exact widths/lengths in the PI use the exact PI
+    unit prices.
+  - Other widths/lengths use $/m rates (board $2.20/m, post $11.80/m,
+    consistent across both PI samples).
+  - Accessories that have width-keyed prices ($/2.0m vs $/2.025m) fall
+    back to the closer key with a `width_substituted` warning.
+
+Weight/CBM are estimates: board uses manufacturer's published spec
+(2.2 kg/m), post is computed from physics (80x80x2mm alu hollow), and
+accessories are bundled as a 5% buffer. Output always carries a
+"NOT vendor-confirmed" caveat.
 """
 from __future__ import annotations
 
 import json
 import math
 import os
-from dataclasses import dataclass
-from typing import Literal
+from dataclasses import dataclass, field
+from typing import Optional
 
 PARAMS_PATH = os.path.join(os.path.dirname(__file__), "fence_params.json")
-BoardLength = Literal["2.000", "2.025"]
-PostLength = Literal["2.0", "3.0"]
+
+# PI-exact width/length combinations: prices are tested against the PIs.
+_PI_WIDTHS = (2.0, 2.025)
+_PI_POST_LENGTHS = (2.0, 3.0)
 
 
 def load_params(path: str = PARAMS_PATH) -> dict:
@@ -33,21 +45,35 @@ def load_params(path: str = PARAMS_PATH) -> dict:
 
 @dataclass(frozen=True)
 class FenceConfig:
+    """Bay configuration.
+
+    For PI-exact line items pass:
+      bays, bay_width_m=2.0|2.025, bay_height_mm=2000|3000, post_length_m=2.0|3.0
+
+    For configurator/free-form use any of:
+      0.5 <= bay_width_m <= 4.0
+      600 <= bay_height_mm <= 3000
+      post_length_m=None (auto-pick: 2.0 if H<=2000 else 3.0)
+    """
     bays: int
-    bay_width_m: float           # 2.0 or 2.025 (= board length)
-    bay_height_mm: int           # 2000 (Type 3) or 3000 (Type 2)
-    post_length_m: float         # 2.0 (Type 3) or 3.0 (Type 2)
+    bay_width_m: float
+    bay_height_mm: int
+    post_length_m: Optional[float] = None
     gates: int = 0
 
     def __post_init__(self) -> None:
         if self.bays < 1:
             raise ValueError("bays must be >= 1")
-        if self.bay_width_m not in (2.0, 2.025):
-            raise ValueError("bay_width_m must be 2.0 or 2.025")
-        if self.bay_height_mm not in (2000, 3000):
-            raise ValueError("bay_height_mm must be 2000 or 3000")
-        if self.post_length_m not in (2.0, 3.0):
-            raise ValueError("post_length_m must be 2.0 or 3.0")
+        if not (0.5 <= self.bay_width_m <= 4.0):
+            raise ValueError("bay_width_m must be in [0.5, 4.0] m")
+        if not (600 <= self.bay_height_mm <= 3000):
+            raise ValueError("bay_height_mm must be in [600, 3000]")
+        if self.post_length_m is None:
+            object.__setattr__(self, "post_length_m", 2.0 if self.bay_height_mm <= 2000 else 3.0)
+        if not (1.5 <= self.post_length_m <= 4.0):  # type: ignore[operator]
+            raise ValueError("post_length_m must be in [1.5, 4.0] m")
+        if self.post_length_m * 1000 < self.bay_height_mm:  # type: ignore[operator]
+            raise ValueError("post_length_m must be >= bay_height_mm")
         if self.gates < 0:
             raise ValueError("gates must be >= 0")
 
@@ -78,11 +104,55 @@ class Quote:
     subtotal_usd: float
     shipping_usd: float
     total_usd: float
-    shipping_estimate: ShippingEstimate | None = None
+    shipping_estimate: Optional[ShippingEstimate] = None
+    warnings: list[str] = field(default_factory=list)
 
     def boards_per_bay(self) -> int:
         params = load_params()
         return math.floor(self.config.bay_height_mm / params["board"]["effective_face_mm"])
+
+
+def _board_unit_price(p: dict, bay_width_m: float, warnings: list[str]) -> float:
+    bw_key = f"{bay_width_m:.3f}"
+    lengths = p["board"]["lengths"]
+    if bw_key in lengths:
+        return lengths[bw_key]["unit_price_usd"]
+    rate = p["board"]["unit_price_usd_per_m"]
+    warnings.append(
+        f"Board width {bay_width_m:.3f}m has no PI quote; priced at "
+        f"${rate:.2f}/m -> ${rate * bay_width_m:.3f}/board (interpolated)."
+    )
+    return round(rate * bay_width_m, 4)
+
+
+def _post_unit_price(p: dict, post_length_m: float, warnings: list[str]) -> float:
+    pl_key = f"{post_length_m:.1f}"
+    lengths = p["post"]["lengths"]
+    if pl_key in lengths:
+        return lengths[pl_key]["unit_price_usd"]
+    rate = p["post"]["unit_price_usd_per_m"]
+    warnings.append(
+        f"Post length {post_length_m:.2f}m has no PI quote; priced at "
+        f"${rate:.2f}/m -> ${rate * post_length_m:.3f}/post (interpolated)."
+    )
+    return round(rate * post_length_m, 4)
+
+
+def _bay_acc_price(acc: dict, bay_width_m: float, warnings: list[str], acc_label: str) -> float:
+    """Width-keyed accessory price (clamp strip / lower cover). Falls back
+    to the closer of 2.000/2.025 with a substitution warning."""
+    bw_key = f"{bay_width_m:.3f}"
+    direct = acc.get(f"unit_price_usd_{bw_key}")
+    if direct is not None:
+        return direct
+    nearest = min(_PI_WIDTHS, key=lambda w: abs(w - bay_width_m))
+    nearest_key = f"{nearest:.3f}"
+    price = acc[f"unit_price_usd_{nearest_key}"]
+    warnings.append(
+        f"{acc_label}: no PI price at {bay_width_m:.3f}m; using "
+        f"{nearest_key}m price (${price:.2f}) as nearest."
+    )
+    return price
 
 
 def estimate_shipping(cfg: FenceConfig) -> ShippingEstimate:
@@ -96,21 +166,27 @@ def estimate_shipping(cfg: FenceConfig) -> ShippingEstimate:
     boards = cfg.bays * boards_per_bay
 
     bw_key = f"{cfg.bay_width_m:.3f}"
-    pl_key = f"{cfg.post_length_m:.1f}".rstrip("0").rstrip(".")
-    if cfg.post_length_m == 2.0:
-        pl_key = "2.0"
-    elif cfg.post_length_m == 3.0:
-        pl_key = "3.0"
+    pl_key = f"{cfg.post_length_m:.1f}"
 
     board_kg = boards * wcm["board"]["kg_per_m"] * cfg.bay_width_m
-    post_kg = posts * wcm["post"]["kg_per_m"] * cfg.post_length_m
+    post_kg = posts * wcm["post"]["kg_per_m"] * cfg.post_length_m  # type: ignore[operator]
     base_kg = board_kg + post_kg
     buffer_kg = base_kg * (wcm["accessories_buffer_pct"] / 100.0)
     gate_kg = cfg.gates * p["gate"]["_weight_kg_estimate"]
     total_kg = base_kg + buffer_kg + gate_kg
 
-    board_cbm = boards * wcm["board"][f"cbm_per_board_{bw_key}"]
-    post_cbm = posts * wcm["post"][f"cbm_per_post_{pl_key}"]
+    # CBM: use exact PI bounding boxes when available, otherwise compute
+    # bounding box from raw section dimensions.
+    board_cbm_per = wcm["board"].get(f"cbm_per_board_{bw_key}")
+    if board_cbm_per is None:
+        board_cbm_per = (p["board"]["width_mm"] / 1000.0) * (p["board"]["thickness_mm"] / 1000.0) * cfg.bay_width_m
+    board_cbm = boards * board_cbm_per
+
+    post_cbm_per = wcm["post"].get(f"cbm_per_post_{pl_key}")
+    if post_cbm_per is None:
+        post_cbm_per = 0.080 * 0.080 * cfg.post_length_m  # type: ignore[operator]
+    post_cbm = posts * post_cbm_per
+
     gate_cbm = cfg.gates * p["gate"]["_cbm_estimate"]
     total_cbm = board_cbm + post_cbm + gate_cbm
 
@@ -128,33 +204,25 @@ def estimate_shipping(cfg: FenceConfig) -> ShippingEstimate:
     )
 
 
-def _key(width: float) -> BoardLength:
-    return "2.000" if width == 2.0 else "2.025"
-
-
 def calculate(cfg: FenceConfig, include_shipping: bool = True, include_shipping_estimate: bool = False) -> Quote:
     p = load_params()
-    bw_key = _key(cfg.bay_width_m)
-    pl_key = f"{cfg.post_length_m:.1f}".rstrip("0").rstrip(".")
-    if cfg.post_length_m == 2.0:
-        pl_key = "2.0"
-    elif cfg.post_length_m == 3.0:
-        pl_key = "3.0"
+    warnings: list[str] = []
 
     boards_per_bay = math.floor(cfg.bay_height_mm / p["board"]["effective_face_mm"])
     posts = cfg.bays + 1
     boards = cfg.bays * boards_per_bay
+    post_length_m: float = cfg.post_length_m  # type: ignore[assignment]
 
     items: list[LineItem] = [
         LineItem(
             f"WPC Co-ex Fence Board {p['board']['sku']} ({cfg.bay_width_m}m)",
             boards,
-            p["board"]["lengths"][bw_key]["unit_price_usd"],
+            _board_unit_price(p, cfg.bay_width_m, warnings),
         ),
         LineItem(
-            f"Aluminium Post {p['post']['sku']} ({cfg.post_length_m}m)",
+            f"Aluminium Post {p['post']['sku']} ({post_length_m}m)",
             posts,
-            p["post"]["lengths"][pl_key]["unit_price_usd"],
+            _post_unit_price(p, post_length_m, warnings),
         ),
     ]
 
@@ -163,12 +231,12 @@ def calculate(cfg: FenceConfig, include_shipping: bool = True, include_shipping_
         LineItem(
             "Aluminium Upper Clamp Strip",
             cfg.bays * bay_acc["upper_clamp_strip"]["qty"],
-            bay_acc["upper_clamp_strip"][f"unit_price_usd_{bw_key}"],
+            _bay_acc_price(bay_acc["upper_clamp_strip"], cfg.bay_width_m, warnings, "Upper clamp"),
         ),
         LineItem(
             "Aluminium Lower Cover",
             cfg.bays * bay_acc["lower_cover"]["qty"],
-            bay_acc["lower_cover"][f"unit_price_usd_{bw_key}"],
+            _bay_acc_price(bay_acc["lower_cover"], cfg.bay_width_m, warnings, "Lower cover"),
         ),
         LineItem(
             "L-shaped Connector",
@@ -210,4 +278,5 @@ def calculate(cfg: FenceConfig, include_shipping: bool = True, include_shipping_
         shipping_usd=shipping,
         total_usd=round(subtotal + shipping, 2),
         shipping_estimate=est,
+        warnings=warnings,
     )

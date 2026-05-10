@@ -1034,6 +1034,26 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
               <div style="font-size:22px; font-weight:800; color:var(--lk-cream);" id="pricing-amount">—</div>
             </div>
             <div id="pricing-breakdown" style="font-size:10.5px; color:var(--lk-cream-60); margin-top:8px; display:flex; gap:10px; flex-wrap:wrap;"></div>
+
+            <!-- Wholesale FOB cost + shipping estimate (Anhui Aolo) -->
+            <div id="cost-quote-block" style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,249,230,.16);">
+              <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                <div>
+                  <div style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--lk-amber);">Wholesale FOB Guangzhou</div>
+                  <div style="font-size:10px; color:var(--lk-cream-60); margin-top:2px;">Anhui Aolo PI rates · USD</div>
+                </div>
+                <div style="font-size:18px; font-weight:800; color:var(--lk-cream);" id="cost-quote-total">$ —</div>
+              </div>
+              <div id="cost-quote-stats" style="font-size:10.5px; color:var(--lk-cream-60); margin-top:6px; display:grid; grid-template-columns: repeat(3, 1fr); gap:8px;">
+                <div><span style="color:var(--lk-cream-80); font-weight:700;" id="cq-bays">—</span> bays · <span id="cq-boards">—</span> boards · <span id="cq-posts">—</span> posts</div>
+                <div>Weight: <span style="color:var(--lk-cream-80); font-weight:700;" id="cq-weight">— kg</span></div>
+                <div>CBM: <span style="color:var(--lk-cream-80); font-weight:700;" id="cq-cbm">— m³</span></div>
+              </div>
+              <div id="cost-quote-warnings" style="font-size:10px; color:var(--lk-amber); margin-top:6px; line-height:1.4;" hidden></div>
+              <div style="font-size:9.5px; color:var(--lk-cream-60); margin-top:6px; font-style:italic;">
+                Weight &amp; CBM are estimates (board 2.2 kg/m mfg spec, post 1.685 kg/m physics). Confirm with vendor packing list before booking freight.
+              </div>
+            </div>
           </div>
         </div>
         <button type="button" class="btn btn-primary" data-quote-open>Request a quote →</button>
@@ -1829,10 +1849,66 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     } catch (_) { /* silent — next update() retries */ }
   }
 
+  function fmtUSD(n) {
+    if (typeof n !== 'number' || !isFinite(n)) return '$ —';
+    return '$ ' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function renderCostQuote(body) {
+    var total = document.getElementById('cost-quote-total');
+    var bays  = document.getElementById('cq-bays');
+    var boards= document.getElementById('cq-boards');
+    var posts = document.getElementById('cq-posts');
+    var weight= document.getElementById('cq-weight');
+    var cbm   = document.getElementById('cq-cbm');
+    var warns = document.getElementById('cost-quote-warnings');
+    if (!total) return;
+    var fob = body.fob_guangzhou_usd || {};
+    var k   = body.kit || {};
+    var ship= body.shipping_estimate || {};
+    total.textContent  = fmtUSD(fob.total);
+    bays.textContent   = k.bays != null ? k.bays : '—';
+    boards.textContent = (k.bays != null && k.boards_per_bay != null) ? (k.bays * k.boards_per_bay) : '—';
+    posts.textContent  = k.posts != null ? k.posts : '—';
+    weight.textContent = ship.weight_kg != null ? ship.weight_kg.toLocaleString('en-US') + ' kg' : '— kg';
+    cbm.textContent    = ship.cbm_m3 != null ? ship.cbm_m3.toFixed(3) + ' m³' : '— m³';
+    var warnings = (body.warnings || []);
+    if (warnings.length) {
+      warns.hidden = false;
+      warns.textContent = '⚠ ' + warnings.join(' · ');
+    } else {
+      warns.hidden = true;
+      warns.textContent = '';
+    }
+  }
+
+  async function refreshCostQuote() {
+    if (!authState.authenticated || authState.status !== 'approved') return;
+    var params = new URLSearchParams({
+      bayWidth:    String(state.bay),
+      height:      String(state.height),
+      fenceRun:    String(state.length),
+      singleGates: String(state.singleGates),
+      doubleGates: String(state.doubleGates)
+    });
+    try {
+      var resp = await fetch('/api/configurator/cost-quote?' + params.toString(), {
+        credentials: 'same-origin',
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.status === 401 || resp.status === 403) { checkAuthStatus(); return; }
+      var body = await resp.json().catch(function(){ return {}; });
+      if (body && body.ok) renderCostQuote(body);
+    } catch (_) { /* silent */ }
+  }
+
   function schedulePricingRefresh() {
     if (!authState.authenticated || authState.status !== 'approved') return;
     if (pricingTimer) clearTimeout(pricingTimer);
-    pricingTimer = setTimeout(refreshPricing, 300);
+    pricingTimer = setTimeout(function(){
+      refreshPricing();
+      refreshCostQuote();
+    }, 300);
   }
 
   function applyAuthToNav() {
@@ -1870,6 +1946,7 @@ h6 { font-size: var(--fs-h6);              font-weight: 600; }
     } else if (authState.status === 'approved') {
       setPricingState('approved');
       refreshPricing();
+      refreshCostQuote();
     } else if (authState.status === 'rejected') {
       setPricingState('rejected');
     } else {

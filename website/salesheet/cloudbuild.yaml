@@ -28,6 +28,23 @@ steps:
         cp data/catalog/*.json website/salesheet/data/catalog/
         echo "Staged:" && ls -la website/salesheet/data/catalog/
 
+  # Stage the canonical fence calculator into the order_portal package so
+  # /api/configurator/cost-quote can import it. order_portal/fence_calc.py
+  # picks up _fence_calc_bundled/ first and falls back to the repo path
+  # for local dev.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: stage-fence-calc
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        BUNDLED=website/salesheet/order_portal/_fence_calc_bundled
+        rm -rf "$$BUNDLED"
+        mkdir -p "$$BUNDLED"
+        cp scripts/fence-calculator/calculator.py "$$BUNDLED/"
+        cp scripts/fence-calculator/fence_params.json "$$BUNDLED/"
+        echo "Staged:" && ls -la "$$BUNDLED"
+
   - name: 'gcr.io/cloud-builders/docker'
     id: build-image
     dir: website/salesheet
