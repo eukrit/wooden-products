@@ -102,13 +102,37 @@ def post_architect_registration(
         ],
     })
     blocks.append({
+        "type": "actions",
+        "block_id": f"architect_decision::{uid}",
+        "elements": [
+            {
+                "type": "button",
+                "text": {"type": "plain_text", "text": "✅ Approve"},
+                "style": "primary",
+                "action_id": "architect_approve",
+                "value": uid,
+            },
+            {
+                "type": "button",
+                "text": {"type": "plain_text", "text": "❌ Reject"},
+                "style": "danger",
+                "action_id": "architect_reject",
+                "value": uid,
+                "confirm": {
+                    "title": {"type": "plain_text", "text": "Reject this architect?"},
+                    "text": {"type": "mrkdwn", "text": f"They won't see retail pricing. You can re-approve later by editing Firestore `users/{uid}.status`."},
+                    "confirm": {"type": "plain_text", "text": "Reject"},
+                    "deny": {"type": "plain_text", "text": "Cancel"},
+                },
+            },
+        ],
+    })
+    blocks.append({
         "type": "context",
         "elements": [
             {"type": "mrkdwn", "text":
-                "Review in the admin dashboard: "
-                "<https://salessheet.leka.studio/admin/orders|/admin/orders> · "
-                "Approve: `POST /admin/architects/" + uid + "/approve` · "
-                "Reject: `POST /admin/architects/" + uid + "/reject`"},
+                "Web fallback: <https://salessheet.leka.studio/admin/orders|/admin/orders> · "
+                "API: `POST /admin/architects/" + uid + "/{approve,reject}`"},
         ],
     })
 
