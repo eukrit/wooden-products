@@ -1,0 +1,32 @@
+[
+  {
+    "vendor_id": "bimei",
+    "file_name": "必美地板意大利菲列德罗画册（拼花）.pdf",
+    "storage_path": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "content_type": "application/pdf",
+    "file_size_bytes": 51125588,
+    "description": "Foglie d'Oro (Bimei) Italian engineered parquet catalog - Design & Heritage Panels.",
+    "type": "catalog",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "vendor_id": "elegant-living",
+    "file_name": "2026-01-07 ENGINEERED CATALOG.pdf",
+    "storage_path": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "content_type": "application/pdf",
+    "file_size_bytes": 18278807,
+    "description": "Elegant Living engineered hardwood flooring catalog (City Vogue etc.).",
+    "type": "catalog",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "vendor_id": "visconti",
+    "file_name": "2026-02-11 卓越卡萨公司简介 GIORIO visconti Profile.pdf",
+    "storage_path": "gs://products-wood-assets/visconti/2026-02-11 卓越卡萨公司简介 GIORIO visconti Profile.pdf",
+    "content_type": "application/pdf",
+    "file_size_bytes": 50293603,
+    "description": "Giorio Casa (GIORIO visconti) company profile incl. three-layer wood flooring.",
+    "type": "catalog",
+    "source": "wechat-automation:wechat-documents"
+  }
+]

@@ -68,3 +68,9 @@ website/salesheet/_docs_staged/
 .claude/pdf-pages/
 .claude/render-test-*.png
 .claude/swatch-chart.jpg
+
+# WeChat-flooring ingestion working files (large source PDFs, text dumps, renders).
+# Canonical PDFs live in gs://products-wood-assets/<vendor>/ and the source bucket
+# gs://wechat-documents-attachments. The mapped JSON under data/incoming/parsed/
+# and the handoff + export JSON ARE committed.
+data/incoming/pdfs/

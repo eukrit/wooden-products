@@ -1,0 +1,28 @@
+[
+  {
+    "vendor_id": "bimei",
+    "name": "Bimei (必美地板)",
+    "brand": "Foglie d'Oro",
+    "type": "importer",
+    "country": "IT",
+    "contact": {},
+    "products_supplied": [
+      "engineered_flooring"
+    ],
+    "notes": "Chinese importer/distributor of the Italian parquet brand Foglie d'Oro. 2-layer engineered panels: 4mm single-plank solid-wood noble top on birch multiply (12mm for 16mm panel / 16mm for 20mm panel), tongue&tongue or groove&groove with separate wood strip joint, micro-bevel 4 sides, glued laying, underfloor-heating compatible. Species: European/American Walnut, Oak, with Maple & Cherry inlays. Made in Italy; Dfl-S1, E1/HCHO. Boards up to 4.5m long x 0.5m wide. Source catalog: 必美地板意大利菲列德罗画册（拼花）.pdf (Foglie d'Oro Design & Heritage Panels).",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "vendor_id": "visconti",
+    "name": "Giorio Casa (意大利卓越卡萨)",
+    "brand": "Giorio Casa",
+    "type": "importer",
+    "country": "IT",
+    "contact": {},
+    "products_supplied": [
+      "engineered_flooring"
+    ],
+    "notes": "Italian brand Giorio Casa (GIORIO visconti). Company profile lists a three-layer solid/engineered wood flooring line among several product lines. Source: 2026-02-11 卓越卡萨公司简介 GIORIO visconti Profile.pdf.",
+    "source": "wechat-automation:wechat-documents"
+  }
+]
