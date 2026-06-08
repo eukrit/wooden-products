@@ -33,6 +33,13 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["http-server", "./website/salesheet", "-p", "8091", "-c-1"],
       "port": 8091
+    },
+    {
+      "name": "docs-summaries",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8093", "--directory", "./docs"],
+      "port": 8093,
+      "autoPort": true
     }
   ]
 }

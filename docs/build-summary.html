@@ -91,16 +91,52 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.14.0 — WeChat wooden-flooring ingestion: +30 genuine-wood products and +2 vendors (Bimei/Foglie d'Oro, Visconti/Giorio Casa) into the <code>products-wood</code> Firestore DB after parsing the source catalog PDFs.</p>
+  <p style="color: var(--muted); margin: 0;">v0.15.0 — Live Firestore <strong>product-summary</strong> page: a self-contained HTML catalog summary generated straight from the <code>products-wood</code> DB and served privately via the go-access-gateway.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.14.0</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.15.0</div></div>
     <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-08</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ingested &amp; verified</span></div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Generated &amp; verified</span></div></div>
     <div class="meta-card"><div class="lbl">Database</div><div class="val">products-wood</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
     <div class="meta-card"><div class="lbl">Asset bucket</div><div class="val">gs://products-wood-assets</div></div>
   </div>
+
+  <h2>What shipped in 0.15.0 — Live Firestore product-summary page</h2>
+
+  <div class="callout">
+    New generator <code>scripts/firestore/gen_product_summary.py</code> reads every doc from
+    <code>vendors</code>, <code>products</code>, <code>categories</code>, <code>product_images</code>
+    via the shared <code>setup_db.get_client()</code> helper and renders a single dependency-free
+    HTML page (inline CSS, no CDN assets) to <code>docs/summaries/product-summary.html</code>.
+    Deterministic / re-runnable. Served at
+    <a href="https://gateway.goco.bz/wooden-products/docs/summaries/product-summary.html">gateway.goco.bz/wooden-products/docs/summaries/product-summary.html</a>.
+  </div>
+
+  <h3>Page contents</h3>
+  <ul class="changes">
+    <li><strong>Headline totals</strong> — vendors 55 · products 305 · categories 9 · product images 95 (matches a live <code>.count()</code> per collection).</li>
+    <li><strong>Products by category</strong> table with a share bar — artificial_wood 110, decking 63, cladding 62, engineered_flooring 51, structural_timber 15, timber_flooring 2, plywood 1, moulding 1.</li>
+    <li><strong>Products by vendor</strong> — name, brand, country, type, product count; all 55 vendors sorted by count desc.</li>
+    <li><strong>All products</strong> — grouped by vendor, with a vanilla-JS client-side filter box (name / brand / category / material / spec / origin / source) that stays readable across 305 rows. Verified: typing <code>foglie</code> narrows to 23 rows, "23 of 305 products".</li>
+    <li><strong>Recently ingested — WeChat wooden-flooring</strong> highlight — the 30 products where <code>source == "wechat-automation:wechat-documents"</code> (Bimei / Foglie d'Oro, Visconti / Giorio Casa, Elegant Living).</li>
+    <li>Matches this build-summary's dark theme / CSS tokens.</li>
+  </ul>
+
+  <h3>Files touched (0.15.0)</h3>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>scripts/firestore/gen_product_summary.py</code></td><td>New — Firestore → HTML generator</td></tr>
+      <tr><td><code>docs/summaries/product-summary.html</code></td><td>New (generated) — the summary page</td></tr>
+      <tr><td><code>docs/hub.html</code> · <code>docs/hub.live.html</code></td><td>Regenerated — summary linked under Summaries</td></tr>
+      <tr><td><code>.claude/launch.json</code></td><td>+ <code>docs-summaries</code> static preview server</td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.15.0] entry</td></tr>
+      <tr><td><code>docs/build-summary.html</code></td><td>Updated for 0.15.0</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.14.0 (WeChat wooden-flooring ingestion)</summary>
 
   <h2>What shipped in 0.14.0 — WeChat wooden-flooring ingestion (genuine wood only)</h2>
 
@@ -131,6 +167,8 @@
     <li><code>scripts/firestore/upload_wechat_flooring.py</code> — idempotent uploader (deterministic ids, <code>elegant-living</code> merge, image dedupe, <code>--dry-run</code>).</li>
     <li>Every product keeps the WeChat <code>product_id</code>/<code>source_file_id</code> in <code>notes</code>; <code>source = "wechat-automation:wechat-documents"</code>.</li>
   </ul>
+
+  </details>
 
   <hr style="margin:32px 0;border:none;border-top:1px solid var(--border,#e5e7eb)">
 
@@ -787,7 +825,7 @@ Year rollover resets seq to 1 automatically.</pre>
   </ul>
 
   <footer>
-    wooden-products · 0.6.1 · 2026-04-19 · generated by Claude Code
+    wooden-products · 0.15.0 · 2026-06-08 · generated by Claude Code
   </footer>
 </div>
 </body>

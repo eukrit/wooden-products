@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.15.0] - 2026-06-08
+
+### Added — Live Firestore product-summary page
+
+A self-contained HTML catalog summary, generated live from the
+`products-wood` Firestore DB and served privately via the
+go-access-gateway.
+
+- **`scripts/firestore/gen_product_summary.py`** — reads ALL docs from
+  `vendors`, `products`, `categories`, `product_images` via the shared
+  `setup_db.get_client()` helper (bound to `products-wood`,
+  `asia-southeast1`) and renders a single dependency-free HTML page
+  (inline CSS, no CDN/external assets). Deterministic / re-runnable —
+  overwrites the output each run.
+- **`docs/summaries/product-summary.html`** (new, generated) — contains:
+  - Headline totals — vendors 55 · products 305 · categories 9 ·
+    product images 95.
+  - **Products by category** table with a share bar (artificial_wood 110,
+    decking 63, cladding 62, engineered_flooring 51, structural_timber 15,
+    timber_flooring 2, plywood 1, moulding 1).
+  - **Products by vendor** table (name, brand, country, type, count),
+    sorted by product count desc — all 55 vendors.
+  - **All products** table grouped by vendor with a vanilla-JS client-side
+    text filter box (name / brand / category / material / spec / origin /
+    source), readable across 305 rows.
+  - **Recently ingested — WeChat wooden-flooring** highlight listing the
+    30 products where `source == "wechat-automation:wechat-documents"`
+    (Bimei / Foglie d'Oro, Visconti / Giorio Casa, Elegant Living).
+  - Matches the `docs/build-summary.html` dark theme / CSS tokens.
+- Hub regenerated (`scripts/generate-hub-page.sh`) — the summary is now
+  linked from `docs/hub.html` + `docs/hub.live.html` under **Summaries**.
+- Gateway URL:
+  `https://gateway.goco.bz/wooden-products/docs/summaries/product-summary.html`
+- `.claude/launch.json` — added a `docs-summaries` static-server config
+  for local preview.
+
 ## [0.14.0] - 2026-06-08
 
 ### Added — WeChat wooden-flooring ingestion (genuine wood only)
