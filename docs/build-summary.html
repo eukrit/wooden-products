@@ -91,16 +91,48 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.9.2 — WPC Fence configurator layout polish (trim plank clipped inside frame, render header compacted, mobile order fixed).</p>
+  <p style="color: var(--muted); margin: 0;">v0.14.0 — WeChat wooden-flooring ingestion: +30 genuine-wood products and +2 vendors (Bimei/Foglie d'Oro, Visconti/Giorio Casa) into the <code>products-wood</code> Firestore DB after parsing the source catalog PDFs.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.9.2</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-04-22</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ready to deploy</span></div></div>
-    <div class="meta-card"><div class="lbl">Service</div><div class="val">salesheet-leka</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.14.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-08</div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ingested &amp; verified</span></div></div>
+    <div class="meta-card"><div class="lbl">Database</div><div class="val">products-wood</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
-    <div class="meta-card"><div class="lbl">Live URL</div><div class="val"><a href="https://salessheet.leka.studio/wpc-fence/configurator/">salessheet.leka.studio/wpc-fence/configurator/</a></div></div>
+    <div class="meta-card"><div class="lbl">Asset bucket</div><div class="val">gs://products-wood-assets</div></div>
   </div>
+
+  <h2>What shipped in 0.14.0 — WeChat wooden-flooring ingestion (genuine wood only)</h2>
+
+  <p style="color:var(--muted)">Ingested the <code>wechat-automation</code> handoff
+  (<code>data/incoming/HANDOFF_wechat_wooden_flooring.md</code>) into
+  <code>products-wood</code>. Counts: vendors 53→55, products 275→305,
+  product_images 92→95.</p>
+
+  <h3>Imported (genuine wood)</h3>
+  <table>
+    <thead><tr><th>Vendor</th><th>Brand</th><th>Products</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td><code>bimei</code> (new)</td><td>Foglie d'Oro (IT)</td><td>23</td><td>2-layer engineered parquet — 4&nbsp;mm solid-wood top on birch multiply, 16/20&nbsp;mm; Walnut/Oak + Maple/Cherry inlays; Made in Italy, Dfl-S1, E1.</td></tr>
+      <tr><td><code>visconti</code> (new)</td><td>Giorio Casa (IT)</td><td>1</td><td>Three-layer engineered wood flooring.</td></tr>
+      <tr><td><code>elegant-living</code> (merged)</td><td>Elegant Living</td><td>6</td><td>Engineered oak, City Vogue Country Plank 12×190×2100&nbsp;mm. "Oak Maroon" already present → skipped.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Excluded (out of scope — genuine wood only)</h3>
+  <ul class="changes">
+    <li><strong>24 "Qihao Home Kihome" SKUs</strong> — source <code>英文.pdf</code> is the <strong>Oasis Forestry</strong> catalog; manufacturer profile states they make <strong>MDF/HDF fiberboard substrates</strong> → <strong>laminate</strong> (oak decor on HDF). The "merge into <code>qihome</code>" step was dropped; no <code>qihome</code> records were touched. (User confirmed exclusion 2026-06-08.)</li>
+    <li><strong>25 <code>needs_review</code> tiles</strong> — <strong>Hongyu</strong> porcelain/ceramic wood-look floor <em>tiles</em> (10–10.5&nbsp;mm rigid formats), incl. TEAKWOOD CHEVRON &amp; ROSEWOOD RUSSET.</li>
+  </ul>
+
+  <h3>Scripts &amp; traceability</h3>
+  <ul class="changes">
+    <li><code>scripts/firestore/build_wechat_flooring.py</code> — maps export + PDF-parsed specs to the <code>products</code> schema.</li>
+    <li><code>scripts/firestore/upload_wechat_flooring.py</code> — idempotent uploader (deterministic ids, <code>elegant-living</code> merge, image dedupe, <code>--dry-run</code>).</li>
+    <li>Every product keeps the WeChat <code>product_id</code>/<code>source_file_id</code> in <code>notes</code>; <code>source = "wechat-automation:wechat-documents"</code>.</li>
+  </ul>
+
+  <hr style="margin:32px 0;border:none;border-top:1px solid var(--border,#e5e7eb)">
 
   <h2>What shipped in 0.9.2 — WPC Fence Configurator layout polish</h2>
 

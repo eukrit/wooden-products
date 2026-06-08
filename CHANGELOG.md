@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.14.0] - 2026-06-08
+
+### Added — WeChat wooden-flooring ingestion (genuine wood only)
+
+Ingested a handoff from the `wechat-automation` project
+(`data/incoming/HANDOFF_wechat_wooden_flooring.md` +
+`wechat_wooden_flooring_export.json`) into the `products-wood` Firestore
+DB after parsing the source catalog PDFs from
+`gs://wechat-documents-attachments`.
+
+- **+30 genuine-wood products, +2 vendors, +3 catalog PDFs** written to
+  `products-wood` (vendors 53→55, products 275→305, product_images 92→95).
+- **Bimei (`bimei`)** — Chinese importer of the Italian parquet brand
+  **Foglie d'Oro**. 23 engineered parquet modules. Parsed the 170-page
+  catalog: 2-layer construction (4 mm solid-wood noble top on birch
+  multiply, 16/20 mm total), tongue&tongue / groove&groove joints,
+  micro-bevel, glued laying, UFH-compatible; species European/American
+  Walnut, Oak with Maple & Cherry inlays; Made in Italy, Dfl-S1, E1.
+- **Visconti (`visconti`)** — Italian brand **Giorio Casa**
+  (意大利卓越卡萨). 1 three-layer engineered wood flooring.
+- **Elegant Living (`elegant-living`)** — the unattributed
+  "ENGINEERED CATALOG.pdf" was identified from its cover as brand
+  **Elegant Living** (engineered oak, City Vogue Country Plank,
+  12×190×2100 mm). Vendor already existed → merged (added 6 new planks;
+  "Oak Maroon" already present as `el-oak-maroon` and was skipped).
+- Each product keeps WeChat `product_id` / `source_file_id` in `notes`
+  and `source = "wechat-automation:wechat-documents"` for traceability.
+- Source catalog PDFs copied to `gs://products-wood-assets/<vendor>/`
+  with `product_images` metadata records.
+
+### Excluded (out of scope — genuine wood only)
+
+- **24 "Qihao Home Kihome" SKUs** — the source `英文.pdf` is the
+  **Oasis Forestry Industry** catalog; their own profile states they
+  manufacture **MDF/HDF fiberboard floor substrates** → these are
+  **laminate** (oak *decor* on HDF), explicitly out of scope. The
+  partner "Kihome Floors" profile is SPC/LVT/WPC/laminate. The
+  handoff's "merge into `qihome`" step was therefore dropped (user
+  confirmed exclusion 2026-06-08). No `qihome` records were modified.
+- **25 `needs_review` tiles** — the **Hongyu** ("Tile With Temperature")
+  catalog is porcelain/ceramic wood-look floor *tiles* (incl. TEAKWOOD
+  CHEVRON, ROSEWOOD RUSSET; 10–10.5 mm rigid formats). Excluded.
+
+### Scripts
+
+- `scripts/firestore/build_wechat_flooring.py` — maps the export +
+  PDF-parsed specs to the `products` schema (species/finish parsing).
+- `scripts/firestore/upload_wechat_flooring.py` — idempotent uploader
+  (deterministic doc ids; merges `elegant-living`; dedupes images by
+  `storage_path`; `--dry-run` supported).
+
 ## [0.13.0] - 2026-05-31
 
 ### Added — Slack interactive Approve / Reject buttons

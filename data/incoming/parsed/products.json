@@ -1,0 +1,736 @@
+[
+  {
+    "product_id": "el-oak-terra",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Terra (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=4BlUCJg8UCM1PG0cVrCs; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "el-oak-mountain",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Mountain (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=78dkh9Dnsq3BUpII7l0k; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "el-oak-charcoal",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Charcoal (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=9FTSZol1qLWk2UWFQxpC; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "el-oak-chalk-washed",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Chalk Washed (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=M9hi0UCjm0GbylAE7jPD; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "el-oak-nordic",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Nordic (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=MToa5DDND93omksaUAxZ; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "el-oak-montana",
+    "vendor_id": "elegant-living",
+    "name": "Elegant Living Oak Montana (City Vogue)",
+    "brand": "Elegant Living",
+    "category": "engineered_flooring",
+    "subcategory": "engineered oak plank",
+    "material": "Oak",
+    "specifications": {
+      "dimensions": "12 x 190 x 2100 mm",
+      "thickness": 12,
+      "width": 190,
+      "length": 2100,
+      "grade": "Country Plank",
+      "finish": "Brushed",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "China",
+    "datasheet_url": "gs://products-wood-assets/elegant-living/2026-01-07 ENGINEERED CATALOG.pdf",
+    "notes": "City Vogue Collection Country Plank, brushed engineered oak. [wechat product_id=zvl80ulLLm4p1sna0M8D; source_file_id=23a37827993a883e590a1ab1012dc3707b6e3af3f73c1f6543d1fc529d0a37a8; file=2026-01-07 ENGINEERED CATALOG.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bardolino-ca-don",
+    "vendor_id": "bimei",
+    "name": "Bardolino Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato (Oak, brushed, bleached, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=2pD5naZGTcc4XdqXGJu4; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bardolino-ca-foscolo",
+    "vendor_id": "bimei",
+    "name": "Bardolino Ca’ Foscolo",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano, spazzolato, verniciato (American Walnut, brushed, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: American Walnut. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=6A5HVPQwIkNCKkryvo5I; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-segreti-ca-corner",
+    "vendor_id": "bimei",
+    "name": "Segreti Ca’ Corner",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, fumé, spazzolato, tinto, verniciato. Inserto in marmo (Oak, smoked, brushed, stained, varnished. Insert in marble)",
+    "specifications": {
+      "dimensions": "1000x1000 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, smoked",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=8eYfr41FyucVfrHFmZCQ; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-segreti-ca-morosini",
+    "vendor_id": "bimei",
+    "name": "Segreti Ca’ Morosini",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, tinto, verniciato. Inserto in ceramica artistica e platino (Oak, brushed, stained, varnished. Insert in artistic ceramic and platinum)",
+    "specifications": {
+      "dimensions": "1000x1000 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=9hfKGdJjKkZYzI0gg3Vv; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-treviso-ca-don",
+    "vendor_id": "bimei",
+    "name": "Treviso Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato (Oak, brushed, bleached, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=9oi4kJ6tewafL5mkCI9l; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bardolino-ca-fumo",
+    "vendor_id": "bimei",
+    "name": "Bardolino Ca’ Fumo",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, tinto, verniciato (Oak, brushed, stained, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=9yJYrqoTmGlA5AljmWlb; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bardolino-ca-cenere",
+    "vendor_id": "bimei",
+    "name": "Bardolino Ca’ Cenere",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, tinto, oliato (Oak, brushed, stained, oiled)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, oiled, stained",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=LsQkQdMS2t8abBZItHJJ; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-asolo-ca-don",
+    "vendor_id": "bimei",
+    "name": "Asolo Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato (Oak, brushed, bleached, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=PB1VYJR2ZckPVZHDaV9J; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-padova-ca-sette-soft",
+    "vendor_id": "bimei",
+    "name": "Padova Ca’ Sette Soft",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano, prelevigato, verniciato. Intarsiato in Ciliegio (American Walnut, sanded, varnished. Inlay in Cherry)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "varnished, sanded, inlay",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: American Walnut, Cherry. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=QW31iApfu4v5MJPH1xuu; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-anticata-classic",
+    "vendor_id": "bimei",
+    "name": "Anticata Classic",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, anticato, tinto, verniciato (Oak, brushed, aged, stained, varnished)",
+    "specifications": {
+      "dimensions": "980x980 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, aged",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=UvUILJYwduVZ6RXhDKhT; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-belvedere-ca-corner",
+    "vendor_id": "bimei",
+    "name": "Belvedere Ca’ Corner",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, fumé, spazzolato, tinto, verniciato (Oak, smoked, brushed, stained, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, smoked",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=ZQELizFm9jnUBYkZpAPV; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-trieste-ca-maser",
+    "vendor_id": "bimei",
+    "name": "Trieste Ca' Maser",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere (Oak)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=dF6STGKndikjKMmzlBgr; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-marostica-ca-don",
+    "vendor_id": "bimei",
+    "name": "Marostica Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato (Oak, brushed, bleached, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=dqbOuUCGLEM2Aiahe3xR; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-siena-classic",
+    "vendor_id": "bimei",
+    "name": "Siena Classic",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, anticato, tinto, verniciato con intarsio in Rovere fumé (Oak, brushed, aged, stained, varnished with inlay in smoked Oak)",
+    "specifications": {
+      "dimensions": "1000x1000 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, smoked, aged, inlay",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=eQVzya1NwyzbtpQEbQhb; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-segreti-ca-don",
+    "vendor_id": "bimei",
+    "name": "Segreti Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato. Inserto in marmo (Oak, brushed, bleached, varnished. Insert in marble)",
+    "specifications": {
+      "dimensions": "1000x1000 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=j3zBOZbjhSd411SMFGfN; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-possagno-ca-sette-soft",
+    "vendor_id": "bimei",
+    "name": "Possagno Ca’ Sette Soft",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano, prelevigato, verniciato (American Walnut, sanded, varnished)",
+    "specifications": {
+      "dimensions": "720x720 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "varnished, sanded",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: American Walnut. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=jTHV43EDTkyN7bLWUtgA; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-asolo-ca-foscolo",
+    "vendor_id": "bimei",
+    "name": "Asolo Ca’ Foscolo",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano, spazzolato, verniciato (American Walnut, brushed, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: American Walnut. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=m22Pi647v4csloeYv16t; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-versailles-ca-foscolo",
+    "vendor_id": "bimei",
+    "name": "Versailles Ca’ Foscolo",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano, spazzolato, verniciato (American Walnut, brushed, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished",
+      "pattern": "Versailles parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Parquet Flooring. Species: American Walnut. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=rdsAyDgdTChdeGIKTl0g; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-volterra-classic",
+    "vendor_id": "bimei",
+    "name": "Volterra Classic",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, anticato, tinto, verniciato con intarsio in Rovere fumé (Oak, brushed, aged, stained, varnished with inlay in smoked Oak)",
+    "specifications": {
+      "dimensions": "1000x1000 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, smoked, aged, inlay",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=sGkY7haVZTgNS0cXaUOh; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bassano",
+    "vendor_id": "bimei",
+    "name": "Bassano",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Americano e Acero, intarsiato a mano, anticato, patinato e verniciato (American Walnut and Maple, aged, hand patina, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "varnished, aged, hand patina",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Parquet Flooring. Species: American Walnut, Maple. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=tybOgDnX7Zwd3edDqmNh; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-versailles-ca-brando",
+    "vendor_id": "bimei",
+    "name": "Versailles Ca’ Brando",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Noce Europeo, spazzolato, tinto, verniciato (European Walnut, brushed, stained, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained",
+      "pattern": "Versailles parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Parquet Flooring. Species: European Walnut. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=u52tqE5JIOJ4HE1Jq7zk; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-versailles-ca-don",
+    "vendor_id": "bimei",
+    "name": "Versailles Ca’ Donà",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, spazzolato, naturalizzato, verniciato (Oak, brushed, bleached, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, bleached, varnished",
+      "pattern": "Versailles parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=vERbSyBJ8SCT5bNUu53m; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "bimei-bardolino-ca-corner",
+    "vendor_id": "bimei",
+    "name": "Bardolino Ca’ Corner",
+    "brand": "Foglie d'Oro",
+    "category": "engineered_flooring",
+    "subcategory": "engineered parquet module",
+    "material": "Rovere, fumé, spazzolato, tinto, verniciato (Oak, smoked, brushed, stained, varnished)",
+    "specifications": {
+      "dimensions": "590x590 mm panel module, 16/20mm thick (4mm solid-wood top)",
+      "grade": "",
+      "finish": "brushed, varnished, stained, smoked",
+      "pattern": "parquet",
+      "construction": "2-layer engineered: 4mm solid-wood noble top + birch multiply"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "E1",
+      "Dfl-S1 (fire reaction)"
+    ],
+    "datasheet_url": "gs://products-wood-assets/bimei/必美地板意大利菲列德罗画册（拼花）.pdf",
+    "notes": "Foglie d'Oro Wood Flooring. Species: Oak. Made in Italy, glued laying, underfloor-heating compatible. [wechat product_id=y60zGs0IAyGTAS4iCDlH; source_file_id=689593d69e7aaaaab98c1f2039b950b093c97fc480936b02e076232c4fd00b9b; file=必美地板意大利菲列德罗画册（拼花）.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  },
+  {
+    "product_id": "visconti-three-layer-solid-wood",
+    "vendor_id": "visconti",
+    "name": "Giorio Casa Three-layer Solid Wood Flooring (三层实木地板)",
+    "name_th": "",
+    "brand": "Giorio Casa",
+    "category": "engineered_flooring",
+    "subcategory": "three-layer engineered wood",
+    "material": "Wood (three-layer)",
+    "specifications": {
+      "dimensions": "",
+      "color": "Various wood tones",
+      "construction": "Three-layer solid/engineered wood",
+      "pattern": "plank"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "datasheet_url": "gs://products-wood-assets/visconti/2026-02-11 卓越卡萨公司简介 GIORIO visconti Profile.pdf",
+    "notes": "High-quality three-layer solid/engineered wood flooring. [wechat product_id=mOmT5sfyagUcEyIbz4Dl; source_file_id=b20557db9ddad7bae0127d9d0a24c6ae2f58d7354e60047a77ea180765f300a2; file=2026-02-11 卓越卡萨公司简介 GIORIO visconti Profile.pdf]",
+    "source": "wechat-automation:wechat-documents"
+  }
+]
