@@ -91,16 +91,82 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.15.0 — Live Firestore <strong>product-summary</strong> page: a self-contained HTML catalog summary generated straight from the <code>products-wood</code> DB and served privately via the go-access-gateway.</p>
+  <p style="color: var(--muted); margin: 0;">v0.16.0 — <strong>Solid wood flooring</strong> dashboard + cross-vendor price comparison: a self-contained HTML page scoped to genuine solid timber &amp; real-wood engineered flooring only, generated live from <code>products-wood</code> and served privately via the go-access-gateway.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.15.0</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-08</div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.16.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-10</div></div>
     <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Generated &amp; verified</span></div></div>
     <div class="meta-card"><div class="lbl">Database</div><div class="val">products-wood</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
     <div class="meta-card"><div class="lbl">Asset bucket</div><div class="val">gs://products-wood-assets</div></div>
   </div>
+
+  <h2>What shipped in 0.16.0 — Solid wood flooring dashboard + price comparison</h2>
+
+  <div class="callout">
+    New generator <code>scripts/firestore/gen_solid_wood_dashboard.py</code> reads
+    <code>vendors</code>, <code>products</code>, <code>categories</code>, <code>quotations</code>,
+    <code>product_images</code> via <code>setup_db.get_client()</code> and renders a single
+    dependency-free dark-theme page (inline CSS, no CDN assets) to
+    <code>docs/dashboards/solid-wood-flooring.html</code>. Deterministic / re-runnable. Served at
+    <a href="https://gateway.goco.bz/wooden-products/docs/dashboards/solid-wood-flooring.html">gateway.goco.bz/wooden-products/docs/dashboards/solid-wood-flooring.html</a>.
+  </div>
+
+  <h3>Scope — genuine solid wood flooring only</h3>
+  <ul class="changes">
+    <li><strong>Included</strong> — one-piece <strong>solid timber</strong> (<code>timber_flooring</code>) and
+      <strong>real-wood engineered / parquet</strong> (<code>engineered_flooring</code>). Scope is decided
+      per-record, not by category name: a flooring record is dropped if its material/subcategory/name matches a
+      composite marker (WPC, SPC, LVT, vinyl, laminate, HDF/MDF/fiberboard, wood-/stone-plastic or -polymer).</li>
+    <li><strong>Excluded</strong> — 8 mis-filed composite floors (Biowood WPC ×3, Kejie SPC, Kihome laminate/LVT/SPC/WPC);
+      2 bamboo records (MOSO) surfaced in a "needs review" footnote rather than silently dropped.</li>
+    <li><strong>Result</strong> — 55 in-scope products (2 solid, 53 engineered) across 8 vendors; 21 priced.</li>
+  </ul>
+
+  <h3>Pricing &amp; normalisation</h3>
+  <ul class="changes">
+    <li>Raw unit price taken from structured <code>quotations.items[]</code> (by <code>product_id</code>) first,
+      else parsed from free-text <code>notes</code> (e.g. "328 yuan/m2", "$36/sqm", "295 CNY").</li>
+    <li>Normalised to <strong>≈THB/m²</strong> with a static, approximate FX table
+      (USD≈36.5, CNY≈5.0, EUR≈40, as of 2026-06-10) — hand-set, <em>not</em> a live feed. Per-piece / per-lm
+      sources convert via product dimensions; otherwise ≈THB/m² shows n/a. Prices only shown when sourced.</li>
+    <li>Price range across the priced set: <strong>540 → 1,640 ≈THB/m²</strong> (European White Oak engineered → solid Burmese Teak).</li>
+  </ul>
+
+  <h3>External Slack price list</h3>
+  <ul class="changes">
+    <li>Fetched Slack file <code>F0APVRP36UC</code> ("2026年主推产品价格表 2026.3.15.pdf") via the Slack Web API and
+      parsed <strong>12 genuine real-wood engineered oak/walnut series</strong> (¥108–255/m²) into the comparison as a
+      clearly-labelled quote-only vendor. Pages 10–11 (金刚面 diamond-face + 强化 reinforced, both "HD decorative paper
+      surface") are <strong>laminate</strong> and were excluded. PDF binary not committed — derived facts only.</li>
+  </ul>
+
+  <h3>Page contents</h3>
+  <ul class="changes">
+    <li><strong>Headline counts</strong> — in-scope vendors / products / with pricing / solid / engineered.</li>
+    <li><strong>Price comparison table</strong> — one row per product, pre-sorted by ≈THB/m² asc, with a vanilla-JS
+      text filter + click-to-sort column headers.</li>
+    <li><strong>By-vendor summary</strong> — country, type, solid/eng counts, SKUs, priced, min/avg/max ≈THB/m².</li>
+    <li><strong>Dashboard</strong> — solid-vs-engineered, by species, by origin country, and price-band breakdown
+      (&lt;1,000 / 1,000–2,000 / 2,000+ THB/m²) as inline-CSS bars (no chart library).</li>
+    <li><strong>Scope &amp; method</strong> callout documenting inclusion/exclusion rules, the static FX rates + date,
+      and the excluded / needs-review lists.</li>
+  </ul>
+
+  <h3>Files touched (0.16.0)</h3>
+  <table>
+    <thead><tr><th>File</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td><code>scripts/firestore/gen_solid_wood_dashboard.py</code></td><td>New — Firestore → solid-wood price-comparison HTML generator</td></tr>
+      <tr><td><code>docs/dashboards/solid-wood-flooring.html</code></td><td>New (generated) — the dashboard page</td></tr>
+      <tr><td><code>docs/hub.html</code> · <code>docs/hub.live.html</code></td><td>Regenerated — dashboard linked under Dashboards</td></tr>
+      <tr><td><code>CHANGELOG.md</code></td><td>+ [0.16.0] entry</td></tr>
+      <tr><td><code>docs/build-summary.html</code></td><td>Updated for 0.16.0</td></tr>
+    </tbody>
+  </table>
+
+  <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.15.0 (Live Firestore product-summary page)</summary>
 
   <h2>What shipped in 0.15.0 — Live Firestore product-summary page</h2>
 
@@ -135,6 +201,8 @@
       <tr><td><code>docs/build-summary.html</code></td><td>Updated for 0.15.0</td></tr>
     </tbody>
   </table>
+
+  </details>
 
   <details style="margin-top:24px"><summary style="cursor:pointer;color:var(--muted)">Earlier — 0.14.0 (WeChat wooden-flooring ingestion)</summary>
 
@@ -825,7 +893,7 @@ Year rollover resets seq to 1 automatically.</pre>
   </ul>
 
   <footer>
-    wooden-products · 0.15.0 · 2026-06-08 · generated by Claude Code
+    wooden-products · 0.16.0 · 2026-06-10 · generated by Claude Code
   </footer>
 </div>
 </body>

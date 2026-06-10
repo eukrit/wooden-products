@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.16.0] - 2026-06-10
+
+### Added — Solid wood flooring dashboard + cross-vendor price comparison
+
+A self-contained HTML dashboard scoped to **genuine solid wood flooring
+only**, generated live from the `products-wood` Firestore DB and served
+privately via the go-access-gateway.
+
+- **`scripts/firestore/gen_solid_wood_dashboard.py`** (new) — reads
+  `vendors`, `products`, `categories`, `quotations`, `product_images` via
+  the shared `setup_db.get_client()` helper (bound to `products-wood`,
+  `asia-southeast1`) and renders a single dependency-free dark-theme HTML
+  page (inline CSS, no CDN/external assets). Deterministic / re-runnable.
+  - **Scope rule (per-record, not by category name)** — INCLUDE one-piece
+    solid timber (`timber_flooring`) and real-wood engineered/parquet
+    (`engineered_flooring`); EXCLUDE any record whose material/subcategory/
+    name matches a composite marker (WPC, SPC, LVT, vinyl, laminate,
+    HDF/MDF/fiberboard, wood-/stone-plastic or -polymer). Ambiguous records
+    (bamboo) are surfaced in a "needs review" footnote, not dropped.
+  - **Pricing** — raw unit price from structured `quotations.items[]` (by
+    `product_id`) first, else parsed from free-text `notes`; normalised to
+    ≈THB/m² via a static, approximate FX table (USD≈36.5, CNY≈5.0, EUR≈40,
+    as of 2026-06-10) and product dimensions for per-piece/per-lm sources.
+    Prices only ever shown when sourced.
+- **`docs/dashboards/solid-wood-flooring.html`** (new, generated) —
+  headline counts, a **price comparison table** (one row per product,
+  pre-sorted by ≈THB/m² asc, vanilla-JS filter + click-to-sort), a
+  **by-vendor summary** (solid/eng counts + min/avg/max ≈THB/m²), a
+  **dashboard** (solid-vs-engineered, by species, by origin, price bands as
+  inline-CSS bars), and a **Scope & method** callout with the excluded /
+  needs-review lists.
+  - 55 in-scope products (2 solid, 53 engineered) across 8 vendors; 21
+    priced; 8 mis-filed composite floors excluded; 2 bamboo flagged.
+- **External Slack price list** — fetched file `F0APVRP36UC`
+  ("2026年主推产品价格表 2026.3.15.pdf") via the Slack Web API; parsed 12
+  genuine real-wood engineered oak/walnut series (¥108–255/m²) into the
+  comparison as a clearly-labelled quote-only vendor. Pages 10–11 (金刚面
+  diamond-face + 强化 reinforced, both "HD decorative paper surface") are
+  laminate and were excluded. PDF binary not committed (derived facts only).
+- Hub regenerated (`scripts/generate-hub-page.sh`) — the dashboard is now
+  linked from `docs/hub.html` + `docs/hub.live.html` under **Dashboards**.
+- Gateway URL:
+  `https://gateway.goco.bz/wooden-products/docs/dashboards/solid-wood-flooring.html`
+
 ## [0.15.0] - 2026-06-08
 
 ### Added — Live Firestore product-summary page
