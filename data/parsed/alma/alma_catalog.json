@@ -1,0 +1,1898 @@
+{
+  "source": "https://www.almafloor.it",
+  "brand": "Alma",
+  "manufacturer": "GIORIO S.r.l.",
+  "collections": [
+    {
+      "slug": "doghe",
+      "url": "https://www.almafloor.it/en-gb/collezione-doghe",
+      "name": "Plank",
+      "pattern": "plank",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Easy",
+          "id": "modello-easy",
+          "specs": {
+            "dimension": "15/4 x 50 x 800/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 50.0,
+            "length": 800.0,
+            "width_raw": "50",
+            "length_raw": "800/2200"
+          },
+          "description": "Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to new elegant harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can match different styles. This model consists of a total thickness of 15 mm, whose noble part is 4 mm of Oak, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (A",
+          "image_files": [
+            "Doghe_Easy-b41df02c-640w.png",
+            "Alma_Easy+01-640w.jpg",
+            "Alma_Easy+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Domino 90",
+          "id": "modello-domino-90",
+          "specs": {
+            "dimension": "15/4 x 90 x 1200/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 90.0,
+            "length": 1200.0,
+            "width_raw": "90",
+            "length_raw": "1200/2200"
+          },
+          "description": "Domino Model proposes wooden floors suitable for any space and easy to maintain, with 90 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and",
+          "image_files": [
+            "Doghe_Domino+90-90S-640w.png",
+            "Doghe_Domino+90+01-640w.jpg",
+            "Doghe_Domino+90+03-640w.jpg",
+            "Doghe_Domino+90+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Alabama",
+          "id": "modello-alabama-140-160",
+          "specs": {
+            "dimension": "10/3 x 140/150/160 x 600/2200 mm",
+            "structure": "10/3",
+            "thickness": 10,
+            "noble_layer_mm": 3,
+            "width": 140.0,
+            "length": 600.0,
+            "width_raw": "140/150/160",
+            "length_raw": "600/2200"
+          },
+          "description": "Model proposes wooden floors suitable for any space and easy to maintain, with 140/160 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 10 mm, whose noble part is 3 mm, on Birch plywood support. Wood species and grades : Oak (AB-ABC), Asian Teak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data sheet Con",
+          "image_files": [
+            "Doghe_Alabama-Domus-Domino-640w.png",
+            "Doghe_Alabama+01-640w.jpg",
+            "Doghe_Alabama+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Domus",
+          "id": "modello-domus",
+          "specs": {
+            "dimension": "11/4 x 140 x 600/2200 mm",
+            "structure": "11/4",
+            "thickness": 11,
+            "noble_layer_mm": 4,
+            "width": 140.0,
+            "length": 600.0,
+            "width_raw": "140",
+            "length_raw": "600/2200"
+          },
+          "description": "Model of DOGHE Collection is the perfect choice to emphasize elegance in any space. Medium-large planks to give depth to spaces. Versatile charm suitable for any style of furniture. The wooden floor designed for those looking for simplicity and timeless glamor. This model consists of a total thickness of 11 mm, whose noble part is 4 mm of Oak, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (AB), European Walnut (AB-C), American Walnut (AB-C) Structure: 2 layers Insta",
+          "image_files": [
+            "Doghe_Alabama-Domus-Domino-640w.png",
+            "Doghe_Domus+03-640w.jpg",
+            "Doghe_Domus+01-640w.jpg",
+            "Doghe_Domus+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Domino 90 S",
+          "id": "modello-domino-90-s",
+          "specs": {
+            "dimension": "15/4 x 90 x 500/1000 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 90.0,
+            "length": 500.0,
+            "width_raw": "90",
+            "length_raw": "500/1000"
+          },
+          "description": "Domino Model proposes wooden floors suitable for any space and easy to maintain, with 90 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data sheet Contac",
+          "image_files": [
+            "Doghe_Domino+90-90S-640w.png",
+            "Doghe_Domino+90+S+03-640w.jpg",
+            "Doghe_Domino+90+S+02-640w.jpg",
+            "Doghe_Domino+90+S+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Domino",
+          "id": "modello-domino",
+          "specs": {
+            "dimension": "15/4 x 140 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 140.0,
+            "length": 600.0,
+            "width_raw": "140",
+            "length_raw": "600/2200"
+          },
+          "description": "Model proposes wooden floors suitable for any space and easy to maintain, with 140 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C-CD), European Walnut (AB-C), American Walnut (AB-C) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces",
+          "image_files": [
+            "Doghe_Alabama-Domus-Domino-640w.png",
+            "Doghe_Domino+01-640w.jpg",
+            "Doghe_Domino+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Odeon S",
+          "id": "modello-odeon-s",
+          "specs": {
+            "dimension": "15/4 x 180 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 180.0,
+            "length": 600.0,
+            "width_raw": "180",
+            "length_raw": "600/2200"
+          },
+          "description": "Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 180/190 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD), Glacial Oak (AB) Structure: 2 layers Installation syste",
+          "image_files": [
+            "Doghe_Odeon+S-640w.png",
+            "Doghe_Odeon+S+01-640w.jpg",
+            "Doghe_Odeon+S+02-640w.jpg",
+            "Doghe_Odeon+S+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Odeon",
+          "id": "modello-odeon",
+          "specs": {
+            "dimension": "15/4 x 200/220 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 200.0,
+            "length": 600.0,
+            "width_raw": "200/220",
+            "length_raw": "600/2200"
+          },
+          "description": "Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 200 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD), Glacial Oak (AB), European Walnut (AB-C), American Walnut (",
+          "image_files": [
+            "Doghe_Odeon-640w.png",
+            "Doghe_Odeon+06-640w.jpg",
+            "Doghe_Odeon+07-640w.jpg",
+            "Doghe_Odeon+05-640w.jpg",
+            "Doghe_Odeon+02-640w.jpg",
+            "Doghe_Odeon+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Odeon L",
+          "id": "modello-odeon-l",
+          "specs": {
+            "dimension": "15/4 x 240/260 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 240.0,
+            "length": 600.0,
+            "width_raw": "240/260",
+            "length_raw": "600/2200"
+          },
+          "description": "Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 240/260 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installation system: T&G Micro Bevel",
+          "image_files": [
+            "Doghe_Odeon+L-640w.png",
+            "Doghe_Odeon+L+01-640w.jpg",
+            "Doghe_Odeon+L+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Pantheon",
+          "id": "modello-pantheon",
+          "specs": {
+            "dimension": "15/4 x 290/300 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 290.0,
+            "length": 600.0,
+            "width_raw": "290/300",
+            "length_raw": "600/2200"
+          },
+          "description": "Model proposes 290 mm wide super planks: large boards with a classic appeal. The large size of the planks stands out especially when used in large spaces, allowing to appreciate the warmth of this wooden floor. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of Oak. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data s",
+          "image_files": [
+            "Doghe_Pantheon-640w.png",
+            "Doghe_Pantheon+01-640w.jpg",
+            "Doghe_Pantheon+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Megaron",
+          "id": "modello-megaron",
+          "specs": {
+            "dimension": "15/4 x 140-180-220 x 600/2200 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 140.0,
+            "length": 600.0,
+            "width_raw": "140-180-220",
+            "length_raw": "600/2200"
+          },
+          "description": "Model captures the charm of the DOGHE collection. Multi-width boards to give new depth to spaces and a 4 mm noble layer, to ensure the best aesthetic and functional qualities. Available in different colors, this extremely versatile solution is capable of adapting to the most diverse spaces in terms of style of furniture and dimensions. This perfectly harmonious parquet is for those looking for linear and sophisticated elegance. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installa",
+          "image_files": [
+            "Doghe_Megaron-640w.png",
+            "Doghe_Megaron+01-640w.jpg",
+            "Doghe_Megaron+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Storia",
+          "id": "modello-storia",
+          "specs": {
+            "dimension": "16/5 x 180/200/220 x 1200/2200 mm",
+            "structure": "16/5",
+            "thickness": 16,
+            "noble_layer_mm": 5,
+            "width": 180.0,
+            "length": 1200.0,
+            "width_raw": "180/200/220",
+            "length_raw": "1200/2200"
+          },
+          "description": "Model seems to hold an ancient tale, full of mystery and charm. A hand-made waning grout, an even brushed surface, a three-dimensional appearance to the touch and sight. This is a very rustic choice, but at the same time modern because it reflects the latest trends in flooring. The ideal parquet for those who love the rustic flavor, the scent of old times, the sound of memories. Wood species and grades : Oak (D) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Sta",
+          "image_files": [
+            "Doghe_Storia-Barrique-640w.png",
+            "Doghe_Storia+01-640w.jpg",
+            "Storia_T39T02-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Barrique",
+          "id": "modello-barrique",
+          "specs": {
+            "dimension": "17/6 x 220 x 1200/2200 mm",
+            "structure": "17/6",
+            "thickness": 17,
+            "noble_layer_mm": 6,
+            "width": 220.0,
+            "length": 1200.0,
+            "width_raw": "220",
+            "length_raw": "1200/2200"
+          },
+          "description": "Embossed knots repaired with waning grout, uneven and non-planar brushed surface: Barrique Model enhances the natural peculiarities of wood. A parquet with a strong personality, capable of becoming the protagonist in any space, giving an original and refined touch to every furniture. A must have for those looking for uniqueness and elegance, extravagance and sophistication. Wood species and grades : Oak (D) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained,",
+          "image_files": [
+            "Doghe_Storia-Barrique-640w.png",
+            "Doghe_Barrique+04-640w.jpg",
+            "Doghe_Barrique+01-640w.jpg",
+            "Doghe_Barrique+02-640w.jpg",
+            "Doghe_Barrique+03-640w.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spina-ungherese-45",
+      "url": "https://www.almafloor.it/en-gb/collezione-spina-ungherese-45",
+      "name": "Chevron 45°",
+      "pattern": "chevron-45",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Gautier 45",
+          "id": "modello-gautier-45",
+          "specs": {
+            "dimension": "15/4 x 50 x 550 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 50.0,
+            "length": 550.0,
+            "width_raw": "50",
+            "length_raw": "550"
+          },
+          "description": "Gautier Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to elegant new harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can be combined with the most diverse styles. The perfect model for those who love to stand out with discreet, yet irresistible charm. Wood species and grades : Oak (AB-ABC) Structur",
+          "image_files": [
+            "Spina+45_Gautier+45-0502a8d6-640w.png",
+            "Spina+45_Gautier+45+02-640w.jpg",
+            "Spina+45_Gautier+45+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Londra 45",
+          "id": "modello-londra-45",
+          "specs": {
+            "dimension": "10/4 x 70 x 420 mm",
+            "structure": "10/4",
+            "thickness": 10,
+            "noble_layer_mm": 4,
+            "width": 70.0,
+            "length": 420.0,
+            "width_raw": "70",
+            "length_raw": "420"
+          },
+          "description": "Londra Model is characterized by a thickness of 10 mm, of which 4 of noble wood, and 70 mm width. Small slates with reduced thickness allow the installation of classic geometric shapes capable of enhancing every space. The different treatments and finishes available also allow multiple customizations, for a timelessly beautiful parquet. Wood species and grades : Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surf",
+          "image_files": [
+            "Spina+45_LONDRA+45-640w.png",
+            "Spina+45_Londra+45+01-640w.jpg",
+            "Spina+45_Londra+45+02-640w.jpg",
+            "Spina+45_Londra+45+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Castello",
+          "id": "modello-castello",
+          "specs": {
+            "dimension": "11/4 x 90 x 510 mm",
+            "structure": "11/4",
+            "thickness": 11,
+            "noble_layer_mm": 4,
+            "width": 90.0,
+            "length": 510.0,
+            "width_raw": "90",
+            "length_raw": "510"
+          },
+          "description": "Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 11 mm, of which 4 mm of noble wood on birch support, the width is 90 mm and the length 510 mm. Wood species and grades : Oak (AB-ABC), Glacial Oak (AB), Asian Teak (AB), European Walnut (AB-C), American Walnut (AB-C) Structure : 2 layers Installation system : T",
+          "image_files": [
+            "Spina+45_Castello-Austria-640w.png",
+            "Spina+45_Castello+03-640w.jpg",
+            "Spina+45_Castello+02-640w.jpg",
+            "Spina+45_Castello+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Austria",
+          "id": "modello-austria",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Spina+45_Castello-Austria-640w.png",
+            "Spina+45_Austria+02-640w.jpg",
+            "Spina+45_Austria+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Marchesi",
+          "id": "modello-marchesi",
+          "specs": {
+            "dimension": "15/4 x 120 x 580/680 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 120.0,
+            "length": 580.0,
+            "width_raw": "120",
+            "length_raw": "580/680"
+          },
+          "description": "Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 15 mm, of which 4 mm of Oak on birch support, the width is 120 mm and the length 600 mm. Wood species and grades : Oak (AB-ABC), Glacial Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, R",
+          "image_files": [
+            "Spina+45_Marchesi-640w.png",
+            "Spina+45_Marchesi+01-640w.jpg",
+            "Spina+45_Marchesi+04-640w.jpg",
+            "Spina+45_Marchesi+02-640w.jpg",
+            "Spina+45_Marchesi+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Amburgo",
+          "id": "modello-amburgo",
+          "specs": {
+            "dimension": "15/4 x 140 x 560/860 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 140.0,
+            "length": 560.0,
+            "width_raw": "140",
+            "length_raw": "560/860"
+          },
+          "description": "Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 15 mm, of which 4 mm of Oak on birch support, the width is 140 mm and the length 580 mm. Wood species and grades : Oak (AB-ABC) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surfaces: B",
+          "image_files": [
+            "Spina+45_Amburgo-640w.png",
+            "Spina+45_Amburgo+03-640w.jpg",
+            "Spina+45_Amburgo+02-640w.jpg",
+            "Spina+45_Amburgo+01-640w.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spina-italiana-90",
+      "url": "https://www.almafloor.it/en-gb/collezione-spina-italiana-90",
+      "name": "Herringbone 90°",
+      "pattern": "herringbone-90",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Gautier",
+          "id": "modello-gautier",
+          "specs": {
+            "dimension": "15/4 x 50 x 600 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 50.0,
+            "length": 600.0,
+            "width_raw": "50",
+            "length_raw": "600"
+          },
+          "description": "﻿ Gautier Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to elegant new harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can be combined with the most diverse styles. The perfect model for those who love to stand out with discreet, yet irresistible charm. Wood species and grades : Oak (AB-ABC) Struct",
+          "image_files": [
+            "Spina+90_Gautier-1b14c0cd-640w.png",
+            "Gautier+Spina+90+T39_01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Londra",
+          "id": "modello-londra",
+          "specs": {
+            "dimension": "10/4 x 70 x 500/600 mm",
+            "structure": "10/4",
+            "thickness": 10,
+            "noble_layer_mm": 4,
+            "width": 70.0,
+            "length": 500.0,
+            "width_raw": "70",
+            "length_raw": "500/600"
+          },
+          "description": "Model is characterized by a thickness of 10 mm, of which 4 of noble wood, and 70 mm width. Small slats with reduced thickness allow the installation of classic geometric shapes capable of enhancing every space. The different treatments and finishes available also allow multiple customizations, for a timelessly beautiful parquet. Wood species and grades : Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surfaces: Br",
+          "image_files": [
+            "Spina+90_LONDRA-87c9936a-640w.png",
+            "Spina+90_Londra+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Pirenei",
+          "id": "modello-pirenei",
+          "specs": {
+            "dimension": "11/4 x 90 x 600 mm",
+            "structure": "11/4",
+            "thickness": 11,
+            "noble_layer_mm": 4,
+            "width": 90.0,
+            "length": 600.0,
+            "width_raw": "90",
+            "length_raw": "600"
+          },
+          "description": "Model offers different installation designs as solutions to multiple architectural styles. The elements, usable for the traditional Italian Herringbone, can also be laid in squares or arranged for parallel laying with interposed strip. The strips have a thickness of 11 mm, of which 4 mm of noble wood on plywood support, the width is 90 mm and the length 600 mm. Wood species and grades : Oak (AB-ABC), Asian Teak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural,",
+          "image_files": [
+            "Spina+90_pirenei-duca-4fa2e1d2-640w.png",
+            "Spina+90_Pirenei-640w.jpg"
+          ]
+        },
+        {
+          "name": "Duca",
+          "id": "modello-duca",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Spina+90_pirenei-duca-4fa2e1d2-640w.png",
+            "Spina+90_Duca+01-640w.jpg",
+            "Spina+90_Duca+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Savoia",
+          "id": "modello-savoia",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Spina+90_savoia-81340d64-640w.png",
+            "Spina+90_Savoia+01-640w.jpg",
+            "Spina+90_Savoia+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Borghese",
+          "id": "modello-borghese",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Spina+90_borghese-869a26d3-640w.png",
+            "Spina+90_Borghese+03-640w.jpg",
+            "Spina+90_Borghese+04-640w.jpg",
+            "Spina+90_Borghese+01-640w.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spina-francese-30",
+      "url": "https://www.almafloor.it/en-gb/collezione-spina-francese-30",
+      "name": "Chevron 30°",
+      "pattern": "chevron-30",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Chevron 30° (Spina Francese)",
+          "id": null,
+          "specs": {},
+          "description": "French herringbone laid at 30° — made to order in the Alma essences and colours.",
+          "image_files": []
+        }
+      ]
+    },
+    {
+      "slug": "geometrici",
+      "url": "https://www.almafloor.it/en-gb/collezione-geometrici",
+      "name": "Geometric",
+      "pattern": "geometric",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Esagono",
+          "id": "modello-esagono",
+          "specs": {
+            "dimension": "15/4 x 200 x 230,9 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 200.0,
+            "length": 230.9,
+            "width_raw": "200",
+            "length_raw": "230,9"
+          },
+          "description": "Six sides. Several treatments. A thousand facets. Esagono Model plays with the past, making it contemporary and sophisticated. A parquet in which different combinations enhance and make each space unique. Wood species and e grades : Oak (AB-ABC) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and data sheet Contact us",
+          "image_files": [
+            "Geometrici_Esagono-640w.png",
+            "Geometrici_Esagono+03-cdae0431-640w.jpg",
+            "Geometrici_Esagono+04-640w.jpg",
+            "Geometrici_Esagono+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Treccia",
+          "id": "modello-treccia",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Treccia-640w.png",
+            "Geometrici_Treccia+03-640w.jpg",
+            "Geometrici_Treccia+04-640w.jpg",
+            "Geometrici_Treccia+02-640w.jpg",
+            "Geometrici_Treccia+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Palladio",
+          "id": "modello-palladio",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Palladio-640w.png",
+            "Geometrici_Palladio+03-640w.jpg",
+            "Geometrici_Palladio+04-640w.jpg",
+            "Geometrici_Palladio+05-640w.jpg",
+            "Geometrici_Palladio+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Rombi",
+          "id": "modello-rombi",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Rombi-640w.png",
+            "Geometrici_Rombi+02-640w.jpg",
+            "Geometrici_Rombi+03-640w.jpg",
+            "Geometrici_Rombi+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Duomo",
+          "id": "modello-duomo",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Duomo-640w.png",
+            "Geometrici_Duomo+01-640w.jpg",
+            "Geometrici_Duomo+04-640w.jpg",
+            "Geometrici_Duomo+02-640w.jpg",
+            "Geometrici_Duomo+03-640w.jpg"
+          ]
+        },
+        {
+          "name": "Rubik",
+          "id": "modello-rubik",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Rubik-640w.png",
+            "Geometrici_Rubik+01-640w.jpg",
+            "Geometrici_Rubik+02-640w.jpg"
+          ]
+        },
+        {
+          "name": "Onda",
+          "id": "modello-onda",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Onda-640w.png",
+            "Geometrici_Onda+03-640w.jpg",
+            "Geometrici_Onda+02-640w.jpg",
+            "Geometrici_Onda+01-640w.jpg"
+          ]
+        },
+        {
+          "name": "Spiga",
+          "id": "modello-spiga",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Spiga-640w.png",
+            "Geometrici_Spiga+01-640w.jpg",
+            "Geometrici_Spiga+02-640w.jpg",
+            "Geometrici_Spiga+03-640w.jpg",
+            "Geometrici_Spiga+04-640w.jpg",
+            "Geometrici_Spiga+05-640w.jpg"
+          ]
+        },
+        {
+          "name": "Trend",
+          "id": "modello-trend",
+          "specs": {},
+          "description": "",
+          "image_files": [
+            "Geometrici_Trend-640w.png",
+            "Geometrici_Trend+01-640w.jpg",
+            "Geometrici_Trend+02-640w.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "design",
+      "url": "https://www.almafloor.it/en-gb/collezione-design",
+      "name": "Design",
+      "pattern": "design",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Versailles 01",
+          "id": "modello-versailles-01",
+          "specs": {
+            "dimension": "15/4 x 980 x 980 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 980.0,
+            "length": 980.0,
+            "width_raw": "980",
+            "length_raw": "980"
+          },
+          "description": "The elegance of an 18th century palace in a modern key: Versailles Model from Design Collection captures the luxury and class of a timeless parquet. The handmade tiles, perfectly fit together, create geometric designs for a floor capable of attracting every glance. The individual elements are characterized by tongue and groove joint. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet C",
+          "image_files": [
+            "Design_Versailles+01-1-640w.jpg",
+            "Design_Versailles+01-3-640w.jpg",
+            "Design_Versailles+01-2-640w.jpg",
+            "Design_Versailles+01-4-640w.jpg"
+          ]
+        },
+        {
+          "name": "Versailles 02",
+          "id": "modello-versailles-02",
+          "specs": {
+            "dimension": "15/4 x 782.3 x 782.3 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 782.3,
+            "length": 782.3,
+            "width_raw": "782.3",
+            "length_raw": "782.3"
+          },
+          "description": "The elegance of an 18th century palace in a modern key: Versailles Model from Design Collection captures the luxury and class of a timeless parquet. The handmade tiles, perfectly fit together, create geometric designs for a floor capable of attracting every glance. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet",
+          "image_files": [
+            "Design_Versailles+02-2-640w.jpg",
+            "Design_Versailles+02-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Chantilly 01",
+          "id": "modello-chantilly-01",
+          "specs": {
+            "dimension": "15/4 x 960 x 960 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 960.0,
+            "length": 960.0,
+            "width_raw": "960",
+            "length_raw": "960"
+          },
+          "description": "Getting home with surprise, every day: this is the effect of Chantilly Model. A subtle play of joints and precise geometries for a scenographic design, capable of heating up even the most minimal atmosphere. As the whole Design collection, this parquet will give character and personality to your rooms, for a cover house! The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked sta",
+          "image_files": [
+            "Design_Chantilly+02-2-640w.jpg",
+            "Design_Chantilly+02-3-640w.jpg",
+            "Design_Chantilly+02-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Chantilly 02",
+          "id": "modello-chantilly-02",
+          "specs": {
+            "dimension": "15/4 x 740 x 740 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 740.0,
+            "length": 740.0,
+            "width_raw": "740",
+            "length_raw": "740"
+          },
+          "description": "Getting home with surprise, every day: this is the effect of Chantilly Model. A subtle play of joints and precise geometries for a scenographic design, capable of heating up even the most minimal atmosphere. As the whole Design collection, this parquet will give character and personality to your rooms, for a cover house! The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked sta",
+          "image_files": [
+            "Design_Chantilly+02-2-640w.jpg",
+            "Design_Chantilly+02-3-640w.jpg",
+            "Design_Chantilly+02-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Canareggio",
+          "id": "modello-canareggio",
+          "specs": {
+            "dimension": "15/4 x 800 x 800 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 800.0,
+            "length": 800.0,
+            "width_raw": "800",
+            "length_raw": "800"
+          },
+          "description": "Model offers unique pieces made by hand with great skill and precision. All pieces are groove-groove assembled, thus ensuring greater stability, both before and after installation. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet Contact us",
+          "image_files": [
+            "Design_Canareggio-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Versace",
+          "id": "modello-versace",
+          "specs": {
+            "dimension": "15/4 x 850 x 850 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 850.0,
+            "length": 850.0,
+            "width_raw": "850",
+            "length_raw": "850"
+          },
+          "description": "Unique pieces set like diamonds, geometries capable of becoming protagonists of every space. Versace Model makes precious every home with a rustic or contemporary design. Let be enchanted by the skill of our craftsmen. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet Contact us",
+          "image_files": [
+            "Design_Versace-1-640w.jpg"
+          ]
+        },
+        {
+          "name": "Arsenale",
+          "id": "modello-arsenale",
+          "specs": {
+            "dimension": "15/4 x 670 x 670 mm",
+            "structure": "15/4",
+            "thickness": 15,
+            "noble_layer_mm": 4,
+            "width": 670.0,
+            "length": 670.0,
+            "width_raw": "670",
+            "length_raw": "670"
+          },
+          "description": "Refined and exclusive, Arsenale Model of the Design Collection captures the glances with discretion, to fully integrate into any space. In a modern kitchen or in a bohemian-style bedroom, this parquet can adapt to any style, giving a sophisticated touch to the most diverse rooms. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Pro",
+          "image_files": [
+            "Design_Arsenale-1-640w.jpg",
+            "Design_Arsenale-4-640w.jpg",
+            "Design_Arsenale-3-640w.jpg",
+            "Design_Arsenale-2-640w.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "intarsi",
+      "url": "https://www.almafloor.it/en-gb/collezione-intarsi",
+      "name": "Inlay",
+      "pattern": "inlay",
+      "category": "engineered_flooring",
+      "models": [
+        {
+          "name": "Inlay (Intarsi)",
+          "id": null,
+          "specs": {},
+          "description": "Custom marquetry / inlay parquet — bespoke designs, borders and medallions.",
+          "image_files": []
+        }
+      ]
+    },
+    {
+      "slug": "esterno",
+      "url": "https://www.almafloor.it/en-gb/collezione-esterno",
+      "name": "Decking",
+      "pattern": "decking",
+      "category": "decking",
+      "models": [
+        {
+          "name": "Teak Asia",
+          "id": null,
+          "specs": {},
+          "description": "Asian teak outdoor decking board.",
+          "image_files": []
+        }
+      ]
+    },
+    {
+      "slug": "accessori",
+      "url": "https://www.almafloor.it/en-gb/collezione-accessori",
+      "name": "Accessories",
+      "pattern": "accessory",
+      "category": "moulding",
+      "models": [
+        {
+          "name": "Stair skirt",
+          "id": null,
+          "specs": {},
+          "description": "Matching stair skirting / nosing profile.",
+          "image_files": []
+        },
+        {
+          "name": "Skirting",
+          "id": null,
+          "specs": {},
+          "description": "Matching wood skirting board (battiscopa).",
+          "image_files": []
+        },
+        {
+          "name": "Alma Clean",
+          "id": null,
+          "specs": {},
+          "description": "Maintenance product: routine cleaner for finished floors.",
+          "image_files": []
+        },
+        {
+          "name": "Alma Lux",
+          "id": null,
+          "specs": {},
+          "description": "Maintenance product: protective polish for lacquered floors.",
+          "image_files": []
+        },
+        {
+          "name": "Alma Soap",
+          "id": null,
+          "specs": {},
+          "description": "Maintenance product: soap for oiled floors.",
+          "image_files": []
+        },
+        {
+          "name": "Alma Oil",
+          "id": null,
+          "specs": {},
+          "description": "Maintenance product: refreshing oil for oiled floors.",
+          "image_files": []
+        },
+        {
+          "name": "Oil Care Plus",
+          "id": null,
+          "specs": {},
+          "description": "Maintenance product: deep nourishing oil care.",
+          "image_files": []
+        }
+      ]
+    }
+  ],
+  "essences": [
+    {
+      "slug": "european-oak",
+      "species": "European Oak",
+      "colors": [
+        {
+          "code": "NAT",
+          "label": "Natural",
+          "name": "Natural",
+          "family": "Natural"
+        },
+        {
+          "code": "T02",
+          "label": "Stained T02",
+          "name": "Stained T02",
+          "family": "Stained"
+        },
+        {
+          "code": "T03",
+          "label": "Stained T03",
+          "name": "Stained T03",
+          "family": "Stained"
+        },
+        {
+          "code": "T04",
+          "label": "Stained T04",
+          "name": "Stained T04",
+          "family": "Stained"
+        },
+        {
+          "code": "T05",
+          "label": "Stained T05",
+          "name": "Stained T05",
+          "family": "Stained"
+        },
+        {
+          "code": "T25",
+          "label": "Stained T25",
+          "name": "Stained T25",
+          "family": "Stained"
+        },
+        {
+          "code": "T08",
+          "label": "Stained T08",
+          "name": "Stained T08",
+          "family": "Stained"
+        },
+        {
+          "code": "T09",
+          "label": "Stained T09",
+          "name": "Stained T09",
+          "family": "Stained"
+        },
+        {
+          "code": "T70",
+          "label": "Stained T70",
+          "name": "Stained T70",
+          "family": "Stained"
+        },
+        {
+          "code": "T71",
+          "label": "Stained T71",
+          "name": "Stained T71",
+          "family": "Stained"
+        },
+        {
+          "code": "T67",
+          "label": "Stained T67",
+          "name": "Stained T67",
+          "family": "Stained"
+        },
+        {
+          "code": "T68",
+          "label": "Stained T68",
+          "name": "Stained T68",
+          "family": "Stained"
+        },
+        {
+          "code": "T10",
+          "label": "Stained T10",
+          "name": "Stained T10",
+          "family": "Stained"
+        },
+        {
+          "code": "T11",
+          "label": "Stained T11",
+          "name": "Stained T11",
+          "family": "Stained"
+        },
+        {
+          "code": "T13",
+          "label": "Stained T13",
+          "name": "Stained T13",
+          "family": "Stained"
+        },
+        {
+          "code": "T66",
+          "label": "Stained T66",
+          "name": "Stained T66",
+          "family": "Stained"
+        },
+        {
+          "code": "T39",
+          "label": "Smoked T39",
+          "name": "Smoked T39",
+          "family": "Smoked"
+        },
+        {
+          "code": "T39T02",
+          "label": "Smoked Stained T39T02",
+          "name": "Smoked Stained T39T02",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T39T04",
+          "label": "Smoked Stained T39T04",
+          "name": "Smoked Stained T39T04",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T39T25",
+          "label": "Smoked Stained T39T25",
+          "name": "Smoked Stained T39T25",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T39T22",
+          "label": "Smoked Stained T39T22",
+          "name": "Smoked Stained T39T22",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T39T21",
+          "label": "Smoked Stained T39T21",
+          "name": "Smoked Stained T39T21",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T39T99",
+          "label": "Smoked Stained T39T99",
+          "name": "Smoked Stained T39T99",
+          "family": "Smoked Stained"
+        },
+        {
+          "code": "T56",
+          "label": "T56 Reagent",
+          "name": "T56 Reagent",
+          "family": "Reagent"
+        },
+        {
+          "code": "T50",
+          "label": "T50 Reagent",
+          "name": "T50 Reagent",
+          "family": "Reagent"
+        },
+        {
+          "code": "TR1",
+          "label": "TR1 Reagent",
+          "name": "TR1 Reagent",
+          "family": "Reagent"
+        },
+        {
+          "code": "T80",
+          "label": "Retrò T80",
+          "name": "Retrò T80 Bronzo",
+          "family": "Retrò"
+        },
+        {
+          "code": "T81",
+          "label": "Retrò T81",
+          "name": "Retrò T81 Lino",
+          "family": "Retrò"
+        },
+        {
+          "code": "T82",
+          "label": "Retrò T82",
+          "name": "Retrò T82 Ibisco",
+          "family": "Retrò"
+        },
+        {
+          "code": "T83",
+          "label": "Retrò T83",
+          "name": "Retrò T83 Cotone",
+          "family": "Retrò"
+        },
+        {
+          "code": "T84",
+          "label": "Retrò T84",
+          "name": "Retrò T84 Pastello",
+          "family": "Retrò"
+        },
+        {
+          "code": "T85",
+          "label": "Retrò T85",
+          "name": "Retrò T85 Alcantara",
+          "family": "Retrò"
+        }
+      ]
+    },
+    {
+      "slug": "glacial-oak",
+      "species": "Glacial Oak",
+      "colors": [
+        {
+          "code": "NAT",
+          "label": "Glacial Oak, Brushed - Natural",
+          "name": "Natural",
+          "family": "Natural"
+        },
+        {
+          "code": "T02",
+          "label": "Glacial Oak, Brushed - T02",
+          "name": "T02",
+          "family": "Other"
+        },
+        {
+          "code": "T25",
+          "label": "Glacial Oak, Brushed - T25",
+          "name": "T25",
+          "family": "Other"
+        },
+        {
+          "code": "T04",
+          "label": "Glacial Oak, Brushed - T04",
+          "name": "T04",
+          "family": "Other"
+        },
+        {
+          "code": "T68",
+          "label": "Glacial Oak, Brushed - T68",
+          "name": "T68",
+          "family": "Other"
+        },
+        {
+          "code": "T09",
+          "label": "Glacial Oak, Brushed - T09",
+          "name": "T09",
+          "family": "Other"
+        },
+        {
+          "code": "T11",
+          "label": "Glacial Oak, Brushed - T11",
+          "name": "T11",
+          "family": "Other"
+        },
+        {
+          "code": "T66",
+          "label": "Glacial Oak, Brushed - T66",
+          "name": "T66",
+          "family": "Other"
+        }
+      ]
+    },
+    {
+      "slug": "european-walnut",
+      "species": "European Walnut",
+      "colors": [
+        {
+          "code": "NAT",
+          "label": "Natural",
+          "name": "Natural",
+          "family": "Natural"
+        }
+      ]
+    },
+    {
+      "slug": "american-walnut",
+      "species": "American Walnut",
+      "colors": [
+        {
+          "code": "NAT",
+          "label": "Natural",
+          "name": "Natural",
+          "family": "Natural"
+        }
+      ]
+    },
+    {
+      "slug": "asian-teak",
+      "species": "Asian Teak",
+      "colors": [
+        {
+          "code": "NAT",
+          "label": "Teak, Brushed - Natural",
+          "name": "Natural",
+          "family": "Natural"
+        }
+      ]
+    },
+    {
+      "slug": "austrian-larch-bio",
+      "species": "Austrian Larch Bio",
+      "colors": [
+        {
+          "code": "Austrian",
+          "label": "Austrian Larch Bio",
+          "name": "Austrian Larch Bio",
+          "family": "Other"
+        },
+        {
+          "code": "NAT",
+          "label": "Austrian Larch Bio, Brushed - Natural",
+          "name": "Natural",
+          "family": "Natural"
+        },
+        {
+          "code": "T02",
+          "label": "Austrian Larch Bio, Brushed - T02",
+          "name": "T02",
+          "family": "Other"
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "file": "1+DoP+001-25_ENG.pdf",
+      "label": "DoP PLANK 10/3 - Model: Alabama",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/1+DoP+001-25_ENG.pdf",
+      "bytes": 203662,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "2+DoP+002-25_ENG.pdf",
+      "label": "DoP PLANK 11/4 - Model: Domus",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/2+DoP+002-25_ENG.pdf",
+      "bytes": 204275,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "3+DoP+003-25_ENG.pdf",
+      "label": "DoP PLANK 14/3 - Model: Alpi",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/3+DoP+003-25_ENG.pdf",
+      "bytes": 201146,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "4+DoP+004-25_ENG.pdf",
+      "label": "Dop PLANK 15/4 - Models: Odeon, Odeon S, Odeon L",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/4+DoP+004-25_ENG.pdf",
+      "bytes": 201820,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "5+DoP+005-25_ENG.pdf",
+      "label": "DoP PLANK 15/4 - Model: Megaron",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/5+DoP+005-25_ENG.pdf",
+      "bytes": 195347,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "6+DoP+006-25_ENG.pdf",
+      "label": "DoP PLANK 15/4 - Models: Domino, Domino 90 S, Domino 120",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/6+DoP+006-25_ENG.pdf",
+      "bytes": 199724,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "7+DoP+006-25_ENG.pdf",
+      "label": "DoP PLANK 15/4 - Model: Pantheon",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/7+DoP+006-25_ENG.pdf",
+      "bytes": 194962,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "8+DoP+008-25_ENG.pdf",
+      "label": "DoP PLANK 15/4 - Model: Easy",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/8+DoP+008-25_ENG.pdf",
+      "bytes": 196573,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "9+DoP+009-25_ENG.pdf",
+      "label": "DoP PLANK 16/5 - Model: Storia",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/9+DoP+009-25_ENG.pdf",
+      "bytes": 195354,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "10+DoP+010-25_ENG.pdf",
+      "label": "DoP PLANK 17/6 - Model: Barrique",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/10+DoP+010-25_ENG.pdf",
+      "bytes": 195560,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "15+DoP+015-25_ENG.pdf",
+      "label": "DoP PLANK 15/4 - Model: Volterra",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/15+DoP+015-25_ENG.pdf",
+      "bytes": 195539,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "11+DoP+011-25_ENG.pdf",
+      "label": "DoP HERRINGBONE 90° - Models: Londra, Pirenei, Duca, Savoia, Borghese, Gautier",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/11+DoP+011-25_ENG.pdf",
+      "bytes": 192178,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "12+DoP+012-25_ENG.pdf",
+      "label": "DoP CHEVRON 45° - Models: Londra 45, Castello, Austria, Marchesi, Amburgo, Gautier 45",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/12+DoP+012-25_ENG.pdf",
+      "bytes": 195398,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "13+DoP+013-25_ENG.pdf",
+      "label": "DoP GEOMETRIC 15/4 - Models: Esagono, Treccia, Rombi, Rubik, Palladio, Duomo, Onda, Spiga, King, Pentagono, Trend, Open, Star",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/13+DoP+013-25_ENG.pdf",
+      "bytes": 183505,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "14+DoP+014-25_ENG.pdf",
+      "label": "DoP DESIGN 15/4 - Models: Versailles 01, Versailles 02, Chantilly 01, Chantilly 02, Accademia, Canareggio, Versace, Arsenale",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/14+DoP+014-25_ENG.pdf",
+      "bytes": 195497,
+      "type": "declaration_of_performance",
+      "model_token": null
+    },
+    {
+      "file": "1.+Scheda+Prodotto+Alabama_ENG.pdf",
+      "label": "PLANK 10/3 - Model: Alabama",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/1.+Scheda+Prodotto+Alabama_ENG.pdf",
+      "bytes": 299574,
+      "type": "datasheet",
+      "model_token": "Alabama"
+    },
+    {
+      "file": "2.+Scheda+Prodotto+Domus_ENG.pdf",
+      "label": "PLANK 11/4 - Model: Domus",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/2.+Scheda+Prodotto+Domus_ENG.pdf",
+      "bytes": 314581,
+      "type": "datasheet",
+      "model_token": "Domus"
+    },
+    {
+      "file": "3.+Scheda+Prodotto+Alpi_ENG.pdf",
+      "label": "PLANK 14/3 - Model: Alpi",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/3.+Scheda+Prodotto+Alpi_ENG.pdf",
+      "bytes": 299043,
+      "type": "datasheet",
+      "model_token": "Alpi"
+    },
+    {
+      "file": "4.+Scheda+Prodotto+Odeon_ENG.pdf",
+      "label": "PLANK 15/4 - Models: Odeon, Odeon S, Odeon L",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/4.+Scheda+Prodotto+Odeon_ENG.pdf",
+      "bytes": 317598,
+      "type": "datasheet",
+      "model_token": "Odeon"
+    },
+    {
+      "file": "5.+Scheda+Prodotto+Megaron_ENG.pdf",
+      "label": "PLANK 15/4 - Model: Megaron",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/5.+Scheda+Prodotto+Megaron_ENG.pdf",
+      "bytes": 301357,
+      "type": "datasheet",
+      "model_token": "Megaron"
+    },
+    {
+      "file": "6.+Scheda+Prodotto+Domino_ENG.pdf",
+      "label": "PLANK 15/4 - Models: Domino, Domino 90 S, Domino 120",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/6.+Scheda+Prodotto+Domino_ENG.pdf",
+      "bytes": 316388,
+      "type": "datasheet",
+      "model_token": "Domino"
+    },
+    {
+      "file": "7.+Scheda+Prodotto+Pantheon_ENG.pdf",
+      "label": "PLANK 15/4 - Model: Pantheon",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/7.+Scheda+Prodotto+Pantheon_ENG.pdf",
+      "bytes": 299204,
+      "type": "datasheet",
+      "model_token": "Pantheon"
+    },
+    {
+      "file": "8.+Scheda+Prodotto+Easy_ENG.pdf",
+      "label": "PLANK 15/4 - Model: Easy",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/8.+Scheda+Prodotto+Easy_ENG.pdf",
+      "bytes": 302032,
+      "type": "datasheet",
+      "model_token": "Easy"
+    },
+    {
+      "file": "9.+Scheda+Prodotto+Storia_ENG.pdf",
+      "label": "PLANK 16/5 - Model: Storia",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/9.+Scheda+Prodotto+Storia_ENG.pdf",
+      "bytes": 295687,
+      "type": "datasheet",
+      "model_token": "Storia"
+    },
+    {
+      "file": "10.+Scheda+Prodotto+Barrique_ENG.pdf",
+      "label": "PLANK 17/6 - Model: Barrique",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/10.+Scheda+Prodotto+Barrique_ENG.pdf",
+      "bytes": 295998,
+      "type": "datasheet",
+      "model_token": "Barrique"
+    },
+    {
+      "file": "15.+Scheda+Prodotto+Volterra_ENG.pdf",
+      "label": "PLANK 15/4 - Model: Volterra",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/15.+Scheda+Prodotto+Volterra_ENG.pdf",
+      "bytes": 295805,
+      "type": "datasheet",
+      "model_token": "Volterra"
+    },
+    {
+      "file": "11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+      "label": "HERRINGBONE 90° - Models: Londra, Pirenei, Duca, Savoia, Borghese, Gautier",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+      "bytes": 321797,
+      "type": "datasheet",
+      "model_token": "Spine"
+    },
+    {
+      "file": "12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+      "label": "CHEVRON 45° - Models: Londra 45, Castello, Austria, Marchesi, Amburgo, Gautier 45",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+      "bytes": 322064,
+      "type": "datasheet",
+      "model_token": "Spine"
+    },
+    {
+      "file": "13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+      "label": "GEOMETRIC 15/4 - Models: Esagono, Treccia, Rombi, Rubik, Palladio, Duomo, Onda, Spiga, King, Pentagono, Trend, Open, Star",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+      "bytes": 300855,
+      "type": "datasheet",
+      "model_token": "Geometrici"
+    },
+    {
+      "file": "14.+Scheda+Prodotto+Design_ENG.pdf",
+      "label": "DESIGN 15/4 - Models: Versailles 01, Versailles 02, Chantilly 01, Chantilly 02, Accademia, Canareggio, Versace, Arsenale",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/14.+Scheda+Prodotto+Design_ENG.pdf",
+      "bytes": 300761,
+      "type": "datasheet",
+      "model_token": "Design"
+    },
+    {
+      "file": "20250904095939656.pdf",
+      "label": "Chain of custody policy for wood products FSC® (FSC-C108523)",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/20250904095939656.pdf",
+      "bytes": 47060,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "FSC-COC-002125+_2_.pdf",
+      "label": "FSC®",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/FSC-COC-002125+%282%29.pdf",
+      "bytes": 485381,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "ICILA-PEFC-COC-002126.pdf",
+      "label": "PEFC®",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/ICILA-PEFC-COC-002126.pdf",
+      "bytes": 513612,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "Giorio+Mapping.pdf",
+      "label": "Mapping sustainability",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Giorio+Mapping.pdf",
+      "bytes": 13585297,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "EPD+document_EPD-IES-0026871_001_en.pdf",
+      "label": "EPD Declaration",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/EPD+document_EPD-IES-0026871_001_en.pdf",
+      "bytes": 2307986,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "test+indoor+confort+gold.pdf",
+      "label": "VOC Test",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/test+indoor+confort+gold.pdf",
+      "bytes": 1440393,
+      "type": "certification",
+      "model_token": null
+    },
+    {
+      "file": "Catalogo_Alma_2024.pdf",
+      "label": "Alma Catalogue",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Catalogo_Alma_2024.pdf",
+      "bytes": 8873060,
+      "type": "catalog",
+      "model_token": null
+    },
+    {
+      "file": "Folder+Alma+-+Colori+Retro-+4lingue.pdf",
+      "label": "Alma: Retrò Treatments",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Folder+Alma+-+Colori+Retro-+4lingue.pdf",
+      "bytes": 2777715,
+      "type": "brochure",
+      "model_token": null
+    },
+    {
+      "file": "Folder+Alma+ITA-ENG-FR-DE_low.pdf",
+      "label": "Alma Presentation",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Folder+Alma+ITA-ENG-FR-DE_low.pdf",
+      "bytes": 4504931,
+      "type": "brochure",
+      "model_token": null
+    },
+    {
+      "file": "Maintenance_Laquered_floors_ENG.pdf",
+      "label": "Maintenance Laquered floors",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Maintenance_Laquered%20floors_ENG.pdf",
+      "bytes": 539580,
+      "type": "maintenance",
+      "model_token": null
+    },
+    {
+      "file": "Maintenance_Oiled_floors_ENG_PkTRGmVHTQyeR26MpE2Z.pdf",
+      "label": "Maintenance Oiled floors",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Maintenance_Oiled%20floors_ENG_PkTRGmVHTQyeR26MpE2Z.pdf",
+      "bytes": 575074,
+      "type": "maintenance",
+      "model_token": null
+    },
+    {
+      "file": "Certificato_installazione_ENG.pdf",
+      "label": "Installation informations",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Certificato%20installazione%20ENG.pdf",
+      "bytes": 212671,
+      "type": "installation",
+      "model_token": null
+    },
+    {
+      "file": "Subfloor_Heating_adn_cooling_Alma_ENG.pdf",
+      "label": "Subfloor Heating and Cooling",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Subfloor%20Heating%20adn%20cooling%20Alma_ENG.pdf",
+      "bytes": 171315,
+      "type": "installation",
+      "model_token": null
+    },
+    {
+      "file": "Certificato_Garanzia_ENG.pdf",
+      "label": "Limited Warranty Alma",
+      "url": "https://irp.cdn-website.com/b526407b/files/uploaded/Certificato%20Garanzia_ENG.pdf",
+      "bytes": 134174,
+      "type": "warranty",
+      "model_token": null
+    }
+  ],
+  "swatches": [
+    {
+      "file": "Rovere-Europeo-naturale-AB-864faa47-640w.jpg",
+      "species": "European Oak",
+      "color_code": null,
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-naturale-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": null,
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-90-naturale-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": null,
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T02-AB-2b6342df-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T02",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T02-C-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T02",
+      "grade": "C"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T02-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T02",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T03-CD-ede067d5-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T03",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T04-CD-1e0dbe84-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T04",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T05-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T05",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T05-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T05",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T25-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T25",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T25-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T25",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T08-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T08",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T09-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T09",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-90-T09-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T09",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Geometrici-Duomo-T09-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T09",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T70-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T70",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T70-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T70",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T71-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T71",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T71-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T71",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T67-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T67",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T68-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T68",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T68-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T68",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T10-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T10",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T11-CD-88c831a7-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T11",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T13-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T13",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T66-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T66",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T66-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T66",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-Easy-T39-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39-ABC-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "ABC"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-90-LONDRA-T39-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Treccia-T39-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Palladio-T39-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39T02-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T02",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Geometrici-Rombi-T39T02-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T02",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Geometrici-Spiga-T39T02-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T02",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-Easy-T39T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39T04-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-90-T39T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-90-Gautier-T39T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39T04-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39T04-ABC-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T04",
+      "grade": "ABC"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39T25-ABC-2-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T25",
+      "grade": "ABC"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39T22-AB-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T22",
+      "grade": "AB"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T39T99-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T99",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Spina-45-T39T99-ABC-2-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T39T99",
+      "grade": "ABC"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-Barrique-T56-D-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T56",
+      "grade": "D"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-T56-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T56",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-Barrique-T50-D-6f4c04fd-640w.jpg",
+      "species": "European Oak",
+      "color_code": "T50",
+      "grade": "D"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-TR1-CD-640w.jpg",
+      "species": "European Oak",
+      "color_code": "TR1",
+      "grade": "CD"
+    },
+    {
+      "file": "Rovere-Europeo-Doghe-Barrique-TR1-D-640w.jpg",
+      "species": "European Oak",
+      "color_code": "TR1",
+      "grade": "D"
+    }
+  ],
+  "image_count": 304
+}

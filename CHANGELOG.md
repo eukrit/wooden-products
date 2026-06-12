@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.17.0] - 2026-06-12
+
+### Added — Alma by Giorio full catalogue scrape + ingest into `products-wood`
+
+End-to-end ingestion of the Italian engineered-parquet manufacturer **Alma by
+Giorio** (GIORIO S.r.l., `almafloor.it`) following the WeChat #25 pattern
+(`scrape → extract → build → upload`, all idempotent, deterministic IDs).
+
+- **New vendor** `alma-giorio` (GIORIO S.r.l., brand "Alma", manufacturer, Italy;
+  FSC C108523, PEFC/18-31-374). Distinct from the existing `visconti` (Giorio
+  Casa) China reseller — relationship noted in vendor `notes`.
+- **97 products, both granularities** (per request):
+  - **51 model formats** across 9 collections — Plank (13), Chevron 45° (6),
+    Herringbone 90° (6), Chevron 30° (1), Geometric (9), Design (7), Inlay (1),
+    Decking (1), Accessories (7) — each with dimensions, structure (10/3…17/6),
+    noble layer, pattern, and a `datasheet_url` (41/44 carry a model-specific
+    technical sheet).
+  - **46 colour/finish SKUs** across 6 essences — European Oak (32), Glacial Oak
+    (8), European Walnut (1), American Walnut (1), Asian Teak (1), Austrian Larch
+    Bio (3) — each with colour code, family (Natural/Stained/Smoked/Reagent/Retrò)
+    and a swatch image where available.
+- **348 assets mirrored to `gs://products-wood-assets/alma/{docs,images}/`** —
+  44 PDFs (2024 catalogue, 15 technical sheets, 15 DoP, FSC/PEFC/EPD/VOC certs,
+  maintenance/installation/warranty) + 304 product & swatch images. Tracked as
+  348 `product_images` records (201 linked to a product).
+- **Live counts** — vendors 55→56, products 305→402, product_images 95→443.
+- **New scripts** — `scripts/scrapers/alma_scrape.py`,
+  `scripts/scrapers/alma_extract.py`,
+  `scripts/firestore/build_alma_flooring.py`,
+  `scripts/firestore/upload_alma_flooring.py`.
+- Regenerated live pages: `docs/summaries/product-summary.html`,
+  `docs/dashboards/solid-wood-flooring.html`, `docs/hub.html`, `docs/hub.live.html`.
+
 ## [0.16.0] - 2026-06-10
 
 ### Added — Solid wood flooring dashboard + cross-vendor price comparison
