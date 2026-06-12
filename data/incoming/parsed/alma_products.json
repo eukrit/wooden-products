@@ -1,0 +1,3145 @@
+[
+  {
+    "product_id": "alma-doghe-easy",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Easy",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Easy",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 50 x 800/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 50.0,
+      "length": 800.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/8.+Scheda+Prodotto+Easy_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Easy-b41df02c-640w.png",
+      "gs://products-wood-assets/alma/images/Alma_Easy+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Alma_Easy+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to new elegant harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can match different styles. This model consists of a total thickness of 15 mm, whose noble part is 4 mm of Oak, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (A",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-domino-90",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Domino 90",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Domino 90",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 90 x 1200/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 90.0,
+      "length": 1200.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/6.+Scheda+Prodotto+Domino_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90-90S-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Domino Model proposes wooden floors suitable for any space and easy to maintain, with 90 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-alabama",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Alabama",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Alabama",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "10/3 x 140/150/160 x 600/2200 mm",
+      "structure": "10/3",
+      "thickness": 10,
+      "width": 140.0,
+      "length": 600.0,
+      "noble_layer_mm": 3,
+      "construction": "Multi-layer engineered parquet, 3 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/1.+Scheda+Prodotto+Alabama_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Alabama-Domus-Domino-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Alabama+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Alabama+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model proposes wooden floors suitable for any space and easy to maintain, with 140/160 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 10 mm, whose noble part is 3 mm, on Birch plywood support. Wood species and grades : Oak (AB-ABC), Asian Teak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data sheet Con",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-domus",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Domus",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Domus",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "11/4 x 140 x 600/2200 mm",
+      "structure": "11/4",
+      "thickness": 11,
+      "width": 140.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/2.+Scheda+Prodotto+Domus_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Alabama-Domus-Domino-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Domus+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domus+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domus+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model of DOGHE Collection is the perfect choice to emphasize elegance in any space. Medium-large planks to give depth to spaces. Versatile charm suitable for any style of furniture. The wooden floor designed for those looking for simplicity and timeless glamor. This model consists of a total thickness of 11 mm, whose noble part is 4 mm of Oak, on Birch plywood support. Wood species and grades : Oak (AB-C), Glacial Oak (AB), European Walnut (AB-C), American Walnut (AB-C) Structure: 2 layers Insta",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-domino-90-s",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Domino 90 S",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Domino 90 S",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 90 x 500/1000 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 90.0,
+      "length": 500.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/6.+Scheda+Prodotto+Domino_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90-90S-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+S+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+S+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+90+S+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Domino Model proposes wooden floors suitable for any space and easy to maintain, with 90 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data sheet Contac",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-domino",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Domino",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Domino",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 140 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 140.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/6.+Scheda+Prodotto+Domino_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Alabama-Domus-Domino-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Domino+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model proposes wooden floors suitable for any space and easy to maintain, with 140 mm planks depending on availability, ideal for emphasizing elegance in any room. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of noble wood, on Birch plywood support. Wood species and grades : Oak (AB-C-CD), European Walnut (AB-C), American Walnut (AB-C) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-odeon-s",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Odeon S",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Odeon S",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 180 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 180.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/4.+Scheda+Prodotto+Odeon_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+S-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+S+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+S+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+S+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 180/190 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD), Glacial Oak (AB) Structure: 2 layers Installation syste",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-odeon",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Odeon",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Odeon",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 200/220 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 200.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/4.+Scheda+Prodotto+Odeon_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Odeon-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+06-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+07-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+05-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 200 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD), Glacial Oak (AB), European Walnut (AB-C), American Walnut (",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-odeon-l",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Odeon L",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Odeon L",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 240/260 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 240.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/4.+Scheda+Prodotto+Odeon_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+L-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+L+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Odeon+L+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Elegant and sophisticated. Resistant and practical. Odeon Model combines aesthetics and functionality. With a thickness of 15 mm, composed of 4 mm of the noble part and the remainder birch support, is the ideal solution for those who need a sturdy floor, capable of adapting to any space. 240/260 mm wide planks give transmit depth to the spaces and a feeling of spaciousness even to the smallest rooms. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installation system: T&G Micro Bevel",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-pantheon",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Pantheon",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Pantheon",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 290/300 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 290.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/7.+Scheda+Prodotto+Pantheon_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Pantheon-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Pantheon+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Pantheon+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model proposes 290 mm wide super planks: large boards with a classic appeal. The large size of the planks stands out especially when used in large spaces, allowing to appreciate the warmth of this wooden floor. The parquet consists of a total thickness of 15 mm, whose noble part is 4 mm of Oak. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked Stained, Reagent Surfaces: Brushed DOP | Product and data s",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-megaron",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Megaron",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Megaron",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "15/4 x 140-180-220 x 600/2200 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 140.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/5.+Scheda+Prodotto+Megaron_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Megaron-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Megaron+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Megaron+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model captures the charm of the DOGHE collection. Multi-width boards to give new depth to spaces and a 4 mm noble layer, to ensure the best aesthetic and functional qualities. Available in different colors, this extremely versatile solution is capable of adapting to the most diverse spaces in terms of style of furniture and dimensions. This perfectly harmonious parquet is for those looking for linear and sophisticated elegance. Wood species and grades : Oak (AB-C-CD) Structure: 2 layers Installa",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-storia",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Storia",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Storia",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "16/5 x 180/200/220 x 1200/2200 mm",
+      "structure": "16/5",
+      "thickness": 16,
+      "width": 180.0,
+      "length": 1200.0,
+      "noble_layer_mm": 5,
+      "construction": "Multi-layer engineered parquet, 5 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/9.+Scheda+Prodotto+Storia_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Storia-Barrique-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Storia+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Storia_T39T02-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Model seems to hold an ancient tale, full of mystery and charm. A hand-made waning grout, an even brushed surface, a three-dimensional appearance to the touch and sight. This is a very rustic choice, but at the same time modern because it reflects the latest trends in flooring. The ideal parquet for those who love the rustic flavor, the scent of old times, the sound of memories. Wood species and grades : Oak (D) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Sta",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-doghe-barrique",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Barrique",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Plank — Barrique",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "plank",
+      "dimensions": "17/6 x 220 x 1200/2200 mm",
+      "structure": "17/6",
+      "thickness": 17,
+      "width": 220.0,
+      "length": 1200.0,
+      "noble_layer_mm": 6,
+      "construction": "Multi-layer engineered parquet, 6 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/10.+Scheda+Prodotto+Barrique_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Doghe_Storia-Barrique-640w.png",
+      "gs://products-wood-assets/alma/images/Doghe_Barrique+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Barrique+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Barrique+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Doghe_Barrique+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Plank; pattern=plank; source=https://www.almafloor.it/en-gb/collezione-doghe] Embossed knots repaired with waning grout, uneven and non-planar brushed surface: Barrique Model enhances the natural peculiarities of wood. A parquet with a strong personality, capable of becoming the protagonist in any space, giving an original and refined touch to every furniture. A must have for those looking for uniqueness and elegance, extravagance and sophistication. Wood species and grades : Oak (D) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained,",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-gautier-45",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Gautier 45",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Gautier 45",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "dimensions": "15/4 x 50 x 550 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 50.0,
+      "length": 550.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_Gautier+45-0502a8d6-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Gautier+45+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Gautier+45+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45] Gautier Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to elegant new harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can be combined with the most diverse styles. The perfect model for those who love to stand out with discreet, yet irresistible charm. Wood species and grades : Oak (AB-ABC) Structur",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-londra-45",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Londra 45",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Londra 45",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "dimensions": "10/4 x 70 x 420 mm",
+      "structure": "10/4",
+      "thickness": 10,
+      "width": 70.0,
+      "length": 420.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_LONDRA+45-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Londra+45+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Londra+45+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Londra+45+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45] Londra Model is characterized by a thickness of 10 mm, of which 4 of noble wood, and 70 mm width. Small slates with reduced thickness allow the installation of classic geometric shapes capable of enhancing every space. The different treatments and finishes available also allow multiple customizations, for a timelessly beautiful parquet. Wood species and grades : Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surf",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-castello",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Castello",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Castello",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "dimensions": "11/4 x 90 x 510 mm",
+      "structure": "11/4",
+      "thickness": 11,
+      "width": 90.0,
+      "length": 510.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_Castello-Austria-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Castello+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Castello+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Castello+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45] Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 11 mm, of which 4 mm of noble wood on birch support, the width is 90 mm and the length 510 mm. Wood species and grades : Oak (AB-ABC), Glacial Oak (AB), Asian Teak (AB), European Walnut (AB-C), American Walnut (AB-C) Structure : 2 layers Installation system : T",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-austria",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Austria",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Austria",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_Castello-Austria-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Austria+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Austria+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-marchesi",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Marchesi",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Marchesi",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "dimensions": "15/4 x 120 x 580/680 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 120.0,
+      "length": 580.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_Marchesi-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Marchesi+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Marchesi+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Marchesi+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Marchesi+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45] Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 15 mm, of which 4 mm of Oak on birch support, the width is 120 mm and the length 600 mm. Wood species and grades : Oak (AB-ABC), Glacial Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, R",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-ungherese-45-amburgo",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Amburgo",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 45° — Amburgo",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-45",
+      "dimensions": "15/4 x 140 x 560/860 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 140.0,
+      "length": 560.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/12.+Scheda+Prodotto+Spine+45-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+45_Amburgo-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+45_Amburgo+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Amburgo+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+45_Amburgo+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Chevron 45°; pattern=chevron-45; source=https://www.almafloor.it/en-gb/collezione-spina-ungherese-45] Model is meant for the realization of classic laying known as Hungarian or French herringbone. Two are the recommended laying designs, Hungarian Herringbone and Hungarian Herringbone with interposed strip. The elements have a thickness of 15 mm, of which 4 mm of Oak on birch support, the width is 140 mm and the length 580 mm. Wood species and grades : Oak (AB-ABC) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surfaces: B",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-gautier",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Gautier",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Gautier",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "dimensions": "15/4 x 50 x 600 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 50.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_Gautier-1b14c0cd-640w.png",
+      "gs://products-wood-assets/alma/images/Gautier+Spina+90+T39_01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90] ﻿ Gautier Model recalls the glamor of old Parisian streets, where ancient and modern mix to give life to elegant new harmonies. Small slats of 50 mm create a dense interlocking game, capable of enhancing the most authentic characteristics of wood. This parquet gives an original and sophisticated touch to any space and can be combined with the most diverse styles. The perfect model for those who love to stand out with discreet, yet irresistible charm. Wood species and grades : Oak (AB-ABC) Struct",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-londra",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Londra",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Londra",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "dimensions": "10/4 x 70 x 500/600 mm",
+      "structure": "10/4",
+      "thickness": 10,
+      "width": 70.0,
+      "length": 500.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_LONDRA-87c9936a-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+90_Londra+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90] Model is characterized by a thickness of 10 mm, of which 4 of noble wood, and 70 mm width. Small slats with reduced thickness allow the installation of classic geometric shapes capable of enhancing every space. The different treatments and finishes available also allow multiple customizations, for a timelessly beautiful parquet. Wood species and grades : Oak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural, Stained, Smoked, Smoked stained, Reagent Surfaces: Br",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-pirenei",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Pirenei",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Pirenei",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "dimensions": "11/4 x 90 x 600 mm",
+      "structure": "11/4",
+      "thickness": 11,
+      "width": 90.0,
+      "length": 600.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_pirenei-duca-4fa2e1d2-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+90_Pirenei-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90] Model offers different installation designs as solutions to multiple architectural styles. The elements, usable for the traditional Italian Herringbone, can also be laid in squares or arranged for parallel laying with interposed strip. The strips have a thickness of 11 mm, of which 4 mm of noble wood on plywood support, the width is 90 mm and the length 600 mm. Wood species and grades : Oak (AB-ABC), Asian Teak (AB) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments: Natural,",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-duca",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Duca",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Duca",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_pirenei-duca-4fa2e1d2-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+90_Duca+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+90_Duca+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-savoia",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Savoia",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Savoia",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_savoia-81340d64-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+90_Savoia+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+90_Savoia+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-italiana-90-borghese",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Borghese",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Herringbone 90° — Borghese",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "herringbone-90",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/11.+Scheda+Prodotto+Spine+90-_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Spina+90_borghese-869a26d3-640w.png",
+      "gs://products-wood-assets/alma/images/Spina+90_Borghese+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+90_Borghese+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Spina+90_Borghese+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Herringbone 90°; pattern=herringbone-90; source=https://www.almafloor.it/en-gb/collezione-spina-italiana-90]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-spina-francese-30-chevron-30-spina-francese",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Chevron 30° (Spina Francese)",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Chevron 30° — Chevron 30° (Spina Francese)",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "chevron-30",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[model (is_model=true); collection=Chevron 30°; pattern=chevron-30; source=https://www.almafloor.it/en-gb/collezione-spina-francese-30] French herringbone laid at 30° — made to order in the Alma essences and colours.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-esagono",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Esagono",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Esagono",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "dimensions": "15/4 x 200 x 230,9 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 200.0,
+      "length": 230.9,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Esagono-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Esagono+03-cdae0431-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Esagono+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Esagono+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici] Six sides. Several treatments. A thousand facets. Esagono Model plays with the past, making it contemporary and sophisticated. A parquet in which different combinations enhance and make each space unique. Wood species and e grades : Oak (AB-ABC) Structure: 2 layers Installation system: T&G Micro Bevel 4L Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and data sheet Contact us",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-treccia",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Treccia",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Treccia",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Treccia-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Treccia+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Treccia+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Treccia+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Treccia+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-palladio",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Palladio",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Palladio",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Palladio-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Palladio+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Palladio+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Palladio+05-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Palladio+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-rombi",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Rombi",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Rombi",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Rombi-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Rombi+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Rombi+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Rombi+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-duomo",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Duomo",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Duomo",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Duomo-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Duomo+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Duomo+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Duomo+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Duomo+03-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-rubik",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Rubik",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Rubik",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Rubik-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Rubik+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Rubik+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-onda",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Onda",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Onda",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Onda-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Onda+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Onda+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Onda+01-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-spiga",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Spiga",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Spiga",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga+02-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga+03-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga+04-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Spiga+05-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-geometrici-trend",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Trend",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Geometric — Trend",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "geometric",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/13.+Scheda+Prodotto+Geometrici_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Geometrici_Trend-640w.png",
+      "gs://products-wood-assets/alma/images/Geometrici_Trend+01-640w.jpg",
+      "gs://products-wood-assets/alma/images/Geometrici_Trend+02-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Geometric; pattern=geometric; source=https://www.almafloor.it/en-gb/collezione-geometrici]",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-versailles-01",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Versailles 01",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Versailles 01",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 980 x 980 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 980.0,
+      "length": 980.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Versailles+01-1-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Versailles+01-3-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Versailles+01-2-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Versailles+01-4-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] The elegance of an 18th century palace in a modern key: Versailles Model from Design Collection captures the luxury and class of a timeless parquet. The handmade tiles, perfectly fit together, create geometric designs for a floor capable of attracting every glance. The individual elements are characterized by tongue and groove joint. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet C",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-versailles-02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Versailles 02",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Versailles 02",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 782.3 x 782.3 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 782.3,
+      "length": 782.3,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Versailles+02-2-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Versailles+02-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] The elegance of an 18th century palace in a modern key: Versailles Model from Design Collection captures the luxury and class of a timeless parquet. The handmade tiles, perfectly fit together, create geometric designs for a floor capable of attracting every glance. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-chantilly-01",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Chantilly 01",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Chantilly 01",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 960 x 960 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 960.0,
+      "length": 960.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-2-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-3-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] Getting home with surprise, every day: this is the effect of Chantilly Model. A subtle play of joints and precise geometries for a scenographic design, capable of heating up even the most minimal atmosphere. As the whole Design collection, this parquet will give character and personality to your rooms, for a cover house! The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked sta",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-chantilly-02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Chantilly 02",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Chantilly 02",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 740 x 740 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 740.0,
+      "length": 740.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-2-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-3-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Chantilly+02-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] Getting home with surprise, every day: this is the effect of Chantilly Model. A subtle play of joints and precise geometries for a scenographic design, capable of heating up even the most minimal atmosphere. As the whole Design collection, this parquet will give character and personality to your rooms, for a cover house! The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked sta",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-canareggio",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Canareggio",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Canareggio",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 800 x 800 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 800.0,
+      "length": 800.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Canareggio-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] Model offers unique pieces made by hand with great skill and precision. All pieces are groove-groove assembled, thus ensuring greater stability, both before and after installation. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet Contact us",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-versace",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Versace",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Versace",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 850 x 850 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 850.0,
+      "length": 850.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Versace-1-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] Unique pieces set like diamonds, geometries capable of becoming protagonists of every space. Versace Model makes precious every home with a rustic or contemporary design. Let be enchanted by the skill of our craftsmen. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Product and sheet Contact us",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-design-arsenale",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Arsenale",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Design — Arsenale",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "design",
+      "dimensions": "15/4 x 670 x 670 mm",
+      "structure": "15/4",
+      "thickness": 15,
+      "width": 670.0,
+      "length": 670.0,
+      "noble_layer_mm": 4,
+      "construction": "Multi-layer engineered parquet, 4 mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/14.+Scheda+Prodotto+Design_ENG.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Design_Arsenale-1-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Arsenale-4-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Arsenale-3-640w.jpg",
+      "gs://products-wood-assets/alma/images/Design_Arsenale-2-640w.jpg"
+    ],
+    "notes": "[model (is_model=true); collection=Design; pattern=design; source=https://www.almafloor.it/en-gb/collezione-design] Refined and exclusive, Arsenale Model of the Design Collection captures the glances with discretion, to fully integrate into any space. In a modern kitchen or in a bohemian-style bedroom, this parquet can adapt to any style, giving a sophisticated touch to the most diverse rooms. The individual elements are characterized by tongue and groove joints. Wood species and e grades : Oak (AB-ABC) All piece bevel Treatments : Natural, Stained, Smoked, Smoked stained, Reagent Surfaces : Brushed DOP | Pro",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-intarsi-inlay-intarsi",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Inlay (Intarsi)",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "Inlay — Inlay (Intarsi)",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "inlay",
+      "construction": "Multi-layer engineered parquet, n/a mm noble hardwood top, tongue & groove, micro-bevel, underfloor-heating compatible",
+      "finish": "Brushed; oiled or lacquered (UV)",
+      "species_available": [
+        "European Oak",
+        "Glacial Oak",
+        "European Walnut",
+        "American Walnut",
+        "Asian Teak",
+        "Austrian Larch Bio"
+      ]
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[model (is_model=true); collection=Inlay; pattern=inlay; source=https://www.almafloor.it/en-gb/collezione-intarsi] Custom marquetry / inlay parquet — bespoke designs, borders and medallions.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-esterno-teak-asia",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Teak Asia",
+    "brand": "Alma",
+    "category": "decking",
+    "subcategory": "Decking — Teak Asia",
+    "material": "Asian Teak",
+    "specifications": {
+      "pattern": "decking",
+      "construction": "Outdoor teak decking board (Asian Teak), brushed natural",
+      "finish": "Brushed - Natural",
+      "use": "exterior / decking"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[model (is_model=true); collection=Decking; pattern=decking; source=https://www.almafloor.it/en-gb/collezione-esterno] Asian teak outdoor decking board.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-stair-skirt",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Stair skirt",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Stair skirt",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[accessory; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Matching stair skirting / nosing profile.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-skirting",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Skirting",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Skirting",
+    "material": "European Oak",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[accessory; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Matching wood skirting board (battiscopa).",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-alma-clean",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Alma Clean",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Alma Clean",
+    "material": "",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [],
+    "datasheet_url": "",
+    "image_urls": [],
+    "notes": "[maintenance product; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Maintenance product: routine cleaner for finished floors.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-alma-lux",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Alma Lux",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Alma Lux",
+    "material": "",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [],
+    "datasheet_url": "",
+    "image_urls": [],
+    "notes": "[maintenance product; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Maintenance product: protective polish for lacquered floors.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-alma-soap",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Alma Soap",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Alma Soap",
+    "material": "",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [],
+    "datasheet_url": "",
+    "image_urls": [],
+    "notes": "[maintenance product; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Maintenance product: soap for oiled floors.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-alma-oil",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Alma Oil",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Alma Oil",
+    "material": "",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [],
+    "datasheet_url": "",
+    "image_urls": [],
+    "notes": "[maintenance product; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Maintenance product: refreshing oil for oiled floors.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-accessori-oil-care-plus",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Oil Care Plus",
+    "brand": "Alma",
+    "category": "moulding",
+    "subcategory": "Accessories — Oil Care Plus",
+    "material": "",
+    "specifications": {
+      "pattern": "accessory"
+    },
+    "unit": "piece",
+    "origin_country": "Italy",
+    "certifications": [],
+    "datasheet_url": "",
+    "image_urls": [],
+    "notes": "[maintenance product; collection=Accessories; pattern=accessory; source=https://www.almafloor.it/en-gb/collezione-accessori] Maintenance product: deep nourishing oil care.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Natural",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Natural; code=NAT] Alma European Oak in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T02",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T02",
+      "color_code": "T02",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T02-AB-2b6342df-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T02] Alma European Oak in Stained T02 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t03",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T03",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T03",
+      "color_code": "T03",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T03-CD-ede067d5-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T03] Alma European Oak in Stained T03 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t04",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T04",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T04",
+      "color_code": "T04",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T04-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T04] Alma European Oak in Stained T04 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t05",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T05",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T05",
+      "color_code": "T05",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T05-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T05] Alma European Oak in Stained T05 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t25",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T25",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T25",
+      "color_code": "T25",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T25-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T25] Alma European Oak in Stained T25 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t08",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T08",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T08",
+      "color_code": "T08",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T08-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T08] Alma European Oak in Stained T08 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t09",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T09",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T09",
+      "color_code": "T09",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T09-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T09] Alma European Oak in Stained T09 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t70",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T70",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T70",
+      "color_code": "T70",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T70-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T70] Alma European Oak in Stained T70 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t71",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T71",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T71",
+      "color_code": "T71",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T71-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T71] Alma European Oak in Stained T71 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t67",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T67",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T67",
+      "color_code": "T67",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T67-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T67] Alma European Oak in Stained T67 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t68",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T68",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T68",
+      "color_code": "T68",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T68-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T68] Alma European Oak in Stained T68 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t10",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T10",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T10",
+      "color_code": "T10",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T10-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T10] Alma European Oak in Stained T10 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t11",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T11",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T11",
+      "color_code": "T11",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T11-CD-88c831a7-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T11] Alma European Oak in Stained T11 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t13",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T13",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T13",
+      "color_code": "T13",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T13-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T13] Alma European Oak in Stained T13 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t66",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Stained T66",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Stained T66",
+      "color_code": "T66",
+      "finish": "Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T66-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Stained; code=T66] Alma European Oak in Stained T66 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked T39",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked T39",
+      "color_code": "T39",
+      "finish": "Smoked",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T39-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked; code=T39] Alma European Oak in Smoked T39 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T02",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T02",
+      "color_code": "T39T02",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T39T02-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T02] Alma European Oak in Smoked Stained T39T02 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t04",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T04",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T04",
+      "color_code": "T39T04",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T39T04-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T04] Alma European Oak in Smoked Stained T39T04 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t25",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T25",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T25",
+      "color_code": "T39T25",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Spina-45-T39T25-ABC-2-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T25] Alma European Oak in Smoked Stained T39T25 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t22",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T22",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T22",
+      "color_code": "T39T22",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T39T22-AB-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T22] Alma European Oak in Smoked Stained T39T22 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t21",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T21",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T21",
+      "color_code": "T39T21",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T21] Alma European Oak in Smoked Stained T39T21 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t39t99",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Smoked Stained T39T99",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Smoked Stained T39T99",
+      "color_code": "T39T99",
+      "finish": "Smoked Stained",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-T39T99-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Smoked Stained; code=T39T99] Alma European Oak in Smoked Stained T39T99 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t56",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — T56 Reagent",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "T56 Reagent",
+      "color_code": "T56",
+      "finish": "Reagent",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-Barrique-T56-D-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Reagent; code=T56] Alma European Oak in T56 Reagent finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t50",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — T50 Reagent",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "T50 Reagent",
+      "color_code": "T50",
+      "finish": "Reagent",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-Barrique-T50-D-6f4c04fd-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Reagent; code=T50] Alma European Oak in T50 Reagent finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-tr1",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — TR1 Reagent",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "TR1 Reagent",
+      "color_code": "TR1",
+      "finish": "Reagent",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [
+      "gs://products-wood-assets/alma/images/Rovere-Europeo-Doghe-TR1-CD-640w.jpg"
+    ],
+    "notes": "[colour_sku; species_essence=European Oak; family=Reagent; code=TR1] Alma European Oak in TR1 Reagent finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t80",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T80 Bronzo",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T80 Bronzo",
+      "color_code": "T80",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T80] Alma European Oak in Retrò T80 Bronzo finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t81",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T81 Lino",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T81 Lino",
+      "color_code": "T81",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T81] Alma European Oak in Retrò T81 Lino finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t82",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T82 Ibisco",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T82 Ibisco",
+      "color_code": "T82",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T82] Alma European Oak in Retrò T82 Ibisco finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t83",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T83 Cotone",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T83 Cotone",
+      "color_code": "T83",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T83] Alma European Oak in Retrò T83 Cotone finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t84",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T84 Pastello",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T84 Pastello",
+      "color_code": "T84",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T84] Alma European Oak in Retrò T84 Pastello finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-oak-t85",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Oak — Retrò T85 Alcantara",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Oak",
+    "specifications": {
+      "color": "Retrò T85 Alcantara",
+      "color_code": "T85",
+      "finish": "Retrò",
+      "species": "European Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Oak; family=Retrò; code=T85] Alma European Oak in Retrò T85 Alcantara finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — Natural",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Natural; code=NAT] Alma Glacial Oak in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T02",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T02",
+      "color_code": "T02",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T02] Alma Glacial Oak in T02 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t25",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T25",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T25",
+      "color_code": "T25",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T25] Alma Glacial Oak in T25 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t04",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T04",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T04",
+      "color_code": "T04",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T04] Alma Glacial Oak in T04 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t68",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T68",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T68",
+      "color_code": "T68",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T68] Alma Glacial Oak in T68 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t09",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T09",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T09",
+      "color_code": "T09",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T09] Alma Glacial Oak in T09 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t11",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T11",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T11",
+      "color_code": "T11",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T11] Alma Glacial Oak in T11 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-glacial-oak-t66",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Glacial Oak — T66",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "Glacial Oak",
+    "specifications": {
+      "color": "T66",
+      "color_code": "T66",
+      "finish": "Other",
+      "species": "Glacial Oak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Glacial Oak; family=Other; code=T66] Alma Glacial Oak in T66 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-european-walnut-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma European Walnut — Natural",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "European Walnut",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "European Walnut",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=European Walnut; family=Natural; code=NAT] Alma European Walnut in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-american-walnut-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma American Walnut — Natural",
+    "brand": "Alma",
+    "category": "engineered_flooring",
+    "subcategory": "colour / finish variant",
+    "material": "American Walnut",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "American Walnut",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=American Walnut; family=Natural; code=NAT] Alma American Walnut in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-asian-teak-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Asian Teak — Natural",
+    "brand": "Alma",
+    "category": "decking",
+    "subcategory": "colour / finish variant",
+    "material": "Asian Teak",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "Asian Teak",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Asian Teak; family=Natural; code=NAT] Alma Asian Teak in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-austrian-larch-bio-austrian",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Austrian Larch Bio — Austrian Larch Bio",
+    "brand": "Alma",
+    "category": "decking",
+    "subcategory": "colour / finish variant",
+    "material": "Austrian Larch Bio",
+    "specifications": {
+      "color": "Austrian Larch Bio",
+      "color_code": "Austrian",
+      "finish": "Other",
+      "species": "Austrian Larch Bio",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Austrian Larch Bio; family=Other; code=Austrian] Alma Austrian Larch Bio in Austrian Larch Bio finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-austrian-larch-bio-nat",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Austrian Larch Bio — Natural",
+    "brand": "Alma",
+    "category": "decking",
+    "subcategory": "colour / finish variant",
+    "material": "Austrian Larch Bio",
+    "specifications": {
+      "color": "Natural",
+      "color_code": "NAT",
+      "finish": "Natural",
+      "species": "Austrian Larch Bio",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Austrian Larch Bio; family=Natural; code=NAT] Alma Austrian Larch Bio in Natural finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  },
+  {
+    "product_id": "alma-austrian-larch-bio-t02",
+    "vendor_id": "alma-giorio",
+    "name": "Alma Austrian Larch Bio — T02",
+    "brand": "Alma",
+    "category": "decking",
+    "subcategory": "colour / finish variant",
+    "material": "Austrian Larch Bio",
+    "specifications": {
+      "color": "T02",
+      "color_code": "T02",
+      "finish": "Other",
+      "species": "Austrian Larch Bio",
+      "pattern": "applies across plank/herringbone/chevron/geometric/design formats"
+    },
+    "unit": "sqm",
+    "origin_country": "Italy",
+    "certifications": [
+      "FSC",
+      "PEFC"
+    ],
+    "datasheet_url": "gs://products-wood-assets/alma/docs/Catalogo_Alma_2024.pdf",
+    "image_urls": [],
+    "notes": "[colour_sku; species_essence=Austrian Larch Bio; family=Other; code=T02] Alma Austrian Larch Bio in T02 finish. One of the brand's colour/treatment options, selectable on any compatible model/format.",
+    "source": "scrape:almafloor.it"
+  }
+]

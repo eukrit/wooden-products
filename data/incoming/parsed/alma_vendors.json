@@ -1,0 +1,24 @@
+[
+  {
+    "vendor_id": "alma-giorio",
+    "name": "GIORIO S.r.l.",
+    "brand": "Alma",
+    "type": "manufacturer",
+    "country": "Italy",
+    "contact": {
+      "website": "https://www.almafloor.it",
+      "address": "Italy (finishing & QC); production in Hungary"
+    },
+    "products_supplied": [
+      "engineered_flooring",
+      "decking",
+      "moulding"
+    ],
+    "certifications": [
+      "FSC-C108523",
+      "PEFC/18-31-374"
+    ],
+    "notes": "Italian engineered-parquet manufacturer (brand 'Alma by Giorio'), founded 1969 by Pierino Giorio. Premium multi-layer oak/walnut parquet — plank, herringbone, chevron, geometric, design (Versailles/Chantilly) and inlay formats; Asian Teak & Austrian Larch Bio decking. Noble layers 3-6 mm, structures 10/3..17/6, boards up to 2200 mm. FSC C108523, PEFC/18-31-374, EPD + VOC tested, underfloor-heating compatible. Logs/production in Hungary, finishing & QC in Italy. NOTE: distinct from reseller 'visconti' (Giorio Casa, WeChat #25) which distributes Giorio in China. Full catalogue scraped from almafloor.it (2024 catalogue + per-model technical sheets in product_images).",
+    "source": "scrape:almafloor.it"
+  }
+]

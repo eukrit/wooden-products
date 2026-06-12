@@ -91,16 +91,34 @@
 
   <span class="eyebrow">Build Summary</span>
   <h1>wooden-products</h1>
-  <p style="color: var(--muted); margin: 0;">v0.16.0 — <strong>Solid wood flooring</strong> dashboard + cross-vendor price comparison: a self-contained HTML page scoped to genuine solid timber &amp; real-wood engineered flooring only, generated live from <code>products-wood</code> and served privately via the go-access-gateway.</p>
+  <p style="color: var(--muted); margin: 0;">v0.17.0 — <strong>Alma by Giorio</strong> full catalogue ingest: scraped the Italian engineered-parquet manufacturer (almafloor.it) end-to-end into <code>products-wood</code> — 1 vendor, 97 products (51 model formats + 46 colour/finish SKUs) and 348 assets (44 PDFs + 304 images) mirrored to <code>gs://products-wood-assets/alma/</code>.</p>
 
   <div class="meta-grid">
-    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.16.0</div></div>
-    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-10</div></div>
-    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Generated &amp; verified</span></div></div>
+    <div class="meta-card"><div class="lbl">Version</div><div class="val">0.17.0</div></div>
+    <div class="meta-card"><div class="lbl">Build date</div><div class="val">2026-06-12</div></div>
+    <div class="meta-card"><div class="lbl">Status</div><div class="val"><span class="status ok">Ingested &amp; verified</span></div></div>
     <div class="meta-card"><div class="lbl">Database</div><div class="val">products-wood</div></div>
     <div class="meta-card"><div class="lbl">Region</div><div class="val">asia-southeast1</div></div>
     <div class="meta-card"><div class="lbl">Asset bucket</div><div class="val">gs://products-wood-assets</div></div>
   </div>
+
+  <h2>What shipped in 0.17.0 — Alma by Giorio full catalogue scrape &amp; ingest</h2>
+
+  <div class="callout">
+    Four-stage pipeline (<code>scrape → extract → build → upload</code>, mirroring the WeChat #25 pattern)
+    ingested the complete <strong>Alma by Giorio</strong> (GIORIO S.r.l., Italy) parquet catalogue from
+    <a href="https://www.almafloor.it/en-gb">almafloor.it</a> into <code>products-wood</code>.
+    New manufacturer vendor <code>alma-giorio</code> (distinct from the existing <code>visconti</code> Giorio-Casa
+    reseller). Per-record provenance retained; assets mirrored privately to the asset bucket and served via the gateway.
+  </div>
+
+  <ul>
+    <li><strong>Vendor</strong> — <code>alma-giorio</code> (GIORIO S.r.l., brand “Alma”, manufacturer, Italy; FSC&nbsp;C108523, PEFC/18-31-374).</li>
+    <li><strong>97 products, both granularities</strong> — 51 model formats across 9 collections (Plank, Chevron&nbsp;45°, Herringbone&nbsp;90°, Chevron&nbsp;30°, Geometric, Design, Inlay, Decking, Accessories) with full dimensions / structure (10/3…17/6) / noble layer / datasheet link, <em>plus</em> 46 colour-finish SKUs across 6 essences (European&nbsp;Oak&nbsp;32, Glacial&nbsp;Oak&nbsp;8, Walnuts/Teak&nbsp;1, Larch&nbsp;Bio&nbsp;3).</li>
+    <li><strong>348 assets</strong> — 44 PDFs (2024 catalogue, 15 per-model technical sheets, 15 DoP, FSC/PEFC/EPD/VOC certs, maintenance/installation/warranty) + 304 product &amp; swatch images, all under <code>gs://products-wood-assets/alma/{docs,images}/</code>; 41/44 models carry a model-specific technical sheet as <code>datasheet_url</code>.</li>
+    <li><strong>Live counts</strong> — vendors 55→56, products 305→402, product_images 95→443.</li>
+    <li><strong>New pipeline scripts</strong> — <code>scripts/scrapers/alma_scrape.py</code>, <code>alma_extract.py</code>, <code>scripts/firestore/build_alma_flooring.py</code>, <code>upload_alma_flooring.py</code> (all idempotent / re-runnable; deterministic product IDs).</li>
+  </ul>
 
   <h2>What shipped in 0.16.0 — Solid wood flooring dashboard + price comparison</h2>
 

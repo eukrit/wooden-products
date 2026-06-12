@@ -74,3 +74,13 @@ website/salesheet/_docs_staged/
 # gs://wechat-documents-attachments. The mapped JSON under data/incoming/parsed/
 # and the handoff + export JSON ARE committed.
 data/incoming/pdfs/
+
+# Alma (almafloor.it) scrape — raw scrape is NOT committed:
+#   - binary PDFs/images are mirrored to gs://products-wood-assets/alma/{docs,images}/
+#     at ingest (system of record);
+#   - the raw HTML pages embed Alma's own client-side Mapbox map token (Duda CMS),
+#     which trips GitHub push-protection — so we keep them out of git entirely.
+# The whole raw tree is reproducible via scripts/scrapers/alma_scrape.py. The
+# durable, committed outputs are data/parsed/alma/*.json|csv and
+# data/incoming/parsed/alma_*.json.
+data/raw/alma/
